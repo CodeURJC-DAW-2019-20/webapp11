@@ -8,7 +8,7 @@
 | Marina |Fernández Suárez   | m.fernandezsu@alumnos.urjc.es  | IhoFenixMFS  |
 | Rodrigo | Cadena Rodríguez  | r.cadenar.2019@alumnos.urjc.es  | CadenaR  |
 
-## Other tools used 
+## Tools used 
 #### Trello
 https://trello.com/b/ZzIXGZ6A/aplicaciones-web
 
