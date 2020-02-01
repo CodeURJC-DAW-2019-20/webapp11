@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     "use strict";
 
     var window_width = $(window).width(),
@@ -40,6 +40,19 @@ $(document).ready(function() {
     });
 
 
+    // Header loading
+    fetch("./header.html").then(response => {
+        return response.text()
+    }).then(data => {
+        document.querySelector("header").innerHTML = data;
+    });
+
+    // Footer loading
+    fetch("./footer.html").then(response => {
+        return response.text()
+    }).then(data => {
+        document.querySelector("footer").innerHTML = data;
+    });
 
     // Initiate superfish on nav menu
     $('.nav-menu').superfish({
@@ -63,19 +76,19 @@ $(document).ready(function() {
         $('body').append('<div id="mobile-body-overly"></div>');
         $('#mobile-nav').find('.menu-has-children').prepend('<i class="lnr lnr-chevron-down"></i>');
 
-        $(document).on('click', '.menu-has-children i', function(e) {
+        $(document).on('click', '.menu-has-children i', function (e) {
             $(this).next().toggleClass('menu-item-active');
             $(this).nextAll('ul').eq(0).slideToggle();
             $(this).toggleClass("lnr-chevron-up lnr-chevron-down");
         });
 
-        $(document).on('click', '#mobile-nav-toggle', function(e) {
+        $(document).on('click', '#mobile-nav-toggle', function (e) {
             $('body').toggleClass('mobile-nav-active');
             $('#mobile-nav-toggle i').toggleClass('lnr-cross lnr-menu');
             $('#mobile-body-overly').toggle();
         });
 
-        $(document).click(function(e) {
+        $(document).click(function (e) {
             var container = $("#mobile-nav, #mobile-nav-toggle");
             if (!container.is(e.target) && container.has(e.target).length === 0) {
                 if ($('body').hasClass('mobile-nav-active')) {
@@ -90,7 +103,7 @@ $(document).ready(function() {
     }
 
     // Smooth scroll for the menu and links with .scrollto classes
-    $('.nav-menu a, #mobile-nav a, .scrollto').on('click', function() {
+    $('.nav-menu a, #mobile-nav a, .scrollto').on('click', function () {
         if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
             var target = $(this.hash);
             if (target.length) {
@@ -123,13 +136,13 @@ $(document).ready(function() {
         }
     });
 
-    $(document).ready(function() {
+    $(document).ready(function () {
 
         $('html, body').hide();
 
         if (window.location.hash) {
 
-            setTimeout(function() {
+            setTimeout(function () {
 
                 $('html, body').scrollTop(0).show();
 
@@ -150,7 +163,7 @@ $(document).ready(function() {
     });
 
     // Header scroll class
-    $(window).scroll(function() {
+    $(window).scroll(function () {
         if ($(this).scrollTop() > 100) {
             $('#header').addClass('header-scrolled');
         } else {
@@ -358,7 +371,7 @@ $(document).ready(function() {
         }
     }
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('#mc_embed_signup').find('form').ajaxChimp();
     });
 
