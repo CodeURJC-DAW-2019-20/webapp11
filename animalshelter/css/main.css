@@ -1972,43 +1972,141 @@ h6 {
 .header-top .lnr {
   display: none;
 }
-#divTopImg{float: right;width: 150px;height: 65px;background: transparent url('../img/corto.png') no-repeat 0px 0px scroll; margin-right: 25px;  text-align: center;padding-top: 300px;z-index:9999;position:relative;}
+
+#divTopImg {
+  float: right;
+  width: 150px;
+  height: 65px;
+  background: transparent url('../img/corto.png') no-repeat 0px 0px scroll;
+  margin-right: 25px;
+  text-align: center;
+  padding-top: 300px;
+  z-index: 9999;
+  position: relative;
+}
 
 /* Login del header*/
-#divTopImg {position: absolute; float: none; right: 0;
- top: -250px; background-position: left bottom; height: 230px;
- background-image: url('../img/largo.png'); padding-top: 8px;}
-#divTopImg.desplegado { top: 0;}
+#divTopImg {
+  position: absolute;
+  float: none;
+  right: 0;
+  top: -250px;
+  background-position: left bottom;
+  height: 230px;
+  background-image: url('../img/largo.png');
+  padding-top: 8px;
+}
 
-.divBannerSep_login {width:90px; height:10px; background:url('../img/corto.png') repeat-x scroll background-size:7px; margin: 5px auto; clear:both;}
+#divTopImg.desplegado {
+  top: 0;
+}
 
-#divTopImg a.crear_cuenta { margin-top:0 !important; margin-bottom: 4px; background: #fff; color: #f00; text-decoration: none; line-height: 25px; height: 25px; display: inline-block; width:85%; 
-	text-align: center; -webkit-border-radius: 4px; -moz-border-radius: 4px; border-radius: 4px; }
+.divBannerSep_login {
+  width: 90px;
+  height: 10px;
+  background: url('../img/corto.png') repeat-x scroll background-size:7px;
+  margin: 5px auto;
+  clear: both;
+}
 
-#divTopImg {-webkit-transition: all 0.5s ease;
--moz-transition: all 0.5s ease;
--ms-transition: all 0.5s ease;
--o-transition: all 0.5s ease;
-transition: all 0.5s ease;}
-#divTopImg.desplegado  {-webkit-transition: all 0.5s ease;
--moz-transition: all 0.5s ease;
--ms-transition: all 0.5s ease;
--o-transition: all 0.5s ease;
-transition: all 0.5s ease;}
+#divTopImg a.crear_cuenta {
+  margin-top: 0 !important;
+  margin-bottom: 4px;
+  background: #fff;
+  color: #f00;
+  text-decoration: none;
+  line-height: 25px;
+  height: 25px;
+  display: inline-block;
+  width: 85%;
+  text-align: center;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
 
-#divTopImg .login-form {margin-top: -50px; margin-bottom: 50px; opacity= 0.5}
-#divTopImg.desplegado .login-form {margin-top: 0px; margin-bottom: 10px;opacity=0.5}
+#divTopImg {
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#divTopImg.desplegado {
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#divTopImg .login-form {
+  margin-top: -50px;
+  margin-bottom: 50px;
+  opacity=0.5
+}
+
+#divTopImg.desplegado .login-form {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  opacity=0.5
+}
 
 /* Form login */
 
-.login-form {clear: right; margin-bottom: 10px;}
-.login-form .login-header {margin: 0 10px;}
-.login-form .login-header .form-group { width: 10px ;margin-bottom: 5px;}
-.login-form .login-header label {font-size: 15px; margin-bottom: 2px;}
-.login-form .login-header input[type="text"], .login-form .login-header input[type="password"]{height: 20px; width:120px; border-radius: 5px;}
-.login-form .login-header input[type="submit"] {width: 115px; height: 25px; padding: 0; border-radius: 5px; text-align: center; font-size: 12px; margin-bottom: 5px; background-color: transparent; color: #ffffff; }
-.login-form .login-header input[type="submit"]:hover { background-color: #ffffff; color: #DA4133; border: 1px solid #DA4133;}
-.login-form > a {display: inline-block; width: 50%; font-size: 12px; line-height: 12px; float: left; color: #ffffff;}
+.login-form {
+  clear: right;
+  margin-bottom: 10px;
+}
+
+.login-form .login-header {
+  margin: 0 10px;
+}
+
+.login-form .login-header .form-group {
+  width: 10px;
+  margin-bottom: 5px;
+}
+
+.login-form .login-header label {
+  font-size: 15px;
+  margin-bottom: 2px;
+}
+
+.login-form .login-header input[type="text"],
+.login-form .login-header input[type="password"] {
+  height: 20px;
+  width: 120px;
+  border-radius: 5px;
+}
+
+.login-form .login-header input[type="submit"] {
+  width: 115px;
+  height: 25px;
+  padding: 0;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 12px;
+  margin-bottom: 5px;
+  background-color: transparent;
+  color: #ffffff;
+}
+
+.login-form .login-header input[type="submit"]:hover {
+  background-color: #ffffff;
+  color: #DA4133;
+  border: 1px solid #DA4133;
+}
+
+.login-form>a {
+  display: inline-block;
+  width: 50%;
+  font-size: 12px;
+  line-height: 12px;
+  float: left;
+  color: #ffffff;
+}
 
 
 @media (max-width: 588px) {
@@ -4114,7 +4212,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   color: #777;
 }
 
-.column-animal-profile {
+.column-profile {
   float: left;
   padding: 10px;
   width: 50%;
@@ -4127,6 +4225,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 .rigth {
   width: 70%;
 }
+
 
 /*
 ################
