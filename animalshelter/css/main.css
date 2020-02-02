@@ -2525,12 +2525,26 @@ body.mobile-nav-active #mobile-nav-toggle {
   background-size: cover;
 }
 
+.banner-area-error {
+  background: url(../img/errorpuppy.jpg) center;
+  background-size: cover;
+}
+
 .banner-area .primary-btn {
   padding-left: 30px;
   padding-right: 30px;
 }
 
+.banner-area-error .primary-btn {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
 .banner-area .overlay-bg {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.banner-area-error .overlay-bg {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
