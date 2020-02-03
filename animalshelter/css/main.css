@@ -884,6 +884,8 @@ h6 {
   text-decoration: none;
   font-weight: 500;
   cursor: pointer;
+  margin-top: 10px;
+  margin-bottom: 10px;
   -webkit-transition: all 0.3s ease 0s;
   -moz-transition: all 0.3s ease 0s;
   -o-transition: all 0.3s ease 0s;
@@ -917,6 +919,7 @@ h6 {
 
 .genric-btn.circle {
   border-radius: 20px;
+  margin-bottom: 5px;
 }
 
 .genric-btn.arrow {
@@ -1978,7 +1981,7 @@ h6 {
   width: 150px;
   height: 65px;
   background: transparent url('../img/corto.png') no-repeat 0px 0px scroll;
-  margin-right: 25px;
+  margin-right: 15px;
   text-align: center;
   padding-top: 300px;
   z-index: 9999;
@@ -1990,9 +1993,9 @@ h6 {
   position: absolute;
   float: none;
   right: 0;
-  top: -250px;
+  top: -350px;
   background-position: left bottom;
-  height: 230px;
+  height: 300px;
   background-image: url('../img/largo.png');
   padding-top: 8px;
 }
@@ -2009,21 +2012,7 @@ h6 {
   clear: both;
 }
 
-#divTopImg a.crear_cuenta {
-  margin-top: 0 !important;
-  margin-bottom: 4px;
-  background: #fff;
-  color: #f00;
-  text-decoration: none;
-  line-height: 25px;
-  height: 25px;
-  display: inline-block;
-  width: 85%;
-  text-align: center;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-}
+
 
 #divTopImg {
   -webkit-transition: all 0.5s ease;
@@ -2050,7 +2039,7 @@ h6 {
 #divTopImg.desplegado .login-form {
   margin-top: 0px;
   margin-bottom: 10px;
-  opacity=0.5
+  opacity=0.5;
 }
 
 /* Form login */
