@@ -42,62 +42,69 @@
 				<div class="row d-flex align-items-center justify-content-center">
 					<div class="about-content col-lg-12">
 						<h1 class="text-white">
-							Graphs
+							Stats
 						</h1>
 						<p class="text-white link-nav"><a href="index.html">Home </a> <span
-								class="lnr lnr-arrow-right"></span> <a href="graph.html"> Graphs</a></p>
+								class="lnr lnr-arrow-right"></span> <a href="graph.html"> Stats</a></p>
 					</div>
 				</div>
 			</div>
 		</section>
 		<!-- End banner Area -->
 
-		<!-- Start Volunteer-form Area -->
-		<section class="Graphs">
+		<!-- Start Graph-Body -->
+		<section class="Graphs-header">
 			<div class="container">
 				<div class="row d-flex justify-content-center">
 					<div class="menu-content pb-60 col-lg-9">
 						<div class="title text-center">
 							<h1 class="mb-20">Graphs</h1>
-							
 						</div>
 					</div>
 				</div>
-				<div class="row justify-content-center">
-					<div class="form-group">
-						<label for="type-animal">Type animal:</label>
-						<select name="typeanimallist" form="carform">
-							<option value="dog">Dog</option>
-							<option value="cat">Cat</option>
-							<option value="reptile">Reptile</option>
-							<option value="bird">Bird</option>
-							<option value="other">Other</option>
-						</select>
-					</div>
-					<div class="hola" 
-					
-						<label for="month">Month:</label>
-						<select name="typeanimallist" form="carform">
-							<option value="january">January</option>
-							<option value="february">February</option>
-							<option value="march">March</option>
-							<option value="april">April</option>
-							<option value="may">May</option>
-							<option value="june">June</option>
-							<option value="july">July</option>
-							<option value="august">August</option>
-							<option value="september">September</option>
-							<option value="october">October</option>
-							<option value="november">November</option>
-							<option value="december">December</option>
-						</select>
-					
+				<div class="container">
+					<form class="col-lg-6">
+						<div class="form-row">
+							<div class="col-3 mb-10">
+								<label for="type-animal">Animal:</label>
+								<select name="typeanimallist" form="carform">
+									<option value="all">All</option>
+									<option value="dog">Dog</option>
+									<option value="cat">Cat</option>
+									<option value="reptile">Reptile</option>
+									<option value="bird">Bird</option>
+									<option value="other">Other</option>
+								</select>
+							</div>
+							<div class="col-3 mb-10">
+								<label for="month">Month:</label>
+								<select name="typeanimallist" form="carform">
+									<option value="january">January</option>
+									<option value="february">February</option>
+									<option value="march">March</option>
+									<option value="april">April</option>
+									<option value="may">May</option>
+									<option value="june">June</option>
+									<option value="july">July</option>
+									<option value="august">August</option>
+									<option value="september">September</option>
+									<option value="october">October</option>
+									<option value="november">November</option>
+									<option value="december">December</option>
+								</select>
+							</div>
+							<div class="col-3 mb-20">
+								<button type="submit" class="primary-btn float-right">Generar gráfica</button>
+							</div>
 						</div>
+					</form>
 				</div>
 			</div>
 		</section>
-		<!-- End Volunteer-form Area -->
-
+		<section class="Graphs-image">
+			<img src="img/abandom-graph.jpg" alt="" class="img-fluid">
+		</section>
+		<!-- Start Graph-Body -->
 		<!-- start footer Area -->
 		<footer class="footer-area">
 		</footer>
