@@ -35,8 +35,6 @@
 	<header id="header" id="home">
 	</header><!-- #header -->
 
-
-
 	<!-- start banner Area -->
 	<section class="banner-area relative" id="home">
 		<div class="overlay overlay-bg"></div>
@@ -54,7 +52,31 @@
 	</section>
 	<!-- End banner Area -->
 
-	<!-- Start cat-list Area -->
+	<!-- Start animal-list Area -->
+	<form class="col-lg-9">
+		<div class="form-group">
+			<div class="row">	
+				<select name="filter" form="filter" class="col-lg-8 col-md-3">			<!-- values for the special-filter algorith -->
+					<option value="all">All</option>
+					<option value="special">My posibilities</option>
+					<option value="bird">Bird</option>
+					<option value="cat">Cat</option>
+					<option value="dog">Dog</option>
+					<option value="reptile">Reptile</option>
+					<option value="others">Others</option>
+				</select>
+				<button type="submit" class="primary-btn col-lg-8 col-md-3">Aply filter</button>
+			</div>
+		</div>
+	</form>
+	<form class="col-lg-9">
+		<div class="form-group">
+			<div class="row">	
+				<input type="text" class="form-control col-lg-8 col-md-3" placeholder="Search by name">
+				<button type="submit" class="primary-btn col-lg-8 col-md-3">Search</button>
+			</div>
+		</div>
+	</form>
 	<section class="cat-list-area section-gap">
 		<div class="container">
 			<div class="row">
@@ -125,7 +147,7 @@
 			</div>
 		</div>
 	</section>
-	<!-- End cat-list Area -->
+	<!-- End animal-list Area -->
 
 
 
