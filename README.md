@@ -19,6 +19,7 @@ It’s a web application on animal adoption. Animal shelters and dog pounds can 
 ### User:
 >Registered users can request the adoption of any animal that the search shows them. In addition, they can upload images to their profiles.
 * Attributes:
+  * Photo.
   * Name.
   * DNI.
   * Adress.
@@ -26,24 +27,33 @@ It’s a web application on animal adoption. Animal shelters and dog pounds can 
   * Garden (No/Little/Medium/Big).
   * Children number.
   * People living in the house.
+  * E-mail.
+  * Password.
+  * Galery.
 
 ### Animals:
 >The available animals list would be visible, here will appear an image of the animal, his/her name, the age, the owner and if it has been already adopted or not.
 * Attributes:
-  * Image.
+  * Photo.
+  * Name.
   * Age.
   * Animal type (Dog/Cat/Bird/Reptile/Equine).
   * Size (XL/Big/Medium/Little).
+  * Description.
   * Owner.
   * Status (Adopted or not).
-  * People living in the house.
+
 
 ### Shelter:
 >The shelter can upload animals for them to get adopted, and accept or deny user adoption requests.
 * Attributes:
+  * Name.
+  * NIF.
   * E-mail.
+  * Password.
   * Average Rating.
   * Description.
+  * Address.
   * Animal list.
   * Adoption Requests Received (Animal/User).
 
