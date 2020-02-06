@@ -1,3 +1,10 @@
+var graphlabel = 'Adoptions';
+var myChart;
+var dognum = 28;
+var catnum = 20;
+var birdnum = 10;
+var reptilenum = 2;
+var othernum = 1;
 $(document).ready(function () {
     "use strict";
 
@@ -214,6 +221,34 @@ $(document).ready(function () {
                 items: 4,
             }
 
+        }
+    });
+    // Graph js
+    var ctx = document.getElementById('myChart').getContext('2d');
+    myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Dogs', 'Cats', 'Birds', 'Reptiles', 'Other'],
+            datasets: [{
+                label: 'Adoptions since we started',
+                data: [dognum, catnum, birdnum, reptilenum, othernum],
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)'
+                ],
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
         }
     });
 
