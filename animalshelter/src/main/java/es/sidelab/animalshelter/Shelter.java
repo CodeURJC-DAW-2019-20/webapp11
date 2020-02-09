@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Shelter {
@@ -13,13 +14,21 @@ public class Shelter {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idShelter;
 	
+	@NotNull
 	private String shelterName;
+	@NotNull
 	private String shelterNif;
+	@NotNull
 	private String shelterEmail;
+	@NotNull
 	private String shelterPassword;
+	@NotNull
 	private int shelterAverageRating;
+	@NotNull
 	private String shelterDescription;
+	@NotNull
 	private String shelterAdress;
+	
 	private ArrayList<Animal> shelterAnimalList;
 	private ArrayList<Adoption> shelterAdoptionRequests;
 	
@@ -27,6 +36,19 @@ public class Shelter {
 	//CONSTRUCTORS
 	protected Shelter () {};
 	
+	public Shelter(String shelterName, String shelterNif, String shelterEmail, String shelterPassword,
+			int shelterAverageRating, String shelterDescription, String shelterAdress) {
+		this.shelterName = shelterName;
+		this.shelterNif = shelterNif;
+		this.shelterEmail = shelterEmail;
+		this.shelterPassword = shelterPassword;
+		this.shelterAverageRating = shelterAverageRating;
+		this.shelterDescription = shelterDescription;
+		this.shelterAdress = shelterAdress;
+	}
+
+
+
 	//GETTERS AND SETTERS
 	public String getShelterName() {
 		return shelterName;

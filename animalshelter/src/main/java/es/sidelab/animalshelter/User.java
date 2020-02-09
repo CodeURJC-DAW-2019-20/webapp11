@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class User {
@@ -12,16 +13,27 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idUser;
 	
+	@NotNull
 	private String userPhoto;
+	@NotNull
 	private String userName;
+	@NotNull
 	private String userDni;
+	@NotNull
 	private int userAge;
+	@NotNull
 	private String userAdress;
+	@NotNull
 	private String userHouseSize;
+	@NotNull
 	private String userGarden;
+	@NotNull
 	private int userNumChildren;
+	@NotNull
 	private int userNumPeopleInHouse;
+	@NotNull
 	private String userEmail;
+	@NotNull
 	private String userPassword;
 	//userGallery
 	
@@ -29,6 +41,24 @@ public class User {
 	//CONSTRUCTORS
 	protected User () {};
 	
+	public User(String userPhoto, String userName, String userDni, int userAge, String userAdress,
+			String userHouseSize, String userGarden, int userNumChildren, int userNumPeopleInHouse, String userEmail,
+			String userPassword) {
+		this.userPhoto = userPhoto;
+		this.userName = userName;
+		this.userDni = userDni;
+		this.userAge = userAge;
+		this.userAdress = userAdress;
+		this.userHouseSize = userHouseSize;
+		this.userGarden = userGarden;
+		this.userNumChildren = userNumChildren;
+		this.userNumPeopleInHouse = userNumPeopleInHouse;
+		this.userEmail = userEmail;
+		this.userPassword = userPassword;
+	}
+
+
+
 	//GETTERS AND SETTERS
 	public String getUserPhoto() {
 		return userPhoto;

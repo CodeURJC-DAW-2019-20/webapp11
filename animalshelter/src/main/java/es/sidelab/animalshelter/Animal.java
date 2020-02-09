@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Animal {
@@ -12,19 +13,41 @@ public class Animal {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idAnimal;
 	
+	@NotNull
 	private String animalPhoto;
-	private String animlaName;
+	@NotNull
+	private String animalName;
+	@NotNull
 	private int animalAge;
+	@NotNull
 	private String animalType;
+	@NotNull
 	private String animalSize;
+	@NotNull
 	private String animalDescription;
+	@NotNull
 	private String animalOwner;
+	@NotNull
 	private boolean animalAdopted;
 	
 	
 	//CONSTRUCTORS
 	protected Animal () {};
 		
+	public Animal(String animalPhoto, String animlaName, int animalAge, String animalType,
+			String animalSize, String animalDescription, String animalOwner, boolean animalAdopted) {
+		this.animalPhoto = animalPhoto;
+		this.animalName = animlaName;
+		this.animalAge = animalAge;
+		this.animalType = animalType;
+		this.animalSize = animalSize;
+		this.animalDescription = animalDescription;
+		this.animalOwner = animalOwner;
+		this.animalAdopted = animalAdopted;
+	}
+
+
+
 	//GETTERS AND SETTERS
 	public String getAnimalPhoto() {
 		return animalPhoto;
@@ -32,11 +55,11 @@ public class Animal {
 	public void setAnimalPhoto(String animalPhoto) {
 		this.animalPhoto = animalPhoto;
 	}
-	public String getAnimlaName() {
-		return animlaName;
+	public String getAnimalName() {
+		return animalName;
 	}
-	public void setAnimlaName(String animlaName) {
-		this.animlaName = animlaName;
+	public void setAnimalName(String animalName) {
+		this.animalName = animalName;
 	}
 	public int getAnimalAge() {
 		return animalAge;
