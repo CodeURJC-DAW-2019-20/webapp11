@@ -1,10 +1,13 @@
 package es.sidelab.animalshelter;
 
 import java.util.ArrayList;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -29,7 +32,9 @@ public class Shelter {
 	@NotNull
 	private String shelterAdress;
 	
+	@OneToMany(cascade=CascadeType.ALL)
 	private ArrayList<Animal> shelterAnimalList;
+	@OneToMany(cascade=CascadeType.ALL)
 	private ArrayList<Adoption> shelterAdoptionRequests;
 	
 	

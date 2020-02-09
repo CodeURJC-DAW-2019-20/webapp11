@@ -26,7 +26,6 @@ public class Adoption {
 	protected Adoption () {};
 	
 	public Adoption(int idAdoption, Date adoptionDate, String adoptionAnimalID, String aoptionUserID) {
-		super();
 		this.idAdoption = idAdoption;
 		this.adoptionDate = adoptionDate;
 		this.adoptionAnimalID = adoptionAnimalID;
