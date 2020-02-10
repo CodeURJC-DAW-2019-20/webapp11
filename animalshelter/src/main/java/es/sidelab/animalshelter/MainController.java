@@ -36,6 +36,17 @@ public class MainController {
 		return "index";
 	}
 	
+	@RequestMapping("/header")
+	public String header(Model model) {
+		//model.addAttribute("name", "World");
+		return "header";
+	}
+	
+	@RequestMapping("/footer")
+	public String footer(Model model) {
+		//model.addAttribute("name", "World");
+		return "footer";
+	}
 	
 }
 
