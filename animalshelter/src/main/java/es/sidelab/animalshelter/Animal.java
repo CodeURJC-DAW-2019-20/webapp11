@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
 
 @Entity
 public class Animal {
@@ -13,26 +12,18 @@ public class Animal {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idAnimal;
 	
-	@NotNull
 	private String animalPhoto;
-	@NotNull
 	private String animalName;
-	@NotNull
 	private int animalAge;
-	@NotNull
 	private String animalType;
-	@NotNull
 	private String animalSize;
-	@NotNull
 	private String animalDescription;
-	@NotNull
 	private String animalOwner;
-	@NotNull
 	private boolean animalAdopted;
 	
 	
 	//CONSTRUCTORS
-	protected Animal () {};
+	protected Animal () {}
 		
 	public Animal(String animalPhoto, String animlaName, int animalAge, String animalType,
 			String animalSize, String animalDescription, String animalOwner, boolean animalAdopted) {

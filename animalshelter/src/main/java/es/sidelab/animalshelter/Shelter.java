@@ -1,14 +1,12 @@
 package es.sidelab.animalshelter;
 
 import java.util.ArrayList;
-
-import javax.persistence.CascadeType;
+//import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
+//import javax.persistence.OneToMany;
 
 @Entity
 public class Shelter {
@@ -17,29 +15,22 @@ public class Shelter {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idShelter;
 	
-	@NotNull
 	private String shelterName;
-	@NotNull
 	private String shelterNif;
-	@NotNull
 	private String shelterEmail;
-	@NotNull
 	private String shelterPassword;
-	@NotNull
 	private int shelterAverageRating;
-	@NotNull
 	private String shelterDescription;
-	@NotNull
 	private String shelterAdress;
 	
-	@OneToMany(cascade=CascadeType.ALL)
+	//@OneToMany(cascade=CascadeType.ALL)
 	private ArrayList<Animal> shelterAnimalList;
-	@OneToMany(cascade=CascadeType.ALL)
+	//@OneToMany(cascade=CascadeType.ALL)
 	private ArrayList<Adoption> shelterAdoptionRequests;
 	
 	
 	//CONSTRUCTORS
-	protected Shelter () {};
+	protected Shelter () {}
 	
 	public Shelter(String shelterName, String shelterNif, String shelterEmail, String shelterPassword,
 			int shelterAverageRating, String shelterDescription, String shelterAdress) {

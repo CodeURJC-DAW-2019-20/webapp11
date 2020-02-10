@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface AdoptionRepository extends JpaRepository<Adoption, Integer> {
 	List<Animal> findByAdoptionDate(Date adoptionDate);
 	List<Animal> findByAdoptionAnimalID(String adoptionAnimalID);
-	List<Animal> findByAdoptionUserID(String aoptionUserID);
+	List<Animal> findByAdoptionUserID(String adoptionUserID);
 }

@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
 
 @Entity
 public class User {
@@ -13,33 +12,22 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idUser;
 	
-	@NotNull
 	private String userPhoto;
-	@NotNull
 	private String userName;
-	@NotNull
 	private String userDni;
-	@NotNull
 	private int userAge;
-	@NotNull
 	private String userAdress;
-	@NotNull
 	private String userHouseSize;
-	@NotNull
 	private String userGarden;
-	@NotNull
 	private int userNumChildren;
-	@NotNull
 	private int userNumPeopleInHouse;
-	@NotNull
 	private String userEmail;
-	@NotNull
 	private String userPassword;
 	//userGallery
 	
 	
 	//CONSTRUCTORS
-	protected User () {};
+	protected User () {}
 	
 	public User(String userPhoto, String userName, String userDni, int userAge, String userAdress,
 			String userHouseSize, String userGarden, int userNumChildren, int userNumPeopleInHouse, String userEmail,

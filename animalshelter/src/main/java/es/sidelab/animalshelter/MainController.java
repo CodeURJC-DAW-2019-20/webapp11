@@ -1,7 +1,6 @@
 package es.sidelab.animalshelter;
 
 import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,8 +14,8 @@ public class MainController {
 	private AnimalRepository animalRepository;
 	@Autowired
 	private ShelterRepository shelterRepository;
-	@Autowired
-	private AdoptionRepository adoptionRepository;
+	//@Autowired
+	//private AdoptionRepository adoptionRepository;
 	
 	
 	@PostConstruct

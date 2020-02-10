@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
 
 @Entity
 public class Adoption {
@@ -14,22 +13,19 @@ public class Adoption {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idAdoption;
 	
-	@NotNull
 	private Date adoptionDate;
-	@NotNull
 	private String adoptionAnimalID;
-	@NotNull
-	private String aoptionUserID;
+	private String adoptionUserID;
 	
 	
 	//CONSTRUCTORS
-	protected Adoption () {};
+	protected Adoption () {}
 	
 	public Adoption(int idAdoption, Date adoptionDate, String adoptionAnimalID, String aoptionUserID) {
 		this.idAdoption = idAdoption;
 		this.adoptionDate = adoptionDate;
 		this.adoptionAnimalID = adoptionAnimalID;
-		this.aoptionUserID = aoptionUserID;
+		this.adoptionUserID = aoptionUserID;
 	}
 
 
@@ -46,11 +42,11 @@ public class Adoption {
 	public void setAdoptionAnimalID(String adoptionAnimalID) {
 		this.adoptionAnimalID = adoptionAnimalID;
 	}
-	public String getAoptionUserID() {
-		return aoptionUserID;
+	public String getAdoptionUserID() {
+		return adoptionUserID;
 	}
-	public void setAoptionUserID(String aoptionUserID) {
-		this.aoptionUserID = aoptionUserID;
+	public void setAdoptionUserID(String aoptionUserID) {
+		this.adoptionUserID = aoptionUserID;
 	}
 	
 }
