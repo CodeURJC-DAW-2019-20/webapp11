@@ -46,21 +46,6 @@ $(document).ready(function () {
         fixedContentPos: false
     });
 
-
-    // Header loading
-    fetch("./header.html").then(response => {
-        return response.text()
-    }).then(data => {
-        document.querySelector("header").innerHTML = data;
-    });
-
-    // Footer loading
-    fetch("./footer.html").then(response => {
-        return response.text()
-    }).then(data => {
-        document.querySelector("footer").innerHTML = data;
-    });
-
     // Initiate superfish on nav menu
     $('.nav-menu').superfish({
         animation: {
