@@ -1,10 +1,17 @@
-package es.sidelab.animalshelter;
+package es.sidelab.animalshelter.controllers;
 
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import es.sidelab.animalshelter.Animal;
+import es.sidelab.animalshelter.AnimalRepository;
+import es.sidelab.animalshelter.Shelter;
+import es.sidelab.animalshelter.ShelterRepository;
+import es.sidelab.animalshelter.User;
+import es.sidelab.animalshelter.UserRepository;
 
 @Controller
 public class MainController {
