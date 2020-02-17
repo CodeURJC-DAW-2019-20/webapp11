@@ -33,15 +33,59 @@ public class MainController {
 		animalRepository.save(new Animal("foto2","Jen",3,"Mastiff","Small","Brown","NO",false));
 		shelterRepository.save(new Shelter("Build Animal Future","1123123123","baf@shelter.com","123",5,"NO","C/Montana,1"));
 		shelterRepository.save(new Shelter("Animal Rescue","4325151451","ar@shelter.com","123",3,"NO","C/Signium,7"));
-		//adoptionRepository.save(new Adoption());
 	}
 	
 	
 	@RequestMapping("/")
-	public String home(Model model) {
+	public String homeView(Model model) {
 		return "index";
 	}
+	
+	@RequestMapping("/animals")
+	public String animalView(Model model) {
+		return "animals";
+	}
+	
+	@RequestMapping("/request")
+	public String requestView(Model model) {
+		return "request";
+	}
+	
+	@RequestMapping("/animalform")
+	public String animalformView(Model model) {
+		return "animalform";
+	}
+	
+	@RequestMapping("/profile")
+	public String profileView(Model model) {
+		return "profile";
+	}
+	
+	@RequestMapping("/statistics")
+	public String statisticsView(Model model) {
+		return "statistics";
+	}
 
+	@RequestMapping("/contact")
+	public String contactView(Model model) {
+		return "contact";
+	}
+	
+	@RequestMapping("/signuser")
+	public String signuserView(Model model) {
+		return "userform";
+	}
+	
+	@RequestMapping("/signshelter")
+	public String signshelterView(Model model) {
+		return "shelterform";
+	}
+	
+	@RequestMapping("/animalview")
+	public String animalviewView(Model model) {
+		return "animalview";
+	}
+	
 }
 
 

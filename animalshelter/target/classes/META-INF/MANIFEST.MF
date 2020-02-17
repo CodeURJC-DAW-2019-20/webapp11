@@ -1,9 +1,7 @@
 Manifest-Version: 1.0
 Implementation-Title: animalshelter
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: Gonzalo
-Implementation-Vendor-Id: es.sidelab
-Build-Jdk: 1.8.0_211
-Implementation-URL: http://maven.apache.org
+Build-Jdk-Spec: 1.8
 Created-By: Maven Integration for Eclipse
+Main-Class: es.sidelab.animalshelter.App
 

@@ -1,12 +1,9 @@
 package es.sidelab.animalshelter;
 
-import java.util.ArrayList;
-//import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//import javax.persistence.OneToMany;
 
 @Entity
 public class Shelter {
@@ -24,9 +21,9 @@ public class Shelter {
 	private String shelterAdress;
 	
 	//@OneToMany(cascade=CascadeType.ALL)
-	private ArrayList<Animal> shelterAnimalList;
+	//private List<Animal> shelterAnimalList;
 	//@OneToMany(cascade=CascadeType.ALL)
-	private ArrayList<Adoption> shelterAdoptionRequests;
+	//private List<Adoption> shelterAdoptionRequests;
 	
 	
 	//CONSTRUCTORS
@@ -88,17 +85,17 @@ public class Shelter {
 	public void setShelterAdress(String shelterAdress) {
 		this.shelterAdress = shelterAdress;
 	}
-	public ArrayList<Animal> getShelterAnimalList() {
+	/*public List<Animal> getShelterAnimalList() {
 		return shelterAnimalList;
 	}
-	public void setShelterAnimalList(ArrayList<Animal> shelterAnimalList) {
+	public void setShelterAnimalList(List<Animal> shelterAnimalList) {
 		this.shelterAnimalList = shelterAnimalList;
 	}
-	public ArrayList<Adoption> getShelterAdoptionRequests() {
+	public List<Adoption> getShelterAdoptionRequests() {
 		return shelterAdoptionRequests;
 	}
-	public void setShelterAdoptionRequests(ArrayList<Adoption> shelterAdoptionRequests) {
+	public void setShelterAdoptionRequests(List<Adoption> shelterAdoptionRequests) {
 		this.shelterAdoptionRequests = shelterAdoptionRequests;
-	}
+	}*/
 	
 }

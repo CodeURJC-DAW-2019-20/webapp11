@@ -23,7 +23,7 @@ public class User {
 	private int userNumPeopleInHouse;
 	private String userEmail;
 	private String userPassword;
-	//userGallery
+	//private List<String> userGallery;
 	
 	
 	//CONSTRUCTORS
@@ -114,5 +114,12 @@ public class User {
 	public void setUserPassword(String userPassword) {
 		this.userPassword = userPassword;
 	}
+	/*public List<String> getUserGallery() {
+		return userGallery;
+	}
+
+	public void setUserGallery(List<String> userGallery) {
+		this.userGallery = userGallery;
+	}*/
 	
 }
