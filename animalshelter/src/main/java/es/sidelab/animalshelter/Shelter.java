@@ -30,12 +30,11 @@ public class Shelter {
 	protected Shelter () {}
 	
 	public Shelter(String shelterName, String shelterNif, String shelterEmail, String shelterPassword,
-			int shelterAverageRating, String shelterDescription, String shelterAdress) {
+			String shelterDescription, String shelterAdress) {
 		this.shelterName = shelterName;
 		this.shelterNif = shelterNif;
 		this.shelterEmail = shelterEmail;
 		this.shelterPassword = shelterPassword;
-		this.shelterAverageRating = shelterAverageRating;
 		this.shelterDescription = shelterDescription;
 		this.shelterAdress = shelterAdress;
 	}
