@@ -27,33 +27,37 @@
 					</div>
 				</div>
 				<div class="row justify-content-center">
-					<form class="col-lg-9">
+					<form action="create_user" method= "post" class="col-lg-9">
 						<div class="form-group">
 							<label for="image">Photo:</label><br>
-							<input type="file" name="pic" accept="image/*" required>
+							<input type="file" name="userPhoto" accept="image/*" required>
 						</div>
 						<div class="form-group">
 							<label for="name">Name:</label>
-							<input type="text" class="form-control" placeholder="Name" required>
+							<input type="text" name="userName" class="form-control" placeholder="Name" required>
 						</div>						
 						<div class="form-group">
 							<label for="name">DNI:</label>
 								<p>
-									<input type="radio" name="rad" onclick="dni.disabled = this.checked"/>
+									<input type="radio" name="rad" onclick="userDni.disabled = this.checked"/>
 									<label for="name">   I haven't   </label><br>
-									<input type="radio" name="rad" onclick="dni.disabled = !this.checked" />
+									<input type="radio" name="rad" onclick="userDni.disabled = !this.checked" />
 									<label for="name">   I have:   </label>
-									<input type="text" name="dni" disabled="disabled" placeholder="DNI number and letter"
+									<input type="text" name="userDni" disabled="disabled" placeholder="DNI number and letter"
 											pattern="[0-9]{8}[A-Za-z]{1}" required/>
 								</p>
-						</div>						
+						</div>					
+						<div class="form-group">
+							<label for="name">Age:</label>
+							<input type="number" class="form-control" name="userAge" placeholder="20" default=0 required>
+						</div>	
 						<div class="form-group">
 							<label for="name">Address:</label>
-							<input type="text" class="form-control" placeholder="Address"  required>
+							<input type="text" class="form-control" placeholder="Address" name="userAdress"  required>
 						</div>						
 						<div class="form-group">
 							<label for="name">House size (without the gardeen):</label>
-							<select name="typeanimallist" form="carform">			<!-- values for the special-filter algorith -->
+							<select name="userHouseSize" form="carform">			<!-- values for the special-filter algorith -->
 								<option value="xs">Apartment</option>				<!-- 0 -->
 								<option value="s">Small house (+50m2)</option>		<!-- 1 -->
 								<option value="m">Medium house (+80m2)</option>		<!-- 2 -->
@@ -63,7 +67,7 @@
 						</div>						
 						<div class="form-group">
 							<label for="name">Garden:</label>
-							<select name="typeanimallist" form="carform">				<!-- values for the special-filter algorith -->
+							<select name="userGarden" form="carform">				<!-- values for the special-filter algorith -->
 								<option value="xs">No</option>							<!-- 0 -->
 								<option value="s">Small garden</option>					<!-- 2 -->
 								<option value="m">Medium garden (+100m2)</option>		<!-- 3 -->
@@ -73,19 +77,19 @@
 						</div>						
 						<div class="form-group">
 							<label for="children">Number of children in your home:</label>
-							<input type="number" class="form-control" placeholder="Age lower than 14" default=0>
+							<input type="number" class="form-control" name="userNumChildren" placeholder="Age lower than 14" default=0 required>
 						</div>						
 						<div class="form-group">
 							<label for="people">Number of people in your home:</label>
-							<input type="number" class="form-control" placeholder="Including you" min=1>
+							<input type="number" class="form-control" name="userNumPeopleInHouse" placeholder="Including you" min=1 required>
 						</div>						
 						<div class="form-group">
 							<label for="email">E-mail (it will be your user):</label>
-							<input type="email" class="form-control" placeholder="User e-mail" required>
+							<input type="email" class="form-control" placeholder="User e-mail" name="userEmail" required>
 						</div>
 						<div class="form-group">
 							<label for="password">Password:</label>
-							<input type="password" class="form-control" placeholder="Password" required>
+							<input type="password" class="form-control" placeholder="Password"  name="userPassword" required>
 						</div>
 						<button type="submit" class="primary-btn float-right">Send Request</button>
 					</form>
