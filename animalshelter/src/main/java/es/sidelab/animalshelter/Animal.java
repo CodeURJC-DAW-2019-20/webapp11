@@ -13,7 +13,7 @@ public class Animal {
 	private int idAnimal;
 	
 	private String animalPhoto;
-	private String animalName;
+	private String animlaName;
 	private int animalAge;
 	private String animalType;
 	private String animalSize;
@@ -23,7 +23,7 @@ public class Animal {
 	private int animalDimensions;
 	
 	//CONSTRUCTORS
-	protected Animal () {}
+	protected Animal () {};
 		
 	public Animal(String animalPhoto, String animlaName, int animalAge, String animalType,
 			String animalSize, String animalDescription, String animalOwner, boolean animalAdopted) {
@@ -38,8 +38,6 @@ public class Animal {
 		this.animalDimensions= this.calcSizeAnimal();
 	}
 
-
-
 	//GETTERS AND SETTERS
 	public String getAnimalPhoto() {
 		return animalPhoto;
@@ -47,11 +45,11 @@ public class Animal {
 	public void setAnimalPhoto(String animalPhoto) {
 		this.animalPhoto = animalPhoto;
 	}
-	public String getAnimalName() {
-		return animalName;
+	public String getAnimlaName() {
+		return animlaName;
 	}
-	public void setAnimalName(String animalName) {
-		this.animalName = animalName;
+	public void setAnimlaName(String animlaName) {
+		this.animlaName = animlaName;
 	}
 	public int getAnimalAge() {
 		return animalAge;
