@@ -20,7 +20,7 @@ public class Animal {
 	private String animalDescription;
 	private String animalOwner;
 	private boolean animalAdopted;
-	
+	private int animalDimensions;
 	
 	//CONSTRUCTORS
 	protected Animal () {}
@@ -35,6 +35,7 @@ public class Animal {
 		this.animalDescription = animalDescription;
 		this.animalOwner = animalOwner;
 		this.animalAdopted = animalAdopted;
+		this.animalDimensions= this.calcSizeAnimal();
 	}
 
 
@@ -88,5 +89,24 @@ public class Animal {
 	public void setAnimalAdopted(boolean animalAdopted) {
 		this.animalAdopted = animalAdopted;
 	}
-	
+	public int calcSizeAnimal() {
+		int sizeAnimal =0;
+		switch (this.animalSize) {
+			case "irrelevant": sizeAnimal+=-3;
+			case "xs": sizeAnimal+=0; break;
+			case "s": sizeAnimal+=1; break;
+			case "m": sizeAnimal+=4; break;
+			case "l": sizeAnimal+=6; break;
+			case "xl": sizeAnimal+=8; break;
+		}
+		switch (this.animalType) {
+			case "bird": sizeAnimal+=-2; break;
+			case "cat": sizeAnimal+=0; break;
+			case "dog": sizeAnimal+=0; break;
+			case "other": sizeAnimal+=2; break;
+			case "reptile": sizeAnimal+=3; break;
+		}
+		return sizeAnimal;
+		
+	}
 }

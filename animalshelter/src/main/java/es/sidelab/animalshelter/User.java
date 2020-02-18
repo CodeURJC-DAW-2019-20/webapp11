@@ -1,9 +1,18 @@
 package es.sidelab.animalshelter;
 
 import javax.persistence.Entity;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.web.context.WebApplicationContext;
+
+@Scope(value= WebApplicationContext.SCOPE_SESSION, 
+proxyMode = ScopedProxyMode.TARGET_CLASS)
+
 
 @Entity
 public class User {
@@ -23,6 +32,7 @@ public class User {
 	private int userNumPeopleInHouse;
 	private String userEmail;
 	private String userPassword;
+	private int userCapacity;
 	//private List<String> userGallery;
 	
 	
@@ -43,9 +53,12 @@ public class User {
 		this.userNumPeopleInHouse = userNumPeopleInHouse;
 		this.userEmail = userEmail;
 		this.userPassword = userPassword;
+		this.userCapacity = this.calcSizeHouse();
 	}
 
 
+
+	
 
 	//GETTERS AND SETTERS
 	public String getUserPhoto() {
@@ -113,6 +126,29 @@ public class User {
 	}
 	public void setUserPassword(String userPassword) {
 		this.userPassword = userPassword;
+	}
+	public int getUserCapacity() {
+		return userCapacity;
+	}
+	public int calcSizeHouse() {
+		int userNum =0;
+		switch (this.userGarden) {
+			case "xs": userNum=0; break;
+			case "s": userNum+=2; break;
+			case "m": userNum+=3; break;
+			case "l": userNum+=5; break;
+			case "xl": userNum+=6; break;
+		}
+		switch (this.userHouseSize) {
+			case "xs": userNum=0; break;
+			case "s": userNum+=1; break;
+			case "m": userNum+=2; break;
+			case "l": userNum+=4; break;
+			case "xl": userNum+=6; break;
+		}
+		return userNum;
+		
+		
 	}
 	/*public List<String> getUserGallery() {
 		return userGallery;
