@@ -71,10 +71,6 @@ public class MainController {
 		return "contact";
 	}
 	
-	@RequestMapping("/signuser")
-	public String signuserView(Model model) {
-		return "userform";
-	}
 	
 	@RequestMapping("/signshelter")
 	public String signshelterView(Model model) {
