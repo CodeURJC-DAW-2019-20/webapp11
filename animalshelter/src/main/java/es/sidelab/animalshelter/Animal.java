@@ -25,16 +25,15 @@ public class Animal {
 	//CONSTRUCTORS
 	protected Animal () {};
 		
-	public Animal(String animalPhoto, String animlaName, int animalAge, String animalType,
-			String animalSize, String animalDescription, String animalOwner, boolean animalAdopted) {
+	public Animal(String animalPhoto, String animalName, int animalAge, String animalType,
+			String animalSize, String animalDescription) {
 		this.animalPhoto = animalPhoto;
-		this.animalName = animlaName;
+		this.animalName = animalName;
 		this.animalAge = animalAge;
 		this.animalType = animalType;
 		this.animalSize = animalSize;
 		this.animalDescription = animalDescription;
-		this.animalOwner = animalOwner;
-		this.animalAdopted = animalAdopted;
+		this.animalAdopted = false;
 		this.animalDimensions= this.calcSizeAnimal();
 	}
 
