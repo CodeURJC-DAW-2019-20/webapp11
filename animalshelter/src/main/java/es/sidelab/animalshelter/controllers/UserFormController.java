@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import es.sidelab.animalshelter.ShelterRepository;
 import es.sidelab.animalshelter.User;
 import es.sidelab.animalshelter.UserRepository;
 
@@ -13,6 +14,8 @@ import es.sidelab.animalshelter.UserRepository;
 public class UserFormController {
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private ShelterRepository shelterRepository;
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
@@ -25,10 +28,17 @@ public class UserFormController {
 	
 	@RequestMapping("/create_user")
 	public String createUser(Model model, User user) {
-		String encodedPassword = bCryptPasswordEncoder.encode(user.getUserPassword());
-		System.out.println(user.getUserPassword());
-		System.out.println(encodedPassword);
-		return "index";
+		
+		
+		if(userRepository.findByUserEmail(user.getUserEmail()).size() > 0 || 
+			shelterRepository.findByShelterEmail(user.getUserEmail()).size() > 0) {
+			
+			return "userform";
+		} else {
+			user.setUserPassword(bCryptPasswordEncoder.encode(user.getUserPassword()));
+			userRepository.save(user);
+			return "index";
+		}
 	}
 	
 	
