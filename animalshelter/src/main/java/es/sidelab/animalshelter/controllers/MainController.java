@@ -31,8 +31,8 @@ public class MainController {
 		userRepository.save(new User("foto2","Mary","NO",22,"C/Lambrusco,10","Small","NO",1,3,"mary@gmail.com","123"));
 		animalRepository.save(new Animal("foto1","Pipo",1,"Husky","XL","White","NO",false));
 		animalRepository.save(new Animal("foto2","Jen",3,"Mastiff","Small","Brown","NO",false));
-		shelterRepository.save(new Shelter("Build Animal Future","1123123123","baf@shelter.com","123",5,"NO","C/Montana,1"));
-		shelterRepository.save(new Shelter("Animal Rescue","4325151451","ar@shelter.com","123",3,"NO","C/Signium,7"));
+		shelterRepository.save(new Shelter("Build Animal Future","1123123123","baf@shelter.com","123","NO","C/Montana,1"));
+		shelterRepository.save(new Shelter("Animal Rescue","4325151451","ar@shelter.com","123","NO","C/Signium,7"));
 	}
 	
 	
@@ -71,11 +71,6 @@ public class MainController {
 		return "contact";
 	}
 	
-	
-	@RequestMapping("/signshelter")
-	public String signshelterView(Model model) {
-		return "shelterform";
-	}
 	
 	@RequestMapping("/animalview")
 	public String animalviewView(Model model) {

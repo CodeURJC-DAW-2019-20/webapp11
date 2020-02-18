@@ -13,7 +13,7 @@ public class Animal {
 	private int idAnimal;
 	
 	private String animalPhoto;
-	private String animlaName;
+	private String animalName;
 	private int animalAge;
 	private String animalType;
 	private String animalSize;
@@ -46,10 +46,10 @@ public class Animal {
 		this.animalPhoto = animalPhoto;
 	}
 	public String getAnimlaName() {
-		return animlaName;
+		return animalName;
 	}
 	public void setAnimlaName(String animlaName) {
-		this.animlaName = animlaName;
+		this.animalName = animlaName;
 	}
 	public int getAnimalAge() {
 		return animalAge;

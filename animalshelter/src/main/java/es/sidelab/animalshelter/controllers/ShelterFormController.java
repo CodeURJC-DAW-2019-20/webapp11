@@ -6,12 +6,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import es.sidelab.animalshelter.Shelter;
 import es.sidelab.animalshelter.ShelterRepository;
-import es.sidelab.animalshelter.User;
 import es.sidelab.animalshelter.UserRepository;
 
 @Controller
-public class UserFormController {
+public class ShelterFormController {
 	@Autowired
 	private UserRepository userRepository;
 	@Autowired
@@ -19,27 +19,21 @@ public class UserFormController {
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
-	
-	@RequestMapping("/signuser")
-	public String signuserView(Model model) {
-		
-		return "userform";
+	@RequestMapping("/signshelter")
+	public String signshelterView(Model model) {
+		return "shelterform";
 	}
 	
-	@RequestMapping("/createUser")
-	public String createUser(Model model, User user) {
-		
-		
-		if(userRepository.findByUserEmail(user.getUserEmail()).size() > 0 || 
-			shelterRepository.findByShelterEmail(user.getUserEmail()).size() > 0) {
+	@RequestMapping("/createShelter")
+	public String createShelter(Model model, Shelter shelter) {
+		if(userRepository.findByUserEmail(shelter.getShelterEmail()).size() > 0 || 
+			shelterRepository.findByShelterEmail(shelter.getShelterEmail()).size() > 0) {
 			
-			return "userform";
+			return "shelterform";
 		} else {
-			user.setUserPassword(bCryptPasswordEncoder.encode(user.getUserPassword()));
-			userRepository.save(user);
+			shelter.setShelterPassword(bCryptPasswordEncoder.encode(shelter.getShelterPassword()));
+			shelterRepository.save(shelter);
 			return "index";
 		}
 	}
-	
-	
 }
