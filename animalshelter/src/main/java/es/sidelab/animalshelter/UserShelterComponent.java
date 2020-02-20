@@ -1,0 +1,37 @@
+package es.sidelab.animalshelter;
+
+import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.SessionScope;
+
+@Component
+@SessionScope
+public class UserShelterComponent {
+
+	private User user;
+	private Shelter shelter;
+
+	public Object getLoggedUser() {
+		if(user != null) {
+			return user;			
+		} else {
+			return shelter;
+		}
+	}
+
+	public void setLoggedUser(User user) {
+		this.user = user;
+	}
+	
+	public void setLoggedUser(Shelter shelter) {
+		this.shelter = shelter;
+	}
+
+	public boolean isLoggedUser() {
+		if(user == null && shelter == null) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+}
