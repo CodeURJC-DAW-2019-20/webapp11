@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface ShelterRepository extends JpaRepository<Shelter, Integer> {
 	List<Shelter> findByShelterName(String shelterName);
 	List<Shelter> findByShelterNif(String shelterNif);
-	List<Shelter> findByShelterEmail(String shelterEmail);
+	Shelter findByShelterEmail(String shelterEmail);
 	List<Shelter> findByShelterPassword(String shelterPassword);
 	List<Shelter> findByShelterAverageRating(int shelterAverageRating);
 	List<Shelter> findByShelterDescription(String shelterDescription);

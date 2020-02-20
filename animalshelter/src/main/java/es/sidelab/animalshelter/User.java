@@ -8,6 +8,7 @@ import javax.persistence.Id;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.context.WebApplicationContext;
 
 @Scope(value= WebApplicationContext.SCOPE_SESSION, 
@@ -52,7 +53,7 @@ public class User {
 		this.userNumChildren = userNumChildren;
 		this.userNumPeopleInHouse = userNumPeopleInHouse;
 		this.userEmail = userEmail;
-		this.userPassword = userPassword;
+		this.userPassword = new BCryptPasswordEncoder().encode(userPassword);
 		this.userCapacity = this.calcSizeHouse();
 	}
 

@@ -5,6 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 @Entity
 public class Shelter {
 	
@@ -34,7 +36,7 @@ public class Shelter {
 		this.shelterName = shelterName;
 		this.shelterNif = shelterNif;
 		this.shelterEmail = shelterEmail;
-		this.shelterPassword = shelterPassword;
+		this.shelterPassword = new BCryptPasswordEncoder().encode(shelterPassword);
 		this.shelterDescription = shelterDescription;
 		this.shelterAdress = shelterAdress;
 	}
