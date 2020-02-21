@@ -1,13 +1,17 @@
 package es.sidelab.animalshelter.controllers;
 
+
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import es.sidelab.animalshelter.Animal;
 import es.sidelab.animalshelter.AnimalRepository;
+import es.sidelab.animalshelter.FilterSuit;
+import es.sidelab.animalshelter.FilterSuit;
 import es.sidelab.animalshelter.Shelter;
 import es.sidelab.animalshelter.ShelterRepository;
 import es.sidelab.animalshelter.User;
@@ -21,6 +25,10 @@ public class MainController {
 	private AnimalRepository animalRepository;
 	@Autowired
 	private ShelterRepository shelterRepository;
+
+	//private FilterSuit filtersuit;
+	private Authentication user;
+	
 	//@Autowired
 	//private AdoptionRepository adoptionRepository;
 	
@@ -38,6 +46,7 @@ public class MainController {
 	
 	@RequestMapping("/")
 	public String homeView(Model model) {
+		
 		return "index";
 	}
 	

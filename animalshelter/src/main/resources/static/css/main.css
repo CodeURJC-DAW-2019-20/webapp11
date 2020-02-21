@@ -1700,6 +1700,10 @@ h6 {
   background: url(../img/elements/disabled-check.png) no-repeat center center/cover;
   border: none;
 }
+.animal-filter{
+	margin-left:20%;
+	margin-top:25px;
+}
 
 .primary-radio {
   width: 16px;
@@ -2460,6 +2464,10 @@ body.mobile-nav-active #mobile-nav-toggle {
   cursor: pointer;
   position: relative;
 }
+
+	
+	
+
 
 .primary-btn:focus {
   outline: none;

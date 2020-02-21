@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+{{>layout/header}}
+
 <html lang="zxx" class="no-js">
 
 <head>
@@ -44,7 +46,7 @@
 					<h1 class="text-white">
 						Animals
 					</h1>
-					<p class="text-white link-nav"><a href="index">Home </a> <span
+					<p class="text-white link-nav"><a href="/">Home </a> <span
 							class="lnr lnr-arrow-right"></span> <a href="animals.html"> Animals</a></p>
 				</div>
 			</div>
@@ -53,13 +55,14 @@
 	<!-- End banner Area -->
 
 	<!-- Start animal-list Area -->
+	<div class="animal-filter">
+	
 	<form class="col-lg-9">
 		<div class="form-group">
 			<div class="row">
 				<select name="filter" form="filter" class="col-lg-8 col-md-3">
 					<!-- values for the special-filter algorith -->
 					<option value="all">All</option>
-					<option value="special">My posibilities</option>
 					<option value="bird">Bird</option>
 					<option value="cat">Cat</option>
 					<option value="dog">Dog</option>
@@ -78,6 +81,10 @@
 			</div>
 		</div>
 	</form>
+	{{#login}}
+	<button  class="genric-btn primary circle suit" type="button">Suit you</button>
+	{{/login}}
+	</div>
 	<section class="cat-list-area section-gap">
 		<div class="container">
 			<div class="lightgallery1"></div>

@@ -35,6 +35,7 @@ public class Animal {
 		this.animalDescription = animalDescription;
 		this.animalAdopted = false;
 		this.animalDimensions= this.calcSizeAnimal();
+		this.animalAdopted=false;
 	}
 
 	//GETTERS AND SETTERS

@@ -6,6 +6,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration 
 @EnableWebSecurity
@@ -24,6 +25,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 		// Database authentication provider
 		auth.authenticationProvider(userShelterAuthProvider);
+	}
+	public BCryptPasswordEncoder passwordEncoder() {
+		BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+		return bCryptPasswordEncoder;
 	}
 	
 	@Override
@@ -53,7 +58,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	    http.formLogin().usernameParameter("username");
 	    http.formLogin().passwordParameter("password");
 	    http.formLogin().defaultSuccessUrl("/");
-	    http.formLogin().failureUrl("/");
+	    http.formLogin().failureUrl("/error");
 	    
 	 // Logout
         http.logout().logoutUrl("/logout");
