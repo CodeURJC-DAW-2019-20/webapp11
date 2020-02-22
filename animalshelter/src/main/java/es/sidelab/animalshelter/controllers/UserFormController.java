@@ -11,29 +11,29 @@ import es.sidelab.animalshelter.UserRepository;
 
 @Controller
 public class UserFormController {
+
 	@Autowired
 	private UserRepository userRepository;
+
 	@Autowired
 	private ShelterRepository shelterRepository;
-	
-	
+
 	@RequestMapping("/signuser")
 	public String signuserView(Model model) {
-		
+
 		return "userform";
 	}
-	
+
 	@RequestMapping("/createUser")
 	public String createUser(Model model, User user) {
-		if(userRepository.findByUserEmail(user.getUserEmail()) != null || 
-			shelterRepository.findByShelterEmail(user.getUserEmail()) != null) {
-			
+		if (userRepository.findByUserEmail(user.getUserEmail()) != null
+				|| shelterRepository.findByShelterEmail(user.getUserEmail()) != null) {
+
 			return "userform";
 		} else {
 			userRepository.save(user);
 			return "index";
 		}
 	}
-	
-	
+
 }

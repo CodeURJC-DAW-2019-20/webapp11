@@ -1,36 +1,41 @@
 package es.sidelab.animalshelter;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity
 public class Shelter {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idShelter;
-	
+
 	private String shelterName;
 	private String shelterNif;
 	private String shelterEmail;
 	private String shelterPassword;
 	private int shelterAverageRating;
+	private int numVotes;
 	private String shelterDescription;
 	private String shelterAdress;
-	
-	//@OneToMany(cascade=CascadeType.ALL)
-	//private List<Animal> shelterAnimalList;
-	//@OneToMany(cascade=CascadeType.ALL)
-	//private List<Adoption> shelterAdoptionRequests;
-	
-	
-	//CONSTRUCTORS
-	protected Shelter () {}
-	
+
+	@OneToMany(mappedBy = "animalOwner")
+	private List<Animal> shelterAnimalList;
+
+	@OneToMany(mappedBy = "shelterOwner")
+	private List<Adoption> shelterAdoptionRequests;
+
+	// CONSTRUCTORS
+	public Shelter() {
+	}
+
 	public Shelter(String shelterName, String shelterNif, String shelterEmail, String shelterPassword,
 			String shelterDescription, String shelterAdress) {
 		this.shelterName = shelterName;
@@ -39,64 +44,74 @@ public class Shelter {
 		this.shelterPassword = new BCryptPasswordEncoder().encode(shelterPassword);
 		this.shelterDescription = shelterDescription;
 		this.shelterAdress = shelterAdress;
+		this.shelterAverageRating = 0;
+		this.shelterAnimalList = new ArrayList<>();
+		this.shelterAdoptionRequests = new ArrayList<>();
+		this.numVotes = 0;
 	}
 
+	// FUNCTIONS
 
+	public void updateShelterAverageRating(int newVote) {
+		int auxAverage = this.getShelterAverageRating();
+		int auxVotes = this.getNumVotes();
+		this.numVotes++;
+		this.shelterAverageRating = ((auxAverage * auxVotes) + newVote) / this.numVotes;
+	}
 
-	//GETTERS AND SETTERS
-	public String getShelterName() {
-		return shelterName;
+	public void addShelterAnimalList(Animal newAnimal) {
+		this.shelterAnimalList.add(newAnimal);
 	}
-	public void setShelterName(String shelterName) {
-		this.shelterName = shelterName;
+
+	public void addShelterAdoptionRequests(Adoption newAdoptionRequests) {
+		this.shelterAdoptionRequests.add(newAdoptionRequests);
 	}
-	public String getShelterNif() {
-		return shelterNif;
+	
+	public void removeRequest(Adoption adoption) {
+		this.shelterAdoptionRequests.remove(adoption);	
 	}
-	public void setShelterNif(String shelterNif) {
-		this.shelterNif = shelterNif;
-	}
-	public String getShelterEmail() {
-		return shelterEmail;
-	}
-	public void setShelterEmail(String shelterEmail) {
-		this.shelterEmail = shelterEmail;
-	}
-	public String getShelterPassword() {
-		return shelterPassword;
-	}
-	public void setShelterPassword(String shelterPassword) {
-		this.shelterPassword = shelterPassword;
-	}
+
+	// GETTERS AND SETTERS
+
 	public int getShelterAverageRating() {
 		return shelterAverageRating;
 	}
-	public void setShelterAverageRating(int shelterAverageRating) {
-		this.shelterAverageRating = shelterAverageRating;
-	}
-	public String getShelterDescription() {
-		return shelterDescription;
-	}
-	public void setShelterDescription(String shelterDescription) {
-		this.shelterDescription = shelterDescription;
-	}
-	public String getShelterAdress() {
-		return shelterAdress;
-	}
-	public void setShelterAdress(String shelterAdress) {
-		this.shelterAdress = shelterAdress;
-	}
-	/*public List<Animal> getShelterAnimalList() {
+
+	public List<Animal> getShelterAnimalList() {
 		return shelterAnimalList;
 	}
-	public void setShelterAnimalList(List<Animal> shelterAnimalList) {
-		this.shelterAnimalList = shelterAnimalList;
-	}
+
 	public List<Adoption> getShelterAdoptionRequests() {
 		return shelterAdoptionRequests;
 	}
-	public void setShelterAdoptionRequests(List<Adoption> shelterAdoptionRequests) {
-		this.shelterAdoptionRequests = shelterAdoptionRequests;
-	}*/
-	
+
+	public String getShelterAdress() {
+		return shelterAdress;
+	}
+
+	public String getShelterName() {
+		return shelterName;
+	}
+
+	public String getShelterNif() {
+		return shelterNif;
+	}
+
+	public String getShelterEmail() {
+		return shelterEmail;
+	}
+
+	public String getShelterPassword() {
+		return shelterPassword;
+	}
+
+	public int getNumVotes() {
+		return numVotes;
+	}
+
+	public String getShelterDescription() {
+		return shelterDescription;
+	}
+
+
 }

@@ -10,14 +10,15 @@ import es.sidelab.animalshelter.AnimalRepository;
 
 @Controller
 public class AnimalFormController {
+
 	@Autowired
 	private AnimalRepository animalRepository;
-	
+
 	@RequestMapping("/animalform")
 	public String animalformView(Model model) {
 		return "animalform";
 	}
-	
+
 	@RequestMapping("/createAnimal")
 	public String createAnimal(Model model, Animal animal) {
 		animalRepository.save(animal);
