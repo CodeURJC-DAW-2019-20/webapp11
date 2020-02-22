@@ -6,14 +6,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import es.sidelab.animalshelter.ShelterRepository;
-import es.sidelab.animalshelter.User;
-import es.sidelab.animalshelter.UserRepository;
+import es.sidelab.animalshelter.WebUser;
+import es.sidelab.animalshelter.WebUserRepository;
 
 @Controller
 public class UserFormController {
 
 	@Autowired
-	private UserRepository userRepository;
+	private WebUserRepository userRepository;
 
 	@Autowired
 	private ShelterRepository shelterRepository;
@@ -25,7 +25,7 @@ public class UserFormController {
 	}
 
 	@RequestMapping("/createUser")
-	public String createUser(Model model, User user) {
+	public String createUser(Model model, WebUser user) {
 		if (userRepository.findByUserEmail(user.getUserEmail()) != null
 				|| shelterRepository.findByShelterEmail(user.getUserEmail()) != null) {
 

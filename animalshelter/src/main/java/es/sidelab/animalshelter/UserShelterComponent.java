@@ -7,7 +7,7 @@ import org.springframework.web.context.annotation.SessionScope;
 @SessionScope
 public class UserShelterComponent {
 
-	private User user;
+	private WebUser user;
 	private Shelter shelter;
 
 	public Object getLoggedUser() {
@@ -18,7 +18,7 @@ public class UserShelterComponent {
 		}
 	}
 
-	public void setLoggedUser(User user) {
+	public void setLoggedUser(WebUser user) {
 		this.user = user;
 	}
 	

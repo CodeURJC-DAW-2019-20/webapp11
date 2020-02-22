@@ -1,13 +1,9 @@
 package es.sidelab.animalshelter;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity
@@ -15,7 +11,7 @@ public class Shelter {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int idShelter;
+	private long idShelter;
 
 	private String shelterName;
 	private String shelterNif;
@@ -25,12 +21,6 @@ public class Shelter {
 	private int numVotes;
 	private String shelterDescription;
 	private String shelterAdress;
-
-	@OneToMany(mappedBy = "animalOwner")
-	private List<Animal> shelterAnimalList;
-
-	@OneToMany(mappedBy = "shelterOwner")
-	private List<Adoption> shelterAdoptionRequests;
 
 	// CONSTRUCTORS
 	public Shelter() {
@@ -45,8 +35,6 @@ public class Shelter {
 		this.shelterDescription = shelterDescription;
 		this.shelterAdress = shelterAdress;
 		this.shelterAverageRating = 0;
-		this.shelterAnimalList = new ArrayList<>();
-		this.shelterAdoptionRequests = new ArrayList<>();
 		this.numVotes = 0;
 	}
 
@@ -59,30 +47,10 @@ public class Shelter {
 		this.shelterAverageRating = ((auxAverage * auxVotes) + newVote) / this.numVotes;
 	}
 
-	public void addShelterAnimalList(Animal newAnimal) {
-		this.shelterAnimalList.add(newAnimal);
-	}
-
-	public void addShelterAdoptionRequests(Adoption newAdoptionRequests) {
-		this.shelterAdoptionRequests.add(newAdoptionRequests);
-	}
-	
-	public void removeRequest(Adoption adoption) {
-		this.shelterAdoptionRequests.remove(adoption);	
-	}
-
 	// GETTERS AND SETTERS
 
 	public int getShelterAverageRating() {
 		return shelterAverageRating;
-	}
-
-	public List<Animal> getShelterAnimalList() {
-		return shelterAnimalList;
-	}
-
-	public List<Adoption> getShelterAdoptionRequests() {
-		return shelterAdoptionRequests;
 	}
 
 	public String getShelterAdress() {
@@ -112,6 +80,5 @@ public class Shelter {
 	public String getShelterDescription() {
 		return shelterDescription;
 	}
-
 
 }

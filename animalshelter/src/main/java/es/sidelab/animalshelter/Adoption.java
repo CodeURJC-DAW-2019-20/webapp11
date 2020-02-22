@@ -14,36 +14,36 @@ public class Adoption {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int idAdoption;
-
-	private java.sql.Date adoptionDate;
-
-	@OneToOne(mappedBy = "adoption")
-	private Animal adoptionAnimal;
-
-	@ManyToOne
-	private User adoptionUser;
-
-	@ManyToOne
-	private Shelter shelterOwner;
-
+	private long idAdoption;
 	private boolean inCourse;
+	private Date adoptionDate;
+
+	@OneToOne
+	private Animal animal;
+
+	@ManyToOne
+	private WebUser user;
 
 	// CONSTRUCTORS
 
 	public Adoption() {
+
+	}
+
+	public Adoption(boolean t) {
 		this.adoptionDate = Date.valueOf(LocalDate.now());
-		this.inCourse = true;
+		this.inCourse = t;
 	}
 
 	// FUNCTION
 
 	public void confirmAdoption() {
 		this.inCourse = false;
-		this.shelterOwner.removeRequest(this);
-		//this.shelterOwner = null;
-		this.adoptionAnimal.adoptAnimal(); // put animal.animalAdopted to true
-		this.adoptionUser.addAnimal(this.adoptionAnimal); // add this animal to user.animalList
+		// this.shelterOwner.removeRequest(this);
+		// this.shelterOwner = null;
+		// this.animal.adoptAnimal(); // put animal.animalAdopted to true
+		// this.adoptionUser.addAnimal(this.adoptionAnimal); // add this animal to
+		// user.animalList
 	}
 
 	public String readAdoptionDate() {
@@ -57,32 +57,24 @@ public class Adoption {
 		return inCourse;
 	}
 
-	public void setAdoptionAnimal(Animal adoptionAnimal) {
-		this.adoptionAnimal = adoptionAnimal;
-	}
-
-	public void setAdoptionUser(User adoptionUser) {
-		this.adoptionUser = adoptionUser;
-	}
-
-	public void setShelterOwner(Shelter shelterOwner) {
-		this.shelterOwner = shelterOwner;
-	}
-
 	public java.sql.Date getAdoptionDate() {
 		return adoptionDate;
 	}
 
-	public Animal getAdoptionAnimal() {
-		return adoptionAnimal;
+	public Animal getAnimal() {
+		return animal;
 	}
 
-	public User getAdoptionUser() {
-		return adoptionUser;
+	public void setAnimal(Animal animal) {
+		this.animal = animal;
 	}
 
-	public Shelter getShelterOwner() {
-		return shelterOwner;
+	public WebUser getUser() {
+		return user;
+	}
+
+	public void setUser(WebUser user) {
+		this.user = user;
 	}
 
 }

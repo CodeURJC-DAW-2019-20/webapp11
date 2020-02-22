@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import es.sidelab.animalshelter.Shelter;
 import es.sidelab.animalshelter.ShelterRepository;
-import es.sidelab.animalshelter.UserRepository;
+import es.sidelab.animalshelter.WebUserRepository;
 
 @Controller
 public class ShelterFormController {
 	
 	@Autowired
-	private UserRepository userRepository;
+	private WebUserRepository userRepository;
 	
 	@Autowired
 	private ShelterRepository shelterRepository;

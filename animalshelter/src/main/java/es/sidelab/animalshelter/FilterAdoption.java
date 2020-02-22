@@ -1,13 +1,10 @@
 package es.sidelab.animalshelter;
 
 import java.util.List;
-import java.util.*;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 public class FilterAdoption {
-	public User usuario;
+	public WebUser usuario;
 	public String type;
 	public List<Animal> animalesFiltro;
 	@Autowired

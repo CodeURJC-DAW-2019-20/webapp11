@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 public class UserShelterAuthProvider implements AuthenticationProvider {
 
 		@Autowired
-		private UserRepository userRepository;
+		private WebUserRepository userRepository;
 		
 		@Autowired
 		private ShelterRepository shelterRepository;
@@ -36,7 +36,7 @@ public class UserShelterAuthProvider implements AuthenticationProvider {
 			String email = authentication.getName();
 			String password = (String) authentication.getCredentials();
 	
-			User user = userRepository.findByUserEmail(email);
+			WebUser user = userRepository.findByUserEmail(email);
 			Shelter shelter = shelterRepository.findByShelterEmail(email);
 
 			if (user == null && shelter == null) {

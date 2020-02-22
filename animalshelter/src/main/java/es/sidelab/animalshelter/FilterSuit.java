@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class FilterSuit {
 
 	@Autowired
-	private UserRepository repoUser;
+	private WebUserRepository repoUser;
 	@Autowired
 	private AnimalRepository repoAnimal;
 
@@ -20,7 +20,7 @@ public class FilterSuit {
 
 		List<Animal> animals = new ArrayList<>();
 
-		User user = repoUser.findOneByUserName(userActive.getName());
+		WebUser user = repoUser.findByUserName(userActive.getName());
 		for (Animal a : repoAnimal.findAll()) {
 			if (a.getAnimalDimensions() <= user.getUserCapacity()) {
 				animals.add(a);

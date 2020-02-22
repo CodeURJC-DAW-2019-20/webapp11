@@ -5,14 +5,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Animal {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int idAnimal;
+	private long idAnimal;
 
 	private String animalPhoto;
 	private String animalName;
@@ -23,14 +22,8 @@ public class Animal {
 	private boolean animalAdopted;
 	private int animalDimensions;
 
-	@OneToOne
-	private Adoption adoption;
-
 	@ManyToOne
-	private Shelter animalOwner;// Shelter owner
-	
-	@ManyToOne
-	private User animalAdopter;// User owner
+	private Shelter shelterOwner;
 
 	// CONSTRUCTORS
 
@@ -94,21 +87,17 @@ public class Animal {
 	}
 
 	// GETTERS AND SETTERS
-	
+
 	public boolean isAnimalAdopted() {
 		return animalAdopted;
 	}
 
-	public void setAdoption(Adoption adoption) {
-		this.adoption = adoption;
+	public Shelter getShelterOwner() {
+		return shelterOwner;
 	}
 
-	public void setAnimalOwner(Shelter animalOwner) {
-		this.animalOwner = animalOwner;
-	}
-
-	public void setAnimalAdopter(User animalAdopter) {
-		this.animalAdopter = animalAdopter;
+	public void setShelterOwner(Shelter shelterOwner) {
+		this.shelterOwner = shelterOwner;
 	}
 
 	public String getAnimalPhoto() {
@@ -133,14 +122,6 @@ public class Animal {
 
 	public String getAnimalDescription() {
 		return animalDescription;
-	}
-
-	public Shelter getAnimalOwner() {
-		return animalOwner;
-	}
-
-	public Adoption getAdoption() {
-		return adoption;
 	}
 
 	public int getAnimalDimensions() {

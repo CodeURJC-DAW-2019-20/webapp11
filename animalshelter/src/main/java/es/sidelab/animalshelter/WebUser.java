@@ -1,15 +1,9 @@
 package es.sidelab.animalshelter;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Entity;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -18,11 +12,11 @@ import org.springframework.web.context.WebApplicationContext;
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 
 @Entity
-public class User {
+public class WebUser {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int idUser;
+	private long idUser;
 
 	private String userPhoto;
 	private String userName;
@@ -36,23 +30,15 @@ public class User {
 	private String userEmail;
 	private String userPassword;
 	private int userCapacity;
-	
-	@OneToMany(mappedBy = "userOwner")
-	private List<UserGalleryPhoto> userGallery;
-
-	@OneToMany(mappedBy = "adoptionUser")
-	private List<Adoption> adoptedAnimals;
-	
-	@OneToMany(mappedBy = "animalAdopter")
-	private List<Animal> userAnimalList;
 
 	// CONSTRUCTORS
-	
-	public User() {
+
+	public WebUser() {
 	}
 
-	public User(String userPhoto, String userName, String userDni, int userAge, String userAdress, String userHouseSize,
-			String userGarden, int userNumChildren, int userNumPeopleInHouse, String userEmail, String userPassword) {
+	public WebUser(String userPhoto, String userName, String userDni, int userAge, String userAdress,
+			String userHouseSize, String userGarden, int userNumChildren, int userNumPeopleInHouse, String userEmail,
+			String userPassword) {
 		this.userPhoto = userPhoto;
 		this.userName = userName;
 		this.userDni = userDni;
@@ -65,14 +51,10 @@ public class User {
 		this.userEmail = userEmail;
 		this.userPassword = new BCryptPasswordEncoder().encode(userPassword);
 		this.userCapacity = this.calcUserCapacity();
-		this.userGallery = new ArrayList<>();
-		this.adoptedAnimals = new ArrayList<>();
-		this.userAnimalList = new ArrayList<>();
 	}
-	
-	
-	// FUNCTIONS 
-	
+
+	// FUNCTIONS
+
 	private int calcUserCapacity() {
 		int userNum = 0;
 		switch (this.userGarden) {
@@ -112,19 +94,11 @@ public class User {
 		return userNum;
 
 	}
-	
-	public void addAnimal(Animal newAnimal) {
-		this.userAnimalList.add(newAnimal);
-	}
 
 	// GETTERS AND SETTERS
 
 	public String getUserPhoto() {
 		return userPhoto;
-	}
-
-	public List<Adoption> getAdoptedAnimals() {
-		return adoptedAnimals;
 	}
 
 	public String getUserName() {
@@ -169,14 +143,6 @@ public class User {
 
 	public int getUserCapacity() {
 		return userCapacity;
-	}
-
-	public List<UserGalleryPhoto> getUserGallery() {
-		return userGallery;
-	}
-
-	public void addPhotoToUserGallery(UserGalleryPhoto photo) {
-		this.userGallery.add(photo);
 	}
 
 }

@@ -11,12 +11,11 @@ public class UserGalleryPhoto {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int idPhoto;
-
+	private long idPhoto;
 	private String photo;
 
 	@ManyToOne
-	private User userOwner;// User owner
+	private WebUser galleryOwner;
 
 	// CONSTRUCTORS
 
@@ -28,17 +27,17 @@ public class UserGalleryPhoto {
 	}
 
 	// GETTERS AND SETTERS
-	
-	public void setUserOwner (User u) {
-		this.userOwner = u;
-	}
 
 	public String getPhoto() {
 		return photo;
 	}
 
-	public User getUserOwner() {
-		return userOwner;
+	public WebUser getGalleryOwner() {
+		return galleryOwner;
+	}
+
+	public void setGalleryOwner(WebUser galleryOwner) {
+		this.galleryOwner = galleryOwner;
 	}
 
 }
