@@ -16,19 +16,19 @@
 	<meta charset="UTF-8">
 	<!-- Site Title -->
 	<title>Pet Shelter</title>
-		
-	<link type="text/css" href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+
+	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
 	<!--
 			CSS
 			============================================= -->
-	<link type="text/css" rel="stylesheet" href="css/linearicons.css">
-	<link type="text/css" rel="stylesheet" href="css/font-awesome.min.css">
-	<link type="text/css" rel="stylesheet" href="css/bootstrap.css">
-	<link type="text/css" rel="stylesheet" href="css/magnific-popup.css">
-	<link type="text/css" rel="stylesheet" href="css/nice-select.css">
-	<link type="text/css" rel="stylesheet" href="css/animate.min.css">
-	<link type="text/css" rel="stylesheet" href="css/owl.carousel.css">
-	<link type="text/css" rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/linearicons.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="css/magnific-popup.css">
+	<link rel="stylesheet" href="css/nice-select.css">
+	<link rel="stylesheet" href="css/animate.min.css">
+	<link rel="stylesheet" href="css/owl.carousel.css">
+	<link rel="stylesheet" href="css/main.css">
 
 </head>
 
@@ -51,23 +51,22 @@
 				
 						<div id="divTopImg">
 							<div class="login-form clearfix" >
-								<div class="login-header">
-									<form action="/login" method="post">
-										<input type="hidden" name="login" value="1">
-										<div class="form-group">
-											<label>User</label>
-											<input type="text" name="username" required>
-										</div>
-										<div class="form-group">
-											<label>Password</label>
-											<input type="password" name="password" required>
-										</div>
-										<input type="submit" value="Entrar">
-									</form>
-										<a class="genric-btn primary circle" href="/signuser">NEW USER</a><br>
-										<a class="genric-btn primary circle" href="/signshelter">NEW SHELTER</a>
-										<a href="#" onclick=" $('#divTopImg').toggleClass('desplegado')">CLOSE</a>
-								</div>
+								<form class="login-header" method="post">
+									<input type="hidden" name="login" value="1">
+									<div class="form-group">
+										<label>User</label>
+										<input type="text" name="user">
+									</div>
+									<div class="form-group">
+										<label>Password</label>
+										<input type="password" name="password">
+									</div>
+									<input type="submit" value="Entrar">
+									<a class="genric-btn primary circle" href="/signuser">NEW USER</a><br>
+									<a class="genric-btn primary circle" href="/signshelter">NEW SHELTER</a>
+									<input type="hidden" id="social_connect_login_form_uri" value="Complete" />
+									<a href="#" onclick=" $('#divTopImg').toggleClass('desplegado')">CLOSE</a>
+								</form>
 							</div>
 						</div>
 		            </ul>
