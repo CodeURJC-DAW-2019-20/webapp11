@@ -37,8 +37,10 @@ public class MainController {
 	public void init() {
 		userRepository.save(new User("foto1","Peter","48755465Q",22,"C/Manuela Malasaña,15","Big","Medium",2,5,"peter@gmail.com","123"));
 		userRepository.save(new User("foto2","Mary","NO",22,"C/Lambrusco,10","Small","NO",1,3,"mary@gmail.com","123"));
-		animalRepository.save(new Animal("foto1","Pipo",1,"Husky","XL","White"));
-		animalRepository.save(new Animal("foto2","Jen",3,"Mastiff","Small","Brown"));
+		animalRepository.save(new Animal("Laila",4,"cat","Medium","Grey"));
+		animalRepository.save(new Animal("Pipo",1,"dog","Small","White"));
+		animalRepository.save(new Animal("Jen",3,"Mastiff","Small","Brown"));
+		animalRepository.save(new Animal("Sweety",2,"cat","Small","Brown"));
 		shelterRepository.save(new Shelter("Build Animal Future","1123123123","baf@shelter.com","123","NO","C/Montana,1"));
 		shelterRepository.save(new Shelter("Animal Rescue","4325151451","ar@shelter.com","123","NO","C/Signium,7"));
 	}

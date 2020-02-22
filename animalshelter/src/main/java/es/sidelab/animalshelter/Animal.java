@@ -10,7 +10,7 @@ public class Animal {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int idAnimal;
+	private int id;
 	
 	private String animalPhoto;
 	private String animalName;
@@ -25,9 +25,8 @@ public class Animal {
 	//CONSTRUCTORS
 	protected Animal () {};
 		
-	public Animal(String animalPhoto, String animalName, int animalAge, String animalType,
+	public Animal( String animalName, int animalAge, String animalType,
 			String animalSize, String animalDescription) {
-		this.animalPhoto = animalPhoto;
 		this.animalName = animalName;
 		this.animalAge = animalAge;
 		this.animalType = animalType;
@@ -39,6 +38,16 @@ public class Animal {
 	}
 
 	//GETTERS AND SETTERS
+
+
+	public int getIdAnimal() {
+		return id;
+	}
+
+	public void setIdAnimal(int idAnimal) {
+		this.id = idAnimal;
+	}
+
 	public String getAnimalPhoto() {
 		return animalPhoto;
 	}
@@ -106,5 +115,12 @@ public class Animal {
 		}
 		return sizeAnimal;
 		
+	}
+
+	@Override
+	public String toString() {
+		return "Animal [id=" + id + ", animalPhoto=" + animalPhoto + ", animalName=" + animalName + ", animalAge="
+				+ animalAge + ", animalType=" + animalType + ", animalSize=" + animalSize + ", animalDescription="
+				+ animalDescription + "]";
 	}
 }
