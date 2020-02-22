@@ -1,129 +1,66 @@
-<!DOCTYPE html>
 {{>layout/header}}
 
-<html lang="zxx" class="no-js">
-
-<head>
-	<!-- Mobile Specific Meta -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- Favicon-->
-	<link rel="shortcut icon" href="img/fav.png">
-	<!-- Author Meta -->
-	<meta name="author" content="codepixer">
-	<!-- Meta Description -->
-	<meta name="description" content="">
-	<!-- Meta Keyword -->
-	<meta name="keywords" content="">
-	<!-- meta character set -->
-	<meta charset="UTF-8">
-	<!-- Site Title -->
-	<title>Animal Shelter</title>
-
-	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
-	<!--
-			CSS
-			============================================= -->
-	<link rel="stylesheet" href="css/linearicons.css">
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/bootstrap.css">
-	<link rel="stylesheet" href="css/magnific-popup.css">
-	<link rel="stylesheet" href="css/nice-select.css">
-	<link rel="stylesheet" href="css/animate.min.css">
-	<link rel="stylesheet" href="css/owl.carousel.css">
-	<link rel="stylesheet" href="css/main.css">
-</head>
-
-<body>
-	<header id="header" id="home">
-	</header><!-- #header -->
-
-	<!-- start banner Area -->
-	<section class="banner-area relative" id="home">
-		<div class="overlay overlay-bg"></div>
-		<div class="container">
-			<div class="row d-flex align-items-center justify-content-center">
-				<div class="about-content col-lg-12">
-					<h1 class="text-white">
-						Animals
-					</h1>
-					<p class="text-white link-nav"><a href="/">Home </a> <span
-							class="lnr lnr-arrow-right"></span> <a href="animals.html"> Animals</a></p>
-				</div>
+<!-- start banner Area -->
+<section class="banner-area relative" id="home">
+	<div class="overlay overlay-bg"></div>
+	<div class="container">
+		<div class="row d-flex align-items-center justify-content-center">
+			<div class="about-content col-lg-12">
+				<h1 class="text-white">Animals</h1>
+				<p class="text-white link-nav">
+					<a href="/">Home </a> <span class="lnr lnr-arrow-right"></span> <a
+						href="/animals">Animals</a>
+				</p>
 			</div>
 		</div>
-	</section>
-	<!-- End banner Area -->
-
-	<!-- Start animal-list Area -->
-	<div class="animal-filter">
-	
-	<form class="col-lg-9">
-		<div class="form-group">
-			<div class="row">
-				<select name="filter" form="filter" class="col-lg-8 col-md-3">
-					<!-- values for the special-filter algorith -->
-					<option value="all">All</option>
-					<option value="bird">Bird</option>
-					<option value="cat">Cat</option>
-					<option value="dog">Dog</option>
-					<option value="reptile">Reptile</option>
-					<option value="others">Others</option>
-				</select>
-				<button type="submit" class="primary-btn col-lg-8 col-md-3">Aply filter</button>
-			</div>
-		</div>
-	</form>
-	<form class="col-lg-9">
-		<div class="form-group">
-			<div class="row">
-				<input type="text" class="form-control col-lg-8 col-md-3" placeholder="Search by name">
-				<button type="submit" class="primary-btn col-lg-8 col-md-3">Search</button>
-			</div>
-		</div>
-	</form>
-	{{#login}}
-	<button  class="genric-btn primary circle suit" type="button">Suit you</button>
-	{{/login}}
 	</div>
-	<section class="cat-list-area section-gap">
-		<div class="container">
-			<div class="lightgallery1"></div>
-
-    <button id="button" class="genric-btn primary circle" type="button">Load More</button>
-
-    <div id="overlay">
-        <div class="cv-spinner">
-            <span class="spinner"></span>
-        </div>
-    </div>
+</section>
+<!-- Start animal-list Area -->
+<form class="intro" action="/animal">
+	<div class="form-group">
+		<div class="row">
+			<select name="filter" class="col-lg-8 col-md-3">
+				<!-- values for the special-filter algorith -->
+				<option value="all">All</option>
+				<option value="bird">Bird</option>
+				<option value="cat">Cat</option>
+				<option value="dog">Dog</option>
+				<option value="reptile">Reptile</option>
+				<option value="others">Others</option>
+			</select>
+			<button class="genric-btn primary circle"
+				style="float: left; width: 125px; margin-left: 2%;">Apply
+				Filter</button>
 		</div>
-	</section>
-	<!-- End animal-list Area -->
+	</div>
+</form>
+<form class="intro2" action="/animalname">
+	<div class="form-group">
+		<div class="row">
+			<input name="hola" type="text" class="form-control col-lg-8 col-md-3"
+				placeholder="Search by name">
+			<button class="genric-btn primary circle"
+				style="float: left; width: 125px; margin-left: 2%;">Search</button>
+		</div>
+	</div>
+</form>
+{{#login}}
+<button class="genric-btn primary circle suit" type="button">Suit
+	you</button>
+{{/login}}
+<div class="hola" id="myList">
+	{{#animal}} <a href="animal/{{id}}"><img class="allimages"
+		src='/images/animal/image-{{id}}.jpg' alt=""></img></a> {{/animal}}
+</div>
+<button id="loadMore" class="genric-btn primary circle"
+	style="width: 125px">Load More</button>
+<div id="overlay">
+	<div class="cv-spinner">
+		<span class="spinner"></span>
+	</div>
+</div>
 
 
 
 
-	<!-- start footer Area -->
-	<footer class="footer-area">
-	</footer>
-	<!-- End footer Area -->
-
-	<script src="js/vendor/jquery-2.2.4.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-	</script>
-	<script src="js/vendor/bootstrap.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
-	<script src="js/easing.min.js"></script>
-	<script src="js/myjsfile.js"></script>
-	<script src="js/hoverIntent.js"></script>
-	<script src="js/superfish.min.js"></script>
-	<script src="js/jquery.ajaxchimp.min.js"></script>
-	<script src="js/jquery.magnific-popup.min.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/jquery.nice-select.min.js"></script>
-	<script src="js/mail-script.js"></script>
-	<script src="js/main.js"></script>
-</body>
-
-</html>
+{{>layout/footer}}

@@ -92,6 +92,10 @@ public class Animal {
 		return animalAdopted;
 	}
 
+	public long getIdAnimal() {
+		return idAnimal;
+	}
+
 	public Shelter getShelterOwner() {
 		return shelterOwner;
 	}
@@ -126,6 +130,13 @@ public class Animal {
 
 	public int getAnimalDimensions() {
 		return animalDimensions;
+	}
+
+	@Override
+	public String toString() {
+		return "Animal [id=" + idAnimal + ", animalPhoto=" + animalPhoto + ", animalName=" + animalName + ", animalAge="
+				+ animalAge + ", animalType=" + animalType + ", animalSize=" + animalSize + ", animalDescription="
+				+ animalDescription + "]";
 	}
 
 }

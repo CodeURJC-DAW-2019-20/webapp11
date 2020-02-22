@@ -1,9 +1,13 @@
 package es.sidelab.animalshelter;
 
 import java.util.List;
+import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AnimalRepository extends JpaRepository<Animal, Long> {
+
+	Optional<Animal> findByIdAnimal(long idAnimal);
+
 	List<Animal> findByAnimalPhoto(String animalPhoto);
 
 	List<Animal> findByAnimalName(String animalName);

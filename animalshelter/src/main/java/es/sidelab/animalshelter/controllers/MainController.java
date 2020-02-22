@@ -6,7 +6,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import es.sidelab.animalshelter.Adoption;
 import es.sidelab.animalshelter.AdoptionRepository;
 import es.sidelab.animalshelter.Animal;
@@ -83,11 +82,6 @@ public class MainController {
 		return "index";
 	}
 
-	@RequestMapping("/animals")
-	public String animalView(Model model) {
-		return "animals";
-	}
-
 	@RequestMapping("/request")
 	public String requestView(Model model) {
 		return "request";
@@ -98,19 +92,9 @@ public class MainController {
 		return "profile";
 	}
 
-	@RequestMapping("/statistics")
-	public String statisticsView(Model model) {
-		return "statistics";
-	}
-
 	@RequestMapping("/contact")
 	public String contactView(Model model) {
 		return "contact";
-	}
-
-	@RequestMapping("/animalview")
-	public String animalviewView(Model model) {
-		return "animalview";
 	}
 
 }

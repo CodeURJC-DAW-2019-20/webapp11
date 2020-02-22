@@ -1,101 +1,122 @@
 {{>layout/header}}
 
-		<!-- start banner Area -->
-		<section class="banner-area relative" id="home">
-			<div class="overlay overlay-bg"></div>
-			<div class="container">
-				<div class="row d-flex align-items-center justify-content-center">
-					<div class="about-content col-lg-12">
-						<h1 class="text-white">New User</h1>
-						<p class="text-white link-nav"><a href="/">Home </a> <span
-								class="lnr lnr-arrow-right"></span> <a href="/signuser"> New user</a></p>
-					</div>
-				</div>
+<!-- start banner Area -->
+<section class="banner-area relative" id="home">
+	<div class="overlay overlay-bg"></div>
+	<div class="container">
+		<div class="row d-flex align-items-center justify-content-center">
+			<div class="about-content col-lg-12">
+				<h1 class="text-white">New User</h1>
+				<p class="text-white link-nav">
+					<a href="/">Home </a> <span class="lnr lnr-arrow-right"></span> <a
+						href="/signuser"> New user</a>
+				</p>
 			</div>
-		</section>
-		<!-- End banner Area -->
+		</div>
+	</div>
+</section>
+<!-- End banner Area -->
 
-		<!-- Start User-form Area -->
-		<section class="Volunteer-form-area section-gap">
-			<div class="container">
-				<div class="row d-flex justify-content-center">
-					<div class="menu-content pb-60 col-lg-9">
-						<div class="title text-center">
-							<h1 class="mb-20">User data:</h1>
-							<p>Add the user data to start finding new family members.</p>
-						</div>
-					</div>
-				</div>
-				<div class="row justify-content-center">
-					<form action="createUser" method= "post" class="col-lg-9">
-						<div class="form-group">
-							<label for="image">Photo:</label><br>
-							<input type="file" name="userPhoto" accept="image/*" required>
-						</div>
-						<div class="form-group">
-							<label for="name">Name:</label>
-							<input type="text" name="userName" class="form-control" placeholder="Name" required>
-						</div>						
-						<div class="form-group">
-							<label for="name">DNI:</label>
-								<p>
-									<input type="radio" name="rad" onclick="userDni.disabled = this.checked"/>
-									<label for="name">   I haven't   </label><br>
-									<input type="radio" name="rad" onclick="userDni.disabled = !this.checked" />
-									<label for="name">   I have:   </label>
-									<input type="text" name="userDni" disabled="disabled" placeholder="DNI number and letter"
-											pattern="[0-9]{8}[A-Za-z]{1}" required/>
-								</p>
-						</div>					
-						<div class="form-group">
-							<label for="name">Age:</label>
-							<input type="number" class="form-control" name="userAge" min="1" placeholder="20" default=0 required>
-						</div>	
-						<div class="form-group">
-							<label for="name">Address:</label>
-							<input type="text" class="form-control" placeholder="Address" name="userAdress"  required>
-						</div>						
-						<div class="form-group">
-							<label for="name">House size (without the garden):</label>
-							<select name="userHouseSize">			<!-- values for the special-filter algorith -->
-								<option value="xs" selected>Apartment</option>				<!-- 0 -->
-								<option value="s">Small house (+50m2)</option>		<!-- 1 -->
-								<option value="m">Medium house (+80m2)</option>		<!-- 2 -->
-								<option value="l">Big house (+100m2)</option>		<!-- 4 -->
-								<option value="xl">Very big house (+200m2)</option>	<!-- 6 -->
-							</select>
-						</div>						
-						<div class="form-group">
-							<label for="name">Garden:</label>
-							<select name="userGarden">				<!-- values for the special-filter algorith -->
-								<option value="xs" selected>No</option>							<!-- 0 -->
-								<option value="s">Small garden</option>					<!-- 2 -->
-								<option value="m">Medium garden (+100m2)</option>		<!-- 3 -->
-								<option value="l">Big garden (+300m2)</option>			<!-- 5 -->
-								<option value="xl">Very big garden (+600m2)</option>	<!-- 6 -->
-							</select>
-						</div>						
-						<div class="form-group">
-							<label for="children">Number of children in your home:</label>
-							<input type="number" class="form-control" name="userNumChildren" min="0" placeholder="Age lower than 14" default=0 required>
-						</div>						
-						<div class="form-group">
-							<label for="people">Number of people in your home:</label>
-							<input type="number" class="form-control" name="userNumPeopleInHouse" min="1" placeholder="Including you" min=1 required>
-						</div>						
-						<div class="form-group">
-							<label for="email">E-mail (it will be your user):</label>
-							<input type="email" class="form-control" placeholder="User e-mail" name="userEmail" required>
-						</div>
-						<div class="form-group">
-							<label for="password">Password:</label>
-							<input type="password" class="form-control" placeholder="Password"  name="userPassword" required>
-						</div>
-						<button type="submit" class="primary-btn float-right">Send Request</button>
-					</form>
+<!-- Start User-form Area -->
+<section class="Volunteer-form-area section-gap">
+	<div class="container">
+		<div class="row d-flex justify-content-center">
+			<div class="menu-content pb-60 col-lg-9">
+				<div class="title text-center">
+					<h1 class="mb-20">User data:</h1>
+					<p>Add the user data to start finding new family members.</p>
 				</div>
 			</div>
-		</section>
-		<!-- End User-form area -->
+		</div>
+		<div class="row justify-content-center">
+			<form action="createUser" method="post" class="col-lg-9">
+				<div class="form-group">
+					<label for="image">Photo:</label><br> <input type="file"
+						name="userPhoto" accept="image/*" required>
+				</div>
+				<div class="form-group">
+					<label for="name">Name:</label> <input type="text" name="userName"
+						class="form-control" placeholder="Name" required>
+				</div>
+				<div class="form-group">
+					<label for="name">DNI:</label>
+					<p>
+						<input type="radio" name="rad"
+							onclick="userDni.disabled = this.checked" /> <label for="name">
+							I haven't </label><br> <input type="radio" name="rad"
+							onclick="userDni.disabled = !this.checked" /> <label for="name">
+							I have: </label> <input type="text" name="userDni" disabled="disabled"
+							placeholder="DNI number and letter" pattern="[0-9]{8}[A-Za-z]{1}"
+							required />
+					</p>
+				</div>
+				<div class="form-group">
+					<label for="name">Age:</label> <input type="number"
+						class="form-control" name="userAge" min="1" placeholder="20"
+						default=0 required>
+				</div>
+				<div class="form-group">
+					<label for="name">Address:</label> <input type="text"
+						class="form-control" placeholder="Address" name="userAdress"
+						required>
+				</div>
+				<div class="form-group">
+					<label for="name">House size (without the garden):</label> <select
+						name="userHouseSize">
+						<!-- values for the special-filter algorith -->
+						<option value="xs" selected>Apartment</option>
+						<!-- 0 -->
+						<option value="s">Small house (+50m2)</option>
+						<!-- 1 -->
+						<option value="m">Medium house (+80m2)</option>
+						<!-- 2 -->
+						<option value="l">Big house (+100m2)</option>
+						<!-- 4 -->
+						<option value="xl">Very big house (+200m2)</option>
+						<!-- 6 -->
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="name">Garden:</label> <select name="userGarden">
+						<!-- values for the special-filter algorith -->
+						<option value="xs" selected>No</option>
+						<!-- 0 -->
+						<option value="s">Small garden</option>
+						<!-- 2 -->
+						<option value="m">Medium garden (+100m2)</option>
+						<!-- 3 -->
+						<option value="l">Big garden (+300m2)</option>
+						<!-- 5 -->
+						<option value="xl">Very big garden (+600m2)</option>
+						<!-- 6 -->
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="children">Number of children in your home:</label> <input
+						type="number" class="form-control" name="userNumChildren" min="0"
+						placeholder="Age lower than 14" default=0 required>
+				</div>
+				<div class="form-group">
+					<label for="people">Number of people in your home:</label> <input
+						type="number" class="form-control" name="userNumPeopleInHouse"
+						min="1" placeholder="Including you" min=1 required>
+				</div>
+				<div class="form-group">
+					<label for="email">E-mail (it will be your user):</label> <input
+						type="email" class="form-control" placeholder="User e-mail"
+						name="userEmail" required>
+				</div>
+				<div class="form-group">
+					<label for="password">Password:</label> <input type="password"
+						class="form-control" placeholder="Password" name="userPassword"
+						required>
+				</div>
+				<button type="submit" class="primary-btn float-right">Send
+					Request</button>
+			</form>
+		</div>
+	</div>
+</section>
+<!-- End User-form area -->
 
 {{>layout/footer}}
