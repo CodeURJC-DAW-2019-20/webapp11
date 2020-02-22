@@ -23,12 +23,15 @@ public class UserGalleryPhoto {
 	public UserGalleryPhoto() {
 	}
 
-	public UserGalleryPhoto(String photo, User userOwner) {
+	public UserGalleryPhoto(String photo) {
 		this.photo = photo;
-		this.userOwner = userOwner;
 	}
 
 	// GETTERS AND SETTERS
+	
+	public void setUserOwner (User u) {
+		this.userOwner = u;
+	}
 
 	public String getPhoto() {
 		return photo;

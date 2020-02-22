@@ -77,7 +77,7 @@ public class User {
 		int userNum = 0;
 		switch (this.userGarden) {
 		case "xs":
-			userNum = 0;
+			userNum += 0;
 			break;
 		case "s":
 			userNum += 2;
@@ -94,7 +94,7 @@ public class User {
 		}
 		switch (this.userHouseSize) {
 		case "xs":
-			userNum = 0;
+			userNum += 0;
 			break;
 		case "s":
 			userNum += 1;

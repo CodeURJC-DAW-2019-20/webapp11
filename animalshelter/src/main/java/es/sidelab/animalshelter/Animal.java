@@ -38,19 +38,15 @@ public class Animal {
 	};
 
 	public Animal(String animalPhoto, String animalName, int animalAge, String animalType, String animalSize,
-			String animalDescription, Shelter animalOwner) {
+			String animalDescription) {
 		this.animalPhoto = animalPhoto;
 		this.animalName = animalName;
 		this.animalAge = animalAge;
 		this.animalType = animalType;
 		this.animalSize = animalSize;
 		this.animalDescription = animalDescription;
-		this.animalOwner = animalOwner;
 		this.animalAdopted = false;
 		this.animalDimensions = this.animalDimensions();
-		this.adoption = null;
-		this.animalAdopter = null;
-
 	}
 
 	// FUNCTIONS
@@ -98,9 +94,21 @@ public class Animal {
 	}
 
 	// GETTERS AND SETTERS
-
+	
 	public boolean isAnimalAdopted() {
 		return animalAdopted;
+	}
+
+	public void setAdoption(Adoption adoption) {
+		this.adoption = adoption;
+	}
+
+	public void setAnimalOwner(Shelter animalOwner) {
+		this.animalOwner = animalOwner;
+	}
+
+	public void setAnimalAdopter(User animalAdopter) {
+		this.animalAdopter = animalAdopter;
 	}
 
 	public String getAnimalPhoto() {

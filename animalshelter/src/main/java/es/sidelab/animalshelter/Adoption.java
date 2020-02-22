@@ -32,13 +32,7 @@ public class Adoption {
 	// CONSTRUCTORS
 
 	public Adoption() {
-	}
-
-	public Adoption(Animal adoptionAnimal, User adoptionUser) {
 		this.adoptionDate = Date.valueOf(LocalDate.now());
-		this.adoptionAnimal = adoptionAnimal;
-		this.adoptionUser = adoptionUser;
-		this.shelterOwner = this.adoptionAnimal.getAnimalOwner();
 		this.inCourse = true;
 	}
 
@@ -61,6 +55,18 @@ public class Adoption {
 
 	public boolean isInCourse() {
 		return inCourse;
+	}
+
+	public void setAdoptionAnimal(Animal adoptionAnimal) {
+		this.adoptionAnimal = adoptionAnimal;
+	}
+
+	public void setAdoptionUser(User adoptionUser) {
+		this.adoptionUser = adoptionUser;
+	}
+
+	public void setShelterOwner(Shelter shelterOwner) {
+		this.shelterOwner = shelterOwner;
 	}
 
 	public java.sql.Date getAdoptionDate() {
