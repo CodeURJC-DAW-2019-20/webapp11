@@ -95,10 +95,10 @@ public class AnimalFormController {
 		return "animals";
 	}
 
-	@GetMapping("/animal/{id}")
-	public String showAnimalInfo(Model model, @PathVariable long id) {
+	@GetMapping("/animal/{idAnimal}")
+	public String showAnimalInfo(Model model, @PathVariable long idAnimal) {
 
-		Optional<Animal> animal = animalRepository.findByIdAnimal(id);
+		Optional<Animal> animal = animalRepository.findByIdAnimal(idAnimal);
 		if (animal.isPresent()) {
 			model.addAttribute("animal", animal.get());
 		}
