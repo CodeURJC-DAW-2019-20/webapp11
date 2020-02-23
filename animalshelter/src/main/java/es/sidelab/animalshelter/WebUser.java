@@ -18,7 +18,6 @@ public class WebUser {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long idUser;
 
-	private String userPhoto;
 	private String userName;
 	private String userDni;
 	private int userAge;
@@ -34,12 +33,11 @@ public class WebUser {
 	// CONSTRUCTORS
 
 	public WebUser() {
-		
+
 	}
 
-	public WebUser(String userName, String userDni, int userAge, String userAdress,
-			String userHouseSize, String userGarden, int userNumChildren, int userNumPeopleInHouse, String userEmail,
-			String userPassword) {
+	public WebUser(String userName, String userDni, int userAge, String userAdress, String userHouseSize,
+			String userGarden, int userNumChildren, int userNumPeopleInHouse, String userEmail, String userPassword) {
 		this.userName = userName;
 		this.userDni = userDni;
 		this.userAge = userAge;
@@ -58,7 +56,7 @@ public class WebUser {
 	private int calcUserCapacity() {
 		int userNum = 0;
 		switch (this.userGarden) {
-		case "xs":
+		case "no":
 			userNum += 0;
 			break;
 		case "s":
@@ -96,13 +94,9 @@ public class WebUser {
 	}
 
 	// GETTERS AND SETTERS
-	
+
 	public long getUserId() {
 		return idUser;
-	}
-
-	public String getUserPhoto() {
-		return userPhoto;
 	}
 
 	public String getUserName() {
@@ -147,10 +141,6 @@ public class WebUser {
 
 	public int getUserCapacity() {
 		return userCapacity;
-	}
-	
-	public void setUserPhoto(String userPhoto) {
-		this.userPhoto = userPhoto;
 	}
 
 }

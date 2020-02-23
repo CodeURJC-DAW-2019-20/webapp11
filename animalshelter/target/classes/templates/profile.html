@@ -22,70 +22,49 @@
 	<div class="container">
 		<div class="row">
 			<div class="column-profile left">
-				<img src="img/about-img.jpg" alt="" class="img-fluid">
+				<img src="/images/user/image-{{id}}.jpg" width="600px"
+					height="600px" class="img-fluid">
 			</div>
 			<div class="column-profile rigth">
-				<h2>Name</h2>
+				<h2>{{username}}</h2>
+				<br>
 				<h3>Data:</h3>
 				<p>
-					<b>House size:</b> Big
+					<b>House size: </b>{{housesize}}
 				</p>
 				<p>
-					<b>Garden:</b> Yes
+					<b>Garden: </b>{{garden}}
 				</p>
 				<p>
-					<b>Kids:</b> No
+					<b>Kids: </b>{{nkids}}
 				</p>
 				<p>
-					<b>People in house:</b> 6
+					<b>People in house: </b>{{pinhouse}}
 				</p>
 			</div>
 		</div>
 		<div class="profile-pictures">
-			<h2>Galery</h2>
-			<form class="col-lg-9">
+			<h2>Gallery</h2>
+			<br>
+			<form action="/addImage" method="post" class="col-lg-9"
+				enctype="multipart/form-data">
 				<div class="form-group">
-					<input type="file" name="pic" accept="image/*" required>
+					<input type="file" name="galleryPhoto" accept=".jpg, .jpeg"
+						required>
 					<button type="submit" class="primary-btn float-right">Add
 						image</button>
 				</div>
 			</form>
 			<div class="row">
+				{{#gallery}}
 				<div class="col-lg-3 col-md-6">
 					<div class="single-cat-list">
-						<img src="img/dg1.jpg" alt="" class="img-fluid">
-						<div class="overlay">
-							<div class="text">Adopt Me!</div>
-						</div>
+						<img src="{{.}}" width="500px" height="500px" class="img-fluid">
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="single-cat-list">
-						<img src="img/ct6.jpg" alt="" class="img-fluid">
-						<div class="overlay">
-							<div class="text">Adopt Me!</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="single-cat-list">
-						<img src="img/dg3.jpg" alt="" class="img-fluid">
-						<div class="overlay">
-							<div class="text">Adopt Me!</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<div class="single-cat-list">
-						<img src="img/c5.jpg" alt="" class="img-fluid">
-						<div class="overlay">
-							<div class="text">Adopt Me!</div>
-						</div>
-					</div>
-				</div>
+				{{/gallery}}
 			</div>
 		</div>
-
 	</div>
 </section>
 <!-- End Data Area -->

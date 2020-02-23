@@ -29,8 +29,9 @@ public class SmtpMailSender {
 		helper.setText(body, true);// true indicates body is html
 		javaMailSender.send(message);
 	}
-	
-	public void sendMailContactUs(String username, String subject, String to, String body) throws MessagingException {
+
+	public void sendMailContactUs(String username, String email, String subject, String to, String body)
+			throws MessagingException {
 		MimeMessage message = javaMailSender.createMimeMessage();
 		MimeMessageHelper helper;
 		helper = new MimeMessageHelper(message, true);// true indicates multipart message
@@ -39,7 +40,11 @@ public class SmtpMailSender {
 
 		helper.setSubject(subject);
 		helper.setTo(to);
-		helper.setText(username + " has following issue: " + body, true);// true indicates body is html
+		helper.setText(username + " has following issue:\n" + body + "\n" + "Response to: " + email, true);// true
+																												// indicates
+																												// body
+																												// is
+																												// html
 		javaMailSender.send(message);
 	}
 }
