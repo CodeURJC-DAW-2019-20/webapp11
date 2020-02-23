@@ -16,6 +16,7 @@ import es.sidelab.animalshelter.ShelterRepository;
 import es.sidelab.animalshelter.WebUser;
 import es.sidelab.animalshelter.UserGalleryPhoto;
 import es.sidelab.animalshelter.UserGalleryPhotoRepository;
+import es.sidelab.animalshelter.UserShelterComponent;
 import es.sidelab.animalshelter.WebUserRepository;
 
 @Controller
@@ -38,6 +39,9 @@ public class MainController {
 
 	@Autowired
 	private AdoptionRepository adoptionRepository;
+	
+	@Autowired
+	private UserShelterComponent userShelterComponent;
 
 	@PostConstruct
 	public void init() {
@@ -78,7 +82,7 @@ public class MainController {
 
 	@RequestMapping("/")
 	public String homeView(Model model) {
-
+		model.addAttribute("logged", userShelterComponent.isLoggedUser());
 		return "index";
 	}
 
