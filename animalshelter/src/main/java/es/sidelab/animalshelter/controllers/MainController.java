@@ -60,10 +60,10 @@ public class MainController {
 		galleryPhoto.setGalleryOwner(user2);
 		userGalleryPhotoRepository.save(galleryPhoto);
 
-		Animal animal1 = new Animal("/animalshelter/src/main/resources/static/img/dg4.jpg", "Pipo", 1, "dog", "xl",
+		Animal animal1 = new Animal("Pipo", 1, "dog", "xl",
 				"This animal was abbandoned in the river, please give it a second opportunity.");
 		animal1.setShelterOwner(shelter1);
-		Animal animal2 = new Animal("/animalshelter/src/main/resources/static/img/ct3.jpg", "Jen", 3, "cat", "s",
+		Animal animal2 = new Animal("Jen", 3, "cat", "s",
 				"It owner died recently, please help it overcome.");
 		animal2.setShelterOwner(shelter2);
 		animalRepository.save(animal1);

@@ -41,9 +41,19 @@ public class AnimalFormController {
 	}
 
 	@RequestMapping("/createAnimal")
-	public String createAnimal(Model model, Animal animal, @RequestParam MultipartFile imagenFile) throws IOException {
-		animalRepository.save(animal);
+	public String createAnimal(Model model, @RequestParam MultipartFile imagenFile,
+			@RequestParam String animalName,
+			@RequestParam String animalType,
+			@RequestParam  int animalAge,
+			@RequestParam String animalDescription,
+			@RequestParam String animalSize) throws IOException {
+		
+		Animal animal = new Animal(animalName, animalAge, animalType, animalSize,
+				animalDescription);
+		animalRepository.save(animal); // It's saved to get the id
 		imgService.saveImage("animal", animal.getIdAnimal(), imagenFile);
+		animal.setAnimalPhoto("image-" + animal.getIdAnimal() + ".jpg");
+		animalRepository.save(animal);
 		return "animalform";
 	}
 
