@@ -61,7 +61,6 @@ public class ProfileController {
 		gp.setGalleryOwner(lu);
 		ugpr.save(gp);
 
-		List<UserGalleryPhoto> objectGallery = new ArrayList<>();
 		List<String> gallery = new ArrayList<>();
 		gallery = ur.getUserGalleryPhotos(lu);
 

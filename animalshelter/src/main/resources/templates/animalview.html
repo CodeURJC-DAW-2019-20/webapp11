@@ -1,43 +1,58 @@
-<style>
-#imagebox {
-	width: 1100px;
-	margin: auto;
-	box-sizing: border-box;
-}
+{{>layout/header}}
 
-.allimages {
-	width: 350px;
-	height: 350px;
-	padding: 5px;
-	box-sizing: border-box;
-}
+<!-- start banner Area -->
+<section class="banner-area relative" id="home">
+	<div class="overlay overlay-bg"></div>
+	<div class="container">
+		<div class="row d-flex align-items-center justify-content-center">
+			<div class="about-content col-lg-12">
+				<h1 class="text-white">{{animal.animalName}} Profile</h1>
+				<p class="text-white link-nav">
+					<a href="/">Home </a> <span class="lnr lnr-arrow-right"></span> <a
+						href="/animal"> Animals</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End banner Area -->
 
-img {
-	float: left;
-}
-</style>
+<!-- start data Area -->
+<section class="cat-list-area section-gap">
+	<div class="container">
+		<div class="row">
+			<div class="column-profile left">
+				<img src="/images/animal/image-{{idAnimal}}.jpg" width="600px"
+					height="600px" class="img-fluid">
+			</div>
+			<div class="column-profile rigth">
+				<h2>{{animal.animalName}}</h2>
+				<br>
+				<h3>Data:</h3>
+				<p>
+					<b>Animal Type: </b>{{animal.animalType}}
+				</p>
+				<p>
+					<b>Description: </b>{{animal.animalDescription}}
+				</p>
+				<p>
+					<b>Age: </b>{{animal.animalAge}}
+				</p>
+				<p>
+					<b>Size: </b>{{animal.animalSize}}
+				</p>
+				<table>
+					<!-- Rows -->
+					<tr>
+						<td></td>
+						<td><button type="submit" class="primary-btn float-right">Adopt
+								ME!</button></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End Data Area -->
 
-<p>
-	<img class="allimages" src='/images/animal/image-{{idAnimal}}.jpg' />
-<p>
-	<b><font color="orange">Name:</b></font> {{animal.animalName}}
-</p>
-<p>
-	<b><font color="orange">TypeAnimal:</b></font> {{animal.animalType}}
-</p>
-<p>
-	<b><font color="orange">Description:</b></font>
-	{{animal.animalDescription}}
-</p>
-<p>
-	<b><font color="orange">Age: </b></font>{{animal.animalAge}}
-</p>
-<p>
-	<b><font color="orange">Size:</b></font> {{animal.animalSize}}
-</p>
-<br>
-</p>
-
-
-
-
+{{>layout/footer}}
