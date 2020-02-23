@@ -31,11 +31,11 @@ public class SmtpMailSender {
 		helper.setText(username + " with following data: <br>" + "<br>Adress: " + adress + "<br>Age: " + age
 				+ "<br>DNI: " + dni + "<br>Garden Size: " + garden + "<br>House Size: " + houseSize
 				+ "<br>Number Of Children: " + children + "<br>People In House: " + peopleInHouse
-				+ "<br><br>Has requested to adopt: " + animalname + "<br>" + "Response to: " + email, true);// true
-		// indicates
-		// body
-		// is
-		// html
+				+ "<br><br>Has requested to adopt: " + animalname + "<br>" + "Response to: " + email, true);// true //
+																											// indicates
+																											// // body
+																											// // is //
+																											// html
 		javaMailSender.send(message);
 	}
 

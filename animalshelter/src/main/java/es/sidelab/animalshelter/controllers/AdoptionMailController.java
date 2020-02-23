@@ -24,19 +24,18 @@ public class AdoptionMailController {
 	@Autowired
 	AnimalRepository animalRepository;
 
-	@RequestMapping("/send/adopt/{idAnimal}")
+	@RequestMapping("/send/adopt/{idAnimal}/success")
 	public String sendMail(@PathVariable long idAnimal) throws MessagingException {
 
 		Optional<Animal> animal = animalRepository.findByIdAnimal(idAnimal);
 		if (animal.isPresent()) {
 			Animal a = animal.get();
 			WebUser w = u.getUser();
+			// a.getShelterOwner().getShelterEmail()
 
-			if (u.getUser() != null) {
-				smtpMailSender.sendAutoMail(w.getUserName(), w.getUserAdress(), w.getUserAge(), w.getUserDni(),
-						w.getUserGarden(), w.getUserHouseSize(), w.getUserNumChildren(), w.getUserNumPeopleInHouse(),
-						a.getAnimalName(), w.getUserEmail(), "Adoption Request", a.getShelterOwner().getShelterEmail());
-			}
+			smtpMailSender.sendAutoMail(w.getUserName(), w.getUserAdress(), w.getUserAge(), w.getUserDni(),
+					w.getUserGarden(), w.getUserHouseSize(), w.getUserNumChildren(), w.getUserNumPeopleInHouse(),
+					a.getAnimalName(), w.getUserEmail(), "Adoption Request", "m.fernandezsu@alumnos.urjc.es");
 
 		}
 
