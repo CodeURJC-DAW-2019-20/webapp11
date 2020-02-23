@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -40,12 +41,10 @@ public class AnimalFormController {
 		return "animalform";
 	}
 
-	@RequestMapping("/createAnimal")
+	@PostMapping("/createAnimal")
 	public String createAnimal(Model model, @RequestParam MultipartFile imagenFile,
-			@RequestParam String animalName,
-			@RequestParam String animalType,
-			@RequestParam  int animalAge,
-			@RequestParam String animalDescription,
+			@RequestParam String animalName, @RequestParam String animalType,
+			@RequestParam  int animalAge, @RequestParam String animalDescription,
 			@RequestParam String animalSize) throws IOException {
 		
 		Animal animal = new Animal(animalName, animalAge, animalType, animalSize,

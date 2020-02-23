@@ -35,7 +35,7 @@ public class UserShelterAuthProvider implements AuthenticationProvider {
 
 			String email = authentication.getName();
 			String password = (String) authentication.getCredentials();
-	
+
 			WebUser user = userRepository.findByUserEmail(email);
 			Shelter shelter = shelterRepository.findByShelterEmail(email);
 

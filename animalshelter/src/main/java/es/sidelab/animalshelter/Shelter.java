@@ -23,7 +23,9 @@ public class Shelter {
 	private String shelterAdress;
 
 	// CONSTRUCTORS
+	
 	public Shelter() {
+		
 	}
 
 	public Shelter(String shelterName, String shelterNif, String shelterEmail, String shelterPassword,

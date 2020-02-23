@@ -42,9 +42,9 @@ public class MainController {
 	@PostConstruct
 	public void init() {
 
-		WebUser user1 = new WebUser("foto1", "Peter", "48755465Q", 22, "C/Manuela Malasaña,15", "Big", "Medium", 2, 5,
+		WebUser user1 = new WebUser("Peter", "48755465Q", 22, "C/Manuela Malasaña,15", "Big", "Medium", 2, 5,
 				"peter@gmail.com", "123");
-		WebUser user2 = new WebUser("foto2", "Mary", "NO", 22, "C/Lambrusco,10", "Small", "NO", 1, 3, "mary@gmail.com",
+		WebUser user2 = new WebUser("Mary", "NO", 22, "C/Lambrusco,10", "Small", "NO", 1, 3, "mary@gmail.com",
 				"123");
 		userRepository.save(user1);
 		userRepository.save(user2);

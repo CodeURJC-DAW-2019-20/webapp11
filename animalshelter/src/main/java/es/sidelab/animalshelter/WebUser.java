@@ -34,12 +34,12 @@ public class WebUser {
 	// CONSTRUCTORS
 
 	public WebUser() {
+		
 	}
 
-	public WebUser(String userPhoto, String userName, String userDni, int userAge, String userAdress,
+	public WebUser(String userName, String userDni, int userAge, String userAdress,
 			String userHouseSize, String userGarden, int userNumChildren, int userNumPeopleInHouse, String userEmail,
 			String userPassword) {
-		this.userPhoto = userPhoto;
 		this.userName = userName;
 		this.userDni = userDni;
 		this.userAge = userAge;
@@ -96,6 +96,10 @@ public class WebUser {
 	}
 
 	// GETTERS AND SETTERS
+	
+	public long getUserId() {
+		return idUser;
+	}
 
 	public String getUserPhoto() {
 		return userPhoto;
@@ -143,6 +147,10 @@ public class WebUser {
 
 	public int getUserCapacity() {
 		return userCapacity;
+	}
+	
+	public void setUserPhoto(String userPhoto) {
+		this.userPhoto = userPhoto;
 	}
 
 }
