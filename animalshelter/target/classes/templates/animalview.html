@@ -41,14 +41,30 @@
 				<p>
 					<b>Size: </b>{{animal.animalSize}}
 				</p>
-				<table>
-					<!-- Rows -->
-					<tr>
-						<td></td>
-						<td><button type="submit" class="primary-btn float-right">Adopt
-								ME!</button></td>
-					</tr>
-				</table>
+				
+				{{#logged}}
+				{{^isShelter}}
+				{{^animal.animalAdopted}}
+				<form action="/send/adopt/{{animal.idAnimal}}" method="post" class="col-lg-9">
+					<table>
+						<tr>
+							<td></td>
+							<td><button type="submit" class="primary-btn float-right">Adopt
+									ME!</button></td>
+						</tr>
+					</table>
+				</form>
+				{{/animal.animalAdopted}} 
+				
+				{{#animal.animalAdopted}}
+				<p>
+					<b>This lucky {{animal.animalType}} is already meeting his new
+						home!</b>
+				</p>
+				{{/animal.animalAdopted}}
+				{{/isShelter}}
+				{{/logged}}
+				
 			</div>
 		</div>
 	</div>

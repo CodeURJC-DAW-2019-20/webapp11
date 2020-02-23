@@ -26,7 +26,7 @@ public class AnimalFormController {
 
 	@Autowired
 	private AnimalRepository animalRepository;
-	
+
 	@Autowired
 	private UserShelterComponent userShelterComponent;
 
@@ -53,12 +53,10 @@ public class AnimalFormController {
 
 	@PostMapping("/createAnimal")
 	public String createAnimal(Model model, HttpServletRequest request, @RequestParam MultipartFile imagenFile,
-			@RequestParam String animalName, @RequestParam String animalType,
-			@RequestParam  int animalAge, @RequestParam String animalDescription,
-			@RequestParam String animalSize) throws IOException {
-		
-		Animal animal = new Animal(animalName, animalAge, animalType, animalSize,
-				animalDescription);
+			@RequestParam String animalName, @RequestParam String animalType, @RequestParam int animalAge,
+			@RequestParam String animalDescription, @RequestParam String animalSize) throws IOException {
+
+		Animal animal = new Animal(animalName, animalAge, animalType, animalSize, animalDescription);
 		animalRepository.save(animal); // It's saved to get the id
 		imgService.saveImage("animal", animal.getIdAnimal(), imagenFile);
 		animal.setAnimalPhoto("image-" + animal.getIdAnimal() + ".jpg");
@@ -89,7 +87,7 @@ public class AnimalFormController {
 		model.addAttribute("animal", animalFilter);
 		model.addAttribute("logged", userShelterComponent.isLoggedUser());
 		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
-		
+
 		return "animals";
 	}
 
@@ -107,7 +105,7 @@ public class AnimalFormController {
 		model.addAttribute("animal", animalFilter);
 		model.addAttribute("logged", userShelterComponent.isLoggedUser());
 		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
-		
+
 		return "animals";
 	}
 
@@ -120,7 +118,7 @@ public class AnimalFormController {
 		}
 		model.addAttribute("logged", userShelterComponent.isLoggedUser());
 		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
-		
+
 		return "animalview";
 	}
 }
