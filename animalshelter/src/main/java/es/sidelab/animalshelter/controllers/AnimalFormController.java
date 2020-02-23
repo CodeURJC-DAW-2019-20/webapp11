@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,33 +19,40 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import es.sidelab.animalshelter.Animal;
 import es.sidelab.animalshelter.AnimalRepository;
+import es.sidelab.animalshelter.UserShelterComponent;
 
 @Controller
 public class AnimalFormController {
 
 	@Autowired
 	private AnimalRepository animalRepository;
+	
+	@Autowired
+	private UserShelterComponent userShelterComponent;
 
 	@Autowired
 	private ImageService imgService;
 
 	@GetMapping("/animals")
-	public String addAnimal(Model model) {// in animal html it will include information
+	public String addAnimal(Model model, HttpServletRequest request) {// in animal html it will include information
 
 		List<Animal> animal = (List<Animal>) animalRepository.findAll();
 
 		model.addAttribute("animal", animal);
-
+		model.addAttribute("logged", userShelterComponent.isLoggedUser());
+		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
 		return "animals";
 	}
 
 	@RequestMapping("/animalform")
-	public String animalformView(Model model) {
+	public String animalformView(Model model, HttpServletRequest request) {
+		model.addAttribute("logged", userShelterComponent.isLoggedUser());
+		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
 		return "animalform";
 	}
 
 	@PostMapping("/createAnimal")
-	public String createAnimal(Model model, @RequestParam MultipartFile imagenFile,
+	public String createAnimal(Model model, HttpServletRequest request, @RequestParam MultipartFile imagenFile,
 			@RequestParam String animalName, @RequestParam String animalType,
 			@RequestParam  int animalAge, @RequestParam String animalDescription,
 			@RequestParam String animalSize) throws IOException {
@@ -53,11 +63,13 @@ public class AnimalFormController {
 		imgService.saveImage("animal", animal.getIdAnimal(), imagenFile);
 		animal.setAnimalPhoto("image-" + animal.getIdAnimal() + ".jpg");
 		animalRepository.save(animal);
+		model.addAttribute("logged", userShelterComponent.isLoggedUser());
+		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
 		return "animalform";
 	}
 
 	@RequestMapping(value = "/animal")
-	public String messageCenterHome(Model model, @ModelAttribute("filter") String filter) {
+	public String messageCenterHome(Model model, @ModelAttribute("filter") String filter, HttpServletRequest request) {
 		List<Animal> animal = (List<Animal>) animalRepository.findAll();
 		List<Animal> animalFilter = new ArrayList<Animal>(animal);
 		for (Animal mem : animal) {
@@ -75,12 +87,14 @@ public class AnimalFormController {
 			}
 		}
 		model.addAttribute("animal", animalFilter);
-
+		model.addAttribute("logged", userShelterComponent.isLoggedUser());
+		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
+		
 		return "animals";
 	}
 
 	@RequestMapping(value = "/animalname")
-	public String messageCenterHome2(Model model, @ModelAttribute("hola") String filter) {
+	public String messageCenterHome2(Model model, @ModelAttribute("hola") String filter, HttpServletRequest request) {
 		List<Animal> animal = (List<Animal>) animalRepository.findAll();
 		List<Animal> animalFilter = new ArrayList<Animal>(animal);
 		for (Animal mem : animal) {
@@ -91,18 +105,22 @@ public class AnimalFormController {
 		}
 
 		model.addAttribute("animal", animalFilter);
-
+		model.addAttribute("logged", userShelterComponent.isLoggedUser());
+		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
+		
 		return "animals";
 	}
 
 	@GetMapping("/animal/{idAnimal}")
-	public String showAnimalInfo(Model model, @PathVariable long idAnimal) {
+	public String showAnimalInfo(Model model, @PathVariable long idAnimal, HttpServletRequest request) {
 
 		Optional<Animal> animal = animalRepository.findByIdAnimal(idAnimal);
 		if (animal.isPresent()) {
 			model.addAttribute("animal", animal.get());
 		}
-
+		model.addAttribute("logged", userShelterComponent.isLoggedUser());
+		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
+		
 		return "animalview";
 	}
 }

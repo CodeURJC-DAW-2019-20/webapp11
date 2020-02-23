@@ -1,6 +1,8 @@
 package es.sidelab.animalshelter.controllers;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -16,6 +18,7 @@ import es.sidelab.animalshelter.ShelterRepository;
 import es.sidelab.animalshelter.WebUser;
 import es.sidelab.animalshelter.UserGalleryPhoto;
 import es.sidelab.animalshelter.UserGalleryPhotoRepository;
+import es.sidelab.animalshelter.UserShelterComponent;
 import es.sidelab.animalshelter.WebUserRepository;
 
 @Controller
@@ -38,6 +41,9 @@ public class MainController {
 
 	@Autowired
 	private AdoptionRepository adoptionRepository;
+
+	@Autowired
+	private UserShelterComponent userShelterComponent;
 
 	@PostConstruct
 	public void init() {
@@ -75,13 +81,16 @@ public class MainController {
 	}
 
 	@RequestMapping("/")
-	public String homeView(Model model) {
-
+	public String homeView(Model model, HttpServletRequest request) {
+		model.addAttribute("logged", userShelterComponent.isLoggedUser());
+		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
 		return "index";
 	}
 
 	@RequestMapping("/request")
-	public String requestView(Model model) {
+	public String requestView(Model model, HttpServletRequest request) {
+		model.addAttribute("logged", userShelterComponent.isLoggedUser());
+		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
 		return "request";
 	}
 
