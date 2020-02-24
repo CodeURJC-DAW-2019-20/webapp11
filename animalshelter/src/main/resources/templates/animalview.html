@@ -45,11 +45,12 @@
 				{{#logged}}
 				{{^isShelter}}
 				{{^animal.animalAdopted}}
-				<form action="/send/adopt/{{animal.idAnimal}}/success" method="post" class="col-lg-9">
+				<form action="/send/adopt" method="post" class="col-lg-9">
+					<input type="hidden" name="animalName" value="{{animal.animalName}}"/>
 					<table>
 						<tr>
 							<td></td>
-							<td><button class="genric-btn primary circle"
+							<td><button type="submit" class="genric-btn primary circle" name="animalName"
 	                        style="width: 125px">Adopt Me!</button></td>
 						</tr>
 					</table>

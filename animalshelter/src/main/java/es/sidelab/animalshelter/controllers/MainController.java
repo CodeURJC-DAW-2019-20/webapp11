@@ -1,8 +1,8 @@
 package es.sidelab.animalshelter.controllers;
 
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -12,7 +12,7 @@ import es.sidelab.animalshelter.Adoption;
 import es.sidelab.animalshelter.AdoptionRepository;
 import es.sidelab.animalshelter.Animal;
 import es.sidelab.animalshelter.AnimalRepository;
-//import es.sidelab.animalshelter.FilterSuit;
+import es.sidelab.animalshelter.FilterSuit;
 import es.sidelab.animalshelter.Shelter;
 import es.sidelab.animalshelter.ShelterRepository;
 import es.sidelab.animalshelter.WebUser;
@@ -36,7 +36,7 @@ public class MainController {
 	@Autowired
 	private ShelterRepository shelterRepository;
 
-	// private FilterSuit filtersuit;
+	private FilterSuit filtersuit;
 	private Authentication user;
 
 	@Autowired
@@ -60,16 +60,18 @@ public class MainController {
 		shelterRepository.save(shelter1);
 		shelterRepository.save(shelter2);
 
-		String photo = "/images/user/a2.jpg";
+		String photo = "/images/user/Scyfer-6.jpg";
 		UserGalleryPhoto galleryPhoto = new UserGalleryPhoto(photo);
 		galleryPhoto.setGalleryOwner(user2);
 		userGalleryPhotoRepository.save(galleryPhoto);
 
 		Animal animal1 = new Animal("Pipo", 1, "dog", "xl",
 				"This animal was abbandoned in the river, please give it a second opportunity.");
+		animal1.setAnimalPhoto("image-6.jpg");
 		animal1.setShelterOwner(shelter1);
 		Animal animal2 = new Animal("Jen", 3, "cat", "s", "It owner died recently, please help it overcome.");
 		animal2.setShelterOwner(shelter2);
+		animal2.setAnimalPhoto("image-7.jpg");
 		animalRepository.save(animal1);
 		animalRepository.save(animal2);
 
@@ -82,6 +84,8 @@ public class MainController {
 
 	@RequestMapping("/")
 	public String homeView(Model model, HttpServletRequest request) {
+		List<String> carusel = animalRepository.getAllAnimalPhotos();
+		model.addAttribute("carusel", carusel);
 		model.addAttribute("logged", userShelterComponent.isLoggedUser());
 		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
 		return "index";

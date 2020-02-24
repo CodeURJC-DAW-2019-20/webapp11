@@ -30,8 +30,7 @@ public class Animal {
 	public Animal() {
 	};
 
-	public Animal(String animalName, int animalAge, String animalType, String animalSize,
-			String animalDescription) {
+	public Animal(String animalName, int animalAge, String animalType, String animalSize, String animalDescription) {
 		this.animalName = animalName;
 		this.animalAge = animalAge;
 		this.animalType = animalType;
@@ -130,11 +129,11 @@ public class Animal {
 	public int getAnimalDimensions() {
 		return animalDimensions;
 	}
-	
+
 	public void setIdAnimal(long idAnimal) {
 		this.idAnimal = idAnimal;
 	}
-	
+
 	public void setAnimalPhoto(String animalPhoto) {
 		this.animalPhoto = animalPhoto;
 	}
