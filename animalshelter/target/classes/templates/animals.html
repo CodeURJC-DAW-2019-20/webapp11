@@ -44,24 +44,28 @@
 	</div>
 </form>
 {{#logged}}
-<form class="intro3" action="/animalspecial">
+<form class="intro2" action="/animalspecial">
 	<div class="form-group">
-		<div class=" row">
+		<div class="row">
 			<button class="genric-btn primary circle"
-				style="float: left; width: 500px; margin-left: 0%;">Suit
+				style="float: center; width: 500px; margin-left: 0%;">Suit
 				you</button>
 		</div>
 	</div>
 </form>
 {{/logged}}
-<div class="row">
-	{{#animal}}
-	<div class="single-image-carusel">
-		<a href="animal/{{idAnimal}}"> <img class="img-fluid"
-			src='/images/animal/image-{{idAnimal}}.jpg' width="300px"
-			height="400px"></img></a>
+<div class="container">
+	<div class="row">
+		{{#animal}}
+
+		<div class="single-image-carusel">
+			<a href="animal/{{idAnimal}}"> <img class="img-fluid"
+				src='/images/animal/image-{{idAnimal}}.jpg' width="300px"
+				height="400px"></img></a>
+		</div>
+
+		{{/animal}}
 	</div>
-	{{/animal}}
 </div>
 <button id="loadMore" class="genric-btn primary circle"
 	style="width: 125px">Load More</button>

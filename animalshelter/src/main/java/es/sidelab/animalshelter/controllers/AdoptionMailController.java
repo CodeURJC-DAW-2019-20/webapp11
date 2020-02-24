@@ -4,6 +4,9 @@ import javax.mail.MessagingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import es.sidelab.animalshelter.Adoption;
+import es.sidelab.animalshelter.AdoptionRepository;
 import es.sidelab.animalshelter.Animal;
 import es.sidelab.animalshelter.AnimalRepository;
 import es.sidelab.animalshelter.SmtpMailSender;
@@ -22,21 +25,29 @@ public class AdoptionMailController {
 	@Autowired
 	AnimalRepository animalRepository;
 
+	@Autowired
+	AdoptionRepository adoptionRepository;
+
 	@RequestMapping("/send/adopt")
 	public String sendMail(String animalName) throws MessagingException {
 
 		WebUser w = u.getUser();
-		// a.getShelterOwner().getShelterEmail()
 		animalName = animalName.substring(0, animalName.length() - 1);
+		Animal animal = animalRepository.findByAnimalName(animalName);
+		String shelterEmail = animal.getShelterOwner().getShelterEmail();
 
-		/*
-		 * smtpMailSender.sendAutoMail(w.getUserName(), w.getUserAdress(),
-		 * w.getUserAge(), w.getUserDni(), w.getUserGarden(), w.getUserHouseSize(),
-		 * w.getUserNumChildren(), w.getUserNumPeopleInHouse(), animalName,
-		 * w.getUserEmail(), "Adoption Request", "m.fernandezsu@alumnos.urjc.es");
-		 */
+		Adoption adoption = new Adoption(true);
+		adoption.setAnimal(animal);
+		adoption.setUser(w);
+		adoptionRepository.save(adoption);
+		
+		animal.setAnimalAdopted(true);
+		animalRepository.save(animal);
 
-		return "/index";
+		smtpMailSender.sendAutoMail(w.getUserName(), animal.getAnimalName(), w.getUserEmail(), "Adoption Request",
+				shelterEmail);
+
+		return "index";
 	}
 
 }

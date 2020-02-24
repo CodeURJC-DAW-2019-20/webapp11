@@ -25,130 +25,44 @@
 <section class="cat-list-area section-gap">
 	<div class="container">
 		<div id="myRequestList" class="row">
+		
+			{{#animal}}
 			<div class="col-lg-3 col-md-4">
 				<div class="single-cat-list">
-					<img src="img/dg1.jpg" alt="" width="class="img-fluid">
+					<img src='/images/animal/{{animalPhoto}}' alt="" width="" class="img-fluid">
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-4">
 				<p>
-					<b>Name: </b><a href="animalview.html">Snow Flake</a>
+					<b>Name: </b>{{animalName}}
 				</p>
 				<p>
-					<b>Age: </b>6 months
+					<b>Age: </b>{{animalAge}}
 				</p>
-				<p>
-					<b>Adoption Request by :</b> <a href="profile.html"> Ana</a>
-				</p>
-				<form class="col-lg-6">
+				<form action="/evaluateAdoption" class="col-lg-6">
 					<div class="form-group">
-						<button type="submit" class="genric-btn primary circle "
+						<button type="submit" name="accept" class="genric-btn primary circle "
 							style="width: 125px" onclick="#">Accept</button>
 					</div>
 					<div class="form-group">
-						<button type="submit" class="genric-btn primary circle"
+						<button type="submit" name="deny" class="genric-btn primary circle"
 							style="width: 125px" onclick="#">Deny</button>
 					</div>
 				</form>
 				<p>
-					<b>Status </b>
+					{{#animalAdopted}}
+					<b>Animal actually in adoption... </b>
+					{{/animalAdopted}}
 				</p>
 				<br>
 			</div>
-			<div class="col-lg-3 col-md-4">
-				<div class="single-cat-list">
-					<img src="img/ct6.jpg" alt="" width="class="img-fluid">
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4">
-				<p>
-					<b>Name: </b><a href="animalview.html">Garfield</a>
-				</p>
-				<p>
-					<b>Age: </b>72 months
-				</p>
-				<p>
-					<b>Adoption Request by: </b><a href="profile.html">Sara</a>
-				</p>
-				<form class="col-lg-6">
-					<div class="form-group">
-						<button type="submit" class="genric-btn primary circle"
-							style="width: 125px" onclick="#">Accept</button>
-					</div>
-					<div class="form-group">
-						<button type="submit" class="genric-btn primary circle"
-							style="width: 125px" onclick="#">Deny</button>
-					</div>
-				</form>
-				<p>
-					<b>Status </b>
-				</p>
-				<br>
-			</div>
-			<div class="col-lg-3 col-md-4">
-				<div class="single-cat-list">
-					<img src="img/ct6.jpg" alt="" width="class="img-fluid">
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4">
-				<p>
-					<b>Name: </b><a href="animalview.html">Garfield</a>
-				</p>
-				<p>
-					<b>Age: </b>72 months
-				</p>
-				<p>
-					<b>Adoption Request by: </b><a href="profile.html">Sara</a>
-				</p>
-				<form class="col-lg-6">
-					<div class="form-group">
-						<button type="submit" class="genric-btn primary circle "
-							style="width: 125px" onclick="#">Accept</button>
-					</div>
-					<div class="form-group">
-						<button type="submit" class="genric-btn primary circle "
-							style="width: 125px" onclick="#">Deny</button>
-					</div>
-				</form>
-				<p>
-					<b>Status </b>
-				</p>
-				<br>
-			</div>
-			<div class="col-lg-3 col-md-4">
-				<div class="single-cat-list">
-					<img src="img/ct6.jpg" alt="" width="class="img-fluid">
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-4">
-				<p>
-					<b>Name: </b><a href="animalview.html">Garfield</a>
-				</p>
-				<p>
-					<b>Age: </b>72 months
-				</p>
-				<p>
-					<b>Adoption Request by: </b><a href="profile.html">Sara</a>
-				</p>
-				<form class="col-lg-6">
-					<div class="form-group">
-						<button type="submit" class="genric-btn primary circle "
-							style="width: 125px" onclick="#">Accept</button>
-					</div>
-					<div class="form-group">
-						<button type="submit" class="genric-btn primary circle "
-							style="width: 125px" onclick="#">Deny</button>
-					</div>
-				</form>
-				<p>
-					<b>Status </b>
-				</p>
-				<br>
-			</div>
+			{{/animal}}
+			
 		</div>
 	</div>
 </section>
 <!-- End request-list Area -->
+
 <button id="load" class="genric-btn primary circle "
 	style="width: 125px">Load More</button>
 

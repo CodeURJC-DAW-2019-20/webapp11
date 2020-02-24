@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AdoptionRepository extends JpaRepository<Adoption, Long> {
-	List<Animal> findByAdoptionDate(Date adoptionDate);
+	List<Adoption> findByAdoptionDate(Date adoptionDate);
 
-	List<Animal> findByInCourse(boolean inCourse);
+	List<Adoption> findByInCourse(boolean inCourse);
 }

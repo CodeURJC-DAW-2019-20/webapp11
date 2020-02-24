@@ -9,12 +9,15 @@ public interface AnimalRepository extends JpaRepository<Animal, Long> {
 
 	@Query("SELECT a.animalPhoto FROM Animal a")
 	public List<String> getAllAnimalPhotos();
+	
+	@Query("SELECT a FROM Animal a WHERE a.animalAdopted = :b")
+	public List<Animal> getAllAnimalAdopted(boolean b);
 
 	Optional<Animal> findByIdAnimal(long idAnimal);
 
 	List<Animal> findByAnimalPhoto(String animalPhoto);
-
-	List<Animal> findByAnimalName(String animalName);
+	
+	Animal findByAnimalName(String animalName);
 
 	List<Animal> findByAnimalAge(int animalAge);
 

@@ -33,7 +33,7 @@ public class AnimalFormController {
 	@Autowired
 	private ImageService imgService;
 
-	@GetMapping("/animals")
+	@RequestMapping("/animals")
 	public String addAnimal(Model model, HttpServletRequest request) {// in animal html it will include information
 
 		List<Animal> animal = (List<Animal>) animalRepository.findAll();
@@ -60,6 +60,7 @@ public class AnimalFormController {
 		animalRepository.save(animal); // It's saved to get the id
 		imgService.saveImage("animal", animal.getIdAnimal(), imagenFile);
 		animal.setAnimalPhoto("image-" + animal.getIdAnimal() + ".jpg");
+		animal.setShelterOwner(userShelterComponent.getShelter());
 		animalRepository.save(animal);
 		model.addAttribute("logged", userShelterComponent.isLoggedUser());
 		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));

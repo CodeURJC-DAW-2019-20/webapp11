@@ -17,8 +17,7 @@ public class SmtpMailSender {
 	@Autowired
 	private JavaMailSender javaMailSender;
 
-	public void sendAutoMail(String username, String adress, int age, String dni, String garden, String houseSize,
-			int children, int peopleInHouse, String animalname, String email, String subject, String to)
+	public void sendAutoMail(String username, String animalname, String email, String subject, String to)
 			throws MessagingException {
 		MimeMessage message = javaMailSender.createMimeMessage();
 		MimeMessageHelper helper;
@@ -28,14 +27,12 @@ public class SmtpMailSender {
 
 		helper.setSubject(subject);
 		helper.setTo(to);
-		helper.setText(username + " with following data: <br>" + "<br>Adress: " + adress + "<br>Age: " + age
-				+ "<br>DNI: " + dni + "<br>Garden Size: " + garden + "<br>House Size: " + houseSize
-				+ "<br>Number Of Children: " + children + "<br>People In House: " + peopleInHouse
-				+ "<br><br>Has requested to adopt: " + animalname + "<br>" + "Response to: " + email, true);// true //
-																											// indicates
-																											// // body
-																											// // is //
-																											// html
+		helper.setText(username + " has requested to adopt: " + animalname + "<br>" + "For more details contact to: " + email, true);// true
+																														// //
+		// indicates
+		// // body
+		// // is //
+		// html
 		javaMailSender.send(message);
 	}
 
