@@ -1,7 +1,5 @@
 package es.sidelab.animalshelter.controllers;
 
-
-
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
@@ -31,7 +29,7 @@ public class ImageService implements WebMvcConfigurer {
 				.addResourceLocations("file:" + FILES_FOLDER.toAbsolutePath().toString() + "/");
 		registry.addResourceHandler("/**").addResourceLocations("classpath:/static/");
 	}
-	
+
 	private Path createFilePath(long id, Path folder) {
 		return folder.resolve("image-" + id + ".jpg");
 	}
@@ -47,13 +45,27 @@ public class ImageService implements WebMvcConfigurer {
 		Path newFile = createFilePath(id, folder);
 
 		image.transferTo(newFile);
-		
+
+	}
+
+	public void saveUserGalleryImage(String folderName, MultipartFile image) throws IOException {
+
+		Path folder = FILES_FOLDER.resolve(folderName);
+
+		if (!Files.exists(folder)) {
+			Files.createDirectories(folder);
+		}
+
+		Path newFile = folder.resolve(image.getOriginalFilename());
+
+		image.transferTo(newFile);
+
 	}
 
 	public ResponseEntity<Object> createResponseFromImage(String folderName, long id) throws MalformedURLException {
 
 		Path folder = FILES_FOLDER.resolve(folderName);
-		
+
 		Resource file = new UrlResource(createFilePath(id, folder).toUri());
 
 		return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "image/jpeg").body(file);

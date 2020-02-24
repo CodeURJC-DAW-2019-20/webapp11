@@ -22,11 +22,11 @@ import es.sidelab.animalshelter.AnimalRepository;
 import es.sidelab.animalshelter.UserShelterComponent;
 
 @Controller
-public class AnimalFormController extends ModelAttributeController{
+public class AnimalFormController extends ModelAttributeController {
 
 	@Autowired
 	private AnimalRepository animalRepository;
-	
+
 	@Autowired
 	private UserShelterComponent userShelterComponent;
 
@@ -39,29 +39,27 @@ public class AnimalFormController extends ModelAttributeController{
 		List<Animal> animal = (List<Animal>) animalRepository.findAll();
 
 		model.addAttribute("animal", animal);
-		
+
 		return "animals";
 	}
 
 	@RequestMapping("/animalform")
 	public String animalformView(Model model, HttpServletRequest request) {
-		
+
 		return "animalform";
 	}
 
 	@PostMapping("/createAnimal")
 	public String createAnimal(Model model, HttpServletRequest request, @RequestParam MultipartFile imagenFile,
-			@RequestParam String animalName, @RequestParam String animalType,
-			@RequestParam  int animalAge, @RequestParam String animalDescription,
-			@RequestParam String animalSize) throws IOException {
-		
-		Animal animal = new Animal(animalName, animalAge, animalType, animalSize,
-				animalDescription);
+			@RequestParam String animalName, @RequestParam String animalType, @RequestParam int animalAge,
+			@RequestParam String animalDescription, @RequestParam String animalSize) throws IOException {
+
+		Animal animal = new Animal(animalName, animalAge, animalType, animalSize, animalDescription);
 		animalRepository.save(animal); // It's saved to get the id
 		imgService.saveImage("animal", animal.getIdAnimal(), imagenFile);
 		animal.setAnimalPhoto("image-" + animal.getIdAnimal() + ".jpg");
 		animalRepository.save(animal);
-		
+
 		return "animalform";
 	}
 
@@ -84,7 +82,7 @@ public class AnimalFormController extends ModelAttributeController{
 			}
 		}
 		model.addAttribute("animal", animalFilter);
-		
+
 		return "animals";
 	}
 
@@ -100,7 +98,7 @@ public class AnimalFormController extends ModelAttributeController{
 		}
 
 		model.addAttribute("animal", animalFilter);
-		
+
 		return "animals";
 	}
 
@@ -111,7 +109,7 @@ public class AnimalFormController extends ModelAttributeController{
 		if (animal.isPresent()) {
 			model.addAttribute("animal", animal.get());
 		}
-		
+
 		return "animalview";
 	}
 }

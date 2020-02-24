@@ -17,6 +17,10 @@ public class UserShelterComponent {
 			return shelter;
 		}
 	}
+	
+	public WebUser getUser() {
+		return this.user;
+	}
 
 	public void setLoggedUser(WebUser user) {
 		this.user = user;

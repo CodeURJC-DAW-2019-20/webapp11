@@ -17,7 +17,9 @@ public class SmtpMailSender {
 	@Autowired
 	private JavaMailSender javaMailSender;
 
-	public void sendAutoMail(String to, String subject, String body) throws MessagingException {
+	public void sendAutoMail(String username, String adress, int age, String dni, String garden, String houseSize,
+			int children, int peopleInHouse, String animalname, String email, String subject, String to)
+			throws MessagingException {
 		MimeMessage message = javaMailSender.createMimeMessage();
 		MimeMessageHelper helper;
 		helper = new MimeMessageHelper(message, true);// true indicates multipart message
@@ -26,11 +28,19 @@ public class SmtpMailSender {
 
 		helper.setSubject(subject);
 		helper.setTo(to);
-		helper.setText(body, true);// true indicates body is html
+		helper.setText(username + " with following data: <br>" + "<br>Adress: " + adress + "<br>Age: " + age
+				+ "<br>DNI: " + dni + "<br>Garden Size: " + garden + "<br>House Size: " + houseSize
+				+ "<br>Number Of Children: " + children + "<br>People In House: " + peopleInHouse
+				+ "<br><br>Has requested to adopt: " + animalname + "<br>" + "Response to: " + email, true);// true //
+																											// indicates
+																											// // body
+																											// // is //
+																											// html
 		javaMailSender.send(message);
 	}
-	
-	public void sendMailContactUs(String username, String subject, String to, String body) throws MessagingException {
+
+	public void sendMailContactUs(String username, String email, String subject, String to, String body)
+			throws MessagingException {
 		MimeMessage message = javaMailSender.createMimeMessage();
 		MimeMessageHelper helper;
 		helper = new MimeMessageHelper(message, true);// true indicates multipart message
@@ -39,7 +49,11 @@ public class SmtpMailSender {
 
 		helper.setSubject(subject);
 		helper.setTo(to);
-		helper.setText(username + " has following issue: " + body, true);// true indicates body is html
+		helper.setText(username + " has following issue:<br>" + body + "<br>" + "Response to: " + email, true);// true
+																												// indicates
+																												// body
+																												// is //
+																												// html
 		javaMailSender.send(message);
 	}
 }
