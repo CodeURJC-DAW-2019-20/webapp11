@@ -92,16 +92,4 @@ public class MainController extends ModelAttributeController {
 		return "request";
 	}
 
-	@RequestMapping("/profile")
-	public String profileView(Model model, HttpServletRequest request) {
-
-		return "profile";
-	}
-
-	@RequestMapping("/contact")
-	public String contactView(Model model, HttpServletRequest request) {
-
-		return "contact";
-	}
-
 }
