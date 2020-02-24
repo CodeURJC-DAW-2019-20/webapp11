@@ -75,7 +75,8 @@
 										<div class="form-group">
 											<label>Password</label> <input type="password" name="password">
 										</div>
-										<input type="submit" value="Entrar"> 
+										<input type="submit" value="Entrar">
+										<input type="hidden" name="_csrf" value="{{token}}"/> 
 									</form>
 										<a class="genric-btn primary circle" href="/signuser">NEW
 											USER</a><br> <a class="genric-btn primary circle"
