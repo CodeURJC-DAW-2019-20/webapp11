@@ -11,11 +11,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import es.sidelab.animalshelter.Shelter;
 import es.sidelab.animalshelter.ShelterRepository;
-import es.sidelab.animalshelter.UserShelterComponent;
 import es.sidelab.animalshelter.WebUserRepository;
 
 @Controller
-public class ShelterFormController {
+public class ShelterFormController extends ModelAttributeController {
 	
 	@Autowired
 	private WebUserRepository userRepository;
@@ -23,13 +22,10 @@ public class ShelterFormController {
 	@Autowired
 	private ShelterRepository shelterRepository;
 	
-	@Autowired
-	private UserShelterComponent userShelterComponent;
+	
 
 	@RequestMapping("/signshelter")
 	public String signshelterView(Model model, HttpServletRequest request) {
-		model.addAttribute("logged", userShelterComponent.isLoggedUser());
-		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
 		return "shelterform";
 	}
 
@@ -39,15 +35,11 @@ public class ShelterFormController {
 			@RequestParam String shelterDescription, @RequestParam String shelterAdress) {
 		if (userRepository.findByUserEmail(shelterEmail) != null
 				|| shelterRepository.findByShelterEmail(shelterEmail) != null) {
-			model.addAttribute("logged", userShelterComponent.isLoggedUser());
-			model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
 			return "shelterform";
 		} else {
 			Shelter shelter = new Shelter(shelterName, shelterNif, shelterEmail, shelterPassword,
 					shelterDescription, shelterAdress);
 			shelterRepository.save(shelter);
-			model.addAttribute("logged", userShelterComponent.isLoggedUser());
-			model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
 			return "index";
 		}
 	}

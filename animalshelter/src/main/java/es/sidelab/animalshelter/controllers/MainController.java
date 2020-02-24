@@ -4,7 +4,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +12,7 @@ import es.sidelab.animalshelter.Adoption;
 import es.sidelab.animalshelter.AdoptionRepository;
 import es.sidelab.animalshelter.Animal;
 import es.sidelab.animalshelter.AnimalRepository;
-import es.sidelab.animalshelter.FilterSuit;
+
 import es.sidelab.animalshelter.Shelter;
 import es.sidelab.animalshelter.ShelterRepository;
 import es.sidelab.animalshelter.WebUser;
@@ -22,7 +22,7 @@ import es.sidelab.animalshelter.UserShelterComponent;
 import es.sidelab.animalshelter.WebUserRepository;
 
 @Controller
-public class MainController {
+public class MainController extends ModelAttributeController {
 
 	@Autowired
 	private WebUserRepository userRepository;
@@ -36,14 +36,10 @@ public class MainController {
 	@Autowired
 	private ShelterRepository shelterRepository;
 
-	private FilterSuit filtersuit;
-	private Authentication user;
 
 	@Autowired
 	private AdoptionRepository adoptionRepository;
 
-	@Autowired
-	private UserShelterComponent userShelterComponent;
 
 	@PostConstruct
 	public void init() {
@@ -74,7 +70,10 @@ public class MainController {
 		animal2.setAnimalPhoto("image-7.jpg");
 		animalRepository.save(animal1);
 		animalRepository.save(animal2);
-
+		Animal animal3= new Animal("Peter",2,"reptile","m","Very good behaoviur of this animal");
+		animal3.setShelterOwner(shelter1);
+		animal3.setAnimalPhoto("image-7.jpg"); //Cambiar foto
+		animalRepository.save(animal3);
 		Adoption adoption1 = new Adoption(true);
 		adoption1.setAnimal(animal1);
 		adoption1.setUser(user1);
@@ -86,15 +85,13 @@ public class MainController {
 	public String homeView(Model model, HttpServletRequest request) {
 		List<String> carusel = animalRepository.getAllAnimalPhotos();
 		model.addAttribute("carusel", carusel);
-		model.addAttribute("logged", userShelterComponent.isLoggedUser());
-		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
+		
 		return "index";
 	}
 
 	@RequestMapping("/request")
 	public String requestView(Model model, HttpServletRequest request) {
-		model.addAttribute("logged", userShelterComponent.isLoggedUser());
-		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
+		
 		return "request";
 	}
 

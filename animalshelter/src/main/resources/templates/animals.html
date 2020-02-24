@@ -33,6 +33,19 @@
 		</div>
 	</div>
 </form>
+{{#logged}}
+{{^isShelter}}
+<form class="intro3" action="/animalspecial">
+	<div class="form-group">
+		<div class=" row">
+			<button class="genric-btn primary circle"
+				style="float: left; width: 500px; margin-left: 23%;">Suit
+				you</button>
+		</div>
+	</div>
+</form>
+{{/isShelter}}
+{{/logged}}
 <form class="intro2" action="/animalname">
 	<div class="form-group">
 		<div class="row">
@@ -43,17 +56,7 @@
 		</div>
 	</div>
 </form>
-{{#logged}}
-<form class="intro3" action="/animalspecial">
-	<div class="form-group">
-		<div class=" row">
-			<button class="genric-btn primary circle"
-				style="float: left; width: 500px; margin-left: 0%;">Suit
-				you</button>
-		</div>
-	</div>
-</form>
-{{/logged}}
+
 <div class="row">
 	{{#animal}}
 	<div class="single-image-carusel">
