@@ -19,7 +19,7 @@ import es.sidelab.animalshelter.WebUser;
 import es.sidelab.animalshelter.WebUserRepository;
 
 @Controller
-public class ProfileController {
+public class ProfileController extends ModelAttributeController {
 
 	@Autowired
 	private UserShelterComponent loggeduser;
@@ -29,9 +29,6 @@ public class ProfileController {
 
 	@Autowired
 	private ImageService imgService;
-
-	@Autowired
-	private UserShelterComponent userShelterComponent;
 
 	@Autowired
 	private WebUserRepository ur;
@@ -52,9 +49,7 @@ public class ProfileController {
 		model.addAttribute("pinhouse", lu.getUserNumPeopleInHouse());
 		model.addAttribute("gallery", gallery);
 
-		model.addAttribute("logged", userShelterComponent.isLoggedUser());
-		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
-
+		
 		return "profile";
 	}
 
@@ -81,9 +76,6 @@ public class ProfileController {
 		model.addAttribute("nkids", lu.getUserNumChildren());
 		model.addAttribute("pinhouse", lu.getUserNumPeopleInHouse());
 		model.addAttribute("gallery", gallery);
-
-		model.addAttribute("logged", userShelterComponent.isLoggedUser());
-		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
 
 		return "profile";
 	}
