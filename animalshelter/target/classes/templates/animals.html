@@ -20,7 +20,6 @@
 	<div class="form-group">
 		<div class="row">
 			<select name="filter" class="col-lg-8 col-md-3">
-				<!-- values for the special-filter algorith -->
 				<option value="all">All</option>
 				<option value="bird">Bird</option>
 				<option value="cat">Cat</option>
@@ -44,13 +43,25 @@
 		</div>
 	</div>
 </form>
-{{#login}}
-<button class="genric-btn primary circle suit" type="button">Suit
-	you</button>
-{{/login}}
-<div class="hola" id="myList">
-	{{#animal}} <a href="animal/{{idAnimal}}"><img class="allimages"
-		src='/images/animal/image-{{idAnimal}}.jpg' alt=""></img></a> {{/animal}}
+{{#logged}}
+<form class="intro3" action="/animalspecial">
+	<div class="form-group">
+		<div class=" row">
+			<button class="genric-btn primary circle"
+				style="float: left; width: 500px; margin-left: 0%;">Suit
+				you</button>
+		</div>
+	</div>
+</form>
+{{/logged}}
+<div class="row">
+	{{#animal}}
+	<div class="single-image-carusel">
+		<a href="animal/{{idAnimal}}"> <img class="img-fluid"
+			src='/images/animal/image-{{idAnimal}}.jpg' width="300px"
+			height="400px"></img></a>
+	</div>
+	{{/animal}}
 </div>
 <button id="loadMore" class="genric-btn primary circle"
 	style="width: 125px">Load More</button>

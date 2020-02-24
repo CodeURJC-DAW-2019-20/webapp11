@@ -51,13 +51,15 @@
 				<div class="form-group">
 					<input type="file" name="galleryPhoto" accept=".jpg, .jpeg"
 						required>
-					<button type="submit" class="genric-btn primary circle" style="width: 125px">Add
-						Image</button>
+					<button type="submit" class="genric-btn primary circle"
+						style="width: 125px">Add Image</button>
 				</div>
 			</form>
-            <div class="hola" id="myList1">
+			<div class="row">
 				{{#gallery}}
-						<img class="allimages" src="{{.}}" width="500px" height="500px" class="img-fluid">
+				<div class="single-image-carusel">
+					<img src="{{.}}" width="500px" height="500px" class="img-fluid">
+				</div>
 				{{/gallery}}
 			</div>
 		</div>

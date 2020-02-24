@@ -3,6 +3,9 @@ package es.sidelab.animalshelter.controllers;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,10 +31,13 @@ public class ProfileController {
 	private ImageService imgService;
 
 	@Autowired
+	private UserShelterComponent userShelterComponent;
+
+	@Autowired
 	private WebUserRepository ur;
 
 	@RequestMapping("/profile")
-	public String profileView(Model model) {
+	public String profileView(Model model, HttpServletRequest request) {
 
 		WebUser lu = (WebUser) loggeduser.getLoggedUser();
 
@@ -46,11 +52,15 @@ public class ProfileController {
 		model.addAttribute("pinhouse", lu.getUserNumPeopleInHouse());
 		model.addAttribute("gallery", gallery);
 
+		model.addAttribute("logged", userShelterComponent.isLoggedUser());
+		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
+
 		return "profile";
 	}
 
 	@RequestMapping("/addImage")
-	public String updateProfile(@RequestParam MultipartFile galleryPhoto, Model model) throws IOException {
+	public String updateProfile(@RequestParam MultipartFile galleryPhoto, Model model, HttpServletRequest request)
+			throws IOException {
 
 		WebUser lu = (WebUser) loggeduser.getLoggedUser();
 
@@ -71,6 +81,9 @@ public class ProfileController {
 		model.addAttribute("nkids", lu.getUserNumChildren());
 		model.addAttribute("pinhouse", lu.getUserNumPeopleInHouse());
 		model.addAttribute("gallery", gallery);
+
+		model.addAttribute("logged", userShelterComponent.isLoggedUser());
+		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
 
 		return "profile";
 	}

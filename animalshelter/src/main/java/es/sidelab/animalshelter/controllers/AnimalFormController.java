@@ -22,7 +22,7 @@ import es.sidelab.animalshelter.AnimalRepository;
 import es.sidelab.animalshelter.UserShelterComponent;
 
 @Controller
-public class AnimalFormController extends ModelAttributeController {
+public class AnimalFormController {
 
 	@Autowired
 	private AnimalRepository animalRepository;
@@ -39,13 +39,15 @@ public class AnimalFormController extends ModelAttributeController {
 		List<Animal> animal = (List<Animal>) animalRepository.findAll();
 
 		model.addAttribute("animal", animal);
-
+		model.addAttribute("logged", userShelterComponent.isLoggedUser());
+		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
 		return "animals";
 	}
 
 	@RequestMapping("/animalform")
 	public String animalformView(Model model, HttpServletRequest request) {
-
+		model.addAttribute("logged", userShelterComponent.isLoggedUser());
+		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
 		return "animalform";
 	}
 
@@ -59,7 +61,8 @@ public class AnimalFormController extends ModelAttributeController {
 		imgService.saveImage("animal", animal.getIdAnimal(), imagenFile);
 		animal.setAnimalPhoto("image-" + animal.getIdAnimal() + ".jpg");
 		animalRepository.save(animal);
-
+		model.addAttribute("logged", userShelterComponent.isLoggedUser());
+		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
 		return "animalform";
 	}
 
@@ -82,6 +85,8 @@ public class AnimalFormController extends ModelAttributeController {
 			}
 		}
 		model.addAttribute("animal", animalFilter);
+		model.addAttribute("logged", userShelterComponent.isLoggedUser());
+		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
 
 		return "animals";
 	}
@@ -98,6 +103,26 @@ public class AnimalFormController extends ModelAttributeController {
 		}
 
 		model.addAttribute("animal", animalFilter);
+		model.addAttribute("logged", userShelterComponent.isLoggedUser());
+		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
+
+		return "animals";
+	}
+	
+	@RequestMapping(value = "/animalspecial")
+	public String messageCenterHome3(Model model, @ModelAttribute("hola") String filter, HttpServletRequest request) {
+		List<Animal> animal = (List<Animal>) animalRepository.findAll();
+		List<Animal> animalFilter = new ArrayList<Animal>(animal);
+		for (Animal mem : animal) {
+
+			if (!mem.getAnimalName().matches(filter)) {
+				animalFilter.remove(mem);
+			}
+		}
+
+		model.addAttribute("animal", animalFilter);
+		model.addAttribute("logged", userShelterComponent.isLoggedUser());
+		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
 
 		return "animals";
 	}
@@ -109,6 +134,8 @@ public class AnimalFormController extends ModelAttributeController {
 		if (animal.isPresent()) {
 			model.addAttribute("animal", animal.get());
 		}
+		model.addAttribute("logged", userShelterComponent.isLoggedUser());
+		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
 
 		return "animalview";
 	}

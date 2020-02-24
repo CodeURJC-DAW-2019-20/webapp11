@@ -47,7 +47,7 @@
 				<div class="form-group">
 					<label for="name">Age:</label> <input type="number"
 						class="form-control" name="userAge" min="1" placeholder="20"
-						default=0 required>
+						required>
 				</div>
 				<div class="form-group">
 					<label for="name">Address:</label> <input type="text"
@@ -88,7 +88,7 @@
 				<div class="form-group">
 					<label for="children">Number of children in your home:</label> <input
 						type="number" class="form-control" name="userNumChildren" min="0"
-						placeholder="Age lower than 14" default=0 required>
+						placeholder="Age lower than 14" required>
 				</div>
 				<div class="form-group">
 					<label for="people">Number of people in your home:</label> <input
@@ -105,9 +105,8 @@
 						class="form-control" placeholder="Password" name="userPassword"
 						required>
 				</div>
-				<button type="submit" class="primary-btn float-right">Create
+				<button type="submit" class="genric-btn primary circle">Create
 					User</button>
-					<input type="hidden" name="_csrf" value="{{token}}"/>
 			</form>
 		</div>
 	</div>

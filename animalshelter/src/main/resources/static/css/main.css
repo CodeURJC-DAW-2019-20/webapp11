@@ -4229,6 +4229,11 @@ body.mobile-nav-active #mobile-nav-toggle {
   width: 50%;
 }
 
+.center{
+  width: 50%;
+  text-align: center;
+}
+
 .left {
   width: 30%;
 }
@@ -4246,6 +4251,7 @@ body.mobile-nav-active #mobile-nav-toggle {
     border:solid #ccc 1px;
     cursor: pointer;
 }
+
 #overlay{	
 	position: fixed;
 	top: 0;
