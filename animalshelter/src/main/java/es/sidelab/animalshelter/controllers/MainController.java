@@ -22,7 +22,7 @@ import es.sidelab.animalshelter.UserShelterComponent;
 import es.sidelab.animalshelter.WebUserRepository;
 
 @Controller
-public class MainController {
+public class MainController extends ModelAttributeController{
 
 	@Autowired
 	private WebUserRepository userRepository;
@@ -84,29 +84,25 @@ public class MainController {
 
 	@RequestMapping("/")
 	public String homeView(Model model, HttpServletRequest request) {
-		model.addAttribute("logged", userShelterComponent.isLoggedUser());
-		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
+		
 		return "index";
 	}
 
 	@RequestMapping("/request")
 	public String requestView(Model model, HttpServletRequest request) {
-		model.addAttribute("logged", userShelterComponent.isLoggedUser());
-		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
+		
 		return "request";
 	}
 
 	@RequestMapping("/profile")
 	public String profileView(Model model, HttpServletRequest request) {
-		model.addAttribute("logged", userShelterComponent.isLoggedUser());
-		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
+		
 		return "profile";
 	}
 
 	@RequestMapping("/contact")
 	public String contactView(Model model, HttpServletRequest request) {
-		model.addAttribute("logged", userShelterComponent.isLoggedUser());
-		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
+		
 		return "contact";
 	}
 

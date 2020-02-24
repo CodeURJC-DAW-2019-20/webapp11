@@ -22,7 +22,7 @@ import es.sidelab.animalshelter.AnimalRepository;
 import es.sidelab.animalshelter.UserShelterComponent;
 
 @Controller
-public class AnimalFormController {
+public class AnimalFormController extends ModelAttributeController{
 
 	@Autowired
 	private AnimalRepository animalRepository;
@@ -39,15 +39,13 @@ public class AnimalFormController {
 		List<Animal> animal = (List<Animal>) animalRepository.findAll();
 
 		model.addAttribute("animal", animal);
-		model.addAttribute("logged", userShelterComponent.isLoggedUser());
-		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
+		
 		return "animals";
 	}
 
 	@RequestMapping("/animalform")
 	public String animalformView(Model model, HttpServletRequest request) {
-		model.addAttribute("logged", userShelterComponent.isLoggedUser());
-		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
+		
 		return "animalform";
 	}
 
@@ -63,8 +61,7 @@ public class AnimalFormController {
 		imgService.saveImage("animal", animal.getIdAnimal(), imagenFile);
 		animal.setAnimalPhoto("image-" + animal.getIdAnimal() + ".jpg");
 		animalRepository.save(animal);
-		model.addAttribute("logged", userShelterComponent.isLoggedUser());
-		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
+		
 		return "animalform";
 	}
 
@@ -87,8 +84,6 @@ public class AnimalFormController {
 			}
 		}
 		model.addAttribute("animal", animalFilter);
-		model.addAttribute("logged", userShelterComponent.isLoggedUser());
-		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
 		
 		return "animals";
 	}
@@ -105,8 +100,6 @@ public class AnimalFormController {
 		}
 
 		model.addAttribute("animal", animalFilter);
-		model.addAttribute("logged", userShelterComponent.isLoggedUser());
-		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
 		
 		return "animals";
 	}
@@ -118,8 +111,6 @@ public class AnimalFormController {
 		if (animal.isPresent()) {
 			model.addAttribute("animal", animal.get());
 		}
-		model.addAttribute("logged", userShelterComponent.isLoggedUser());
-		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
 		
 		return "animalview";
 	}

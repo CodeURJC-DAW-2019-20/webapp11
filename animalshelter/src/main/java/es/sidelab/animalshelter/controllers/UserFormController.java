@@ -16,7 +16,7 @@ import es.sidelab.animalshelter.WebUser;
 import es.sidelab.animalshelter.WebUserRepository;
 
 @Controller
-public class UserFormController {
+public class UserFormController extends ModelAttributeController{
 
 	@Autowired
 	private WebUserRepository userRepository;
@@ -29,8 +29,7 @@ public class UserFormController {
 
 	@RequestMapping("/signuser")
 	public String signuserView(Model model, HttpServletRequest request) {
-		model.addAttribute("logged", userShelterComponent.isLoggedUser());
-		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
+		
 		return "userform";
 	}
 
@@ -41,8 +40,7 @@ public class UserFormController {
 			@RequestParam String userEmail, @RequestParam String userPassword) {
 		if (userRepository.findByUserEmail(userEmail) != null
 				|| shelterRepository.findByShelterEmail(userEmail) != null) {
-			model.addAttribute("logged", userShelterComponent.isLoggedUser());
-			model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
+			
 			return "userform";
 		} else {
 			WebUser user = new WebUser(userName, userDni, userAge, userAdress,
@@ -52,8 +50,7 @@ public class UserFormController {
 			//imgService.saveImage("user", user.getIdUser(), imagenFile);
 			user.setUserPhoto("image-" + user.getUserId() + ".jpg");
 			userRepository.save(user);
-			model.addAttribute("logged", userShelterComponent.isLoggedUser());
-			model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
+			
 			return "index";
 		}
 	}
