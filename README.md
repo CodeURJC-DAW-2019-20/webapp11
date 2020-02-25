@@ -148,4 +148,9 @@ The shown animal list will filter available animals and change depending on the 
 <img src="ReadmeImgs/EntityDataBaseDiagram.PNG">
 
 ###### This diagram shows entities with thier fields and relationship of them with Database.
-
+#### PARTICIPATION
+## Borja Castro Cruces
+-Custom Error Page and CustomError Controller
+-Algorithm for search by userSizeHouse and userGarden and match with the best animal for him
+-ModelAttributeController
+-Class and Template Diagrams
