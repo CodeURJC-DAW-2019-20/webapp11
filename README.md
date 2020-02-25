@@ -141,3 +141,7 @@ The shown animal list will filter available animals and change depending on the 
 ###### This diagram shows how the navigation in our aplication is intended to be.
 <img src= "ReadmeImgs/Untitled Diagram (3).png">
 ###### This diagram shows the differents templates, controller and services used in the web server
+## Entity Diagram
+<img src="ReadmeImgs/EntityDataBaseDiagram.PNG">
+###### This diagram shows entities with thier fields and relationship of them with Database.
+
