@@ -157,19 +157,19 @@ The shown animal list will filter available animals and change depending on the 
 -Class and Template Diagrams
 
 ### Arshia Ambar Saleem
--Add Animals to adopt
--Show Animal into animal page
--Pagination
--Graph
--Entity Diagram
--Filter Animal (search by type, search by name)
+- Add Animals to adopt
+- Show Animal into animal page
+- Pagination
+- Graph
+- Entity Diagram
+- Filter Animal (search by type, search by name)
 
 ### Marina Fernandez
--Adoption finished implementation
--Animal Carusel implemented and animal profile revision
--User Profile finished with gallery implemented
--Mailing implementation
--Navigation repaired and controller managing
+- Adoption finished implementation
+- Animal Carusel implemented and animal profile revision
+- User Profile finished with gallery implemented
+- Mailing implementation
+- Entity relations implemented
 
 ### Rodrigo Cadena
 - User creation
