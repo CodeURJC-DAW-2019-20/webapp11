@@ -39,6 +39,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/animalform").hasRole("SHELTER");
 		http.authorizeRequests().antMatchers("/createAnimal").hasRole("SHELTER");
 		http.authorizeRequests().antMatchers("/request").hasRole("SHELTER");
+		http.authorizeRequests().antMatchers("/evaluateAdoption").hasRole("SHELTER");
 		
 		// Login form
 	    http.formLogin().loginPage("/");
