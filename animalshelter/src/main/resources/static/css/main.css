@@ -12,6 +12,14 @@
   color: #fff;
 }
 
+#logout{
+	color: #fff; 
+	font-size: .8em;     
+	background: none;
+    border: 0;     
+    cursor: pointer;
+}
+
 ::selection {
   background-color: #fab700;
   color: #fff;

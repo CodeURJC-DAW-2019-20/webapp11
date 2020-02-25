@@ -33,18 +33,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-	
-		// Public pages
-		http.authorizeRequests().antMatchers(resources).permitAll();
-		http.authorizeRequests().antMatchers("/").permitAll();
-		http.authorizeRequests().antMatchers("/login").permitAll();
-		http.authorizeRequests().antMatchers("/animals").permitAll();
-		http.authorizeRequests().antMatchers("/contact").permitAll();
-		http.authorizeRequests().antMatchers("/animalview").permitAll();
-		http.authorizeRequests().antMatchers("/signuser").permitAll();
-		http.authorizeRequests().antMatchers("/signshelter").permitAll();
-		http.authorizeRequests().antMatchers("/createShelter").permitAll();
-		http.authorizeRequests().antMatchers("/createUser").permitAll();
 		
 		// URLs that need authentication to access to it
 		http.authorizeRequests().antMatchers("/profile").hasRole("USER");
@@ -64,9 +52,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.logout().logoutUrl("/logout");
         http.logout().logoutSuccessUrl("/");
 	
-			
-		// Disable CSRF at the moment
-		http.csrf().disable();
 	}
  
 }
