@@ -154,3 +154,10 @@ The shown animal list will filter available animals and change depending on the 
 -Algorithm for search by userSizeHouse and userGarden and match with the best animal for him
 -ModelAttributeController
 -Class and Template Diagrams
+## Arshia Ambar Saleem
+-Add Animals to adopt
+-Show Animal into animal page
+-Pagination
+-Graph
+-Entity Diagram
+-Filter Animal (search by type, search by name)
