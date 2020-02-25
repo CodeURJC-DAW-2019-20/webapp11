@@ -148,16 +148,32 @@ The shown animal list will filter available animals and change depending on the 
 <img src="ReadmeImgs/EntityDataBaseDiagram.PNG">
 
 ###### This diagram shows entities with thier fields and relationship of them with Database.
-#### PARTICIPATION
-## Borja Castro Cruces
+## PARTICIPATION
+
+### Borja Castro Cruces
 -Custom Error Page and CustomError Controller
 -Algorithm for search by userSizeHouse and userGarden and match with the best animal for him
 -ModelAttributeController
 -Class and Template Diagrams
-## Arshia Ambar Saleem
+
+### Arshia Ambar Saleem
 -Add Animals to adopt
 -Show Animal into animal page
 -Pagination
 -Graph
 -Entity Diagram
 -Filter Animal (search by type, search by name)
+
+### Marina Fernandez
+-Adoption finished implementation
+-Animal Carusel implemented and animal profile revision
+-User Profile finished with gallery implemented
+-Mailing implementation
+-Navigation repaired and controller managing
+
+### Rodrigo Cadena
+- User creation
+- CSRF implementation
+- Security BCrypt configuration
+- https on port 8443
+- Session scope component to save logged user/shelter
