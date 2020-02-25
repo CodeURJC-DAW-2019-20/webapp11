@@ -151,10 +151,10 @@ The shown animal list will filter available animals and change depending on the 
 ## PARTICIPATION
 
 ### Borja Castro Cruces
--Custom Error Page and CustomError Controller
--Algorithm for search by userSizeHouse and userGarden and match with the best animal for him
--ModelAttributeController
--Class and Template Diagrams
+- Custom Error Page and CustomError Controller
+- Algorithm for search by userSizeHouse and userGarden and match with the best animal for him
+- ModelAttributeController
+- Class and Template Diagrams
 
 ### Arshia Ambar Saleem
 - Add Animals to adopt
