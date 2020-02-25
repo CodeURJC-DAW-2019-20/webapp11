@@ -54,9 +54,18 @@
 	</div>
 </form>
 {{/logged}}
-<div class="hola" id="myList">
-	{{#animal}} <a href="animal/{{idAnimal}}"><img class="allimages"
-		src='/images/animal/image-{{idAnimal}}.jpg' alt=""></img></a> {{/animal}}
+<div class="container">
+	<div class="row">
+		{{#animal}}
+
+		<div class="single-image-carusel">
+			<a href="animal/{{idAnimal}}"> <img class="img-fluid"
+				src='/images/animal/image-{{idAnimal}}.jpg' width="300px"
+				height="400px"></img></a>
+		</div>
+
+		{{/animal}}
+	</div>
 </div>
 <button id="loadMore" class="genric-btn primary circle"
 	style="width: 125px">Load More</button>
@@ -65,11 +74,6 @@
 		<span class="spinner"></span>
 	</div>
 </div>
-
-
-
-
-
 
 
 

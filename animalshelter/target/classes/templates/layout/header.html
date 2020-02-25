@@ -59,10 +59,7 @@
 						<li class="menu-has-children"><a href="/contact">CONTACT
 								US</a></li>
 						{{#logged}}
-						<li class="menu-has-children"><form action="/logout" method="post">
-							<input id="logout" type="submit" value="LOG OUT"/>
-							<input type="hidden" name="_csrf" value="{{token}}"/>
-						</form></li>
+							<li class="menu-has-children"><a href="/logout">LOG OUT</a></li>
 						{{/logged}}
 						{{^logged}}
 						<li><a href="#"
@@ -79,7 +76,6 @@
 											<label>Password</label> <input type="password" name="password">
 										</div>
 										<input type="submit" value="Entrar"> 
-										<input type="hidden" name="_csrf" value="{{token}}"/>
 									</form>
 										<a class="genric-btn primary circle" href="/signuser">NEW
 											USER</a><br> <a class="genric-btn primary circle"

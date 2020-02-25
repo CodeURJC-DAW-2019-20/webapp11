@@ -1,19 +1,17 @@
 package es.sidelab.animalshelter.controllers;
-
 import java.time.LocalDate;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import es.sidelab.animalshelter.Adoption;
-import es.sidelab.animalshelter.AdoptionRepository;
 import es.sidelab.animalshelter.Animal;
 import es.sidelab.animalshelter.AnimalRepository;
 import es.sidelab.animalshelter.Graph;
@@ -23,6 +21,8 @@ import es.sidelab.animalshelter.WebUser;
 import es.sidelab.animalshelter.UserGalleryPhoto;
 import es.sidelab.animalshelter.UserGalleryPhotoRepository;
 import es.sidelab.animalshelter.WebUserRepository;
+import es.sidelab.animalshelter.Adoption;
+import es.sidelab.animalshelter.AdoptionRepository;
 
 @Controller
 public class MainController extends ModelAttributeController {
@@ -40,6 +40,7 @@ public class MainController extends ModelAttributeController {
 	private ShelterRepository shelterRepository;
 	@Autowired
 	private AdoptionRepository adoptionRepository;
+	
 
 	@PostConstruct
 	public void init() {
@@ -74,34 +75,38 @@ public class MainController extends ModelAttributeController {
 		animalRepository.save(animal2);
 		Animal animal3 = new Animal("Peter", 2, "reptile", "m", "Very good behaoviur of this animal");
 		animal3.setShelterOwner(shelter1);
-		animal3.setAnimalPhoto("image-8.jpg");
+		animal3.setAnimalPhoto("image-8.jpg"); // Cambiar foto
 		animalRepository.save(animal3);
+		animalRepository.save(animal3);
+        Adoption adoption1 = new Adoption(true);
+adoption1.setAnimal(animal1);
+adoption1.setUser(user1);
+adoptionRepository.save(adoption1);
 	}
 
 	@RequestMapping("/")
 	public String homeView(Model model, HttpServletRequest request) {
 		List<String> carusel = animalRepository.getAllAnimalPhotos();
 		model.addAttribute("carusel", carusel);
-		this.adoptedAnimals(model);
-
+		  this.adoptedAnimals(model);
 		return "index";
 	}
 
 	public void adoptedAnimals(Model model) {
 		Map<String, Integer> map = new LinkedHashMap<String, Integer>();
 		List<Adoption> adoptionList = adoptionRepository.findAll();
-		Adoption lastAdoption = adoptionList.get(adoptionList.size() - 1);
-		// Actual Month
+		Adoption lastAdoption = adoptionList.get(adoptionList.size()-1);
+		//Actual Month
 		LocalDate date = lastAdoption.getAdoptionDate().toLocalDate();
-		// -1
+		//-1
 		LocalDate date1 = date.minusMonths(1);
-		// -2
+		//-2
 		LocalDate date2 = date1.minusMonths(1);
-		// -3
+		//-3
 		LocalDate date3 = date2.minusMonths(1);
-		// -4
+		//-4
 		LocalDate date4 = date3.minusMonths(1);
-		// -5
+		//-5
 		LocalDate date5 = date4.minusMonths(1);
 		map.put(date.getMonth().toString(), 0);
 		map.put(date1.getMonth().toString(), 0);
@@ -112,7 +117,7 @@ public class MainController extends ModelAttributeController {
 
 		for (Adoption adoption : adoptionList) {
 			String curr_month = adoption.getAdoptionDate().toLocalDate().getMonth().toString();
-			if (map.containsKey(curr_month)) {
+			if(map.containsKey(curr_month)) {
 				Integer value = map.get(curr_month);
 				value++;
 				map.replace(curr_month, map.get(curr_month), value);
@@ -120,13 +125,15 @@ public class MainController extends ModelAttributeController {
 		}
 		System.out.println(map);
 		int number = 1;
-		for (Map.Entry<String, Integer> myMap : map.entrySet()) {
-			Graph myGraph = new Graph(myMap.getKey(), myMap.getValue());
+		for(Map.Entry<String,Integer> myMap : map.entrySet()) {
+			Graph myGraph = new Graph(myMap.getKey(),myMap.getValue());
 			model.addAttribute(String.valueOf(number), myGraph);
 			number++;
-
+			
 		}
-
+		
+		
+		
 	}
 
 }

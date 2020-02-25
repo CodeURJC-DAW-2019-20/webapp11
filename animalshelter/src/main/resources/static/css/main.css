@@ -12,14 +12,6 @@
   color: #fff;
 }
 
-#logout{
-	color: #fff; 
-	font-size: .8em;     
-	background: none;
-    border: 0;     
-    cursor: pointer;
-}
-
 ::selection {
   background-color: #fab700;
   color: #fff;
@@ -4421,7 +4413,6 @@ body.mobile-nav-active #mobile-nav-toggle {
 .hola{
     width: 1100px;
 }
-
 #q-graph {
   display: block; /* fixes layout wonkiness in FF1.5 */
   position: relative; 
@@ -4582,6 +4573,11 @@ font-weight: normal; color: grey;}
     margin-left: 200px;
     margin-bottom: 100px;
 }
+/*
+################
+               End Blog Details  Page style
+################
+*/
 /*
 ################
                End Blog Details  Page style
