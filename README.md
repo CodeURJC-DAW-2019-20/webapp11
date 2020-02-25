@@ -139,3 +139,5 @@ The shown animal list will filter available animals and change depending on the 
 <img src="ReadmeImgs/diagram.jpg">
 
 ###### This diagram shows how the navigation in our aplication is intended to be.
+<img src= "ReadmeImgs/Untitled Diagram (2).png">
+###### This diagram shows the differents templates, controller and services used in the web server
