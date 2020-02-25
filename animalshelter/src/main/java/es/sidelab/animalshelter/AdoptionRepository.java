@@ -8,4 +8,6 @@ public interface AdoptionRepository extends JpaRepository<Adoption, Long> {
 	List<Adoption> findByAdoptionDate(Date adoptionDate);
 
 	List<Adoption> findByInCourse(boolean inCourse);
+	
+	Adoption findByAnimal(Animal animal);
 }

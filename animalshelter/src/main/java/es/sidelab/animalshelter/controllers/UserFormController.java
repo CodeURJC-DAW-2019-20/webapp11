@@ -10,12 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import es.sidelab.animalshelter.ShelterRepository;
-import es.sidelab.animalshelter.UserShelterComponent;
 import es.sidelab.animalshelter.WebUser;
 import es.sidelab.animalshelter.WebUserRepository;
 
 @Controller
-public class UserFormController {
+public class UserFormController extends ModelAttributeController {
 
 	@Autowired
 	private WebUserRepository userRepository;
@@ -24,15 +23,10 @@ public class UserFormController {
 	private ShelterRepository shelterRepository;
 
 	@Autowired
-	private UserShelterComponent userShelterComponent;
-
-	@Autowired
 	private ImageService imgService;
 
 	@RequestMapping("/signuser")
 	public String signuserView(Model model, HttpServletRequest request) {
-		model.addAttribute("logged", userShelterComponent.isLoggedUser());
-		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
 		return "userform";
 	}
 
@@ -46,9 +40,6 @@ public class UserFormController {
 		if (userRepository.findByUserEmail(userEmail) != null
 				|| shelterRepository.findByShelterEmail(userEmail) != null) {
 
-			model.addAttribute("logged", userShelterComponent.isLoggedUser());
-			model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
-
 			return "userform";
 		} else {
 
@@ -57,8 +48,6 @@ public class UserFormController {
 
 			userRepository.save(user);
 			imgService.saveImage("user", user.getUserId(), userPhoto);
-			model.addAttribute("logged", userShelterComponent.isLoggedUser());
-			model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
 
 			return "index";
 		}

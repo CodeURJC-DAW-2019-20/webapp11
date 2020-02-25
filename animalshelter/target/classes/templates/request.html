@@ -25,11 +25,12 @@
 <section class="cat-list-area section-gap">
 	<div class="container">
 		<div id="myRequestList" class="row">
-		
+
 			{{#animal}}
 			<div class="col-lg-3 col-md-4">
 				<div class="single-cat-list">
-					<img src='/images/animal/{{animalPhoto}}' alt="" width="" class="img-fluid">
+					<img src='/images/animal/{{animalPhoto}}' alt="" width=""
+						class="img-fluid">
 				</div>
 			</div>
 			<div class="col-lg-3 col-md-4">
@@ -39,26 +40,30 @@
 				<p>
 					<b>Age: </b>{{animalAge}}
 				</p>
-				<form action="/evaluateAdoption" class="col-lg-6">
+				<form action="/evaluateAdoption/accept" class="col-lg-6">
 					<div class="form-group">
-						<button type="submit" name="accept" class="genric-btn primary circle "
-							style="width: 125px" onclick="#">Accept</button>
+						<input type="hidden" name="animalName" value="{{animalName}}" />
+						<button type="submit" name="accept"
+							class="genric-btn primary circle " style="width: 125px">Accept</button>
 					</div>
+					<input type="hidden" name="_csrf" value="{{token}}" />
+				</form>
+				<form action="/evaluateAdoption/deny" class="col-lg-6">
 					<div class="form-group">
-						<button type="submit" name="deny" class="genric-btn primary circle"
-							style="width: 125px" onclick="#">Deny</button>
+						<input type="hidden" name="animalName" value="{{animalName}}" />
+						<button type="submit" name="deny"
+							class="genric-btn primary circle" style="width: 125px">Deny</button>
 					</div>
-					<input type="hidden" name="_csrf" value="{{token}}"/>
+					<input type="hidden" name="_csrf" value="{{token}}" />
 				</form>
 				<p>
-					{{#animalAdopted}}
-					<b>Animal actually in adoption... </b>
+					{{#animalAdopted}} <b>Animal actually in adoption... </b>
 					{{/animalAdopted}}
 				</p>
 				<br>
 			</div>
 			{{/animal}}
-			
+
 		</div>
 	</div>
 </section>
@@ -76,3 +81,4 @@
 
 
 {{>layout/footer}}
+

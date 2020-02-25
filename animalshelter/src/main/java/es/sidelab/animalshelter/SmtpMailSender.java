@@ -27,8 +27,10 @@ public class SmtpMailSender {
 
 		helper.setSubject(subject);
 		helper.setTo(to);
-		helper.setText(username + " has requested to adopt: " + animalname + "<br>" + "For more details contact to: " + email, true);// true
-																														// //
+		helper.setText(
+				username + " has requested to adopt: " + animalname + "<br>" + "For more details contact to: " + email,
+				true);// true
+		// //
 		// indicates
 		// // body
 		// // is //
@@ -51,6 +53,40 @@ public class SmtpMailSender {
 																												// body
 																												// is //
 																												// html
+		javaMailSender.send(message);
+	}
+
+	public void sendAccept(String subject, String to) throws MessagingException {
+		MimeMessage message = javaMailSender.createMimeMessage();
+		MimeMessageHelper helper;
+		helper = new MimeMessageHelper(message, true);// true indicates multipart message
+
+		helper.setFrom(from); // <--- THIS IS IMPORTANT
+
+		helper.setSubject(subject);
+		helper.setTo(to);
+		helper.setText("Your adoption request has been accepted by the shelter!!!", true);// true
+																							// indicates
+																							// body
+																							// is //
+																							// html
+		javaMailSender.send(message);
+	}
+
+	public void sendDeny(String subject, String to) throws MessagingException {
+		MimeMessage message = javaMailSender.createMimeMessage();
+		MimeMessageHelper helper;
+		helper = new MimeMessageHelper(message, true);// true indicates multipart message
+
+		helper.setFrom(from); // <--- THIS IS IMPORTANT
+
+		helper.setSubject(subject);
+		helper.setTo(to);
+		helper.setText("Sorry, animal shelter has rejected you adoption request...", true);// true
+																							// indicates
+																							// body
+																							// is //
+																							// html
 		javaMailSender.send(message);
 	}
 }
