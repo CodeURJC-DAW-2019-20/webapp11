@@ -16,59 +16,59 @@
 	</div>
 </section>
 <!-- End banner Area -->
-
-<!-- Start Graph-Body -->
 <section class="Graphs-header">
-	<div class="container">
-		<div class="row d-flex justify-content-center">
-			<div class="menu-content pb-60 col-lg-9">
-				<div class="title text-center">
-					<h1 class="mb-20">Statistics</h1>
-				</div>
-			</div>
-		</div>
-		<div class="container">
-			<form class="col-lg-6">
-				<div class="form-row">
-					<div class="col-3 mb-10">
-						<label for="type-animal">Animal:</label> <select
-							name="typeanimallist" form="carform">
-							<option value="all">All</option>
-							<option value="dog">Dog</option>
-							<option value="cat">Cat</option>
-							<option value="reptile">Reptile</option>
-							<option value="bird">Bird</option>
-							<option value="other">Other</option>
-						</select>
+ <div class="contains">
+        <table id="q-graph">
+        	<div class="row justify-content-center align-items-center">
+           <div class="description">
+					<h4>Adoptions in last six Months</h4>
 					</div>
-					<div class="col-3 mb-10">
-						<label for="month">Month:</label> <select name="typeanimallist"
-							form="carform">
-							<option value="january">January</option>
-							<option value="february">February</option>
-							<option value="march">March</option>
-							<option value="april">April</option>
-							<option value="may">May</option>
-							<option value="june">June</option>
-							<option value="july">July</option>
-							<option value="august">August</option>
-							<option value="september">September</option>
-							<option value="october">October</option>
-							<option value="november">November</option>
-							<option value="december">December</option>
-						</select>
 					</div>
-					<div class="col-3 mb-20">
-						<button type="submit" class="genric-btn primary circle" >Generate</button>
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
+            <thead>
+            <tr>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="qtr" id="q1">
+            <th scope="row">{{1.month}}</th>
+            <td class="sent1 bar" style="height: {{1.count}}%;"><p></p></td>
+            </tr>
+            <tr class="qtr" id="q2">
+            <th scope="row">{{2.month}}</th>
+            <td class="sent2 bar" style="height: {{2.count}}%;"><p></p></td>
+            </tr>
+            <tr class="qtr" id="q3">
+            <th scope="row">{{3.month}}</th>
+            <td class="sent3 bar" style="height: {{3.count}}%;"><p></p></td>
+            </tr>
+            <tr class="qtr" id="q4">
+            <th scope="row">{{4.month}}</th>
+            <td class="sent4 bar" style="height: {{4.count}}%;"><p></p></td>
+            </tr>
+            <tr class="qtr" id="q5">
+            <th scope="row">{{5.month}}</th>
+            <td class="sent5 bar" style="height: {{5.count}}%;"><p></p></td>
+            </tr>
+            <tr class="qtr" id="q6">
+            <th scope="row">{{6.month}}</th>
+            <td class="sent6 bar" style="height: {{6.count}}%;"><p></p></td>
+            </tr>
+            </tbody>
+            </table>
+            
+            <div id="ticks">
+            <div class="tick" style="height: 59px;"><p>100</p></div>
+            <div class="tick" style="height: 59px;"><p>80</p></div>
+            <div class="tick" style="height: 59px;"><p>60</p></div>
+            <div class="tick" style="height: 59px;"><p>40</p></div>
+            <div class="tick" style="height: 59px;"><p>20</p></div>
+            </div>
+
+    </div>
 </section>
-<section class="Graphs-image">
-	<img src="img/abandom-graph.jpg" alt="" class="img-fluid">
-</section>
-<!-- Start Graph-Body -->
+
+
+
 
 {{>layout/footer}}

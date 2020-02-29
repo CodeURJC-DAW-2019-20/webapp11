@@ -88,8 +88,14 @@ adoptionRepository.save(adoption1);
 	public String homeView(Model model, HttpServletRequest request) {
 		List<String> carusel = animalRepository.getAllAnimalPhotos();
 		model.addAttribute("carusel", carusel);
-		  this.adoptedAnimals(model);
+		// this.adoptedAnimals(model);
 		return "index";
+	}
+	@RequestMapping("/stat")
+	public String homeView2(Model model, HttpServletRequest request) {
+		
+		this.adoptedAnimals(model);
+		return "statistics";
 	}
 
 	public void adoptedAnimals(Model model) {
