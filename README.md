@@ -89,7 +89,7 @@ The shown animal list will filter available animals and change depending on the 
 <img src="ReadmeImgs/index.jpg" width="600">
 <img src="ReadmeImgs/index2.jpg" width="600">
 
-###### This is the initial page, wher all users are going to be address when opening our web App, it has a header and footer that is shared with all the other pages.
+###### This is the initial page, wher all users are going to be address when opening our web App, it has a header and footer that is shared with all the other pages and also the graph with adoption statistics is going to be shown.
 
 <img src="ReadmeImgs/animals.jpg" width="600">
 
@@ -130,10 +130,6 @@ The shown animal list will filter available animals and change depending on the 
 <img src="ReadmeImgs/contact.jpg" width="600">
 
 ###### This is the page is for the users of the Web App to get in contact with us.
-
-<img src="ReadmeImgs/graph.jpg" width="600">
-
-###### This page is going to show the graph with adoption statistics.
 
 ## Navigation Diagram
 
