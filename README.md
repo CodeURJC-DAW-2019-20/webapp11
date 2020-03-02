@@ -86,66 +86,67 @@ The shown animal list will filter available animals and change depending on the 
 
 ## Screenshots
 
-<img src="ReadmeImgs/index.jpg">
+<img src="ReadmeImgs/index.jpg" width="600">
+<img src="ReadmeImgs/index2.jpg" width="600">
 
 ###### This is the initial page, wher all users are going to be address when opening our web App, it has a header and footer that is shared with all the other pages.
 
-<img src="ReadmeImgs/animals.jpg">
+<img src="ReadmeImgs/animals.jpg" width="600">
 
 ###### This page is going to show all the images of the animals that have been registered over time.
 
-<img src="ReadmeImgs/animalview.jpg">
+<img src="ReadmeImgs/animalview.jpg" width="600">
 
 ###### In this page the user is going to see the profile of the animal that he wants to adopt.
 
-<img src="ReadmeImgs/profile.jpg">
+<img src="ReadmeImgs/profile.jpg" width="600">
 
 ###### This page is going to show user's profile.
 
-<img src="ReadmeImgs/login.jpg">
+<img src="ReadmeImgs/login.jpg" width="600">
 
 ###### This is where users can log in.
 
-<img src="ReadmeImgs/error.jpg">
+<img src="ReadmeImgs/error.jpg" width="600">
 
 ###### This page is to be shown when an error occurs.
 
-<img src="ReadmeImgs/animalform.jpg">
+<img src="ReadmeImgs/animalform.jpg" width="600">
 
 ###### This page is for registering a new animal to adopt.
 
-<img src="ReadmeImgs/request.jpg">
+<img src="ReadmeImgs/request.jpg" width="600">
 
 ###### This image shows how the request is going to look.
 
-<img src="ReadmeImgs/userform.jpg">
+<img src="ReadmeImgs/userform.jpg" width="600">
 
 ###### This page is to register a new user.
 
-<img src="ReadmeImgs/shelterform.jpg">
+<img src="ReadmeImgs/shelterform.jpg" width="600">
 
 ###### This page is to register a new shelter.
 
-<img src="ReadmeImgs/contact.jpg">
+<img src="ReadmeImgs/contact.jpg" width="600">
 
 ###### This is the page is for the users of the Web App to get in contact with us.
 
-<img src="ReadmeImgs/graph.jpg">
+<img src="ReadmeImgs/graph.jpg" width="600">
 
 ###### This page is going to show the graph with adoption statistics.
 
 ## Navigation Diagram
 
-<img src="ReadmeImgs/diagram.jpg">
+<img src="ReadmeImgs/diagram.jpg" width="600">
 
 ###### This diagram shows how the navigation in our aplication is intended to be.
-<img src= "ReadmeImgs/Untitled Diagram (3).png">
+<img src= "ReadmeImgs/Untitled Diagram (3).png" width="600">
 
 ###### This diagram shows the differents templates, controller and services used in the web server
 
 ## Entity Diagram
 
-<img src="ReadmeImgs/EntityDataBaseDiagram.PNG">
+<img src="ReadmeImgs/EntityDataBaseDiagram.PNG" width="600">
 
 ###### This diagram shows entities with thier fields and relationship of them with Database.
 ## PARTICIPATION
