@@ -42,7 +42,7 @@ public class AnimalFormController extends ModelAttributeController{
 		model.addAttribute("animal", animal);
 		return "animals";
 	}
-
+	
 	@RequestMapping("/animalform")
 	public String animalformView(Model model, HttpServletRequest request) {
 		return "animalform";
@@ -63,7 +63,7 @@ public class AnimalFormController extends ModelAttributeController{
 	}
 
 	@RequestMapping(value = "/animal") //Returns the type filter search
-	public String messageCenterHome(Model model, @ModelAttribute("filter") String filter, HttpServletRequest request) {
+	public String animalFilterProcess(Model model, @ModelAttribute("filter") String filter, HttpServletRequest request) {
 		List<Animal> animal = (List<Animal>) animalRepository.findAll();
 		List<Animal> animalFilter = new ArrayList<Animal>(animal);
 		for (Animal mem : animal) {
@@ -86,7 +86,7 @@ public class AnimalFormController extends ModelAttributeController{
 	}
 
 	@RequestMapping(value = "/animalname") //Returns the animalName search
-	public String messageCenterHome2(Model model, @ModelAttribute("hola") String filter, HttpServletRequest request) {
+	public String animalSearchByName(Model model, @ModelAttribute("hola") String filter, HttpServletRequest request) {
 		List<Animal> animal = (List<Animal>) animalRepository.findAll();
 		List<Animal> animalFilter = new ArrayList<Animal>(animal);
 		for (Animal mem : animal) {
@@ -101,7 +101,7 @@ public class AnimalFormController extends ModelAttributeController{
 	}
 	
 	@RequestMapping(value = "/animalspecial") //Returns the best animals for your own space capacitys
-	public String messageCenterHome3(Model model, @ModelAttribute("hola") String filter, HttpServletRequest request) {
+	public String userSuitedanimal(Model model, @ModelAttribute("hola") String filter, HttpServletRequest request) {
 		
 		List<Animal> animalFilter = new ArrayList<Animal>();
 		WebUser userActive=  userShelterComponent.getUser();

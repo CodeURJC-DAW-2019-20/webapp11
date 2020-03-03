@@ -20,7 +20,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class ImageService implements WebMvcConfigurer {
 
-	private static final Path FILES_FOLDER = Paths.get(System.getProperty("user.dir"), "images");
+	private static final Path FILES_FOLDER = Paths.get(System.getProperty("user.dir"),"images");
 
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {

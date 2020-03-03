@@ -59,13 +59,12 @@ public class MainController extends ModelAttributeController {
 		shelterRepository.save(shelter1);
 		shelterRepository.save(shelter2);
 
-		String photo = "/images/user/Scyfer-6.jpg";
+		String photo = "/images/user/a.jpg";
 		UserGalleryPhoto galleryPhoto = new UserGalleryPhoto(photo);
 		galleryPhoto.setGalleryOwner(user2);
 		userGalleryPhotoRepository.save(galleryPhoto);
 
-		Animal animal1 = new Animal("Pipo", 1, "dog", "xl",
-				"This animal was abbandoned in the river, please give it a second opportunity.");
+		Animal animal1 = new Animal("Pipo", 1, "dog", "xl", "This animal was abbandoned in the river, please give it a second opportunity.");
 		animal1.setAnimalPhoto("image-6.jpg");
 		animal1.setShelterOwner(shelter1);
 		Animal animal2 = new Animal("Jen", 3, "cat", "s", "It owner died recently, please help it overcome.");
@@ -78,10 +77,24 @@ public class MainController extends ModelAttributeController {
 		animal3.setAnimalPhoto("image-8.jpg"); // Cambiar foto
 		animalRepository.save(animal3);
 		animalRepository.save(animal3);
+		
+		//Extra 
+		Animal animal4 = new Animal("bal", 2, "dog", "m", "Very intelligent");
+		animal4.setShelterOwner(shelter1);
+		animal4.setAnimalPhoto("image-9.jpg"); // Cambiar foto
+		animalRepository.save(animal4);
+		animalRepository.save(animal4);
+		
         Adoption adoption1 = new Adoption(true);
-adoption1.setAnimal(animal1);
-adoption1.setUser(user1);
-adoptionRepository.save(adoption1);
+        adoption1.setAnimal(animal1);
+        adoption1.setUser(user1);
+        adoptionRepository.save(adoption1);
+        
+        Animal animal5 = new Animal("sweety", 2, "cat", "m", "Very good behaoviur of this animal");
+		animal5.setShelterOwner(shelter1);
+		animal5.setAnimalPhoto("image-10.jpg"); // Cambiar foto
+		animalRepository.save(animal5);
+		animalRepository.save(animal5);
 	}
 
 	@RequestMapping("/")
@@ -129,7 +142,6 @@ adoptionRepository.save(adoption1);
 				map.replace(curr_month, map.get(curr_month), value);
 			}
 		}
-		System.out.println(map);
 		int number = 1;
 		for(Map.Entry<String,Integer> myMap : map.entrySet()) {
 			Graph myGraph = new Graph(myMap.getKey(),myMap.getValue());

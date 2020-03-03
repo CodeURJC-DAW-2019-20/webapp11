@@ -1,5 +1,22 @@
 {{>layout/header}}
+<style>
 
+#iagebox{
+	width: 300px;
+	margin: auto;
+	box-sizing: border-box;
+
+}
+
+.alimages {
+	width: 100px;
+	height: 100px;
+	padding: 5px;
+	box-sizing: border-box;
+
+}
+
+</style>
 <!-- start banner Area -->
 <section class="banner-area relative" id="home">
 	<div class="overlay overlay-bg"></div>
@@ -16,10 +33,10 @@
 	</div>
 </section>
 <!-- Start animal-list Area -->
-<form class="intro" action="/animal">
+<form onsubmit="event.preventDefault()" class="intro" >
 	<div class="form-group">
 		<div class="row">
-			<select name="filter" class="col-lg-8 col-md-3">
+			<select id="filter" class="col-lg-8 col-md-3">
 				<option value="all">All</option>
 				<option value="bird">Bird</option>
 				<option value="cat">Cat</option>
@@ -27,55 +44,43 @@
 				<option value="reptile">Reptile</option>
 				<option value="others">Others</option>
 			</select>
-			<button class="genric-btn primary circle"
+			<button id='buttonFilter' onclick= "applyFilter()" class="genric-btn primary circle"
 				style="float: left; width: 125px; margin-left: 2%;">Apply
 				Filter</button>
 		</div>
 	</div>
 </form>
-<form class="intro2" action="/animalname">
+<form onsubmit="event.preventDefault()" class="intro2" >
 	<div class="form-group">
 		<div class="row">
-			<input name="hola" type="text" class="form-control col-lg-8 col-md-3"
+			<input id="names" type="text" class="form-control col-lg-8 col-md-3"
 				placeholder="Search by name">
-			<button class="genric-btn primary circle"
+			<button id='buttonSearch' onclick= "applySearch()" class="genric-btn primary circle"
 				style="float: left; width: 125px; margin-left: 2%;">Search</button>
 		</div>
 	</div>
 </form>
 {{#logged}}
-<form class="intro2" action="/animalspecial">
-	<div class="form-group">
+<form onsubmit="event.preventDefault()" class="intro2" >
+		<div class="form-group">
 		<div class="row">
-			<button class="genric-btn primary circle"
-				style="float: center; width: 500px; margin-left: 0%;">Suit
-				you</button>
-		</div>
-	</div>
+			<button id='buttonSuit' onclick= "applySuit()" class="genric-btn primary circle"
+				style="float: center; width: 575px; margin-left: 0%;">Suit You</button>
+       </div>
+      </div>
 </form>
 {{/logged}}
+<div id="spinner"></div> 
 <div class="container">
 	<div class="row">
-		{{#animal}}
-
-		<div class="single-image-carusel">
-			<a href="animal/{{idAnimal}}"> <img class="img-fluid"
-				src='/images/animal/image-{{idAnimal}}.jpg' width="300px"
-				height="400px"></img></a>
-		</div>
-
-		{{/animal}}
-	</div>
+	    <div id="imagebox"></div>
+    </div>
 </div>
-<button id="loadMore" class="genric-btn primary circle"
-	style="width: 125px">Load More</button>
-<div id="overlay">
-	<div class="cv-spinner">
-		<span class="spinner"></span>
-	</div>
-</div>
+<button id='add-button' onclick= "showSpinner()" class="genric-btn primary circle" style="float: center; width: 125px; margin-left: 45%;" >Load More</button>
+	
+		
 
-
+		
 
 
 {{>layout/footer}}
