@@ -31,6 +31,7 @@ public class UserGalleryPhoto {
 	public String getPhoto() {
 		return photo;
 	}
+	
 
 	public WebUser getGalleryOwner() {
 		return galleryOwner;

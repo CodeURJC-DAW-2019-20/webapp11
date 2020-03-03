@@ -1,14 +1,22 @@
 package es.sidelab.animalshelter.controllers;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import es.sidelab.animalshelter.Adoption;
+import es.sidelab.animalshelter.AdoptionRepository;
 import es.sidelab.animalshelter.Animal;
 import es.sidelab.animalshelter.AnimalRepository;
 import es.sidelab.animalshelter.UserShelterComponent;
 import es.sidelab.animalshelter.WebUser;
+import es.sidelab.animalshelter.WebUserRepository;
 
 @RestController
 public class myRestcontroller extends ModelAttributeController{
@@ -18,6 +26,13 @@ public class myRestcontroller extends ModelAttributeController{
 	
 	@Autowired
 	private UserShelterComponent loggeduser;
+	
+	@Autowired
+	private AdoptionRepository adoptionRepository;
+
+	@Autowired
+	private WebUserRepository ur;
+	
 	
 	@RequestMapping("/animalfil/{filter}/{count}") //Returns the list of type selected animals
 	public List<Animal> searchByType(@PathVariable String filter, @PathVariable int count) {
@@ -90,6 +105,23 @@ public class myRestcontroller extends ModelAttributeController{
 		
 		return result;
 		
+	}
+	
+	
+	@RequestMapping("/usergallerys/{count}")//this will return list of user's gallery
+	public List<String> profileView(@PathVariable int count) {
+		int counts = count + 3;
+		List<String> result = new ArrayList<>();
+
+		WebUser lu = (WebUser) loggeduser.getLoggedUser();
+
+		List<String> gallery = new ArrayList<>();
+		gallery = ur.getUserGalleryPhotos(lu);
+		for (int i = count; i < gallery.size() && i < counts ; i++) {
+			result.add(gallery.get(i));
+		}
+		
+		return result;
 	}
 	
 }
