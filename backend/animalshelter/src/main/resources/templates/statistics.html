@@ -1,0 +1,74 @@
+{{>layout/header}}
+
+<!-- start banner Area -->
+<section class="banner-area relative" id="home">
+	<div class="overlay overlay-bg"></div>
+	<div class="container">
+		<div class="row d-flex align-items-center justify-content-center">
+			<div class="about-content col-lg-12">
+				<h1 class="text-white">Statistics</h1>
+				<p class="text-white link-nav">
+					<a href="/">Home </a> <span class="lnr lnr-arrow-right"></span> <a
+						href="/statistics"> Statistics</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End banner Area -->
+<section class="Graphs-header">
+ <div class="contains">
+        <table id="q-graph">
+        	<div class="row justify-content-center align-items-center">
+           <div class="description">
+					<h4>Adoptions in last six Months</h4>
+					</div>
+					</div>
+            <thead>
+            <tr>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="qtr" id="q1">
+            <th scope="row">{{1.month}}</th>
+            <td class="sent1 bar" style="height: {{1.count}}%;"><p></p></td>
+            </tr>
+            <tr class="qtr" id="q2">
+            <th scope="row">{{2.month}}</th>
+            <td class="sent2 bar" style="height: {{2.count}}%;"><p></p></td>
+            </tr>
+            <tr class="qtr" id="q3">
+            <th scope="row">{{3.month}}</th>
+            <td class="sent3 bar" style="height: {{3.count}}%;"><p></p></td>
+            </tr>
+            <tr class="qtr" id="q4">
+            <th scope="row">{{4.month}}</th>
+            <td class="sent4 bar" style="height: {{4.count}}%;"><p></p></td>
+            </tr>
+            <tr class="qtr" id="q5">
+            <th scope="row">{{5.month}}</th>
+            <td class="sent5 bar" style="height: {{5.count}}%;"><p></p></td>
+            </tr>
+            <tr class="qtr" id="q6">
+            <th scope="row">{{6.month}}</th>
+            <td class="sent6 bar" style="height: {{6.count}}%;"><p></p></td>
+            </tr>
+            </tbody>
+            </table>
+            
+            <div id="ticks">
+            <div class="tick" style="height: 59px;"><p>100</p></div>
+            <div class="tick" style="height: 59px;"><p>80</p></div>
+            <div class="tick" style="height: 59px;"><p>60</p></div>
+            <div class="tick" style="height: 59px;"><p>40</p></div>
+            <div class="tick" style="height: 59px;"><p>20</p></div>
+            </div>
+
+    </div>
+</section>
+
+
+
+
+{{>layout/footer}}

@@ -1,0 +1,108 @@
+{{>layout/header}}
+
+<!-- start banner Area -->
+<section class="banner-area relative" id="home">
+	<div class="container">
+		<div class="overlay overlay-bg"></div>
+		<div
+			class="row fullscreen d-flex align-items-center justify-content-start">
+			<div class="banner-content col-lg-8 col-md-12">
+				<h1 class="text-uppercase">
+					Adopt animal ,earn Happiness. <br>
+				</h1>
+				<p class="text-white sub-head">So Dont Wait ! Your next step can
+					change the life of an animal.</p>
+			</div>
+		</div>
+	</div>
+</section>
+<br>
+
+<!-- End banner Area -->
+
+<!-- Start image-carusel Area -->
+<section class="image-carusel-area">
+	<div class="container">
+		<div class="row">
+			<div class="active-image-carusel">
+				{{#carusel}}
+				<div class="single-image-carusel">
+					<img class="img-fluid" src="/images/animal/{{.}}" alt="">
+				</div>
+				{{/carusel}}
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End image-carusel Area -->
+
+<!-- Start process Area -->
+<section class="process-area section-gap">
+	<div class="container">
+		<div class="row d-flex justify-content-center">
+			<div class="menu-content pb-60 col-lg-8">
+				<div class="title text-center">
+					<h1 class="mb-10">Process to adopt a pet</h1>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-3 col-md-6">
+				<div class="single-process">
+					<span class="lnr lnr-user"></span> <a href="/signuser">
+						<h4>Register</h4>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="single-process">
+					<span class="lnr lnr-paw"></span> <a href="/animals">
+						<h4>Pet Selection</h4>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="single-process">
+					<span class="lnr lnr-license"></span> <a href="/contact">
+						<h4>Adoption Verification</h4>
+					</a>
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-6">
+				<div class="single-process">
+					<span class="lnr lnr-apartment"></span> <a href="#">
+						<h4>Bring To New Home</h4>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End process Area -->
+
+<!-- Start video Area -->
+<section class="video-area section-gap">
+	<div class="container">
+		<div class="row justify-content-center align-items-center">
+			<div class="col-lg-8">
+				<div
+					class="about-video-right justify-content-center align-items-center d-flex relative">
+					<div class="overlay overlay-bg"></div>
+					<a class="play-btn"
+						href="https://www.youtube.com/watch?v=ARA0AxrnHdM"><img
+						class="img-fluid mx-auto" src="/img/play-btn.png" alt=""></a>
+				</div>
+				<div class="description">
+					<h4>Watch this video how they live here</h4>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End video Area -->
+
+
+
+
+{{>layout/footer}}
