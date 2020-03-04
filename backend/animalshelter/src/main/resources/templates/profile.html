@@ -46,8 +46,7 @@
 		<div class="profile-pictures">
 			<h2>Gallery</h2>
 			<br>
-			<form action="/addImage" method="post" class="col-lg-9"
-				enctype="multipart/form-data">
+			<form action="/addImage" method="post" class="col-lg-9" enctype="multipart/form-data">
 				<div class="form-group">
 					<input type="file" name="galleryPhoto" accept=".jpg, .jpeg"
 						required>
@@ -55,16 +54,20 @@
 						style="width: 125px">Add Image</button>
 				</div>
 			</form>
-			<div class="row">
-				{{#gallery}}
-				<div class="single-image-carusel">
-					<img src="{{.}}" width="500px" height="500px" class="img-fluid">
-				</div>
-				{{/gallery}}
-			</div>
+			
+			<div class="container">
+	         <div class="row">
+	         <div id="imbox"></div>
+            </div>
+            </div>
+            
 			
 	</div>
+	<div id="spinner"></div> 
+	<button id='add-loadbutton' onclick= "showSpinner()" class="genric-btn primary circle" style="float: center; width: 125px; margin-left: 45%;" >Load More</button>
+	
 </section>
+
 <!-- End Data Area -->
 
 {{>layout/footer}}

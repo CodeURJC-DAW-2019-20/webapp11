@@ -1,5 +1,8 @@
 
 let loaded = 0;
+let loaded2 = 0;
+
+
 const spinner = document.getElementById("spinner");//get spinner 
 
 function showSpinner() {//method to show spinner
@@ -8,6 +11,7 @@ function showSpinner() {//method to show spinner
     spinner.className = spinner.className.replace("show", "");
   }, 2000);
 }
+
 
 function hideSpinner() {//method to hide spinner after receiving response
 spinner.className = spinner.className.replace("show", "");
@@ -162,6 +166,52 @@ function loadSearch() {
 	  xhttp.send();
 	  
 }
+function Gallery() {//on window load this method will function ..this will show three first images of users gallery and after by clicking loadmore it will show next three images
+	showSpinner()
+
+	loaded2 = 0;
+	// clears the div
+	document.getElementById("imbox").innerHTML = "";
+	
+	// calls the function with selected value
+	let button = document.getElementById('add-loadbutton');
+	loadGallery();
+	
+	// assign the function to button accordingly
+	let cloneButton = button.cloneNode(true);
+	button.parentNode.replaceChild(cloneButton, button);
+	cloneButton.addEventListener("click", loadGallery)
+	
+}
+function loadGallery() {
+	showSpinner()
+	  
+	  var xhttp = new XMLHttpRequest();
+	  xhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	    	hideSpinner()
+	       loaded2+=3;
+
+	        jsonResponse= JSON.parse(this.responseText);
+	        console.log(jsonResponse)
+	        jsonResponse.forEach((element,index) => { 
+		      console.log(jsonResponse);
+	          let img = document.createElement("img")	  
+	   	      img.src = jsonResponse[index];
+		      img.className = "allimages"
+	   	      document.getElementById("imbox").appendChild(img)
+	   	     
+         })
+	    }
+	  };
+	  
+	  xhttp.open("GET", "/usergallerys/"+loaded2, true);
+	  xhttp.send();
+	  
+}
+window.onload=Gallery();
+
+
 
 
 

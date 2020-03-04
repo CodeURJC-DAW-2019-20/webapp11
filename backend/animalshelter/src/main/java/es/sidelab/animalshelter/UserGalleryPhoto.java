@@ -31,6 +31,7 @@ public class UserGalleryPhoto {
 	public String getPhoto() {
 		return photo;
 	}
+	
 
 	public void setIdPhoto(long idPhoto) {
 		this.idPhoto = idPhoto;

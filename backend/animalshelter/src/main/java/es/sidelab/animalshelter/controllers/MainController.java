@@ -47,6 +47,7 @@ public class MainController extends ModelAttributeController {
 				"correo.usuario@outlook.com", "123");
 		WebUser user2 = new WebUser("Mary", "no", 22, "C/Lambrusco,10", "s", "no", 1, 3,
 				"iho.ladamadeltiempo@gmail.com", "123");
+		
 		userRepository.save(user1);
 		userRepository.save(user2);
 
