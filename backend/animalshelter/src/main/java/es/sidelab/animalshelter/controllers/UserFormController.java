@@ -56,7 +56,7 @@ public class UserFormController {
 					userNumChildren, userNumPeopleInHouse, userEmail, userPassword);
 
 			userRepository.save(user);
-			imgService.saveImage("user", user.getUserId(), userPhoto);
+			imgService.saveImage("user", user.getIdUser(), userPhoto);
 			model.addAttribute("logged", userShelterComponent.isLoggedUser());
 			model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
 

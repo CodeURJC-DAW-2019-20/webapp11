@@ -41,7 +41,7 @@ public class ProfileController extends ModelAttributeController {
 		List<String> gallery = new ArrayList<>();
 		gallery = ur.getUserGalleryPhotos(lu);
 
-		model.addAttribute("id", lu.getUserId());
+		model.addAttribute("id", lu.getIdUser());
 		model.addAttribute("username", lu.getUserName());
 		model.addAttribute("housesize", lu.getUserHouseSize());
 		model.addAttribute("garden", lu.getUserGarden());
@@ -69,7 +69,7 @@ public class ProfileController extends ModelAttributeController {
 		List<String> gallery = new ArrayList<>();
 		gallery = ur.getUserGalleryPhotos(lu);
 
-		model.addAttribute("id", lu.getUserId());
+		model.addAttribute("id", lu.getIdUser());
 		model.addAttribute("username", lu.getUserName());
 		model.addAttribute("housesize", lu.getUserHouseSize());
 		model.addAttribute("garden", lu.getUserGarden());

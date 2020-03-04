@@ -3,8 +3,6 @@ package es.sidelab.animalshelter.api;
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicLong;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,68 +14,62 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-
-import es.sidelab.animalshelter.Adoption;
 import es.sidelab.animalshelter.UserGalleryPhoto;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/user={id}")
 public class APIusergalleryphotoController {
 
 	private Map<Long, UserGalleryPhoto> userphotos = new ConcurrentHashMap<>();
-	private AtomicLong lastIdphotos = new AtomicLong();
 
-	@GetMapping("/")
-	public Collection<Adoption> adoptions() {
-		return adoptions.values();
+	@GetMapping("/gallery")
+	public Collection<UserGalleryPhoto> userphotos() {
+		return userphotos.values();
 	}
 
-	@PostMapping("/")
+	@PostMapping("/addImage")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Item nuevoItem(@RequestBody Item item) {
-
-		long id = lastId.incrementAndGet();
-		item.setId(id);
-		items.put(id, item);
-
-		return item;
+	public UserGalleryPhoto newUserPhoto(@RequestBody UserGalleryPhoto userphoto) {
+		userphotos.put(userphoto.getIdPhoto(), userphoto);
+		return userphoto;
 	}
 
-	@PutMapping("/{id}")
-	public ResponseEntity<Item> actulizaItem(@PathVariable long id, @RequestBody Item itemActualizado) {
+	@PutMapping("/photo={idphoto}")
+	public ResponseEntity<UserGalleryPhoto> updateUserPhoto(@PathVariable long id,
+			@RequestBody UserGalleryPhoto updatedGalleryPhoto) {
 
-		Item item = items.get(id);
+		UserGalleryPhoto userphoto = userphotos.get(id);
 
-		if (item != null) {
+		if (userphoto != null) {
 
-			itemActualizado.setId(id);
-			items.put(id, itemActualizado);
+			updatedGalleryPhoto.setIdPhoto(id);
+			userphotos.put(id, updatedGalleryPhoto);
 
-			return new ResponseEntity<>(itemActualizado, HttpStatus.OK);
+			return new ResponseEntity<>(updatedGalleryPhoto, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 
-	@GetMapping("/{id}")
-	public ResponseEntity<Item> getItem(@PathVariable long id) {
+	@GetMapping("/photo={idphoto}")
+	public ResponseEntity<UserGalleryPhoto> getUserPhoto(@PathVariable long id) {
 
-		Item item = items.get(id);
+		UserGalleryPhoto userphoto = userphotos.get(id);
 
-		if (item != null) {
-			return new ResponseEntity<>(item, HttpStatus.OK);
+		if (userphoto != null) {
+			return new ResponseEntity<>(userphoto, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 
-	@DeleteMapping("/{id}")
-	public ResponseEntity<Item> borraItem(@PathVariable long id) {
+	@DeleteMapping("/photo={idphoto}")
+	public ResponseEntity<UserGalleryPhoto> delteUserPhoto(@PathVariable long id) {
 
-		Item item = items.remove(id);
+		UserGalleryPhoto userphoto = userphotos.remove(id);
 
-		if (item != null) {
-			return new ResponseEntity<>(item, HttpStatus.OK);
+		if (userphoto != null) {
+			return new ResponseEntity<>(userphoto, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}

@@ -137,7 +137,7 @@ public class Animal {
 	public void setAnimalAdopted(boolean adopted) {
 		this.animalAdopted = adopted;
 	}
-	
+
 	public void setAnimalPhoto(String animalPhoto) {
 		this.animalPhoto = animalPhoto;
 	}

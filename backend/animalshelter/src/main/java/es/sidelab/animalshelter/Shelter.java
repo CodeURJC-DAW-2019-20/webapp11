@@ -23,9 +23,9 @@ public class Shelter {
 	private String shelterAdress;
 
 	// CONSTRUCTORS
-	
+
 	public Shelter() {
-		
+
 	}
 
 	public Shelter(String shelterName, String shelterNif, String shelterEmail, String shelterPassword,
@@ -53,6 +53,14 @@ public class Shelter {
 
 	public int getShelterAverageRating() {
 		return shelterAverageRating;
+	}
+
+	public void setIdShelter(long idShelter) {
+		this.idShelter = idShelter;
+	}
+
+	public long getIdShelter() {
+		return idShelter;
 	}
 
 	public String getShelterAdress() {

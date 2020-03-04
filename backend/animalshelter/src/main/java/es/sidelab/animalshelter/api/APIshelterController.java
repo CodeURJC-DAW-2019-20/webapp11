@@ -3,7 +3,6 @@ package es.sidelab.animalshelter.api;
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,63 +17,58 @@ import org.springframework.web.bind.annotation.RestController;
 import es.sidelab.animalshelter.Shelter;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/shelters")
 public class APIshelterController {
 
 	private Map<Long, Shelter> shelters = new ConcurrentHashMap<>();
-	private AtomicLong lastIdshelters = new AtomicLong();
 
 	@GetMapping("/")
-	public Collection<Adoption> adoptions() {
-		return adoptions.values();
+	public Collection<Shelter> shelter() {
+		return shelters.values();
 	}
 
-	@PostMapping("/")
+	@PostMapping("/addShelter")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Item nuevoItem(@RequestBody Item item) {
-
-		long id = lastId.incrementAndGet();
-		item.setId(id);
-		items.put(id, item);
-
-		return item;
+	public Shelter newShelter(@RequestBody Shelter shelter) {
+		shelters.put(shelter.getIdShelter(), shelter);
+		return shelter;
 	}
 
-	@PutMapping("/{id}")
-	public ResponseEntity<Item> actulizaItem(@PathVariable long id, @RequestBody Item itemActualizado) {
+	@PutMapping("/shelter={id}")
+	public ResponseEntity<Shelter> updateShelter(@PathVariable long id, @RequestBody Shelter updatedShelter) {
 
-		Item item = items.get(id);
+		Shelter shelter = shelters.get(id);
 
-		if (item != null) {
+		if (shelter != null) {
 
-			itemActualizado.setId(id);
-			items.put(id, itemActualizado);
+			updatedShelter.setIdShelter(id);
+			shelters.put(id, updatedShelter);
 
-			return new ResponseEntity<>(itemActualizado, HttpStatus.OK);
+			return new ResponseEntity<>(updatedShelter, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 
-	@GetMapping("/{id}")
-	public ResponseEntity<Item> getItem(@PathVariable long id) {
+	@GetMapping("/shelter={id}")
+	public ResponseEntity<Shelter> getShelter(@PathVariable long id) {
 
-		Item item = items.get(id);
+		Shelter shelter = shelters.get(id);
 
-		if (item != null) {
-			return new ResponseEntity<>(item, HttpStatus.OK);
+		if (shelter != null) {
+			return new ResponseEntity<>(shelter, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 
-	@DeleteMapping("/{id}")
-	public ResponseEntity<Item> borraItem(@PathVariable long id) {
+	@DeleteMapping("/shelter={id}")
+	public ResponseEntity<Shelter> deleteShelter(@PathVariable long id) {
 
-		Item item = items.remove(id);
+		Shelter shelter = shelters.remove(id);
 
-		if (item != null) {
-			return new ResponseEntity<>(item, HttpStatus.OK);
+		if (shelter != null) {
+			return new ResponseEntity<>(shelter, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}

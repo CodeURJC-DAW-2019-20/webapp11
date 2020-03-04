@@ -57,6 +57,14 @@ public class Adoption {
 		return inCourse;
 	}
 
+	public void setIdAdoption(long idAdoption) {
+		this.idAdoption = idAdoption;
+	}
+
+	public long getIdAdoption() {
+		return idAdoption;
+	}
+
 	public java.sql.Date getAdoptionDate() {
 		return adoptionDate;
 	}

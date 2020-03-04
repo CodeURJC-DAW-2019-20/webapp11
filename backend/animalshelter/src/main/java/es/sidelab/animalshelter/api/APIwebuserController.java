@@ -3,8 +3,6 @@ package es.sidelab.animalshelter.api;
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicLong;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,68 +14,61 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-
-import es.sidelab.animalshelter.Adoption;
 import es.sidelab.animalshelter.WebUser;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/users")
 public class APIwebuserController {
 
 	private Map<Long, WebUser> webusers = new ConcurrentHashMap<>();
-	private AtomicLong lastIdwebusers = new AtomicLong();
 
 	@GetMapping("/")
-	public Collection<Adoption> adoptions() {
-		return adoptions.values();
+	public Collection<WebUser> webusers() {
+		return webusers.values();
 	}
 
-	@PostMapping("/")
+	@PostMapping("/addUser")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Item nuevoItem(@RequestBody Item item) {
-
-		long id = lastId.incrementAndGet();
-		item.setId(id);
-		items.put(id, item);
-
-		return item;
+	public WebUser newWebUser(@RequestBody WebUser webuser) {
+		webusers.put(webuser.getIdUser(), webuser);
+		return webuser;
 	}
 
-	@PutMapping("/{id}")
-	public ResponseEntity<Item> actulizaItem(@PathVariable long id, @RequestBody Item itemActualizado) {
+	@PutMapping("/user={id}")
+	public ResponseEntity<WebUser> updateWebUser(@PathVariable long id, @RequestBody WebUser updatedWebUser) {
 
-		Item item = items.get(id);
+		WebUser webuser = webusers.get(id);
 
-		if (item != null) {
+		if (webuser != null) {
 
-			itemActualizado.setId(id);
-			items.put(id, itemActualizado);
+			updatedWebUser.setIdUser(id);
+			webusers.put(id, updatedWebUser);
 
-			return new ResponseEntity<>(itemActualizado, HttpStatus.OK);
+			return new ResponseEntity<>(updatedWebUser, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 
-	@GetMapping("/{id}")
-	public ResponseEntity<Item> getItem(@PathVariable long id) {
+	@GetMapping("/user={id}")
+	public ResponseEntity<WebUser> getWebUser(@PathVariable long id) {
 
-		Item item = items.get(id);
+		WebUser webuser = webusers.get(id);
 
-		if (item != null) {
-			return new ResponseEntity<>(item, HttpStatus.OK);
+		if (webuser != null) {
+			return new ResponseEntity<>(webuser, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 
-	@DeleteMapping("/{id}")
-	public ResponseEntity<Item> borraItem(@PathVariable long id) {
+	@DeleteMapping("/user={id}")
+	public ResponseEntity<WebUser> deleteWebUser(@PathVariable long id) {
 
-		Item item = items.remove(id);
+		WebUser webuser = webusers.remove(id);
 
-		if (item != null) {
-			return new ResponseEntity<>(item, HttpStatus.OK);
+		if (webuser != null) {
+			return new ResponseEntity<>(webuser, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}

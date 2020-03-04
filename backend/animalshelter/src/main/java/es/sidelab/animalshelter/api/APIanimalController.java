@@ -3,8 +3,6 @@ package es.sidelab.animalshelter.api;
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicLong;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,68 +14,61 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-
-import es.sidelab.animalshelter.Adoption;
 import es.sidelab.animalshelter.Animal;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/animals")
 public class APIanimalController {
 
 	private Map<Long, Animal> animals = new ConcurrentHashMap<>();
-	private AtomicLong lastIdanimals = new AtomicLong();
 
 	@GetMapping("/")
-	public Collection<Adoption> adoptions() {
-		return adoptions.values();
+	public Collection<Animal> animals() {
+		return animals.values();
 	}
 
-	@PostMapping("/")
+	@PostMapping("/addAnimal")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Item nuevoItem(@RequestBody Item item) {
-
-		long id = lastId.incrementAndGet();
-		item.setId(id);
-		items.put(id, item);
-
-		return item;
+	public Animal newAnimal(@RequestBody Animal animal) {
+		animals.put(animal.getIdAnimal(), animal);
+		return animal;
 	}
 
-	@PutMapping("/{id}")
-	public ResponseEntity<Item> actulizaItem(@PathVariable long id, @RequestBody Item itemActualizado) {
+	@PutMapping("/animal={id}")
+	public ResponseEntity<Animal> updateAnimal(@PathVariable long id, @RequestBody Animal updatedAnimal) {
 
-		Item item = items.get(id);
+		Animal animal = animals.get(id);
 
-		if (item != null) {
+		if (animal != null) {
 
-			itemActualizado.setId(id);
-			items.put(id, itemActualizado);
+			updatedAnimal.setIdAnimal(id);
+			animals.put(id, updatedAnimal);
 
-			return new ResponseEntity<>(itemActualizado, HttpStatus.OK);
+			return new ResponseEntity<>(updatedAnimal, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 
-	@GetMapping("/{id}")
-	public ResponseEntity<Item> getItem(@PathVariable long id) {
+	@GetMapping("/animal={id}")
+	public ResponseEntity<Animal> getAnimal(@PathVariable long id) {
 
-		Item item = items.get(id);
+		Animal animal = animals.get(id);
 
-		if (item != null) {
-			return new ResponseEntity<>(item, HttpStatus.OK);
+		if (animal != null) {
+			return new ResponseEntity<>(animal, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 
-	@DeleteMapping("/{id}")
-	public ResponseEntity<Item> borraItem(@PathVariable long id) {
+	@DeleteMapping("/animal={id}")
+	public ResponseEntity<Animal> deleteAnimal(@PathVariable long id) {
 
-		Item item = items.remove(id);
+		Animal animal = animals.remove(id);
 
-		if (item != null) {
-			return new ResponseEntity<>(item, HttpStatus.OK);
+		if (animal != null) {
+			return new ResponseEntity<>(animal, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}

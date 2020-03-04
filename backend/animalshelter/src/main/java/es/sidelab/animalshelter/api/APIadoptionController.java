@@ -3,7 +3,6 @@ package es.sidelab.animalshelter.api;
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,11 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 import es.sidelab.animalshelter.Adoption;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/adoptions")
 public class APIadoptionController {
 
 	private Map<Long, Adoption> adoptions = new ConcurrentHashMap<>();
-	private AtomicLong lastIdadoptions = new AtomicLong();
 
 	@GetMapping("/")
 	public Collection<Adoption> adoptions() {
@@ -32,22 +30,18 @@ public class APIadoptionController {
 	@PostMapping("/")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Adoption newAdoption(@RequestBody Adoption adoption) {
-
-		long id = lastIdadoptions.incrementAndGet();
-		adoption.setId(id); // Review setId
-		adoptions.put(id, adoption);
-
+		adoptions.put(adoption.getIdAdoption(), adoption);
 		return adoption;
 	}
 
-	@PutMapping("/{id}")
+	@PutMapping("/adoption={id}")
 	public ResponseEntity<Adoption> updateAdoption(@PathVariable long id, @RequestBody Adoption updatedAdoption) {
 
 		Adoption adoption = adoptions.get(id);
 
 		if (adoption != null) {
 
-			updatedAdoption.setId(id); // Review setId
+			updatedAdoption.setIdAdoption(id);
 			adoptions.put(id, updatedAdoption);
 
 			return new ResponseEntity<>(updatedAdoption, HttpStatus.OK);
@@ -56,8 +50,8 @@ public class APIadoptionController {
 		}
 	}
 
-	@GetMapping("/{id}")
-	public ResponseEntity<Adoption> getItem(@PathVariable long id) {
+	@GetMapping("/adoption={id}")
+	public ResponseEntity<Adoption> getAdoption(@PathVariable long id) {
 
 		Adoption adoption = adoptions.get(id);
 
@@ -68,8 +62,8 @@ public class APIadoptionController {
 		}
 	}
 
-	@DeleteMapping("/{id}")
-	public ResponseEntity<Adoption> borraItem(@PathVariable long id) {
+	@DeleteMapping("/adoption={id}")
+	public ResponseEntity<Adoption> deleteAdoption(@PathVariable long id) {
 
 		Adoption adoption = adoptions.remove(id);
 

@@ -95,8 +95,12 @@ public class WebUser {
 
 	// GETTERS AND SETTERS
 
-	public long getUserId() {
+	public long getIdUser() {
 		return idUser;
+	}
+
+	public void setIdUser(long idUser) {
+		this.idUser = idUser;
 	}
 
 	public String getUserName() {
