@@ -1,7 +1,9 @@
 package es.sidelab.animalshelter.api;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -19,8 +21,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-
 import es.sidelab.animalshelter.WebUser;
+
+import es.sidelab.animalshelter.UserGalleryPhoto;
+import es.sidelab.animalshelter.UserGalleryPhotoRepository;
+import es.sidelab.animalshelter.WebUserRepository;
 import es.sidelab.animalshelter.controllers.ImageService;
 
 @RestController
@@ -30,6 +35,12 @@ public class APIwebuserController {
 	private Map<Long, WebUser> webusers = new ConcurrentHashMap<>();
 	@Autowired
 	private ImageService imageService;
+	@Autowired
+	private UserGalleryPhotoRepository ugpr;
+
+
+	@Autowired
+	private WebUserRepository ur;
 
 	@GetMapping("/")
 	public Collection<WebUser> webusers() {
@@ -104,5 +115,37 @@ public class APIwebuserController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
+	@PostMapping("/{id}/gallery")//to post UserPhoto by postman
+	@ResponseStatus(HttpStatus.CREATED)
+	public String setUserGallery(@RequestParam(value="files", required=false) MultipartFile userGallery, @PathVariable long id)  throws IOException {
+		
+		WebUser webuser= webusers.get(id);
+		imageService.saveUserGalleryImage("users", userGallery);
+
+		String photo = "/images/users/" + userGallery.getOriginalFilename();
+		UserGalleryPhoto gp = new UserGalleryPhoto(photo);
+		gp.setGalleryOwner(webuser);
+		ur.save(webuser);
+		ugpr.save(gp);
+		List<String> gallery = new ArrayList<>();
+		gallery = ur.getUserGalleryPhotos(webuser);
+
+		
+		return "succesfull";
+	}
+	@GetMapping("/{id}/gallery")
+	public ResponseEntity<List<String>> getuserGallery(@PathVariable long id) {
+
+		WebUser webuser= webusers.get(id);
+		List<String> gallery = new ArrayList<>();
+		gallery = ur.getUserGalleryPhotos(webuser);
+		
+		if (webuser != null) {
+			return new ResponseEntity<>(gallery, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+	
 
 }
