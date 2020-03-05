@@ -18,6 +18,7 @@ public class WebUser {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long idUser;
 
+    private String userphoto;
 	private String userName;
 	private String userDni;
 	private int userAge;
@@ -146,5 +147,14 @@ public class WebUser {
 	public int getUserCapacity() {
 		return userCapacity;
 	}
+
+	public String getUserphoto() {
+		return userphoto;
+	}
+
+	public void setUserphoto(String userphoto) {
+		this.userphoto = userphoto;
+	}
+	
 
 }
