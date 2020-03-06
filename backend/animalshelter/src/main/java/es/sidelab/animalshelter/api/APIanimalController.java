@@ -3,9 +3,12 @@ package es.sidelab.animalshelter.api;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import es.sidelab.animalshelter.Animal;
+import es.sidelab.animalshelter.AnimalRepository;
 import es.sidelab.animalshelter.controllers.ImageService;
 
 @RestController
@@ -30,6 +34,8 @@ public class APIanimalController {
 	private Map<Long, Animal> animals = new ConcurrentHashMap<>();
 	@Autowired
 	private ImageService imageService;
+	@Autowired
+	private AnimalRepository animalRepository;
 
 
 	@GetMapping("/")
@@ -104,6 +110,14 @@ public class APIanimalController {
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
+	}
+	@GetMapping("/animalPagination")//this method will show all animals by paging 
+	public Page<Animal> findalls(@RequestParam Optional<Integer>page) {
+		
+		Page<Animal> animals=animalRepository.findAll(PageRequest.of(page.orElse(0), 3));
+		
+
+		return animals;
 	}
 
 }
