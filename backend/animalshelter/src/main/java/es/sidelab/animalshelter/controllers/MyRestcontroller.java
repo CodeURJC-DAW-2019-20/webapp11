@@ -19,7 +19,7 @@ import es.sidelab.animalshelter.WebUser;
 import es.sidelab.animalshelter.WebUserRepository;
 
 @RestController
-public class myRestcontroller extends ModelAttributeController{
+public class MyRestcontroller extends ModelAttributeController{
 
 	@Autowired
 	private AnimalRepository animalRepository;
