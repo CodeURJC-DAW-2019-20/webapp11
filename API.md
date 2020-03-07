@@ -11,7 +11,7 @@
  # Configure application properties
  
   - We have to change spring.datasource.url to
-  ```xml jdbc:mysql://<nameForOurDatabase>:3306/animalshelter?useSSL=false&useLegacyDatetimeCode=false&allowPublicKeyRetrieval=true&serverTimezone=UTC```
+  ``` jdbc:mysql://<nameForOurDatabase>:3306/animalshelter?useSSL=false&useLegacyDatetimeCode=false&allowPublicKeyRetrieval=true&serverTimezone=UTC```
   
  # Addition of configuration in Build par of pom.xml and build the proyect as Maven build
   - In the build part of pom.xml , in <plugin> we have to add: 
