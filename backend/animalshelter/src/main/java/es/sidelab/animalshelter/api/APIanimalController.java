@@ -5,7 +5,6 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -22,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-
 import es.sidelab.animalshelter.Animal;
 import es.sidelab.animalshelter.AnimalRepository;
 import es.sidelab.animalshelter.controllers.ImageService;
@@ -37,7 +35,6 @@ public class APIanimalController {
 	@Autowired
 	private AnimalRepository animalRepository;
 
-
 	@GetMapping("/")
 	public Collection<Animal> animals() {
 		return animals.values();
@@ -50,7 +47,7 @@ public class APIanimalController {
 		return animal;
 	}
 
-	@PutMapping("/animal={id}")
+	@PutMapping("/{id}")
 	public ResponseEntity<Animal> updateAnimal(@PathVariable long id, @RequestBody Animal updatedAnimal) {
 
 		Animal animal = animals.get(id);
@@ -66,7 +63,7 @@ public class APIanimalController {
 		}
 	}
 
-	@GetMapping("/animal={id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<Animal> getAnimal(@PathVariable long id) {
 
 		Animal animal = animals.get(id);
@@ -78,7 +75,7 @@ public class APIanimalController {
 		}
 	}
 
-	@DeleteMapping("/animal={id}")
+	@DeleteMapping("/{id}")
 	public ResponseEntity<Animal> deleteAnimal(@PathVariable long id) {
 
 		Animal animal = animals.remove(id);
@@ -89,33 +86,35 @@ public class APIanimalController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-	@PostMapping("/{id}/image")//to post animalPhoto by postman
+
+	@PostMapping("/{id}/image") // to post animalPhoto by postman
 	@ResponseStatus(HttpStatus.CREATED)
-	public Animal setAnimalImage(@RequestParam(value="files", required=false) MultipartFile file, @PathVariable long id)  throws IOException {
-		
+	public Animal setAnimalImage(@RequestParam(value = "files", required = false) MultipartFile file,
+			@PathVariable long id) throws IOException {
+
 		Animal animal = animals.get(id);
 		imageService.saveImage("animals", animal.getIdAnimal(), file);
 		animal.setAnimalPhoto("image-" + animal.getIdAnimal() + ".jpg");
-		
+
 		return animal;
 	}
-	
+
 	@GetMapping("/{id}/image")
 	public ResponseEntity<String> getAnimalimage(@PathVariable long id) {
 
 		Animal animal = animals.get(id);
-		
+
 		if (animal != null) {
 			return new ResponseEntity<>(animal.getAnimalPhoto(), HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-	@GetMapping("/animalPagination")//this method will show all animals by paging 
-	public Page<Animal> findalls(@RequestParam Optional<Integer>page) {
-		
-		Page<Animal> animals=animalRepository.findAll(PageRequest.of(page.orElse(0), 3));
-		
+
+	@GetMapping("/animalPagination") // this method will show all animals by paging
+	public Page<Animal> findalls(@RequestParam Optional<Integer> page) {
+
+		Page<Animal> animals = animalRepository.findAll(PageRequest.of(page.orElse(0), 3));
 
 		return animals;
 	}
