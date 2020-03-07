@@ -1,10 +1,35 @@
-/home/g0n/Escritorio/DAW Marina/webapp11/animalshelter/src/main/java/es/sidelab/animalshelter/App.java
-/home/g0n/Escritorio/DAW Marina/webapp11/animalshelter/src/main/java/es/sidelab/animalshelter/MainController.java
-/home/g0n/Escritorio/DAW Marina/webapp11/animalshelter/src/main/java/es/sidelab/animalshelter/ShelterRepository.java
-/home/g0n/Escritorio/DAW Marina/webapp11/animalshelter/src/main/java/es/sidelab/animalshelter/AdoptionRepository.java
-/home/g0n/Escritorio/DAW Marina/webapp11/animalshelter/src/main/java/es/sidelab/animalshelter/Animal.java
-/home/g0n/Escritorio/DAW Marina/webapp11/animalshelter/src/main/java/es/sidelab/animalshelter/UserRepository.java
-/home/g0n/Escritorio/DAW Marina/webapp11/animalshelter/src/main/java/es/sidelab/animalshelter/Adoption.java
-/home/g0n/Escritorio/DAW Marina/webapp11/animalshelter/src/main/java/es/sidelab/animalshelter/User.java
-/home/g0n/Escritorio/DAW Marina/webapp11/animalshelter/src/main/java/es/sidelab/animalshelter/AnimalRepository.java
-/home/g0n/Escritorio/DAW Marina/webapp11/animalshelter/src/main/java/es/sidelab/animalshelter/Shelter.java
+C:\Users\borjiwis\Documents\GitHub\webapp11\backend\animalshelter\src\main\java\es\sidelab\animalshelter\api\APIanimalController.java
+C:\Users\borjiwis\Documents\GitHub\webapp11\backend\animalshelter\src\main\java\es\sidelab\animalshelter\controllers\EvaluateAdoptionController.java
+C:\Users\borjiwis\Documents\GitHub\webapp11\backend\animalshelter\src\main\java\es\sidelab\animalshelter\FilterAdoption.java
+C:\Users\borjiwis\Documents\GitHub\webapp11\backend\animalshelter\src\main\java\es\sidelab\animalshelter\SecurityConfiguration.java
+C:\Users\borjiwis\Documents\GitHub\webapp11\backend\animalshelter\src\main\java\es\sidelab\animalshelter\api\APIwebuserController.java
+C:\Users\borjiwis\Documents\GitHub\webapp11\backend\animalshelter\src\main\java\es\sidelab\animalshelter\Adoption.java
+C:\Users\borjiwis\Documents\GitHub\webapp11\backend\animalshelter\src\main\java\es\sidelab\animalshelter\api\APIshelterController.java
+C:\Users\borjiwis\Documents\GitHub\webapp11\backend\animalshelter\src\main\java\es\sidelab\animalshelter\ShelterRepository.java
+C:\Users\borjiwis\Documents\GitHub\webapp11\backend\animalshelter\src\main\java\es\sidelab\animalshelter\UserGalleryPhoto.java
+C:\Users\borjiwis\Documents\GitHub\webapp11\backend\animalshelter\src\main\java\es\sidelab\animalshelter\controllers\ContactUsMailController.java
+C:\Users\borjiwis\Documents\GitHub\webapp11\backend\animalshelter\src\main\java\es\sidelab\animalshelter\WebUserRepository.java
+C:\Users\borjiwis\Documents\GitHub\webapp11\backend\animalshelter\src\main\java\es\sidelab\animalshelter\Graph.java
+C:\Users\borjiwis\Documents\GitHub\webapp11\backend\animalshelter\src\main\java\es\sidelab\animalshelter\AdoptionRepository.java
+C:\Users\borjiwis\Documents\GitHub\webapp11\backend\animalshelter\src\main\java\es\sidelab\animalshelter\api\APIadoptionController.java
+C:\Users\borjiwis\Documents\GitHub\webapp11\backend\animalshelter\src\main\java\es\sidelab\animalshelter\controllers\MyErrorController.java
+C:\Users\borjiwis\Documents\GitHub\webapp11\backend\animalshelter\src\main\java\es\sidelab\animalshelter\controllers\ProfileController.java
+C:\Users\borjiwis\Documents\GitHub\webapp11\backend\animalshelter\src\main\java\es\sidelab\animalshelter\Shelter.java
+C:\Users\borjiwis\Documents\GitHub\webapp11\backend\animalshelter\src\main\java\es\sidelab\animalshelter\controllers\ModelAttributeController.java
+C:\Users\borjiwis\Documents\GitHub\webapp11\backend\animalshelter\src\main\java\es\sidelab\animalshelter\WebUser.java
+C:\Users\borjiwis\Documents\GitHub\webapp11\backend\animalshelter\src\main\java\es\sidelab\animalshelter\controllers\RequestController.java
+C:\Users\borjiwis\Documents\GitHub\webapp11\backend\animalshelter\src\main\java\es\sidelab\animalshelter\api\APIusergalleryphotoController.java
+C:\Users\borjiwis\Documents\GitHub\webapp11\backend\animalshelter\src\main\java\es\sidelab\animalshelter\SmtpMailSender.java
+C:\Users\borjiwis\Documents\GitHub\webapp11\backend\animalshelter\src\main\java\es\sidelab\animalshelter\controllers\ImageService.java
+C:\Users\borjiwis\Documents\GitHub\webapp11\backend\animalshelter\src\main\java\es\sidelab\animalshelter\AnimalRepository.java
+C:\Users\borjiwis\Documents\GitHub\webapp11\backend\animalshelter\src\main\java\es\sidelab\animalshelter\controllers\UserFormController.java
+C:\Users\borjiwis\Documents\GitHub\webapp11\backend\animalshelter\src\main\java\es\sidelab\animalshelter\controllers\MainController.java
+C:\Users\borjiwis\Documents\GitHub\webapp11\backend\animalshelter\src\main\java\es\sidelab\animalshelter\App.java
+C:\Users\borjiwis\Documents\GitHub\webapp11\backend\animalshelter\src\main\java\es\sidelab\animalshelter\controllers\AdoptionMailController.java
+C:\Users\borjiwis\Documents\GitHub\webapp11\backend\animalshelter\src\main\java\es\sidelab\animalshelter\Animal.java
+C:\Users\borjiwis\Documents\GitHub\webapp11\backend\animalshelter\src\main\java\es\sidelab\animalshelter\UserShelterAuthProvider.java
+C:\Users\borjiwis\Documents\GitHub\webapp11\backend\animalshelter\src\main\java\es\sidelab\animalshelter\controllers\myRestcontroller.java
+C:\Users\borjiwis\Documents\GitHub\webapp11\backend\animalshelter\src\main\java\es\sidelab\animalshelter\UserShelterComponent.java
+C:\Users\borjiwis\Documents\GitHub\webapp11\backend\animalshelter\src\main\java\es\sidelab\animalshelter\UserGalleryPhotoRepository.java
+C:\Users\borjiwis\Documents\GitHub\webapp11\backend\animalshelter\src\main\java\es\sidelab\animalshelter\controllers\AnimalFormController.java
+C:\Users\borjiwis\Documents\GitHub\webapp11\backend\animalshelter\src\main\java\es\sidelab\animalshelter\controllers\ShelterFormController.java
