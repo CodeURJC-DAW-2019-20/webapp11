@@ -3,7 +3,7 @@
 # Starting MYSQl Database in a docker
   If we don't have mysql image we have to bring it ( ```docker pull mysql```)
   
-  ```docker run --name <nameForOurDatabase> -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=animalshelter -e MYSQL_USER =1234 -e MYSQL_PASSWORD=password -d mysql```
+  ```docker run --name <nameForOurDatabase> -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=animalshelter  -d mysql```
  
   
   With this command we will have mysql database running in a docker
