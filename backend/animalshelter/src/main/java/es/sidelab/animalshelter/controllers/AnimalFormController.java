@@ -18,15 +18,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import es.sidelab.animalshelter.Animal;
-import es.sidelab.animalshelter.AnimalRepository;
 import es.sidelab.animalshelter.UserShelterComponent;
 import es.sidelab.animalshelter.WebUser;
+import es.sidelab.animalshelter.services.AnimalService;
 
 @Controller
 public class AnimalFormController extends ModelAttributeController{
 
 	@Autowired
-	private AnimalRepository animalRepository;
+	private AnimalService service;
 
 	@Autowired
 	private UserShelterComponent userShelterComponent;
@@ -37,7 +37,7 @@ public class AnimalFormController extends ModelAttributeController{
 	@RequestMapping("/animals")
 	public String addAnimal(Model model, HttpServletRequest request) {// in animal html it will include information
 
-		List<Animal> animal = (List<Animal>) animalRepository.findAll();
+		List<Animal> animal = service.findAll();
 
 		model.addAttribute("animal", animal);
 		return "animals";
@@ -54,17 +54,17 @@ public class AnimalFormController extends ModelAttributeController{
 			@RequestParam String animalDescription, @RequestParam String animalSize) throws IOException {
 
 		Animal animal = new Animal(animalName, animalAge, animalType, animalSize, animalDescription);
-		animalRepository.save(animal); // It's saved to get the id
+		service.save(animal); // It's saved to get the id
 		imgService.saveImage("animal", animal.getIdAnimal(), imagenFile);
 		animal.setAnimalPhoto("image-" + animal.getIdAnimal() + ".jpg");
 		animal.setShelterOwner(userShelterComponent.getShelter());
-		animalRepository.save(animal);
+		service.save(animal);
 		return "animalform";
 	}
 
 	@RequestMapping(value = "/animal") //Returns the type filter search
 	public String animalFilterProcess(Model model, @ModelAttribute("filter") String filter, HttpServletRequest request) {
-		List<Animal> animal = (List<Animal>) animalRepository.findAll();
+		List<Animal> animal = service.findAll();
 		List<Animal> animalFilter = new ArrayList<Animal>(animal);
 		for (Animal mem : animal) {
 			if (filter.matches("others")) {
@@ -87,7 +87,7 @@ public class AnimalFormController extends ModelAttributeController{
 
 	@RequestMapping(value = "/animalname") //Returns the animalName search
 	public String animalSearchByName(Model model, @ModelAttribute("hola") String filter, HttpServletRequest request) {
-		List<Animal> animal = (List<Animal>) animalRepository.findAll();
+		List<Animal> animal = (List<Animal>) service.findAll();
 		List<Animal> animalFilter = new ArrayList<Animal>(animal);
 		for (Animal mem : animal) {
 
@@ -105,7 +105,7 @@ public class AnimalFormController extends ModelAttributeController{
 		
 		List<Animal> animalFilter = new ArrayList<Animal>();
 		WebUser userActive=  userShelterComponent.getUser();
-		for (Animal mem : animalRepository.findAll()) {
+		for (Animal mem : service.findAll()) {
 
 			if (mem.getAnimalDimensions()<= userActive.getUserCapacity()) {
 				animalFilter.add(mem);
@@ -119,7 +119,7 @@ public class AnimalFormController extends ModelAttributeController{
 	@GetMapping("/animal/{idAnimal}")
 	public String showAnimalInfo(Model model, @PathVariable long idAnimal, HttpServletRequest request) {
 
-		Optional<Animal> animal = animalRepository.findByIdAnimal(idAnimal);
+		Optional<Animal> animal = Optional.of(service.findByAnimalId(idAnimal));
 		if (animal.isPresent()) {
 			model.addAttribute("animal", animal.get());
 		}

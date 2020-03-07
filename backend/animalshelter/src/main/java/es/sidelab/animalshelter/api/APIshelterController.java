@@ -33,6 +33,15 @@ public class APIshelterController {
 	public Collection<Shelter> shelter() {
 		return service.findAll();
 	}
+	
+	@PostMapping("/")
+	public ResponseEntity<Shelter> newShelter(@RequestBody Shelter shelter) {
+		if (service.save(shelter)) {
+			return new ResponseEntity<>(shelter, HttpStatus.CREATED);
+		} else {
+			return new ResponseEntity<>(HttpStatus.ALREADY_REPORTED);
+		}
+	}
 
 	@PutMapping("/{id}")
 	public ResponseEntity<Shelter> updateShelter(@PathVariable long id, @RequestBody Shelter updatedShelter) {

@@ -2,9 +2,7 @@ package es.sidelab.animalshelter.api;
 
 import java.io.IOException;
 import java.util.Collection;
-import java.util.Map;
 import java.util.Optional;
-import java.util.concurrent.ConcurrentHashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -23,39 +21,48 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import es.sidelab.animalshelter.Animal;
 import es.sidelab.animalshelter.AnimalRepository;
+import es.sidelab.animalshelter.UserShelterComponent;
 import es.sidelab.animalshelter.controllers.ImageService;
+import es.sidelab.animalshelter.services.AnimalService;
 
 @RestController
 @RequestMapping("/api/animals")
 public class APIanimalController {
 
-	private Map<Long, Animal> animals = new ConcurrentHashMap<>();
 	@Autowired
 	private ImageService imageService;
+	
 	@Autowired
 	private AnimalRepository animalRepository;
+	
+	@Autowired
+	private AnimalService animalService;
+	
+	@Autowired
+	private UserShelterComponent loggeduser;
 
 	@GetMapping("/")
 	public Collection<Animal> animals() {
-		return animals.values();
+		return animalService.findAll();
 	}
 
-	@PostMapping("/addAnimal")
+	@PostMapping("/")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Animal newAnimal(@RequestBody Animal animal) {
-		animals.put(animal.getIdAnimal(), animal);
+		animal.setShelterOwner(loggeduser.getShelter());
+		animalService.save(animal);
 		return animal;
 	}
 
 	@PutMapping("/{id}")
 	public ResponseEntity<Animal> updateAnimal(@PathVariable long id, @RequestBody Animal updatedAnimal) {
 
-		Animal animal = animals.get(id);
+		Animal animal = animalService.findByAnimalId(id);
 
 		if (animal != null) {
 
 			updatedAnimal.setIdAnimal(id);
-			animals.put(id, updatedAnimal);
+			animalService.save(updatedAnimal);
 
 			return new ResponseEntity<>(updatedAnimal, HttpStatus.OK);
 		} else {
@@ -66,7 +73,7 @@ public class APIanimalController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Animal> getAnimal(@PathVariable long id) {
 
-		Animal animal = animals.get(id);
+		Animal animal = animalService.findByAnimalId(id);
 
 		if (animal != null) {
 			return new ResponseEntity<>(animal, HttpStatus.OK);
@@ -78,7 +85,7 @@ public class APIanimalController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Animal> deleteAnimal(@PathVariable long id) {
 
-		Animal animal = animals.remove(id);
+		Animal animal = animalService.findByAnimalId(id);
 
 		if (animal != null) {
 			return new ResponseEntity<>(animal, HttpStatus.OK);
@@ -92,17 +99,18 @@ public class APIanimalController {
 	public Animal setAnimalImage(@RequestParam(value = "files", required = false) MultipartFile file,
 			@PathVariable long id) throws IOException {
 
-		Animal animal = animals.get(id);
+		Animal animal = animalService.findByAnimalId(id);
 		imageService.saveImage("animals", animal.getIdAnimal(), file);
 		animal.setAnimalPhoto("image-" + animal.getIdAnimal() + ".jpg");
-
+		animalService.save(animal);
+		
 		return animal;
 	}
 
 	@GetMapping("/{id}/image")
 	public ResponseEntity<String> getAnimalimage(@PathVariable long id) {
 
-		Animal animal = animals.get(id);
+		Animal animal = animalService.findByAnimalId(id);
 
 		if (animal != null) {
 			return new ResponseEntity<>(animal.getAnimalPhoto(), HttpStatus.OK);

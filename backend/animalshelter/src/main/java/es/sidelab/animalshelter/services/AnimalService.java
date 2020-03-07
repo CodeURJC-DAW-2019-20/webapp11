@@ -16,19 +16,11 @@ public class AnimalService {
 		return repository.getOne(id);
 	}
 
-	public Animal findByShelterEmail(String name) {
-		return repository.findByAnimalName(name);
-	}
-
 	public List<Animal> findAll() {
 		return repository.findAll();
 	}
 
 	public void save(Animal animal) {
-		repository.save(animal);
-	}
-
-	public void update(Animal animal) {
 		repository.save(animal);
 	}
 

@@ -26,13 +26,18 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		// URLs that need authentication to access to it
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/users/**").hasRole("USER");
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/**").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/**").hasRole("SHELTER");
 		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/**").hasRole("USER");
 		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/users/**").hasRole("USER");
-		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/createAnimal/**").hasRole("SHELTER");
-		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/animalform/**").hasRole("SHELTER");
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/request/**").hasRole("SHELTER");		
-		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/request/**").hasRole("SHELTER");
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/shelters/**").hasRole("SHELTER");
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/shelters/**").hasRole("SHELTER");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/shelters/**").hasRole("SHELTER");
+		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/shelters/**").hasRole("SHELTER");
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/animals/**").hasAnyRole("USER","SHELTER");
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/animals/**").hasRole("SHELTER");
+		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/animals/**").hasRole("SHELTER");
+		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/animals/**").hasRole("SHELTER");
+
 		
 		// Other URLs can be accessed without authentication
 		http.authorizeRequests().anyRequest().permitAll();
