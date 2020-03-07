@@ -3,6 +3,8 @@ package es.sidelab.animalshelter.api;
 import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,22 +17,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import es.sidelab.animalshelter.UserGalleryPhoto;
+import es.sidelab.animalshelter.WebUserRepository;
+import es.sidelab.animalshelter.services.UserGalleryService;
+
 
 @RestController
 @RequestMapping("/api/user={id}")
+
 public class APIusergalleryphotoController {
 
 	private Map<Long, UserGalleryPhoto> userphotos = new ConcurrentHashMap<>();
+	@Autowired
+	private UserGalleryService service;
+	
+
+	@Autowired
+	private WebUserRepository ur;
 
 	@GetMapping("/gallery")
 	public Collection<UserGalleryPhoto> userphotos() {
-		return userphotos.values();
+		return service.findAll();
 	}
 
 	@PostMapping("/addImage")
 	@ResponseStatus(HttpStatus.CREATED)
 	public UserGalleryPhoto newUserPhoto(@RequestBody UserGalleryPhoto userphoto) {
-		userphotos.put(userphoto.getIdPhoto(), userphoto);
+		service.save(userphoto);
 		return userphoto;
 	}
 
@@ -38,12 +50,12 @@ public class APIusergalleryphotoController {
 	public ResponseEntity<UserGalleryPhoto> updateUserPhoto(@PathVariable long id,
 			@RequestBody UserGalleryPhoto updatedGalleryPhoto) {
 
-		UserGalleryPhoto userphoto = userphotos.get(id);
+		UserGalleryPhoto userphoto = service.findByGalleryId(id);
 
 		if (userphoto != null) {
 
 			updatedGalleryPhoto.setIdPhoto(id);
-			userphotos.put(id, updatedGalleryPhoto);
+			service.update(updatedGalleryPhoto);
 
 			return new ResponseEntity<>(updatedGalleryPhoto, HttpStatus.OK);
 		} else {
@@ -54,7 +66,7 @@ public class APIusergalleryphotoController {
 	@GetMapping("/photo={idphoto}")
 	public ResponseEntity<UserGalleryPhoto> getUserPhoto(@PathVariable long id) {
 
-		UserGalleryPhoto userphoto = userphotos.get(id);
+		UserGalleryPhoto userphoto = service.findByGalleryId(id);
 
 		if (userphoto != null) {
 			return new ResponseEntity<>(userphoto, HttpStatus.OK);
@@ -66,12 +78,12 @@ public class APIusergalleryphotoController {
 	@DeleteMapping("/photo={idphoto}")
 	public ResponseEntity<UserGalleryPhoto> delteUserPhoto(@PathVariable long id) {
 
-		UserGalleryPhoto userphoto = userphotos.remove(id);
-
-		if (userphoto != null) {
+		UserGalleryPhoto userphoto = service.findByGalleryId(id);
+		if (userphoto.getIdPhoto() == id) {
+			service.delete(id);
 			return new ResponseEntity<>(userphoto, HttpStatus.OK);
 		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		}
 	}
 
