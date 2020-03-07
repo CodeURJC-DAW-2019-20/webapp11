@@ -9,30 +9,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import es.sidelab.animalshelter.ShelterRepository;
-import es.sidelab.animalshelter.UserShelterComponent;
+
 import es.sidelab.animalshelter.WebUser;
-import es.sidelab.animalshelter.WebUserRepository;
+import es.sidelab.animalshelter.services.WebUserService;
 
 @Controller
-public class UserFormController {
-
-	@Autowired
-	private WebUserRepository userRepository;
-
-	@Autowired
-	private ShelterRepository shelterRepository;
-
-	@Autowired
-	private UserShelterComponent userShelterComponent;
-
+public class UserFormController extends ModelAttributeController{
+	
 	@Autowired
 	private ImageService imgService;
+	
+	@Autowired
+	private WebUserService userService;
 
 	@RequestMapping("/signuser")
-	public String signuserView(Model model, HttpServletRequest request) {
-		model.addAttribute("logged", userShelterComponent.isLoggedUser());
-		model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
+	public String signuserView(Model model) {
 		return "userform";
 	}
 
@@ -43,24 +34,16 @@ public class UserFormController {
 			@RequestParam int userNumChildren, @RequestParam int userNumPeopleInHouse, @RequestParam String userEmail,
 			@RequestParam String userPassword) throws IOException {
 
-		if (userRepository.findByUserEmail(userEmail) != null
-				|| shelterRepository.findByShelterEmail(userEmail) != null) {
-
-			model.addAttribute("logged", userShelterComponent.isLoggedUser());
-			model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
-
-			return "userform";
-		} else {
-
-			WebUser user = new WebUser(userName, userDni, userAge, userAdress, userHouseSize, userGarden,
-					userNumChildren, userNumPeopleInHouse, userEmail, userPassword);
-
-			userRepository.save(user);
+		WebUser user = new WebUser(userName, userDni, userAge, userAdress, userHouseSize, userGarden,
+				userNumChildren, userNumPeopleInHouse, userEmail, userPassword);
+		
+		if (userService.save(user)) {
 			imgService.saveImage("user", user.getIdUser(), userPhoto);
-			model.addAttribute("logged", userShelterComponent.isLoggedUser());
-			model.addAttribute("isShelter", request.isUserInRole("SHELTER"));
-
+			user.setUserphoto("image-" + user.getIdUser() + ".jpg");
+			userService.update(user);
 			return "index";
+		} else {
+			return "userform";
 		}
 	}
 

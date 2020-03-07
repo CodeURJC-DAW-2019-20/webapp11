@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,89 +25,97 @@ import es.sidelab.animalshelter.WebUser;
 
 import es.sidelab.animalshelter.UserGalleryPhoto;
 import es.sidelab.animalshelter.UserGalleryPhotoRepository;
+import es.sidelab.animalshelter.UserShelterComponent;
 import es.sidelab.animalshelter.WebUserRepository;
 import es.sidelab.animalshelter.controllers.ImageService;
+import es.sidelab.animalshelter.services.WebUserService;
 
 @RestController
 @RequestMapping("/api/users")
 public class APIwebuserController {
 
-	private Map<Long, WebUser> webusers = new ConcurrentHashMap<>();
+	@Autowired
+	private WebUserService userService;
+	
 	@Autowired
 	private ImageService imageService;
+	
 	@Autowired
 	private UserGalleryPhotoRepository ugpr;
-
+	
+	@Autowired
+	private UserShelterComponent loggeduser;
 
 	@Autowired
 	private WebUserRepository ur;
 
 	@GetMapping("/")
 	public Collection<WebUser> webusers() {
-		return webusers.values();
+		return userService.findAll();
 	}
 
-	@PostMapping("/addUser")
-	@ResponseStatus(HttpStatus.CREATED)
-	public WebUser newWebUser(@RequestBody WebUser webuser) {
-		webusers.put(webuser.getIdUser(), webuser);
-		return webuser;
+	@PostMapping("/")
+	public ResponseEntity<WebUser> newWebUser(@RequestBody WebUser webUser) {
+		if (userService.save(webUser)) {
+			return new ResponseEntity<>(webUser, HttpStatus.CREATED);
+		} else {
+			return new ResponseEntity<>(HttpStatus.ALREADY_REPORTED);
+		}
 	}
 
-	@PutMapping("/user={id}")
+	@PutMapping("/{id}")
 	public ResponseEntity<WebUser> updateWebUser(@PathVariable long id, @RequestBody WebUser updatedWebUser) {
 
-		WebUser webuser = webusers.get(id);
+		WebUser webuser = (WebUser) loggeduser.getLoggedUser();
 
-		if (webuser != null) {
+		if (webuser.getIdUser() == id) {
 
 			updatedWebUser.setIdUser(id);
-			webusers.put(id, updatedWebUser);
-
+			userService.update(updatedWebUser);
 			return new ResponseEntity<>(updatedWebUser, HttpStatus.OK);
 		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 		}
 	}
 
-	@GetMapping("/user={id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<WebUser> getWebUser(@PathVariable long id) {
 
-		WebUser webuser = webusers.get(id);
+		WebUser webuser = (WebUser) loggeduser.getLoggedUser();
 
-		if (webuser != null) {
+		if (webuser .getIdUser() == id) {
 			return new ResponseEntity<>(webuser, HttpStatus.OK);
 		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 		}
 	}
 
-	@DeleteMapping("/user={id}")
-	public ResponseEntity<WebUser> deleteWebUser(@PathVariable long id) {
-
-		WebUser webuser = webusers.remove(id);
-
-		if (webuser != null) {
+	@DeleteMapping("/{id}")
+	public ResponseEntity<WebUser> deleteWebUser(@PathVariable long id, HttpSession session) {
+		WebUser webuser = (WebUser) loggeduser.getLoggedUser();
+		if (webuser.getIdUser() == id) {
+			userService.delete(id);
+			session.invalidate();
 			return new ResponseEntity<>(webuser, HttpStatus.OK);
 		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
 		}
 	}
-	@PostMapping("/{id}/image")//to post UserPhoto by postman
+	@PostMapping("/image")//to post UserPhoto by postman
 	@ResponseStatus(HttpStatus.CREATED)
-	public WebUser setUserImage(@RequestParam(value="files", required=false) MultipartFile userPhoto, @PathVariable long id)  throws IOException {
+	public WebUser setUserImage(@RequestParam(value="files", required=false) MultipartFile userPhoto)  throws IOException {
 		
-		WebUser webuser= webusers.get(id);
-		imageService.saveImage("users", webuser.getIdUser(), userPhoto);
-		webuser.setUserphoto("image-" + webuser.getIdUser() + ".jpg");
-		
-		return webuser;
+		WebUser webUser = (WebUser) loggeduser.getLoggedUser();
+		imageService.saveImage("users", webUser.getIdUser(), userPhoto);
+		webUser.setUserphoto("image-" + webUser.getIdUser() + ".jpg");
+		userService.update(webUser);
+		return webUser;
 	}
 	
-	@GetMapping("/{id}/image")
-	public ResponseEntity<String> getuserimage(@PathVariable long id) {
+	@GetMapping("/image")
+	public ResponseEntity<String> getuserimage() {
 
-		WebUser webuser= webusers.get(id);
+		WebUser webuser= (WebUser) loggeduser.getLoggedUser();
 		
 		if (webuser != null) {
 			return new ResponseEntity<>(webuser.getUserphoto(), HttpStatus.OK);
@@ -115,11 +123,11 @@ public class APIwebuserController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-	@PostMapping("/{id}/gallery")//to post UserPhoto by postman
+	@PostMapping("/gallery")//to post UserPhoto by postman
 	@ResponseStatus(HttpStatus.CREATED)
 	public String setUserGallery(@RequestParam(value="files", required=false) MultipartFile userGallery, @PathVariable long id)  throws IOException {
 		
-		WebUser webuser= webusers.get(id);
+		WebUser webuser= (WebUser) loggeduser.getLoggedUser();
 		imageService.saveUserGalleryImage("users", userGallery);
 
 		String photo = "/images/users/" + userGallery.getOriginalFilename();
@@ -133,10 +141,10 @@ public class APIwebuserController {
 		
 		return "succesfull";
 	}
-	@GetMapping("/{id}/gallery")
+	@GetMapping("/gallery")
 	public ResponseEntity<List<String>> getuserGallery(@PathVariable long id) {
 
-		WebUser webuser= webusers.get(id);
+		WebUser webuser= (WebUser) loggeduser.getLoggedUser();
 		List<String> gallery = new ArrayList<>();
 		gallery = ur.getUserGalleryPhotos(webuser);
 		
