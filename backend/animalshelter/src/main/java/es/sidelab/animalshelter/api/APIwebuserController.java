@@ -35,7 +35,7 @@ import es.sidelab.animalshelter.services.WebUserService;
 public class APIwebuserController {
 
 	@Autowired
-	private WebUserService userService;
+	private WebUserService service;
 	
 	@Autowired
 	private ImageService imageService;
@@ -51,12 +51,12 @@ public class APIwebuserController {
 
 	@GetMapping("/")
 	public Collection<WebUser> webusers() {
-		return userService.findAll();
+		return service.findAll();
 	}
 
 	@PostMapping("/")
 	public ResponseEntity<WebUser> newWebUser(@RequestBody WebUser webUser) {
-		if (userService.save(webUser)) {
+		if (service.save(webUser)) {
 			return new ResponseEntity<>(webUser, HttpStatus.CREATED);
 		} else {
 			return new ResponseEntity<>(HttpStatus.ALREADY_REPORTED);
@@ -71,7 +71,7 @@ public class APIwebuserController {
 		if (webuser.getIdUser() == id) {
 
 			updatedWebUser.setIdUser(id);
-			userService.update(updatedWebUser);
+			service.update(updatedWebUser);
 			return new ResponseEntity<>(updatedWebUser, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
@@ -81,12 +81,12 @@ public class APIwebuserController {
 	@GetMapping("/{id}")
 	public ResponseEntity<WebUser> getWebUser(@PathVariable long id) {
 
-		WebUser webuser = (WebUser) loggeduser.getLoggedUser();
+		WebUser webuser = service.findByUserId(id);
 
 		if (webuser .getIdUser() == id) {
 			return new ResponseEntity<>(webuser, HttpStatus.OK);
 		} else {
-			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 
@@ -94,7 +94,7 @@ public class APIwebuserController {
 	public ResponseEntity<WebUser> deleteWebUser(@PathVariable long id, HttpSession session) {
 		WebUser webuser = (WebUser) loggeduser.getLoggedUser();
 		if (webuser.getIdUser() == id) {
-			userService.delete(id);
+			service.delete(id);
 			session.invalidate();
 			return new ResponseEntity<>(webuser, HttpStatus.OK);
 		} else {
@@ -108,7 +108,7 @@ public class APIwebuserController {
 		WebUser webUser = (WebUser) loggeduser.getLoggedUser();
 		imageService.saveImage("users", webUser.getIdUser(), userPhoto);
 		webUser.setUserphoto("image-" + webUser.getIdUser() + ".jpg");
-		userService.update(webUser);
+		service.update(webUser);
 		return webUser;
 	}
 	

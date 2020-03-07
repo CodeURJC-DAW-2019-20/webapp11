@@ -13,6 +13,13 @@ public class ShelterService {
 
 	@Autowired
 	private ShelterRepository repository;
+	
+	@Autowired
+	private WebUserService webUserService;
+	
+	public Shelter findByShelterId(long id) {
+		return repository.getOne(id);
+	}
 
 	public Shelter findByShelterEmail(String email) {
 		return repository.findByShelterEmail(email);
@@ -22,7 +29,17 @@ public class ShelterService {
 		return repository.findAll();
 	}
 
-	public void save(Shelter shelter) {
+	public boolean save(Shelter shelter) {
+		if (repository.findByShelterEmail(shelter.getShelterEmail()) != null
+				|| webUserService.findByUserEmail(shelter.getShelterEmail()) != null) {
+			return false;
+		} else {
+			repository.save(shelter);
+			return true;
+		}
+	}
+	
+	public void update(Shelter shelter) {
 		repository.save(shelter);
 	}
 

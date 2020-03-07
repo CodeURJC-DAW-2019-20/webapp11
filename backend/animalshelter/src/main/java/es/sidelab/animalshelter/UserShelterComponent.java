@@ -9,6 +9,7 @@ public class UserShelterComponent {
 
 	private WebUser user;
 	private Shelter shelter;
+	private String role;
 
 	public Object getLoggedUser() {
 		if(user != null) {
@@ -25,13 +26,19 @@ public class UserShelterComponent {
 	public Shelter getShelter() {
 		return this.shelter;
 	}
+	
+	public String getRole() {
+		return role;
+	}
 
 	public void setLoggedUser(WebUser user) {
 		this.user = user;
+		this.role = "USER";
 	}
 	
 	public void setLoggedUser(Shelter shelter) {
 		this.shelter = shelter;
+		this.role = "SHELTER";
 	}
 
 	public boolean isLoggedUser() {

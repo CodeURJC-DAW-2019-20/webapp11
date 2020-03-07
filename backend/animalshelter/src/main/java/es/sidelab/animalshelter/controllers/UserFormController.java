@@ -20,7 +20,7 @@ public class UserFormController extends ModelAttributeController{
 	private ImageService imgService;
 	
 	@Autowired
-	private WebUserService userService;
+	private WebUserService service;
 
 	@RequestMapping("/signuser")
 	public String signuserView(Model model) {
@@ -37,10 +37,10 @@ public class UserFormController extends ModelAttributeController{
 		WebUser user = new WebUser(userName, userDni, userAge, userAdress, userHouseSize, userGarden,
 				userNumChildren, userNumPeopleInHouse, userEmail, userPassword);
 		
-		if (userService.save(user)) {
+		if (service.save(user)) {
 			imgService.saveImage("user", user.getIdUser(), userPhoto);
 			user.setUserphoto("image-" + user.getIdUser() + ".jpg");
-			userService.update(user);
+			service.update(user);
 			return "index";
 		} else {
 			return "userform";

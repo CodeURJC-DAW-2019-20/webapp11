@@ -10,22 +10,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import es.sidelab.animalshelter.Shelter;
-import es.sidelab.animalshelter.ShelterRepository;
-import es.sidelab.animalshelter.WebUserRepository;
+import es.sidelab.animalshelter.services.ShelterService;
 
 @Controller
 public class ShelterFormController extends ModelAttributeController {
 	
 	@Autowired
-	private WebUserRepository userRepository;
-	
-	@Autowired
-	private ShelterRepository shelterRepository;
-	
-	
+	private ShelterService service;
 
 	@RequestMapping("/signshelter")
-	public String signshelterView(Model model, HttpServletRequest request) {
+	public String signshelterView(Model model) {
 		return "shelterform";
 	}
 
@@ -33,14 +27,13 @@ public class ShelterFormController extends ModelAttributeController {
 	public String createShelter(Model model, HttpServletRequest request, @RequestParam String shelterName, @RequestParam String shelterNif, 
 			@RequestParam String shelterEmail, @RequestParam String shelterPassword,
 			@RequestParam String shelterDescription, @RequestParam String shelterAdress) {
-		if (userRepository.findByUserEmail(shelterEmail) != null
-				|| shelterRepository.findByShelterEmail(shelterEmail) != null) {
-			return "shelterform";
-		} else {
-			Shelter shelter = new Shelter(shelterName, shelterNif, shelterEmail, shelterPassword,
-					shelterDescription, shelterAdress);
-			shelterRepository.save(shelter);
+		Shelter shelter = new Shelter(shelterName, shelterNif, shelterEmail, shelterPassword,
+				shelterDescription, shelterAdress);
+		
+		if (service.save(shelter)) {
 			return "index";
+		} else {
+			return "shelterform";
 		}
 	}
 }
