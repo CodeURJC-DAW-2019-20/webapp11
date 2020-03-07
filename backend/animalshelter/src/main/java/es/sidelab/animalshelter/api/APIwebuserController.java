@@ -74,7 +74,7 @@ public class APIwebuserController {
 			userService.update(updatedWebUser);
 			return new ResponseEntity<>(updatedWebUser, HttpStatus.OK);
 		} else {
-			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		}
 	}
 
@@ -86,7 +86,7 @@ public class APIwebuserController {
 		if (webuser .getIdUser() == id) {
 			return new ResponseEntity<>(webuser, HttpStatus.OK);
 		} else {
-			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		}
 	}
 
@@ -98,7 +98,7 @@ public class APIwebuserController {
 			session.invalidate();
 			return new ResponseEntity<>(webuser, HttpStatus.OK);
 		} else {
-			return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		}
 	}
 	@PostMapping("/image")//to post UserPhoto by postman

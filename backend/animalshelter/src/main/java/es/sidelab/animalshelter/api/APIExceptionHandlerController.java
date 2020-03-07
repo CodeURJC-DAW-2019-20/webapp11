@@ -1,4 +1,4 @@
-package es.sidelab.animalshelter;
+package es.sidelab.animalshelter.api;
 
 import java.util.NoSuchElementException;
 
