@@ -1,12 +1,16 @@
 package es.sidelab.animalshelter.api;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +19,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import es.sidelab.animalshelter.Adoption;
+import es.sidelab.animalshelter.AdoptionRepository;
+import es.sidelab.animalshelter.Animal;
+import es.sidelab.animalshelter.AnimalRepository;
 import es.sidelab.animalshelter.Shelter;
 import es.sidelab.animalshelter.UserShelterComponent;
 import es.sidelab.animalshelter.services.ShelterService;
@@ -22,6 +31,12 @@ import es.sidelab.animalshelter.services.ShelterService;
 @RestController
 @RequestMapping("/api/shelters")
 public class APIshelterController {
+	
+	@Autowired
+	private AnimalRepository animalRepository;
+	
+	@Autowired
+	private AdoptionRepository adoptionRepository;
 
 	@Autowired
 	private ShelterService service;
@@ -84,6 +99,25 @@ public class APIshelterController {
 		} else {
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		}
+	}
+	
+	@GetMapping("/request")
+	public List<Animal> requestView(Model model, HttpServletRequest request) {
+
+		List<Animal> adoptedanimals = animalRepository.getAllAnimalAdopted(true);
+		List<Animal> shelterCorrespondingAnimals = new ArrayList<>();
+		List<Adoption> adoptions = adoptionRepository.findAll();
+		
+		for (Animal a : adoptedanimals) {
+			if (a.getShelterOwner().getShelterEmail().equals(loggeduser.getShelter().getShelterEmail())) {
+				for (Adoption adopt : adoptions) {
+					if (adopt.isInCourse() && adopt.getAnimal().getAnimalName().equals(a.getAnimalName()))
+						shelterCorrespondingAnimals.add(a);
+				}
+			}
+		}
+
+		return shelterCorrespondingAnimals;
 	}
 
 }
