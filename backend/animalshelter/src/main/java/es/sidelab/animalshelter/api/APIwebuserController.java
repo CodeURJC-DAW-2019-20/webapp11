@@ -28,6 +28,7 @@ import es.sidelab.animalshelter.UserGalleryPhotoRepository;
 import es.sidelab.animalshelter.UserShelterComponent;
 import es.sidelab.animalshelter.WebUserRepository;
 import es.sidelab.animalshelter.controllers.ImageService;
+import es.sidelab.animalshelter.services.UserGalleryService;
 import es.sidelab.animalshelter.services.WebUserService;
 
 @RestController
@@ -48,6 +49,8 @@ public class APIwebuserController {
 
 	@Autowired
 	private WebUserRepository ur;
+	@Autowired
+	private UserGalleryService servicegallery;
 
 	@GetMapping("/")
 	public Collection<WebUser> webusers() {
@@ -116,6 +119,7 @@ public class APIwebuserController {
 	public ResponseEntity<String> getuserimage() {
 
 		WebUser webuser= (WebUser) loggeduser.getLoggedUser();
+		service.update(webuser);
 		
 		if (webuser != null) {
 			return new ResponseEntity<>(webuser.getUserphoto(), HttpStatus.OK);
@@ -123,15 +127,17 @@ public class APIwebuserController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
+
 	@PostMapping("/gallery")//to post UserPhoto by postman
 	@ResponseStatus(HttpStatus.CREATED)
-	public String setUserGallery(@RequestParam(value="files", required=false) MultipartFile userGallery, @PathVariable long id)  throws IOException {
+	public String setUserGallery(@RequestParam(value="files", required=false) MultipartFile userGallery)  throws IOException {
 		
 		WebUser webuser= (WebUser) loggeduser.getLoggedUser();
+		service.save(webuser);
 		imageService.saveUserGalleryImage("users", userGallery);
-
 		String photo = "/images/users/" + userGallery.getOriginalFilename();
 		UserGalleryPhoto gp = new UserGalleryPhoto(photo);
+		servicegallery.save(gp);
 		gp.setGalleryOwner(webuser);
 		ur.save(webuser);
 		ugpr.save(gp);
@@ -142,9 +148,11 @@ public class APIwebuserController {
 		return "succesfull";
 	}
 	@GetMapping("/gallery")
-	public ResponseEntity<List<String>> getuserGallery(@PathVariable long id) {
+	public ResponseEntity<List<String>> getuserGallery() {
 
 		WebUser webuser= (WebUser) loggeduser.getLoggedUser();
+		service.save(webuser);
+
 		List<String> gallery = new ArrayList<>();
 		gallery = ur.getUserGalleryPhotos(webuser);
 		
@@ -154,6 +162,8 @@ public class APIwebuserController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
+	
+
 	
 
 }
