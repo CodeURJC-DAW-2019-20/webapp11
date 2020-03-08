@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +27,11 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import es.sidelab.animalshelter.WebUser;
-
+import es.sidelab.animalshelter.Adoption;
+import es.sidelab.animalshelter.AdoptionRepository;
+import es.sidelab.animalshelter.Animal;
+import es.sidelab.animalshelter.AnimalRepository;
+import es.sidelab.animalshelter.SmtpMailSender;
 import es.sidelab.animalshelter.UserGalleryPhoto;
 import es.sidelab.animalshelter.UserGalleryPhotoRepository;
 import es.sidelab.animalshelter.UserShelterComponent;
@@ -36,7 +42,7 @@ import es.sidelab.animalshelter.services.WebUserService;
 
 @RestController
 @RequestMapping("/api/users")
-public class APIwebuserController {
+public class APIWebUserController {
 
 	ObjectMapper objectMapper = new ObjectMapper();
 	
@@ -54,8 +60,18 @@ public class APIwebuserController {
 
 	@Autowired
 	private WebUserRepository ur;
+	
 	@Autowired
 	private UserGalleryService servicegallery;
+	
+	@Autowired
+	SmtpMailSender smtpMailSender;
+
+	@Autowired
+	AnimalRepository animalRepository;
+
+	@Autowired
+	AdoptionRepository adoptionRepository;
 
 	@GetMapping("/")
 	public Collection<WebUser> webusers() {
@@ -150,7 +166,31 @@ public class APIwebuserController {
 		}
 	}
 	
+	@GetMapping("/adopt/{id}")
+	public ResponseEntity<Adoption> requestAdoption(@PathVariable long id) throws MessagingException {
+		
+		WebUser w = loggeduser.getUser();
+		Optional<Animal> optional = animalRepository.findByIdAnimal(id);
+		if(optional.isPresent()) {
+			Animal animal = optional.get();
+			String shelterEmail = animal.getShelterOwner().getShelterEmail();
 
+			Adoption adoption = new Adoption(true);
+			adoption.setAnimal(animal);
+			adoption.setUser(w);
+			adoptionRepository.save(adoption);
+			
+			animal.setAnimalAdopted(true);
+			animalRepository.save(animal);
+
+			smtpMailSender.sendAutoMail(w.getUserName(), animal.getAnimalName(), w.getUserEmail(), "Adoption Request",
+					shelterEmail);
+			
+			return new ResponseEntity<>(adoption, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		
+	}
 	
-
 }
