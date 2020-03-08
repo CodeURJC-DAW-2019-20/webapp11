@@ -17,6 +17,8 @@ import es.sidelab.animalshelter.UserGalleryPhotoRepository;
 import es.sidelab.animalshelter.UserShelterComponent;
 import es.sidelab.animalshelter.WebUser;
 import es.sidelab.animalshelter.WebUserRepository;
+import es.sidelab.animalshelter.services.UserGalleryService;
+import es.sidelab.animalshelter.services.WebUserService;
 
 @Controller
 public class ProfileController extends ModelAttributeController {
@@ -29,6 +31,10 @@ public class ProfileController extends ModelAttributeController {
 
 	@Autowired
 	private ImageService imgService;
+	@Autowired
+	private WebUserService service;
+	@Autowired
+	private UserGalleryService servicegallery;
 
 	@Autowired
 	private WebUserRepository ur;
@@ -37,6 +43,7 @@ public class ProfileController extends ModelAttributeController {
 	public String profileView(Model model, HttpServletRequest request) {
 
 		WebUser lu = (WebUser) loggeduser.getLoggedUser();
+		service.save(lu);
 
 		List<String> gallery = new ArrayList<>();
 		gallery = ur.getUserGalleryPhotos(lu);
@@ -58,6 +65,7 @@ public class ProfileController extends ModelAttributeController {
 			throws IOException {
 
 		WebUser lu = (WebUser) loggeduser.getLoggedUser();
+		service.save(lu);
 
 		imgService.saveUserGalleryImage("user", galleryPhoto);
 
@@ -65,6 +73,7 @@ public class ProfileController extends ModelAttributeController {
 		UserGalleryPhoto gp = new UserGalleryPhoto(photo);
 		gp.setGalleryOwner(lu);
 		ugpr.save(gp);
+		servicegallery.save(gp);
 
 		List<String> gallery = new ArrayList<>();
 		gallery = ur.getUserGalleryPhotos(lu);
