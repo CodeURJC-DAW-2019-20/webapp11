@@ -100,7 +100,8 @@ public class APIanimalController {
 			@PathVariable long id) throws IOException {
 
 		Animal animal = animalService.findByAnimalId(id);
-		imageService.saveImage("animals", animal.getIdAnimal(), file);
+		animalService.save(animal);
+		imageService.saveImage("animal", animal.getIdAnimal(), file);
 		animal.setAnimalPhoto("image-" + animal.getIdAnimal() + ".jpg");
 		animalService.save(animal);
 		
