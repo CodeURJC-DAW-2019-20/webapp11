@@ -156,5 +156,7 @@ public class WebUser {
 		this.userphoto = userphoto;
 	}
 	
-
+	public void encryptPassword() {
+		userPassword = new BCryptPasswordEncoder().encode(userPassword);
+	}
 }

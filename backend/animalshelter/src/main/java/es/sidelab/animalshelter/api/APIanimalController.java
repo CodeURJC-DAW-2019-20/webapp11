@@ -19,6 +19,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import es.sidelab.animalshelter.Animal;
 import es.sidelab.animalshelter.AnimalRepository;
 import es.sidelab.animalshelter.UserShelterComponent;
@@ -29,6 +32,8 @@ import es.sidelab.animalshelter.services.AnimalService;
 @RequestMapping("/api/animals")
 public class APIanimalController {
 
+	ObjectMapper objectMapper = new ObjectMapper();
+	
 	@Autowired
 	private ImageService imageService;
 	
@@ -48,7 +53,12 @@ public class APIanimalController {
 
 	@PostMapping("/")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Animal newAnimal(@RequestBody Animal animal) {
+	public Animal newAnimal(@RequestParam(required=true, value="jsondata")String jsondata, @RequestParam(value="animalPhoto", required=true) MultipartFile animalPhoto) throws IOException{
+		Animal animal = objectMapper.readValue(jsondata, Animal.class);
+		animal.setShelterOwner(loggeduser.getShelter());
+		animalService.save(animal);
+		imageService.saveImage("animals", animal.getIdAnimal(), animalPhoto);
+		animal.setAnimalPhoto("image-" + animal.getIdAnimal() + ".jpg");
 		animal.setShelterOwner(loggeduser.getShelter());
 		animalService.save(animal);
 		return animal;
@@ -92,19 +102,6 @@ public class APIanimalController {
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-	}
-
-	@PostMapping("/{id}/image") // to post animalPhoto by postman
-	@ResponseStatus(HttpStatus.CREATED)
-	public Animal setAnimalImage(@RequestParam(value = "files", required = false) MultipartFile file,
-			@PathVariable long id) throws IOException {
-
-		Animal animal = animalService.findByAnimalId(id);
-		imageService.saveImage("animals", animal.getIdAnimal(), file);
-		animal.setAnimalPhoto("image-" + animal.getIdAnimal() + ".jpg");
-		animalService.save(animal);
-		
-		return animal;
 	}
 
 	@GetMapping("/{id}/image")

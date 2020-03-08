@@ -21,6 +21,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import es.sidelab.animalshelter.WebUser;
 
 import es.sidelab.animalshelter.UserGalleryPhoto;
@@ -34,6 +37,8 @@ import es.sidelab.animalshelter.services.WebUserService;
 @RequestMapping("/api/users")
 public class APIwebuserController {
 
+	ObjectMapper objectMapper = new ObjectMapper();
+	
 	@Autowired
 	private WebUserService service;
 	
@@ -55,8 +60,13 @@ public class APIwebuserController {
 	}
 
 	@PostMapping("/")
-	public ResponseEntity<WebUser> newWebUser(@RequestBody WebUser webUser) {
+	public ResponseEntity<WebUser> newWebUser(@RequestParam(required=true, value="jsondata")String jsondata, @RequestParam(value="userPhoto", required=true) MultipartFile userPhoto) throws IOException{
+		WebUser webUser = objectMapper.readValue(jsondata, WebUser.class);
 		if (service.save(webUser)) {
+			webUser.encryptPassword();
+			imageService.saveImage("users", webUser.getIdUser(), userPhoto);
+			webUser.setUserphoto("image-" + webUser.getIdUser() + ".jpg");
+			service.update(webUser);
 			return new ResponseEntity<>(webUser, HttpStatus.CREATED);
 		} else {
 			return new ResponseEntity<>(HttpStatus.ALREADY_REPORTED);
@@ -101,28 +111,7 @@ public class APIwebuserController {
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		}
 	}
-	@PostMapping("/image")//to post UserPhoto by postman
-	@ResponseStatus(HttpStatus.CREATED)
-	public WebUser setUserImage(@RequestParam(value="files", required=false) MultipartFile userPhoto)  throws IOException {
-		
-		WebUser webUser = (WebUser) loggeduser.getLoggedUser();
-		imageService.saveImage("users", webUser.getIdUser(), userPhoto);
-		webUser.setUserphoto("image-" + webUser.getIdUser() + ".jpg");
-		service.update(webUser);
-		return webUser;
-	}
 	
-	@GetMapping("/image")
-	public ResponseEntity<String> getuserimage() {
-
-		WebUser webuser= (WebUser) loggeduser.getLoggedUser();
-		
-		if (webuser != null) {
-			return new ResponseEntity<>(webuser.getUserphoto(), HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-	}
 	@PostMapping("/gallery")//to post UserPhoto by postman
 	@ResponseStatus(HttpStatus.CREATED)
 	public String setUserGallery(@RequestParam(value="files", required=false) MultipartFile userGallery, @PathVariable long id)  throws IOException {

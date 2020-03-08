@@ -26,7 +26,7 @@ public class LoginController {
 	public ResponseEntity<Object> logIn() {
 		
 		if (!userComponent.isLoggedUser()) {
-			log.info("Not user logged");
+			log.info("No user logged");
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		} else {
 			Object loggedUser = userComponent.getLoggedUser();

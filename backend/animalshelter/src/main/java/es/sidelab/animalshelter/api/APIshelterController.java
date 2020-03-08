@@ -37,6 +37,8 @@ public class APIshelterController {
 	@PostMapping("/")
 	public ResponseEntity<Shelter> newShelter(@RequestBody Shelter shelter) {
 		if (service.save(shelter)) {
+			shelter.encryptPassword();
+			service.update(shelter);
 			return new ResponseEntity<>(shelter, HttpStatus.CREATED);
 		} else {
 			return new ResponseEntity<>(HttpStatus.ALREADY_REPORTED);

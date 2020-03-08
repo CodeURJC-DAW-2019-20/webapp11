@@ -91,4 +91,7 @@ public class Shelter {
 		return shelterDescription;
 	}
 
+	public void encryptPassword() {
+		shelterPassword = new BCryptPasswordEncoder().encode(shelterPassword);
+	}
 }
