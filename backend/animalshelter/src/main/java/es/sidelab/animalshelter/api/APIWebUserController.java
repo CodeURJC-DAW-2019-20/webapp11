@@ -133,7 +133,7 @@ public class APIWebUserController {
 	
 	@PostMapping("/gallery")//to post UserPhoto by postman
 	@ResponseStatus(HttpStatus.CREATED)
-	public String setUserGallery(@RequestParam(value="files", required=false) MultipartFile userGallery)  throws IOException {
+	public List<String> setUserGallery(@RequestParam(value="files", required=false) MultipartFile userGallery)  throws IOException {
 		
 		WebUser webuser= (WebUser) loggeduser.getLoggedUser();
 		service.save(webuser);
@@ -148,8 +148,9 @@ public class APIWebUserController {
 		gallery = ur.getUserGalleryPhotos(webuser);
 
 		
-		return "succesfull";
+		return gallery;
 	}
+	
 	@GetMapping("/gallery")
 	public ResponseEntity<List<String>> getuserGallery() {
 

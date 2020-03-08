@@ -34,7 +34,7 @@ public class APIadoptionController {
 		return adoption;
 	}
 
-	@PutMapping("/adoption={id}")
+	@PutMapping("/{id}")
 	public ResponseEntity<Adoption> updateAdoption(@PathVariable long id, @RequestBody Adoption updatedAdoption) {
 
 		Adoption adoption = adoptions.get(id);
@@ -50,7 +50,7 @@ public class APIadoptionController {
 		}
 	}
 
-	@GetMapping("/adoption={id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<Adoption> getAdoption(@PathVariable long id) {
 
 		Adoption adoption = adoptions.get(id);
@@ -62,7 +62,7 @@ public class APIadoptionController {
 		}
 	}
 
-	@DeleteMapping("/adoption={id}")
+	@DeleteMapping("/{id}")
 	public ResponseEntity<Adoption> deleteAdoption(@PathVariable long id) {
 
 		Adoption adoption = adoptions.remove(id);
