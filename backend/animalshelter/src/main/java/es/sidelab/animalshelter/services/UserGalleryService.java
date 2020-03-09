@@ -12,10 +12,10 @@ import es.sidelab.animalshelter.UserGalleryPhotoRepository;
 public class UserGalleryService {
 	@Autowired
 	private UserGalleryPhotoRepository repository;
+
 	public UserGalleryPhoto findByGalleryId(long id) {
 		return repository.getOne(id);
 	}
-
 
 	public List<UserGalleryPhoto> findAll() {
 		return repository.findAll();

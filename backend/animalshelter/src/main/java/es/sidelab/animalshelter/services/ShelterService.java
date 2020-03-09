@@ -13,10 +13,10 @@ public class ShelterService {
 
 	@Autowired
 	private ShelterRepository repository;
-	
+
 	@Autowired
 	private WebUserService webUserService;
-	
+
 	public Shelter findByShelterId(long id) {
 		return repository.getOne(id);
 	}
@@ -38,7 +38,7 @@ public class ShelterService {
 			return true;
 		}
 	}
-	
+
 	public void update(Shelter shelter) {
 		repository.save(shelter);
 	}
@@ -47,4 +47,3 @@ public class ShelterService {
 		repository.deleteById(id);
 	}
 }
-

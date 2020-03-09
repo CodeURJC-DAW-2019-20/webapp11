@@ -17,11 +17,10 @@ public class WebUserService {
 	@Autowired
 	private ShelterService shelterService;
 
-
 	public WebUser findByUserId(long id) {
 		return repository.findByidUser(id);
 	}
-	
+
 	public WebUser findByUserEmail(String email) {
 		return repository.findByUserEmail(email);
 	}
@@ -40,7 +39,7 @@ public class WebUserService {
 			return true;
 		}
 	}
-	
+
 	public void update(WebUser user) {
 		repository.save(user);
 	}
@@ -49,4 +48,3 @@ public class WebUserService {
 		repository.deleteById(id);
 	}
 }
-

@@ -16,14 +16,13 @@ import es.sidelab.animalshelter.WebUserRepository;
 public class MyRestService {
 	@Autowired
 	private AnimalRepository animalRepository;
-	
+
 	@Autowired
 	private UserShelterComponent loggeduser;
-	
+
 	@Autowired
 	private WebUserRepository ur;
-	
-	
+
 	public List<Animal> searchByType(String filter, int count) {
 		int counts = count + 3;
 		List<Animal> result = new ArrayList<>();
@@ -43,17 +42,15 @@ public class MyRestService {
 				}
 			}
 		}
-		
-		for (int i = count; i < animalFilter.size() && i < counts ; i++) {
+
+		for (int i = count; i < animalFilter.size() && i < counts; i++) {
 			result.add(animalFilter.get(i));
 		}
-		
+
 		return result;
 	}
-	
-	
-	
-	public List<Animal> searchByName(String names, int count ) {
+
+	public List<Animal> searchByName(String names, int count) {
 		int counts = count + 3;
 		System.out.println(counts);
 		List<Animal> result = new ArrayList<>();
@@ -66,35 +63,33 @@ public class MyRestService {
 			}
 		}
 
-		for (int i = count; i < animalSearch.size() && i < counts ; i++) {
+		for (int i = count; i < animalSearch.size() && i < counts; i++) {
 			result.add(animalSearch.get(i));
 		}
-		
+
 		return result;
 	}
-	
-	
+
 	public List<Animal> suitAnimal(int count) {
 		int counts = count + 3;
 		List<Animal> result = new ArrayList<>();
 		List<Animal> animalSuit = (List<Animal>) animalRepository.findAll();
 		List<Animal> suited = new ArrayList<Animal>();
-		WebUser userActive=  loggeduser.getUser();
+		WebUser userActive = loggeduser.getUser();
 		for (Animal mem : animalSuit) {
 
-			if (mem.getAnimalDimensions()<= userActive.getUserCapacity()) {
+			if (mem.getAnimalDimensions() <= userActive.getUserCapacity()) {
 				suited.add(mem);
 			}
 		}
-		for (int i = count; i < suited.size() && i < counts ; i++) {
+		for (int i = count; i < suited.size() && i < counts; i++) {
 			result.add(suited.get(i));
 		}
-		
+
 		return result;
-		
+
 	}
-	
-	
+
 	public List<String> profileView(int count) {
 		int counts = count + 3;
 		List<String> result = new ArrayList<>();
@@ -103,10 +98,10 @@ public class MyRestService {
 
 		List<String> gallery = new ArrayList<>();
 		gallery = ur.getUserGalleryPhotos(lu);
-		for (int i = count; i < gallery.size() && i < counts ; i++) {
+		for (int i = count; i < gallery.size() && i < counts; i++) {
 			result.add(gallery.get(i));
 		}
-		
+
 		return result;
 	}
 }
