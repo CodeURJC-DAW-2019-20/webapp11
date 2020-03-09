@@ -57,7 +57,7 @@ public class APIanimalController {
 		Animal animal = objectMapper.readValue(jsondata, Animal.class);
 		animal.setShelterOwner(loggeduser.getShelter());
 		animalService.save(animal);
-		imageService.saveImage("animals", animal.getIdAnimal(), animalPhoto);
+		imageService.saveImage("animal", animal.getIdAnimal(), animalPhoto);
 		animal.setAnimalPhoto("image-" + animal.getIdAnimal() + ".jpg");
 		animal.setShelterOwner(loggeduser.getShelter());
 		animalService.save(animal);
