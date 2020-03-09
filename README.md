@@ -188,3 +188,12 @@ The shown animal list will filter available animals and change depending on the 
 - [APIusergalleryphotoController.java](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/backend/animalshelter/src/main/java/es/sidelab/animalshelter/api/APIusergalleryphotoController.java)
 - [APIWebUserController.java](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/backend/animalshelter/src/main/java/es/sidelab/animalshelter/api/APIWebUserController.java)
 - [UserGalleryService.java](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/backend/animalshelter/src/main/java/es/sidelab/animalshelter/services/UserGalleryService.java)
+### Borja Castro Cruces
+#### Commits:
+#### Files:
+### Marina Fernandez
+#### Commits:
+#### Files:
+### Rodrigo Cadena
+#### Commits:
+#### Files:
