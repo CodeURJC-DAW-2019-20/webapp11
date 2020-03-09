@@ -2,16 +2,13 @@ package es.sidelab.animalshelter.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import es.sidelab.animalshelter.Adoption;
-import es.sidelab.animalshelter.AdoptionRepository;
 import es.sidelab.animalshelter.Animal;
 import es.sidelab.animalshelter.AnimalRepository;
 import es.sidelab.animalshelter.UserShelterComponent;
@@ -27,9 +24,6 @@ public class MyRestcontroller extends ModelAttributeController{
 	@Autowired
 	private UserShelterComponent loggeduser;
 	
-	@Autowired
-	private AdoptionRepository adoptionRepository;
-
 	@Autowired
 	private WebUserRepository ur;
 	
@@ -108,7 +102,7 @@ public class MyRestcontroller extends ModelAttributeController{
 	}
 	
 	
-	@RequestMapping("/usergallerys/{count}")//this will return list of user's gallery
+	@GetMapping("/usergallerys/{count}")//this will return list of user's gallery
 	public List<String> profileView(@PathVariable int count) {
 		int counts = count + 3;
 		List<String> result = new ArrayList<>();
