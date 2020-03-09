@@ -216,6 +216,8 @@ I mainly initialized the workflow again for the API creating the templates for t
 - [APIusergalleryphotoController.java](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/backend/animalshelter/src/main/java/es/sidelab/animalshelter/api/APIusergalleryphotoController.java)
 
 ### Rodrigo Cadena
+I have participated in the completion of the rest controllers, created services that share similar functions and the security configuration for the API requests.
+
 #### Commits:
 - [Adaptation for web user controller and rest controller](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/6d6d3855ddbfcf5ea9a4de8cb5abbddc47b501ae)
 - [Rest security configuration](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/a8e4b03da595ffc9f8ea6454d232f08ab8882eb0)
