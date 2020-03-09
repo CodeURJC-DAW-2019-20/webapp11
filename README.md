@@ -174,7 +174,9 @@ The shown animal list will filter available animals and change depending on the 
 - Security BCrypt configuration
 - https on port 8443
 - Session scope component to save logged user/shelter
-
+# PHASE 3
+Developing the API REST and Dockerization of the application
+[More detailed information](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/API.md)
 ## PARTICIPATION PHASE 3
 ### Arshia Ambar Saleem
 #### Commits:
@@ -198,8 +200,20 @@ The shown animal list will filter available animals and change depending on the 
 #### Commits:
 #### Files:
 ### Marina Fernandez
+I mainly initialized the workflow again for the API creating the templates for the team, I did collaborate with the services and controllers for the API REST and dockerized the application.
 #### Commits:
+- [Docker final implementation script fixed and working](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/7ba1f6c29eae6f40940cc40bed93a46e278189df)
+- [Docker finished script revision](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/3da876c5f8a58a57e6269449e9367002cb1f2da6)
+- [Animal and Adoption Services implemented ready for API](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/c6b3df80fe6d018f5823fbd6547e4778f2b5b6d2)
+- [API REST first part implementation finished](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/dc6d64c0a1f9b8ee4912ef459b9c5863ccffe1a0)
+- [API REST implementation started and finished adoptions API](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/f66436d226282edb9891b5136e4bd5a846840c09)
 #### Files:
+- [docker-compose.yml](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/docker/docker-compose.yml)
+- [APIanimalController.java](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/backend/animalshelter/src/main/java/es/sidelab/animalshelter/api/APIanimalController.java)
+- [AdoptionService.java](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/backend/animalshelter/src/main/java/es/sidelab/animalshelter/services/AdoptionService.java)
+- [AnimalService.java](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/backend/animalshelter/src/main/java/es/sidelab/animalshelter/services/AnimalService.java)
+- [APIusergalleryphotoController.java](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/backend/animalshelter/src/main/java/es/sidelab/animalshelter/api/APIusergalleryphotoController.java)
+
 ### Rodrigo Cadena
 #### Commits:
 - [Adaptation for web user controller and rest controller](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/6d6d3855ddbfcf5ea9a4de8cb5abbddc47b501ae)
