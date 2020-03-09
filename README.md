@@ -179,6 +179,7 @@ Developing the API REST and Dockerization of the application
 [More detailed information](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/API.md)
 ## PARTICIPATION PHASE 3
 ### Arshia Ambar Saleem
+I have contributed in creating Api rest url to get and post animal, user's profile and user's gallery images.Moreover, i have done Api Rest for Pagination and contributed in creating user's gallery service .
 #### Commits:
 - [Api rest url created to get and post animal Image](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/08ac821722e6f2d837d039555929095ec8900f07)
 
