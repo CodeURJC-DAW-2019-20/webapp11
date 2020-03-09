@@ -3,17 +3,18 @@ package es.sidelab.animalshelter.api;
 import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import es.sidelab.animalshelter.Adoption;
 import es.sidelab.animalshelter.AdoptionRepository;
 import es.sidelab.animalshelter.Animal;
 import es.sidelab.animalshelter.AnimalRepository;
 import es.sidelab.animalshelter.SmtpMailSender;
 
-@Controller
-@RequestMapping("/api/evaluateAdoption")
+@RestController
+@RequestMapping("/api/evaluateadoptions")
 public class APIEvaluateAdoptionController {
 
 	@Autowired

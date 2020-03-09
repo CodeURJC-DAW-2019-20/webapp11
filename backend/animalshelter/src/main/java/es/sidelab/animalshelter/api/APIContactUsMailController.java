@@ -9,9 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
 import es.sidelab.animalshelter.SmtpMailSender;
 
-@Controller
+@RestController
 @RequestMapping("/api/contact")
 public class APIContactUsMailController {
 

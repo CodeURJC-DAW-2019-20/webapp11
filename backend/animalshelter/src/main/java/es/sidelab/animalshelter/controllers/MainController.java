@@ -133,6 +133,7 @@ public class MainController extends ModelAttributeController {
 		map.put(date3.getMonth().toString(), 0);
 		map.put(date4.getMonth().toString(), 0);
 		map.put(date5.getMonth().toString(), 0);
+		
 
 		for (Adoption adoption : adoptionList) {
 			String curr_month = adoption.getAdoptionDate().toLocalDate().getMonth().toString();
@@ -147,7 +148,6 @@ public class MainController extends ModelAttributeController {
 			Graph myGraph = new Graph(myMap.getKey(), myMap.getValue());
 			model.addAttribute(String.valueOf(number), myGraph);
 			number++;
-
 		}
 
 	}
