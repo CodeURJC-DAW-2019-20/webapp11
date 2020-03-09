@@ -83,7 +83,7 @@ public class APIWebUserController {
 		WebUser webUser = objectMapper.readValue(jsondata, WebUser.class);
 		if (service.save(webUser)) {
 			webUser.encryptPassword();
-			imageService.saveImage("users", webUser.getIdUser(), userPhoto);
+			imageService.saveImage("user", webUser.getIdUser(), userPhoto);
 			webUser.setUserphoto("image-" + webUser.getIdUser() + ".jpg");
 			service.update(webUser);
 			return new ResponseEntity<>(webUser, HttpStatus.CREATED);
@@ -138,7 +138,7 @@ public class APIWebUserController {
 		WebUser webuser= (WebUser) loggeduser.getLoggedUser();
 		service.save(webuser);
 		imageService.saveUserGalleryImage("users", userGallery);
-		String photo = "/images/users/" + userGallery.getOriginalFilename();
+		String photo = "/images/user/" + userGallery.getOriginalFilename();
 		UserGalleryPhoto gp = new UserGalleryPhoto(photo);
 		servicegallery.save(gp);
 		gp.setGalleryOwner(webuser);

@@ -174,3 +174,12 @@ The shown animal list will filter available animals and change depending on the 
 - Security BCrypt configuration
 - https on port 8443
 - Session scope component to save logged user/shelter
+
+## PARTICIPATION PHASE 3
+### Arshia Ambar Saleem
+- Api rest url created to get and post animal Image
+- Api rest url created to get and post User Image
+- Api rest url created to get and post User's gallery
+- Api Rest Pagination
+- User gallery service created
+
