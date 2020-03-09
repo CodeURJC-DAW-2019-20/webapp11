@@ -1,9 +1,9 @@
 package es.sidelab.animalshelter.api;
 
 import javax.mail.MessagingException;
-import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,10 +26,10 @@ public class APIEvaluateAdoptionController {
 	@Autowired
 	private AdoptionRepository ap;
 
-	@GetMapping("/accept")
-	public Adoption accept(String animalName, HttpServletRequest request) throws MessagingException {
+	@GetMapping("/accept/{id}")
+	public Adoption accept(@PathVariable long id) throws MessagingException {
 
-		Animal a = ar.findByAnimalName(animalName);
+		Animal a = ar.findById(id).get();
 		Adoption adoption = ap.findByAnimal(a);
 
 		adoption.confirmAdoption();
@@ -40,10 +40,10 @@ public class APIEvaluateAdoptionController {
 		return adoption;
 	}
 
-	@GetMapping("/deny")
-	public Adoption deny(String animalName, HttpServletRequest request) throws MessagingException {
+	@GetMapping("/deny/{id}")
+	public Adoption deny(@PathVariable long id) throws MessagingException {
 
-		Animal a = ar.findByAnimalName(animalName);
+		Animal a = ar.findById(id).get();
 		a.setAnimalAdopted(false);
 		Adoption adoption = ap.findByAnimal(a);
 

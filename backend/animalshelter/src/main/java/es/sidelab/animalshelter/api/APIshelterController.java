@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -102,7 +101,7 @@ public class APIshelterController {
 	}
 	
 	@GetMapping("/request")
-	public List<Animal> requestView(Model model, HttpServletRequest request) {
+	public List<Animal> requestView(Model model) {
 
 		List<Animal> adoptedanimals = animalRepository.getAllAnimalAdopted(true);
 		List<Animal> shelterCorrespondingAnimals = new ArrayList<>();
