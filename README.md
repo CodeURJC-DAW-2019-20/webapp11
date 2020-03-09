@@ -196,4 +196,21 @@ The shown animal list will filter available animals and change depending on the 
 #### Files:
 ### Rodrigo Cadena
 #### Commits:
+- [Adaptation for web user controller and rest controller](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/6d6d3855ddbfcf5ea9a4de8cb5abbddc47b501ae)
+- [Rest security configuration](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/a8e4b03da595ffc9f8ea6454d232f08ab8882eb0)
+
+- [Login controller for API](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/3cccbeed8cb552ffdaf006800145cb70269308e3)
+
+- [animal service adapted for controller and rest controller](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/dc4a9634184c73093ec371db0d7d13a4e8413950)
+
+- [Statistics rest controller for graph](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/8c751450884fe8a06334e548b4d3fd010078b22b)
 #### Files:
+- [ShelterService.java](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/backend/animalshelter/src/main/java/es/sidelab/animalshelter/services/ShelterService.java)
+
+- [WebUserService.java](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/backend/animalshelter/src/main/java/es/sidelab/animalshelter/services/WebUserService.java)
+
+- [RestSecurityConfig.java](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/backend/animalshelter/src/main/java/es/sidelab/animalshelter/api/RestSecurityConfig.java)
+
+- [APIshelterController.java](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/backend/animalshelter/src/main/java/es/sidelab/animalshelter/api/APIshelterController.java)
+
+- [LoginController.java](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/backend/animalshelter/src/main/java/es/sidelab/animalshelter/api/LoginController.java)
