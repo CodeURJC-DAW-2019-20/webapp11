@@ -145,7 +145,7 @@ The shown animal list will filter available animals and change depending on the 
 <img src="ReadmeImgs/EntityDataBaseDiagram.PNG" width="600">
 
 ###### This diagram shows entities with thier fields and relationship of them with Database.
-## PARTICIPATION
+## PARTICIPATION PHASE 2
 
 ### Borja Castro Cruces
 - Custom Error Page and CustomError Controller
