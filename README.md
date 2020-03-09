@@ -145,7 +145,7 @@ The shown animal list will filter available animals and change depending on the 
 <img src="ReadmeImgs/EntityDataBaseDiagram.PNG" width="600">
 
 ###### This diagram shows entities with thier fields and relationship of them with Database.
-## PARTICIPATION
+## PARTICIPATION PHASE 2
 
 ### Borja Castro Cruces
 - Custom Error Page and CustomError Controller
@@ -177,9 +177,23 @@ The shown animal list will filter available animals and change depending on the 
 
 ## PARTICIPATION PHASE 3
 ### Arshia Ambar Saleem
-- Api rest url created to get and post animal Image
-- Api rest url created to get and post User Image
-- Api rest url created to get and post User's gallery
-- Api Rest Pagination
-- User gallery service created
-
+#### Commits:
+- [Api rest url created to get and post animal Image](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/08ac821722e6f2d837d039555929095ec8900f07)
+- [Api rest url created to get and post User Image](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/ac53638d3823c3bba8967ce910b9600e160ca6d5)
+- [Api rest url created to get and post User's gallery](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/0689fef511052f010439a0abcc50a04e059d11ab)
+- [Api Rest Pagination](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/537535bff50369f34ea88e7c183a5f6deddfec9e)
+- [User gallery service created](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/537535bff50369f34ea88e7c183a5f6deddfec9e)
+#### Files:
+- [APIanimalController.java](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/backend/animalshelter/src/main/java/es/sidelab/animalshelter/api/APIanimalController.java)
+- [APIusergalleryphotoController.java](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/backend/animalshelter/src/main/java/es/sidelab/animalshelter/api/APIusergalleryphotoController.java)
+- [APIWebUserController.java](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/backend/animalshelter/src/main/java/es/sidelab/animalshelter/api/APIWebUserController.java)
+- [UserGalleryService.java](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/backend/animalshelter/src/main/java/es/sidelab/animalshelter/services/UserGalleryService.java)
+### Borja Castro Cruces
+#### Commits:
+#### Files:
+### Marina Fernandez
+#### Commits:
+#### Files:
+### Rodrigo Cadena
+#### Commits:
+#### Files:
