@@ -29,10 +29,6 @@ public class AdoptionService {
 		repository.save(adoption);
 	}
 
-	public void update(Adoption adoption) {
-		repository.save(adoption);
-	}
-
 	public void delete(long id) {
 		repository.deleteById(id);
 	}

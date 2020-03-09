@@ -1,8 +1,6 @@
 package es.sidelab.animalshelter.api;
 
 import java.util.Collection;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,22 +15,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import es.sidelab.animalshelter.UserGalleryPhoto;
-import es.sidelab.animalshelter.WebUserRepository;
 import es.sidelab.animalshelter.services.UserGalleryService;
 
 
 @RestController
-@RequestMapping("/api/user={id}")
-
+@RequestMapping("/api/user/{id}")
 public class APIusergalleryphotoController {
 
-	private Map<Long, UserGalleryPhoto> userphotos = new ConcurrentHashMap<>();
 	@Autowired
 	private UserGalleryService service;
-	
-
-	@Autowired
-	private WebUserRepository ur;
 
 	@GetMapping("/gallery")
 	public Collection<UserGalleryPhoto> userphotos() {
@@ -46,7 +37,7 @@ public class APIusergalleryphotoController {
 		return userphoto;
 	}
 
-	@PutMapping("/photo={idphoto}")
+	@PutMapping("/{idphoto}")
 	public ResponseEntity<UserGalleryPhoto> updateUserPhoto(@PathVariable long id,
 			@RequestBody UserGalleryPhoto updatedGalleryPhoto) {
 
@@ -63,7 +54,7 @@ public class APIusergalleryphotoController {
 		}
 	}
 
-	@GetMapping("/photo={idphoto}")
+	@GetMapping("/{idphoto}")
 	public ResponseEntity<UserGalleryPhoto> getUserPhoto(@PathVariable long id) {
 
 		UserGalleryPhoto userphoto = service.findByGalleryId(id);
@@ -75,7 +66,7 @@ public class APIusergalleryphotoController {
 		}
 	}
 
-	@DeleteMapping("/photo={idphoto}")
+	@DeleteMapping("/{idphoto}")
 	public ResponseEntity<UserGalleryPhoto> delteUserPhoto(@PathVariable long id) {
 
 		UserGalleryPhoto userphoto = service.findByGalleryId(id);

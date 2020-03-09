@@ -1,8 +1,8 @@
 package es.sidelab.animalshelter.api;
 
-import java.util.Collection;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,34 +15,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import es.sidelab.animalshelter.Adoption;
+import es.sidelab.animalshelter.services.AdoptionService;
 
 @RestController
 @RequestMapping("/api/adoptions")
 public class APIadoptionController {
 
-	private Map<Long, Adoption> adoptions = new ConcurrentHashMap<>();
+	@Autowired
+	AdoptionService service;
 
 	@GetMapping("/")
-	public Collection<Adoption> adoptions() {
-		return adoptions.values();
+	public List<Adoption> adoptions() {
+		return service.findAll();
 	}
 
 	@PostMapping("/")
 	@ResponseStatus(HttpStatus.CREATED)
 	public Adoption newAdoption(@RequestBody Adoption adoption) {
-		adoptions.put(adoption.getIdAdoption(), adoption);
+		service.save(adoption);
 		return adoption;
 	}
 
 	@PutMapping("/{id}")
 	public ResponseEntity<Adoption> updateAdoption(@PathVariable long id, @RequestBody Adoption updatedAdoption) {
 
-		Adoption adoption = adoptions.get(id);
+		Adoption adoption = service.findByAdoptionId(id);
 
 		if (adoption != null) {
 
 			updatedAdoption.setIdAdoption(id);
-			adoptions.put(id, updatedAdoption);
+			service.save(updatedAdoption);
 
 			return new ResponseEntity<>(updatedAdoption, HttpStatus.OK);
 		} else {
@@ -53,7 +55,7 @@ public class APIadoptionController {
 	@GetMapping("/{id}")
 	public ResponseEntity<Adoption> getAdoption(@PathVariable long id) {
 
-		Adoption adoption = adoptions.get(id);
+		Adoption adoption = service.findByAdoptionId(id);
 
 		if (adoption != null) {
 			return new ResponseEntity<>(adoption, HttpStatus.OK);
@@ -65,9 +67,10 @@ public class APIadoptionController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Adoption> deleteAdoption(@PathVariable long id) {
 
-		Adoption adoption = adoptions.remove(id);
+		Adoption adoption = service.findByAdoptionId(id);
 
 		if (adoption != null) {
+			service.delete(id);
 			return new ResponseEntity<>(adoption, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
