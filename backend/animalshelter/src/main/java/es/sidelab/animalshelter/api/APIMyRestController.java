@@ -12,7 +12,7 @@ import es.sidelab.animalshelter.Animal;
 import es.sidelab.animalshelter.services.MyRestService;
 
 @RestController
-@RequestMapping("/api/")
+@RequestMapping("/api")
 public class APIMyRestController {
 	
 	@Autowired
