@@ -9,6 +9,8 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 
 @Entity
@@ -28,8 +30,9 @@ public class WebUser {
 	private int userNumChildren;
 	private int userNumPeopleInHouse;
 	private String userEmail;
-	private String userPassword;
 	private int userCapacity;
+	@JsonIgnore
+	private String userPassword;
 
 	// CONSTRUCTORS
 

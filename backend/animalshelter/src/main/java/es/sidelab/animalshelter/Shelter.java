@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Shelter {
 
@@ -16,11 +18,12 @@ public class Shelter {
 	private String shelterName;
 	private String shelterNif;
 	private String shelterEmail;
-	private String shelterPassword;
 	private int shelterAverageRating;
 	private int numVotes;
 	private String shelterDescription;
 	private String shelterAdress;
+	@JsonIgnore
+	private String shelterPassword;
 
 	// CONSTRUCTORS
 
