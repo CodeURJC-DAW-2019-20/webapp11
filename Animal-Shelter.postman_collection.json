@@ -11,7 +11,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/api/logOut/",
+					"raw": "https://localhost:8443/api/statistics/3",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -19,8 +19,8 @@
 					"port": "8443",
 					"path": [
 						"api",
-						"logOut",
-						""
+						"statistics",
+						"3"
 					]
 				}
 			},
@@ -29,21 +29,11 @@
 		{
 			"name": "Contact",
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
-				"url": {
-					"raw": "https://localhost:8443/api/contact/sendMail?name=Julen&email=cadena-25@hotmail.com&subject=Question&message=How do I sign in?",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "8443",
-					"path": [
-						"api",
-						"contact",
-						"sendMail"
-					],
-					"query": [
+				"body": {
+					"mode": "formdata",
+					"formdata": [
 						{
 							"key": "name",
 							"value": "Julen"
@@ -60,6 +50,40 @@
 							"key": "message",
 							"value": "How do I sign in?"
 						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:8443/api/contact/sendMail",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"contact",
+						"sendMail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show Adoptions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/adoptions/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"adoptions",
+						""
 					]
 				}
 			},
@@ -191,12 +215,12 @@
 			"response": []
 		},
 		{
-			"name": "Show Adoptions",
+			"name": "Accept Adoption",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/api/adoptions/",
+					"raw": "https://localhost:8443/api/evaluateadoptions/accept/13",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -204,20 +228,10 @@
 					"port": "8443",
 					"path": [
 						"api",
-						"adoptions",
-						""
+						"evaluateadoptions",
+						"accept",
+						"13"
 					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Accept Adoption",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": ""
 				}
 			},
 			"response": []
@@ -373,7 +387,18 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": ""
+					"raw": "https://localhost:8443/api/users/adopt/13",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"users",
+						"adopt",
+						"13"
+					]
 				}
 			},
 			"response": []
