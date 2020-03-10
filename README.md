@@ -202,12 +202,12 @@ I create the instructions to use docker(creatin the DockerFile of the applicatio
 #### Commits:
  - [ Creation of DockerFile](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/d096946935871a256e8aaca2e6325e53b382af9c)
  - [Creation of Script  for run the app in docker with Windows(without docker-compose)(https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/d096946935871a256e8aaca2e6325e53b382af9c)
- - [Classes diagram] (https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/5f2c7d72a018b31fbcce88694d14aad1eab55bb7)
- - [Creation of API.md] (https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/fe695e161a45c9cb69bc131a70112682bdfc189f)
- - [Modifications of applications properties for docker] (https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/d096946935871a256e8aaca2e6325e53b382af9c)
+ - [Classes diagram](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/5f2c7d72a018b31fbcce88694d14aad1eab55bb7)
+ - [Creation of API.md](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/fe695e161a45c9cb69bc131a70112682bdfc189f)
+ - [Modifications of applications properties for docker](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/d096946935871a256e8aaca2e6325e53b382af9c)
  
 #### Files:
-- [DockerFile] (https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/docker/Dockerfile)
+- [DockerFile](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/docker/Dockerfile)
 - [API.md](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/API.md)
 - [create_image.bat](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/7a118c6a8f4584f3cda0cdd638cefd4a46ed584e)
 - [ Diagram v.3.png](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/ReadmeImgs/Diagram%20v.3.png)
