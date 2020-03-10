@@ -198,8 +198,20 @@ I have contributed in creating Api rest url to get and post animal, user's profi
 
 - [UserGalleryService.java](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/backend/animalshelter/src/main/java/es/sidelab/animalshelter/services/UserGalleryService.java)
 ### Borja Castro Cruces
+I create the instructions to use docker(creatin the DockerFile of the application) and modify the applications properties to use docker easy. I have done the classes diagram of the current proyect.
 #### Commits:
+ - [ Creation of DockerFile](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/d096946935871a256e8aaca2e6325e53b382af9c)
+ - [Creation of Script  for run the app in docker with Windows(without docker-compose)(https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/d096946935871a256e8aaca2e6325e53b382af9c)
+ - [Classes diagram] (https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/5f2c7d72a018b31fbcce88694d14aad1eab55bb7)
+ - [Creation of API.md] (https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/fe695e161a45c9cb69bc131a70112682bdfc189f)
+ - [Modifications of applications properties for docker] (https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/d096946935871a256e8aaca2e6325e53b382af9c)
+ 
 #### Files:
+- [DockerFile] (https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/docker/Dockerfile)
+- [API.md](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/API.md)
+- [create_image.bat](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/7a118c6a8f4584f3cda0cdd638cefd4a46ed584e)
+- [ Diagram v.3.png](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/ReadmeImgs/Diagram%20v.3.png)
+- [application.properties](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/d096946935871a256e8aaca2e6325e53b382af9c)
 ### Marina Fernandez
 I mainly initialized the workflow again for the API creating the templates for the team, I did collaborate with the services and controllers for the API REST and dockerized the application.
 #### Commits:
@@ -237,3 +249,7 @@ I have participated in the completion of the rest controllers, created services 
 - [APIshelterController.java](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/backend/animalshelter/src/main/java/es/sidelab/animalshelter/api/APIshelterController.java)
 
 - [LoginController.java](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/backend/animalshelter/src/main/java/es/sidelab/animalshelter/api/LoginController.java)
+# Classes diagram
+<img src= "ReadmeImgs/Diagram v.3.png" width="600">
+
+###### This diagram shows the differents templates, controller and services used in the web server
