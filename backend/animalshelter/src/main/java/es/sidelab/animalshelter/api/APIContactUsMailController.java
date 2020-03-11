@@ -14,15 +14,17 @@ import org.springframework.web.bind.annotation.RestController;
 import es.sidelab.animalshelter.SmtpMailSender;
 
 @RestController
-@RequestMapping("/api/contact")
+@RequestMapping("/api/messages")
 public class APIContactUsMailController {
 
 	@Autowired
 	SmtpMailSender smtpMailSender;
 
-	@PostMapping("/sendMail")
-	public List<String> sendMail(@RequestParam(value = "name") String name, @RequestParam(value = "email") String email,
-			@RequestParam(value = "subject") String subject, @RequestParam(value = "message") String message,
+	@PostMapping("/")
+	public List<String> sendMail(@RequestParam(value = "name", required=true) String name,
+			@RequestParam(value = "email", required=true) String email,
+			@RequestParam(value = "subject", required=true) String subject, 
+			@RequestParam(value = "message", required=true) String message,
 			Model model) throws MessagingException {
 		List<String> entireEmail = new ArrayList<>();
 		entireEmail.add(name);
