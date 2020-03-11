@@ -1,7 +1,7 @@
 package es.sidelab.animalshelter.api;
 
 import java.io.IOException;
-import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -46,9 +46,16 @@ public class APIanimalController {
 	@Autowired
 	private UserShelterComponent loggeduser;
 
-	@GetMapping("/")
-	public Collection<Animal> animals() {
-		return animalService.findAll();
+	@GetMapping("") // this method will show all animals by paging
+	public ResponseEntity<List<Animal>> findalls(@RequestParam(value = "page") Optional<Integer> page) {
+
+		Page<Animal> animals = animalRepository.findAll(PageRequest.of(page.orElse(0), 3));
+		
+		if(animals.hasContent()) {
+			return new ResponseEntity<>(animals.getContent(), HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
 	}
 
 	@PostMapping("/")
@@ -114,14 +121,6 @@ public class APIanimalController {
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-	}
-
-	@GetMapping("/animalPagination") // this method will show all animals by paging
-	public Page<Animal> findalls(@RequestParam Optional<Integer> page) {
-
-		Page<Animal> animals = animalRepository.findAll(PageRequest.of(page.orElse(0), 3));
-
-		return animals;
 	}
 
 }
