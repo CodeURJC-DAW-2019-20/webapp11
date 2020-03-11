@@ -4,7 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import es.sidelab.animalshelter.Animal;
@@ -17,16 +20,17 @@ public class MyRestcontroller extends ModelAttributeController{
 	MyRestService service;
 	
 	
-	@RequestMapping("/animalfil/{filter}/{count}") //Returns the list of type selected animals
-	public List<Animal> searchByType(@PathVariable String filter, @PathVariable int count) {
+	@RequestMapping("/{count}/animals") //Returns the list of type selected animals
+	
+	public List<Animal> searchByType(@RequestParam String type,@PathVariable int count) {
 		
-		return service.searchByType(filter, count);
+		return service.searchByType(type,count);
 	}
 	
-	@RequestMapping("/animalsearch/{names}/{count}") //Returns the list of animals search by their names
-	public List<Animal> searchByName(@PathVariable String names, @PathVariable int count ) {
+	@RequestMapping("/{count}/animal") //Returns the list of animals search by their names
+	public List<Animal> searchByName(@RequestParam String name, @PathVariable int count ) {
 		
-		return service.searchByName(names, count);
+		return service.searchByName(name, count);
 	}
 	
 	

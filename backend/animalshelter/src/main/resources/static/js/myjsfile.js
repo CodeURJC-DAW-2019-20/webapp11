@@ -38,6 +38,7 @@ function applyFilter() {
 
 function loadFilter(type) {
 	var selected = type;
+	console.log(selected);
 	showSpinner()
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
@@ -60,9 +61,10 @@ function loadFilter(type) {
 	    }
 	    
     };
-	  
-    xhttp.open("GET", "/animalfil/"+selected+"/"+loaded, true);
-    xhttp.send();
+    
+    xhttp.open("POST",+loaded+"/animals/", true);
+    xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhttp.send("type="+selected);
   
 }
 
@@ -162,8 +164,11 @@ function loadSearch() {
 	    }
 	  };
 	  
-	  xhttp.open("GET", "/animalsearch/"+selected+"/"+loaded, true);
-	  xhttp.send();
+	  xhttp.open("POST",+loaded+"/animal/", true);
+	  xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	  xhttp.send("name="+selected);
+
+
 	  
 }
 function Gallery() {//on window load this method will function ..this will show three first images of users gallery and after by clicking loadmore it will show next three images
