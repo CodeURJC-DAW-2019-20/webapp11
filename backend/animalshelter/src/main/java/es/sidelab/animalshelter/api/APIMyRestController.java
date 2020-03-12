@@ -1,46 +1,54 @@
 package es.sidelab.animalshelter.api;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import es.sidelab.animalshelter.Animal;
 import es.sidelab.animalshelter.services.MyRestService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/searches")
 public class APIMyRestController {
 	
 	@Autowired
 	MyRestService service;
 	
 	
-	@RequestMapping("/animalsfil/{filter}/{count}") //Returns the list of type selected animals
-	public List<Animal> searchByType(@PathVariable String filter, @PathVariable int count) {
+	@GetMapping("") //Returns the list of type selected animals
+	public ResponseEntity<List<Animal>> searchByType(@RequestParam(value = "animal") Optional<String> animal,
+			@RequestParam(value = "name") Optional<String> name,
+			@RequestParam(value = "page") Optional<Integer> page) {
+		List<Animal> result;
+		if(animal.isPresent()) {			
+			result = service.searchByType(animal.get(), page.orElse(0));
+		} else if(name.isPresent()) {
+			result = service.searchByName(name.get(), page.orElse(0));
+		} else {
+			result = service.suitAnimal(page.orElse(0));
+		}
 		
-		return service.searchByType(filter, count);
+		if(result != null) {
+			if(result.size() == 0) {
+				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			} else {
+				return new ResponseEntity<>(result, HttpStatus.OK);
+			}
+		} else {
+			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+		}
 	}
 	
-	@RequestMapping("/animalsearch/{names}/{count}") //Returns the list of animals search by their names
-	public List<Animal> searchByName(@PathVariable String names, @PathVariable int count ) {
+	@GetMapping("/galleries")//this will return list of user's gallery
+	public List<String> profileView(@RequestParam(value = "page") Optional<Integer> page) {
 		
-		return service.searchByName(names, count);
-	}
-	
-	@RequestMapping("/suitedAnimals/{count}") //Returns the list of best suited animals for users space capacity
-	public List<Animal> suitAnimal(@PathVariable int count) {
-		
-		return service.suitAnimal(count);
-		
-	}
-	
-	@GetMapping("/usergallerys/{count}")//this will return list of user's gallery
-	public List<String> profileView(@PathVariable int count) {
-		
-		return service.profileView(count);
+		return service.profileView(page.orElse(0));
 	}	
 }
