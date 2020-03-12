@@ -201,10 +201,13 @@ function loadGallery() {
 	        console.log(jsonResponse)
 	        jsonResponse.forEach((element,index) => { 
 		      console.log(jsonResponse);
-	          let img = document.createElement("img")	  
+		      let link = document.createElement("a")
+	              let img = document.createElement("img")	  
 	   	      img.src = jsonResponse[index];
+		      link.href=jsonResponse[index];
 		      img.className = "allimages"
-	   	      document.getElementById("imbox").appendChild(img)
+		      link.appendChild(img)
+	   	      document.getElementById("imbox").appendChild(link)
 	   	     
          })
 	    }
