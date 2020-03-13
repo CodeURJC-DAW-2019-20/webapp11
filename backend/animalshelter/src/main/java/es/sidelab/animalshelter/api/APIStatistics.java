@@ -51,11 +51,13 @@ public class APIStatistics {
 			map.put(date5.getMonth().toString(), 0);
 
 			for (Adoption adoption : adoptionList) {
-				String curr_month = adoption.getAdoptionDate().toLocalDate().getMonth().toString();
-				if (map.containsKey(curr_month)) {
-					Integer value = map.get(curr_month);
-					value++;
-					map.replace(curr_month, map.get(curr_month), value);
+				if(!adoption.isInCourse()) {
+					String curr_month = adoption.getAdoptionDate().toLocalDate().getMonth().toString();
+					if (map.containsKey(curr_month)) {
+						Integer value = map.get(curr_month);
+						value++;
+						map.replace(curr_month, map.get(curr_month), value);
+					}				
 				}
 			}
 			if(map.get(month) != null) {

@@ -19,17 +19,16 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-
-		http.antMatcher("/api/**");
 		
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/logIn").authenticated();
 		
 		// URLs that need authentication to access to it 
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/").hasRole("SHELTER");
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/{id}").hasRole("SHELTER");
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/adopt/**").hasRole("USER");
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/gallery").hasAnyRole("USER", "SHELTER");
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/adoptions/**").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/users/galleries").hasAnyRole("USER", "SHELTER");
 		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/users/**").hasRole("USER");
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/users/adoptions/{id}").hasRole("USER");
 		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/users/**").hasRole("USER");
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/shelters/**").hasRole("SHELTER");
 		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/shelters/**").hasRole("SHELTER");
@@ -37,16 +36,16 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/animals/**").hasRole("SHELTER");
 		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/animals/**").hasRole("SHELTER");
 		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/animals/**").hasRole("SHELTER");
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/evaluateadoptions/**").hasRole("SHELTER");
 		http.authorizeRequests().antMatchers(HttpMethod.PUT, "/api/adoptions/**").hasRole("SHELTER");
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/adoptions/**").hasRole("SHELTER");
 		http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/adoptions/**").hasRole("SHELTER");
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/searches/galleries/**").hasAnyRole("USER", "SHELTER");
+		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/searches/galleries").hasAnyRole("USER", "SHELTER");
+		http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/shelters/petitions/{id}").hasRole("SHELTER");
 
 
 		
 		// Other URLs can be accessed without authentication
-		http.authorizeRequests().anyRequest().permitAll();
+		//http.authorizeRequests().anyRequest().permitAll();
 
 		// Disable CSRF protection (it is difficult to implement in REST APIs)
 		http.csrf().disable();

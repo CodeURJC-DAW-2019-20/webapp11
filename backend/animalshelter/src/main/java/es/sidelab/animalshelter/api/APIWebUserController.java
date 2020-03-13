@@ -131,7 +131,7 @@ public class APIWebUserController {
 		}
 	}
 	
-	@PostMapping("/gallery")//to post UserPhoto by postman
+	@PostMapping("/galleries")//to post UserPhoto by postman
 	@ResponseStatus(HttpStatus.CREATED)
 	public List<String> setUserGallery(@RequestParam(value="files", required=false) MultipartFile userGallery)  throws IOException {
 		
@@ -151,7 +151,7 @@ public class APIWebUserController {
 		return gallery;
 	}
 	
-	@GetMapping("/gallery")
+	@GetMapping("/galleries")
 	public ResponseEntity<List<String>> getuserGallery() {
 
 		WebUser webuser= (WebUser) loggeduser.getLoggedUser();
@@ -167,13 +167,16 @@ public class APIWebUserController {
 		}
 	}
 	
-	@GetMapping("/adopt/{id}")
+	@PostMapping("/adoptions/{id}")
 	public ResponseEntity<Adoption> requestAdoption(@PathVariable long id) throws MessagingException {
 		
 		WebUser w = loggeduser.getUser();
 		Optional<Animal> optional = animalRepository.findByIdAnimal(id);
 		if(optional.isPresent()) {
 			Animal animal = optional.get();
+			if(animal.isAnimalAdopted()) {
+				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			}
 			String shelterEmail = animal.getShelterOwner().getShelterEmail();
 
 			Adoption adoption = new Adoption(true);

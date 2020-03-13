@@ -84,7 +84,7 @@ public class MainController extends ModelAttributeController {
 		animalRepository.save(animal4);
 		animalRepository.save(animal4);
 
-		Adoption adoption1 = new Adoption(true);
+		Adoption adoption1 = new Adoption(false);
 		adoption1.setAnimal(animal1);
 		adoption1.setUser(user1);
 		adoptionRepository.save(adoption1);
