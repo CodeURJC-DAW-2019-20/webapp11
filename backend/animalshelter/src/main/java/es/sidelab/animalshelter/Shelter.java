@@ -94,7 +94,7 @@ public class Shelter {
 		return shelterDescription;
 	}
 
-	public void encryptPassword() {
-		shelterPassword = new BCryptPasswordEncoder().encode(shelterPassword);
+	public void setPassword(String password) {
+		this.shelterPassword = new BCryptPasswordEncoder().encode(password);
 	}
 }

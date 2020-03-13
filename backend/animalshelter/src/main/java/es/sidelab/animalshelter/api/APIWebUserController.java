@@ -79,10 +79,12 @@ public class APIWebUserController {
 	}
 
 	@PostMapping("/")
-	public ResponseEntity<WebUser> newWebUser(@RequestParam(required=true, value="jsondata")String jsondata, @RequestParam(value="userPhoto", required=true) MultipartFile userPhoto) throws IOException{
+	public ResponseEntity<WebUser> newWebUser(@RequestParam(required=true, value="jsondata")String jsondata,
+			@RequestParam(required=true, value="password")String password,
+			@RequestParam(value="userPhoto", required=true) MultipartFile userPhoto) throws IOException{
 		WebUser webUser = objectMapper.readValue(jsondata, WebUser.class);
 		if (service.save(webUser)) {
-			webUser.encryptPassword();
+			webUser.setPasword(password);
 			imageService.saveImage("user", webUser.getIdUser(), userPhoto);
 			webUser.setUserphoto("image-" + webUser.getIdUser() + ".jpg");
 			service.update(webUser);

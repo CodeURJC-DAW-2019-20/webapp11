@@ -6,112 +6,6 @@
 	},
 	"item": [
 		{
-			"name": "Show adoptions in march",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://localhost:8443/api/statistics/3",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "8443",
-					"path": [
-						"api",
-						"statistics",
-						"3"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Contact",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "name",
-							"value": "Julen"
-						},
-						{
-							"key": "email",
-							"value": "cadena-25@hotmail.com"
-						},
-						{
-							"key": "subject",
-							"value": "Question"
-						},
-						{
-							"key": "message",
-							"value": "How do I sign in?"
-						}
-					]
-				},
-				"url": {
-					"raw": "https://localhost:8443/api/contact/sendMail",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "8443",
-					"path": [
-						"api",
-						"contact",
-						"sendMail"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Show Adoptions",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://localhost:8443/api/adoptions/",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "8443",
-					"path": [
-						"api",
-						"adoptions",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Animal type search",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://localhost:8443/api/animalsfil/dog/0",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "8443",
-					"path": [
-						"api",
-						"animalsfil",
-						"dog",
-						"0"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "New Webuser",
 			"request": {
 				"method": "POST",
@@ -126,7 +20,12 @@
 						},
 						{
 							"key": "jsondata",
-							"value": "{\n    \"userName\": \"Rodrigo\",\n    \"userDni\": \"48755465Q\",\n    \"userAge\": 22,\n    \"userAdress\": \"C/Manuela Malasaña,15\",\n    \"userHouseSize\": \"l\",\n    \"userGarden\": \"m\",\n    \"userNumChildren\": 2,\n    \"userNumPeopleInHouse\": 5,\n    \"userEmail\": \"cadena-25@hotmail.com\",\n    \"userPassword\": \"123\",\n    \"userCapacity\": 7\n}",
+							"value": "{\n    \"userName\": \"Rodrigo\",\n    \"userDni\": \"48755465Q\",\n    \"userAge\": 22,\n    \"userAdress\": \"C/Manuela Malasaña,15\",\n    \"userHouseSize\": \"l\",\n    \"userGarden\": \"m\",\n    \"userNumChildren\": 2,\n    \"userNumPeopleInHouse\": 5,\n    \"userEmail\": \"cadena-25@hotmail.com\",\n    \"userCapacity\": 7\n}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123",
 							"type": "text"
 						}
 					]
@@ -159,8 +58,19 @@
 					}
 				],
 				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"shelterName\": \"Animalia\",\n    \"shelterNif\": \"1234567A\",\n    \"shelterEmail\": \"cadena.2592@gmail.com\",\n    \"shelterPassword\": \"123\",\n    \"shelterDescription\": \"NO\",\n    \"shelterAdress\": \"C/Montana,1\"\n}\n"
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "jsondata",
+							"value": "{\n    \"shelterName\": \"Animalia\",\n    \"shelterNif\": \"1234567A\",\n    \"shelterEmail\": \"cadena.2592@gmail.com\",\n    \"shelterDescription\": \"NO\",\n    \"shelterAdress\": \"C/Montana,1\"\n}\n",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "text"
+						}
+					]
 				},
 				"url": {
 					"raw": "https://localhost:8443/api/shelters/",
@@ -173,121 +83,6 @@
 						"api",
 						"shelters",
 						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Shelter LogIn",
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "username",
-							"value": "marinafs.13@hotmail.com ",
-							"type": "string"
-						},
-						{
-							"key": "password",
-							"value": "123",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://localhost:8443/api/logIn/",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "8443",
-					"path": [
-						"api",
-						"logIn",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Accept Adoption",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://localhost:8443/api/evaluateadoptions/accept/13",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "8443",
-					"path": [
-						"api",
-						"evaluateadoptions",
-						"accept",
-						"13"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "New Animal",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "animalPhoto",
-							"type": "file",
-							"src": "/home/Cadena/Documents/Github/webapp11/backend/animalshelter/images/animal/image-10.jpg"
-						},
-						{
-							"key": "jsondata",
-							"value": "{\n        \"animalName\": \"Tori\",\n        \"animalAge\": 9,\n        \"animalType\": \"cat\",\n        \"animalSize\": \"s\",\n        \"animalDescription\": \"It is a friendly cat.\"\n}",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "https://localhost:8443/api/animals/",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "8443",
-					"path": [
-						"api",
-						"animals",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Requests",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://localhost:8443/api/shelters/request",
-					"protocol": "https",
-					"host": [
-						"localhost"
-					],
-					"port": "8443",
-					"path": [
-						"api",
-						"shelters",
-						"request"
 					]
 				}
 			},
@@ -318,12 +113,12 @@
 			"response": []
 		},
 		{
-			"name": "Logout",
+			"name": "Show Animals in page 1",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/api/logOut/",
+					"raw": "https://localhost:8443/api/animals?page=1",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -331,8 +126,127 @@
 					"port": "8443",
 					"path": [
 						"api",
-						"logOut",
+						"animals"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Contact",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Julen"
+						},
+						{
+							"key": "email",
+							"value": "cadena-25@hotmail.com"
+						},
+						{
+							"key": "subject",
+							"value": "Question"
+						},
+						{
+							"key": "message",
+							"value": "How do I sign in?"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:8443/api/messages/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"messages",
 						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show adoptions in march",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/statistics/3",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"statistics",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show Adoptions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/adoptions/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"adoptions",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Animal search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/searches?animal=cat&page=0",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"searches"
+					],
+					"query": [
+						{
+							"key": "animal",
+							"value": "cat"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						}
 					]
 				}
 			},
@@ -384,10 +298,10 @@
 		{
 			"name": "Adopt Animal",
 			"request": {
-				"method": "GET",
+				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "https://localhost:8443/api/users/adopt/13",
+					"raw": "https://localhost:8443/api/users/adoptions/7",
 					"protocol": "https",
 					"host": [
 						"localhost"
@@ -396,8 +310,176 @@
 					"path": [
 						"api",
 						"users",
-						"adopt",
+						"adoptions",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/logOut/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"logOut",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Shelter LogIn",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "iho-ladamadeltiempo@live.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/logIn/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"logIn",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/users/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Accept Adoption",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "response",
+							"value": "accept",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:8443/api/shelters/petitions/13",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"shelters",
+						"petitions",
 						"13"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Animal",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "animalPhoto",
+							"type": "file",
+							"src": "/home/Cadena/Documents/Github/webapp11/backend/animalshelter/images/animal/image-10.jpg"
+						},
+						{
+							"key": "jsondata",
+							"value": "{\n        \"animalName\": \"Tori\",\n        \"animalAge\": 9,\n        \"animalType\": \"cat\",\n        \"animalSize\": \"s\",\n        \"animalDescription\": \"It is a friendly cat.\"\n}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://localhost:8443/api/animals/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"animals",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Requests",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:8443/api/shelters/petitions/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"api",
+						"shelters",
+						"petitions",
+						""
 					]
 				}
 			},

@@ -1,5 +1,6 @@
 package es.sidelab.animalshelter.api;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -21,6 +22,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import es.sidelab.animalshelter.Adoption;
 import es.sidelab.animalshelter.AdoptionRepository;
 import es.sidelab.animalshelter.Animal;
@@ -33,6 +36,8 @@ import es.sidelab.animalshelter.services.ShelterService;
 @RestController
 @RequestMapping("/api/shelters")
 public class APIshelterController {
+	
+	ObjectMapper objectMapper = new ObjectMapper();
 	
 	@Autowired
 	SmtpMailSender smtpMailSender;
@@ -55,9 +60,11 @@ public class APIshelterController {
 	}
 	
 	@PostMapping("/")
-	public ResponseEntity<Shelter> newShelter(@RequestBody Shelter shelter) {
+	public ResponseEntity<Shelter> newShelter(@RequestParam(required=true, value="jsondata") String jsondata,
+			@RequestParam(required=true, value="password")String password) throws IOException{
+		Shelter shelter = objectMapper.readValue(jsondata, Shelter.class);
 		if (service.save(shelter)) {
-			shelter.encryptPassword();
+			shelter.setPassword(password);
 			service.update(shelter);
 			return new ResponseEntity<>(shelter, HttpStatus.CREATED);
 		} else {
