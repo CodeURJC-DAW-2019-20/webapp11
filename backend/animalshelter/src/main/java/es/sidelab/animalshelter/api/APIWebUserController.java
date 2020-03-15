@@ -132,6 +132,17 @@ public class APIWebUserController {
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		}
 	}
+        @GetMapping("/{id}/images")
+	public ResponseEntity<String> getUserImage(@PathVariable long id) {
+
+		WebUser webuser = service.findByUserId(id);
+
+		if (webuser != null) {
+			return new ResponseEntity<>(webuser.getUserphoto(), HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
 	
 	@PostMapping("/galleries")//to post UserPhoto by postman
 	@ResponseStatus(HttpStatus.CREATED)
