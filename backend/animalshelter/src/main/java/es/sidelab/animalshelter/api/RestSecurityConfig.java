@@ -20,6 +20,8 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		
+		http.antMatcher("/api/**");
+		
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/logIn").authenticated();
 		
 		// URLs that need authentication to access to it 
@@ -45,7 +47,7 @@ public class RestSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		
 		// Other URLs can be accessed without authentication
-		//http.authorizeRequests().anyRequest().permitAll();
+		http.authorizeRequests().anyRequest().permitAll();
 
 		// Disable CSRF protection (it is difficult to implement in REST APIs)
 		http.csrf().disable();
