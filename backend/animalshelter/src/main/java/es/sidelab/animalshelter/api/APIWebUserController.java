@@ -1,6 +1,7 @@
 package es.sidelab.animalshelter.api;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -132,13 +133,13 @@ public class APIWebUserController {
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		}
 	}
-        @GetMapping("/{id}/images")
-	public ResponseEntity<String> getUserImage(@PathVariable long id) {
+	@GetMapping("/{id}/images")
+	public ResponseEntity<Object> getUserImage(@PathVariable long id) throws MalformedURLException {
 
 		WebUser webuser = service.findByUserId(id);
 
 		if (webuser != null) {
-			return new ResponseEntity<>(webuser.getUserphoto(), HttpStatus.OK);
+			 return this.imageService.createResponseFromImage("user", id);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
