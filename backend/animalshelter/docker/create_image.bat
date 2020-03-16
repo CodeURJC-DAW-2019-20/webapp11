@@ -1,4 +1,7 @@
-docker build . -t users-mysql
-pause
-docker run -p 8443:8443 --name users-mysql --link mysqlDataBase:mysql -d users-mysql 
-pause
+mkdir animalshelter-app
+cd animalshelter-app
+git clone https://github.com/CodeURJC-DAW-2019-20/webapp11.git
+cd webapp11/backend/animalshelter
+mvn clean package
+xcopy docker
+docker build . -t animalshelter-app

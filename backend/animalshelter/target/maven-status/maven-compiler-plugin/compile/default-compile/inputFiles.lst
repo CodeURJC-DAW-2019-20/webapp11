@@ -10,7 +10,6 @@
 /home/g0n/Escritorio/DAW WORKBENCH/webapp11/backend/animalshelter/src/main/java/es/sidelab/animalshelter/controllers/ShelterFormController.java
 /home/g0n/Escritorio/DAW WORKBENCH/webapp11/backend/animalshelter/src/main/java/es/sidelab/animalshelter/controllers/ImageService.java
 /home/g0n/Escritorio/DAW WORKBENCH/webapp11/backend/animalshelter/src/main/java/es/sidelab/animalshelter/UserGalleryPhotoRepository.java
-/home/g0n/Escritorio/DAW WORKBENCH/webapp11/backend/animalshelter/src/main/java/es/sidelab/animalshelter/api/APIEvaluateAdoptionController.java
 /home/g0n/Escritorio/DAW WORKBENCH/webapp11/backend/animalshelter/src/main/java/es/sidelab/animalshelter/services/MyRestService.java
 /home/g0n/Escritorio/DAW WORKBENCH/webapp11/backend/animalshelter/src/main/java/es/sidelab/animalshelter/WebUserRepository.java
 /home/g0n/Escritorio/DAW WORKBENCH/webapp11/backend/animalshelter/src/main/java/es/sidelab/animalshelter/api/LoginController.java
