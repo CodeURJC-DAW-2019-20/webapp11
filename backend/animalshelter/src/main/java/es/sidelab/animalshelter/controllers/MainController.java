@@ -95,6 +95,16 @@ public class MainController extends ModelAttributeController {
 		animalRepository.save(animal5);
 		animalRepository.save(animal5);
 	}
+	
+	//Connect to Angular
+	@RequestMapping("/new")
+	public String AngularConnection() {
+		return "new/index.html";
+	}
+	@RequestMapping("/new/")
+	public String AngularConnection2() {
+		return "new/index.html";
+	}
 
 	@RequestMapping("/")
 	public String homeView(Model model, HttpServletRequest request) {
