@@ -1,0 +1,63 @@
+<!-- start banner Area -->
+<section id="myRequest" class="banner-area relative" id="home">
+	<div class="overlay overlay-bg"></div>
+	<div class="container">
+		<div class="row d-flex align-items-center justify-content-center">
+			<div class="about-content col-lg-12">
+				<h1 class="text-white">Requests</h1>
+				<p class="text-white link-nav">
+					<a href="/">Home </a> <span class="lnr lnr-arrow-right"></span> <a
+						routerLink="/request"> Requests</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End banner Area -->
+
+<!-- Start requests Area -->
+
+
+<section class="cat-list-area section-gap">
+	<div class="container">
+		<div  class="row">
+		
+			<div class="col-lg-3 col-md-4">
+				<div class="single-cat-list">
+                    <img src='/assets/img/c1.jpg'  class="allimages">
+				</div>
+			</div>
+			<div class="col-lg-3 col-md-4">
+				<p>
+					<b>Name: </b>
+				</p>
+				<p>
+					<b>Age: </b>
+				</p>
+				<form action="/evaluateAdoption/accept" class="col-lg-6">
+					<div class="form-group">
+						<input type="hidden" name="animalName" value=""/>
+						<button type="submit" name="accept" class="genric-btn primary circle "
+							style="width: 125px">Accept</button>
+					</div>
+				</form>
+				<form action="/evaluateAdoption/deny" class="col-lg-6">
+					<div class="form-group">
+						<input type="hidden" name="animalName" value=""/>
+						<button type="submit" name="deny" class="genric-btn primary circle"
+							style="width: 125px">Deny</button>
+					</div>
+				</form>
+				<p>
+					
+					<b>Animal actually in adoption... </b>
+				
+				</p>
+				<br>
+			</div>
+			
+			
+		</div>
+	</div>
+</section>
+<!-- End request-list Area -->

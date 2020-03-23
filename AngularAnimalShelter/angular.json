@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "AngularAnimalShelter": {
@@ -24,9 +24,30 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.css",
+              "src/assets/css/linearicons.css",
+              "src/assets/css/font-awesome.min.css",
+              "src/assets/css/bootstrap.css",
+              "src/assets/css/magnific-popup.css",
+              "src/assets/css/nice-select.css",
+              "src/assets/css/animate.min.css",
+              "src/assets/css/owl.carousel.css",
+              "src/assets/css/main.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/vendor/jquery-2.2.4.min.js",
+              "src/assets/js/vendor/bootstrap.min.js",
+              "src/assets/js/easing.min.js",
+              "src/assets/js/hoverIntent.js",
+              "src/assets/js/superfish.min.js",
+              "src/assets/js/jquery.ajaxchimp.min.js",
+              "src/assets/js/jquery.magnific-popup.min.js",
+              "src/assets/js/owl.carousel.min.js",
+              "src/assets/js/jquery.nice-select.min.js",
+              "src/assets/js/mail-script.js",
+              "src/assets/js/main.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -119,6 +140,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "AngularAnimalShelter"
+    }
+  },
+  "defaultProject": "AngularAnimalShelter",
+  "cli": {
+    "analytics": "393ad6bd-c93c-4797-abd8-192cf2118bb3"
+  }
 }

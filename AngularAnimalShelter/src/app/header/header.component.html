@@ -1,0 +1,43 @@
+<header id="header" class="header-scrolled">
+    <div class="container main-menu">
+        <div class="row align-items-center justify-content-between d-flex">
+            <div id="logo">
+                <a routerLink="/"><img src="assets/img/logo3.png" width="100" height="40" alt="" title="" /></a>
+            </div>
+            <nav id="nav-menu-container">
+                <ul class="nav-menu">
+                    <li class="menu-has-children"><a routerLink="/animals">ANIMALS</a></li>
+                    <li class="menu-has-children"><a routerLink="/statistics">STATISTICS</a></li>
+                    <li class="menu-has-children"><a routerLink="/request">REQUESTS</a></li>
+                    <li class="menu-has-children"><a routerLink="/animalform">ADD ANIMAL</a></li>
+                    <li class="menu-has-children"><a routerLink="/profile">PROFILE</a></li>
+                    <li class="menu-has-children"><a routerLink="/contact">CONTACT US</a></li>
+                    <li class="menu-has-children"><a routerLink="/logout">LOG OUT</a></li>
+                    <li><a routerLink="/" onclick=" $('#divTopImg').toggleClass('desplegado')">LOG IN</a></li>
+                    <div id="divTopImg">
+                        <div class="login-form clearfix">
+                            <div class="login-header">
+                                <form action="/login" method="post">
+                                    <div class="form-group">
+                                        <label>User</label> <input type="text" name="username">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Password</label> <input type="password" name="password">
+                                    </div>
+                                    <input type="submit" value="Entrar">
+                                </form>
+                                <a class="genric-btn primary circle" routerLink="/userform">NEW USER</a><br> <a
+                                    class="genric-btn primary circle" routerLink="/shelterform">NEW
+                                    SHELTER</a> <input type="hidden" id="social_connect_login_form_uri"
+                                    value="Complete" /> <a routerLink="/"
+                                    onclick=" $('#divTopImg').toggleClass('desplegado')">CLOSE</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </ul>
+            </nav>
+            <!-- #nav-menu-container -->
+        </div>
+    </div>
+</header><!-- #header -->

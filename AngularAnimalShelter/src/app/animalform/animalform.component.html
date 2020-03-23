@@ -1,0 +1,90 @@
+<section class="banner-area relative" id="home">
+	<div class="overlay overlay-bg"></div>
+	<div class="container">
+		<div class="row d-flex align-items-center justify-content-center">
+			<div class="about-content col-lg-12">
+				<h1 class="text-white">New Animal</h1>
+				<p class="text-white link-nav">
+					<a href="/">Home </a> <span class="lnr lnr-arrow-right"></span> <a
+						routerLink="/animalform"> Add animal</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End banner Area -->
+
+<!-- Start Animal-form Area -->
+<section class="Volunteer-form-area section-gap">
+	<div class="container">
+		<div class="row d-flex justify-content-center">
+			<div class="menu-content pb-60 col-lg-9">
+				<div class="title text-center">
+					<h1 class="mb-20">Animal data:</h1>
+					<p>Include the animal characteristics to help him to a new
+						home.</p>
+				</div>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<form action="/createAnimal" method="post"
+				enctype="multipart/form-data" class="col-lg-9">
+				<div class="form-group">
+					<label for="image">Photo:</label><br> <input type="file"
+						name='imagenFile' accept=".jpg, .jpeg" required>
+				</div>
+				<div class="form-group">
+					<label for="name">Name:</label> <input type="text"
+						name="animalName" class="form-control" placeholder="Name" required>
+				</div>
+				<div class="form-group">
+					<label for="type-animal">Type animal:</label> <select
+						name="animalType" required>
+						<!-- values for the special-filter algorith -->
+						<option value="bird">Bird</option>
+						<!-- -2 -->
+						<option value="dog">Dog</option>
+						<!-- +0 -->
+						<option value="cat">Cat</option>
+						<!-- +0 -->
+						<option value="reptile">Reptile</option>
+						<!-- +3 -->
+						<option value="other">Other</option>
+						<!-- +2 -->
+					</select>
+				</div>
+				<div class="form-group">
+					<label for=age>Age:</label> <input type="number"
+						class="form-control" min="0" placeholder="Months" name="animalAge"
+						required>
+				</div>
+				<div class="form-group">
+					<label for="description">Description</label>
+					<textarea class="form-control" id="exampleTextarea" rows="5"
+						placeholder="Write a description" name="animalDescription"></textarea>
+				</div>
+				<div class="form-group">
+					<label for="size-animal">Size:</label> <select name="animalSize"
+						required>
+						<!-- values for the special-filter algorith -->
+						<option value="no">Irrelevant</option>
+						<!-- -3 -->
+						<option value="xs">Very Small</option>
+						<!-- +0 -->
+						<option value="s">Small</option>
+						<!-- +1 -->
+						<option value="m">Medium</option>
+						<!-- +4 -->
+						<option value="l">Big</option>
+						<!-- +6 -->
+						<option value="xl">Very Big</option>
+						<!-- +8 -->
+					</select>
+				</div>
+				<button type="submit" class="genric-btn primary circle float-right">Add
+					Animal</button>
+			</form>
+		</div>
+	</div>
+</section>
+<!-- End Animal-form Area -->

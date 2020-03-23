@@ -1,0 +1,57 @@
+<section class="banner-area relative" id="home">
+	<div class="overlay overlay-bg"></div>
+	<div class="container">
+		<div class="row d-flex align-items-center justify-content-center">
+			<div class="about-content col-lg-12">
+				<h1 class="text-white">Animals</h1>
+				<p class="text-white link-nav"><a routerLink="/home">Home </a> <span class="lnr lnr-arrow-right"></span> <a routerLink="/animals">Animals</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- Start animal-list Area -->
+<form onsubmit="event.preventDefault()" class="intro" >
+	<div class="form-group">
+		<div class="row">
+			<select id="filter" class="col-lg-8 col-md-3">
+				<option value="all">All</option>
+				<option value="bird">Bird</option>
+				<option value="cat">Cat</option>
+				<option value="dog">Dog</option>
+				<option value="reptile">Reptile</option>
+				<option value="others">Others</option>
+			</select>
+			<button id='buttonFilter' onclick= "applyFilter()" class="genric-btn primary circle"
+				style="float: left; width: 125px; margin-left: 2%;">Apply
+				Filter</button>
+		</div>
+	</div>
+</form>
+<form onsubmit="event.preventDefault()" class="intro2" >
+	<div class="form-group">
+		<div class="row">
+			<input id="names" type="text" class="form-control col-lg-8 col-md-3"
+				placeholder="Search by name">
+			<button id='buttonSearch' onclick= "applySearch()" class="genric-btn primary circle"
+				style="float: left; width: 125px; margin-left: 2%;">Search</button>
+		</div>
+	</div>
+</form>
+<form onsubmit="event.preventDefault()" class="intro2" >
+		<div class="form-group">
+		<div class="row">
+			<button id='buttonSuit' onclick= "applySuit()" class="genric-btn primary circle"
+				style="float: center; width: 575px; margin-left: 0%;">Suit You</button>
+       </div>
+      </div>
+</form>
+<div id="spinner"></div> 
+<div class="container">
+	<div class="row">
+	    <div id="imagebox"></div>
+    </div>
+</div>
+<button id='add-button' onclick= "showSpinner()" class="genric-btn primary circle" style="float: center; width: 125px; margin-left: 45%;" >Load More</button>
+	
+		
