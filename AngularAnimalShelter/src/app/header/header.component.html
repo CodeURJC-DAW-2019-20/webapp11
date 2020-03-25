@@ -13,7 +13,7 @@
                     <li class="menu-has-children"><a routerLink="/profile">PROFILE</a></li>
                     <li class="menu-has-children"><a routerLink="/contact">CONTACT US</a></li>
                     <li class="menu-has-children"><a routerLink="/logout">LOG OUT</a></li>
-                    <li><a routerLink="/" onclick=" $('#divTopImg').toggleClass('desplegado')">LOG IN</a></li>
+                    <li><a routerLink="#" onclick=" $('#divTopImg').toggleClass('desplegado')">LOG IN</a></li>
                     <div id="divTopImg">
                         <div class="login-form clearfix">
                             <div class="login-header">
@@ -26,10 +26,12 @@
                                     </div>
                                     <input type="submit" value="Entrar">
                                 </form>
-                                <a class="genric-btn primary circle" routerLink="/userform">NEW USER</a><br> <a
-                                    class="genric-btn primary circle" routerLink="/shelterform">NEW
+                                <a class="genric-btn primary circle" routerLink="/userform" 
+                                    onclick=" $('#divTopImg').toggleClass('desplegado')">NEW USER</a><br> <a
+                                    class="genric-btn primary circle" routerLink="/shelterform"
+                                    onclick=" $('#divTopImg').toggleClass('desplegado')">NEW
                                     SHELTER</a> <input type="hidden" id="social_connect_login_form_uri"
-                                    value="Complete" /> <a routerLink="/"
+                                    value="Complete" /> <a routerLink="#"
                                     onclick=" $('#divTopImg').toggleClass('desplegado')">CLOSE</a>
                             </div>
                         </div>

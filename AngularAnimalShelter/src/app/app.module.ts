@@ -14,6 +14,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ContactComponent } from './contact/contact.component';
 import { UserformComponent } from './userform/userform.component';
 import { ShelterformComponent } from './shelterform/shelterform.component';
+import { ShelterFormService } from './shelterform/shelter-form.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,9 @@ import { ShelterformComponent } from './shelterform/shelterform.component';
     AppRoutingModule,
     NgbModule
   ],
-  providers: [],
+  providers: [
+    ShelterFormService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
