@@ -1,15 +1,15 @@
 export interface WebUser{
-    id:number;
-    photo?:string;
-	name:string;
-	dni:string;
-	age:number;
-	adress:string;
-	houseSize:string;
-	garden:string;
-	numChildren:number;
-	numPeopleInHouse:number;
-	email:string;
-	capacity?:number;
-	password:string;
+    idUser?:number;
+    userphoto?:string;
+	userName:string;
+	userDni:string;
+	userAge:number;
+	userAdress:string;
+	userHouseSize:string;
+	userGarden:string;
+	userNumChildren:number;
+	userNumPeopleInHouse:number;
+	userEmail:string;
+	userCapacity?:number;
+	userPassword:string;
 }
