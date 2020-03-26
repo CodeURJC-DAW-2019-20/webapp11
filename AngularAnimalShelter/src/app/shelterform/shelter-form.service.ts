@@ -13,7 +13,7 @@ export class ShelterFormService {
 
   constructor(private http: HttpClient) { }
 
-  createShelter(shelterData : any){
+  createShelter(shelterData : FormData){
     return this.http.post(BASE_URL, shelterData).pipe(			
 			catchError(error => this.handleError(error))
     );

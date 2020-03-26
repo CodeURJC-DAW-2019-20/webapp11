@@ -1,11 +1,11 @@
 export interface Shelter{
-    id?:number;
-	name:string;
-	nif:string;
-	email:string;
-	averageRating?:number;
+    idShelter?:number;
+	shelterName:string;
+	shelterNif:string;
+	shelterEmail:string;
+	shelterAverageRating?:number;
 	numVotes?:number;
-	description:string;
-	adress:string;
-	password:string;
+	shelterDescription:string;
+	shelterAdress:string;
+	shelterPassword:string;
 }

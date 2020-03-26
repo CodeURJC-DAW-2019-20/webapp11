@@ -1,39 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ShelterFormService } from './shelter-form.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Shelter } from '../models/Shelter/shelter.model';
 
 @Component({
   selector: 'app-shelterform',
   templateUrl: './shelterform.component.html',
   styleUrls: ['./shelterform.component.css']
 })
-export class ShelterformComponent implements OnInit {
+export class ShelterformComponent {
 
-  private password: string = "";
-  private shelterData: any = {
-    shelterName: "",
-    shelterNif: "",
-    shelterEmail: "",
-    shelterDescription: "",
-    shelterAdress:"",
-  }
+  shelter: Shelter;
 
-  constructor(private router: Router, private shelterFormService: ShelterFormService, private modalService: NgbModal) { }
-
-  ngOnInit(): void {
-    this.shelterData;
-    this.password;
+  constructor(private router: Router, private shelterFormService: ShelterFormService) { 
+    this.shelter = { 
+      shelterName: '',
+      shelterNif: '',
+      shelterEmail: '',
+      shelterDescription: '',
+      shelterAdress: '',
+      shelterPassword: ''
+    };
   }
 
   createShelter(){
     const formData = new FormData();
-    formData.append('jsondata',this.shelterData);
-    formData.append('password',this.password);
+    formData.append('jsondata',JSON.stringify(this.shelter));
+    formData.append('password',this.shelter.shelterPassword);
 
     this.shelterFormService.createShelter(formData).subscribe(
       shelter => this.router.navigate(['/']),
-      error => this.router.navigate(['/shelterform'])
+      error => this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+        this.router.navigate(['/shelterform']);
+      })
     );
 
   }

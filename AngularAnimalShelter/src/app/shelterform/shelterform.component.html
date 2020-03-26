@@ -29,14 +29,14 @@
 		</div>
 
 		<div class="row justify-content-center">
-			<form class="col-lg-9" action="createShelter" method="post">
+			<div class="col-lg-9" >
 				<div class="form-group">
-					<label for="name">Name:</label> <input type="text"
+					<label for="name">Name:</label> <input [(ngModel)]="shelter.shelterName" type="text"
 						class="form-control" placeholder="Name" name="shelterName"
 						required>
 				</div>
 				<div class="form-group">
-					<label for="name">NIF (uppercase required):</label> <input
+					<label for="name">NIF (uppercase required):</label> <input [(ngModel)]="shelter.shelterNif"
 						type="text" placeholder="nif" class="form-control" size="10"
 						maxlength="9" name="shelterNif"
 						pattern="(([X-Z]{1})([-]?)(\d{7})([-]?)([A-Z]{1}))|((\d{8})([-]?)([A-Z]{1}))"
@@ -44,27 +44,27 @@
 				</div>
 				<div class="form-group">
 					<label for="description">Description</label>
-					<textarea class="form-control" id="exampleTextarea" rows="5"
+					<textarea [(ngModel)]="shelter.shelterDescription" class="form-control" id="exampleTextarea" rows="5"
 						placeholder="Write your description" name="shelterDescription"
 						required></textarea>
 				</div>
 				<div class="form-group">
-					<label for="name">Address:</label> <input type="text"
+					<label for="name">Address:</label> <input [(ngModel)]="shelter.shelterAdress" type="text"
 						class="form-control" placeholder="Address" name="shelterAdress"
 						required>
 				</div>
 				<div class="form-group">
 					<label for="email">E-mail (it will be your user):</label> <input
-						type="email" class="form-control" placeholder="User e-mail"
+					[(ngModel)]="shelter.shelterEmail" type="email" class="form-control" placeholder="User e-mail"
 						name="shelterEmail" required>
 				</div>
 				<div class="form-group">
-					<label for="password">Password:</label> <input type="password"
+					<label for="password">Password:</label> <input [(ngModel)]="shelter.shelterPassword" type="password"
 						class="form-control" placeholder="Password" name="shelterPassword"
 						required>
 				</div>
-				<button type="submit" class="genric-btn primary circle">Create Shelter</button>
-			</form>
+				<button (click)="createShelter()" type="submit" class="genric-btn primary circle">Create Shelter</button>
+			</div>
 		</div>
 	</div>
 </section>
