@@ -1,14 +1,14 @@
 import { Shelter } from '../Shelter/shelter.model';
 
 export interface Animal{
-	id:number;
-    photo?:string;
-	name:string;
-	age:number;
-	type:string;
-	size:string;
-	description:string;
-	adopted:boolean;
-	dimensions?:number;
-    owner:Shelter;
+	idAnimal?:number;
+    animalPhoto?:string;
+	animalName:string;
+	animalAge:number;
+	animalType:string;
+	animalSize:string;
+	animalDescription:string;
+//	adopted:boolean;
+//	dimensions?:number;
+//  owner:Shelter;
 }
