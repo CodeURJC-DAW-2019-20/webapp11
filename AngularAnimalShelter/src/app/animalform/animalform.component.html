@@ -30,16 +30,15 @@
 			<form action="/createAnimal" method="post"
 				enctype="multipart/form-data" class="col-lg-9">
 				<div class="form-group">
-					<label for="image">Photo:</label><br> <input type="file"
-						name='imagenFile' accept=".jpg, .jpeg" required>
+					<label for="image">Photo:</label><br> 
+					<input type="file" name='animalPhoto' accept=".jpg, .jpeg"  (change)="loadAnimalImage($event)" required>
 				</div>
 				<div class="form-group">
-					<label for="name">Name:</label> <input type="text"
-						name="animalName" class="form-control" placeholder="Name" required>
+					<label for="name">Name:</label> <input type="text"  [(ngModel)]="animal.animalName" name="animalName" class="form-control" placeholder="Name" required>
 				</div>
 				<div class="form-group">
-					<label for="type-animal">Type animal:</label> <select
-						name="animalType" required>
+					<label for="type-animal">Type animal:</label> <select name="animalType" [(ngModel)]="animal.animalType"
+						 required>
 						<!-- values for the special-filter algorith -->
 						<option value="bird">Bird</option>
 						<!-- -2 -->
@@ -54,17 +53,17 @@
 					</select>
 				</div>
 				<div class="form-group">
-					<label for=age>Age:</label> <input type="number"
-						class="form-control" min="0" placeholder="Months" name="animalAge"
+					<label for=age>Age:</label> <input type="number" name="animalAge" [(ngModel)]="animal.animalAge"
+						class="form-control" min="0" placeholder="Months" 
 						required>
 				</div>
 				<div class="form-group">
 					<label for="description">Description</label>
 					<textarea class="form-control" id="exampleTextarea" rows="5"
-						placeholder="Write a description" name="animalDescription"></textarea>
+						placeholder="Write a description"  name="animalDescription" [(ngModel)]="animal.animalDescription"></textarea>
 				</div>
 				<div class="form-group">
-					<label for="size-animal">Size:</label> <select name="animalSize"
+					<label for="size-animal">Size:</label> <select  name="animalSize" [(ngModel)]="animal.animalSize"
 						required>
 						<!-- values for the special-filter algorith -->
 						<option value="no">Irrelevant</option>
@@ -81,8 +80,7 @@
 						<!-- +8 -->
 					</select>
 				</div>
-				<button type="submit" class="genric-btn primary circle float-right">Add
-					Animal</button>
+				<button type="submit" (click)="createAnimal()" class="genric-btn primary circle float-right">Add Animal</button>
 			</form>
 		</div>
 	</div>
