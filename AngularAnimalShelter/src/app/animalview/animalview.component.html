@@ -1,0 +1,58 @@
+<!-- start banner Area -->
+<section class="banner-area relative" id="home">
+	<div class="overlay overlay-bg"></div>
+	<div class="container">
+		<div class="row d-flex align-items-center justify-content-center">
+			<div class="about-content col-lg-12">
+				<h1 class="text-white"> Profile</h1>
+				<p class="text-white link-nav">
+					<a href="/">Home </a> <span class="lnr lnr-arrow-right"></span> <a href="/animal"> Animals</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End banner Area -->
+
+<!-- start data Area -->
+<section class="cat-list-area section-gap">
+	<div class="container">
+		<div class="row">
+			<div class="column-profile left">
+				<img src="http://localhost:8443/images/animal/{{animalPhoto}}" class="allimages">
+			</div>
+			<div class="column-profile rigth">
+				<br>
+				<h3>Data:{{animalName}}</h3>
+				<p>
+					<b>Animal Type:{{animalType}} </b>
+				</p>
+				<p>
+					<b>Description:{{animalDescription}} </b>
+				</p>
+				<p>
+					<b>Age:{{animalAge}} </b>
+				</p>
+				<p>
+					<b>Size: {{animalAge}}</b>
+				</p>
+
+
+				<form action="/send/adopt" method="post" class="col-lg-9">
+					<input type="hidden" name="animalName" value="" />
+					<table>
+						<tr>
+							<td></td>
+							<td><button type="submit" class="genric-btn primary circle" name="animalName"
+									style="width: 125px">Adopt Me!</button></td>
+						</tr>
+					</table>
+				</form>
+
+
+
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End Data Area -->

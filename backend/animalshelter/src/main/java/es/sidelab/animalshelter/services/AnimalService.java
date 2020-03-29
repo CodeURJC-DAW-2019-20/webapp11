@@ -15,6 +15,13 @@ public class AnimalService {
 	public Animal findByAnimalId(long id) {
 		return repository.getOne(id);
 	}
+	public List<Animal> findByAnimalType(String animalType) {
+		return repository.findByAnimalType(animalType);
+	}
+	public Animal findByAnimalName(String animalName) {
+		return repository.findByAnimalName(animalName);
+	}
+	
 
 	public List<Animal> findAll() {
 		return repository.findAll();

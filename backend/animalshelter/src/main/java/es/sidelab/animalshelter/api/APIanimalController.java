@@ -3,6 +3,7 @@ package es.sidelab.animalshelter.api;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,6 +65,20 @@ public class APIanimalController {
 			return new ResponseEntity<>(result, HttpStatus.OK);
 		}
 	}
+	@GetMapping("/allimages/{animalType}") // this method will show all animals by paging
+	public ResponseEntity<List<Object>> findallimages(@PathVariable String animalType) throws MalformedURLException {
+
+	    List<Object> result = new ArrayList<Object>();
+		List<Animal> animal = animalRepository.findByAnimalType(animalType);
+       for (int i =0;i<animal.size();i++) {
+    	   result.add(this.imageService.createResponseFromImage("animal", animal.get(i).getIdAnimal()));
+       }
+		if(result != null) {
+			return new ResponseEntity<>(result, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
 
 	@PostMapping("/")
 	@ResponseStatus(HttpStatus.CREATED)
@@ -105,6 +120,34 @@ public class APIanimalController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
+	@GetMapping("/animalType/{animalType}")
+	public ResponseEntity<Object> findByType(@PathVariable String animalType) throws MalformedURLException {
+		List<Animal> animal;
+	
+		if (animalType.equals("all") ) {
+			 animal = animalService.findAll();
+		}
+		else {
+			animal = animalService.findByAnimalType(animalType);
+		}
+	
+		if(animal != null) {
+			return new ResponseEntity<>(animal, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+	@GetMapping("/animalName/{animalName}")
+	public ResponseEntity<Object> findByName(@PathVariable String animalName) throws MalformedURLException {
+		Animal animal = animalService.findByAnimalName(animalName);
+		
+		if(animal != null) {
+			return new ResponseEntity<>(animal, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
+
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Animal> deleteAnimal(@PathVariable long id) {
@@ -127,7 +170,6 @@ public class APIanimalController {
 			 return this.imageService.createResponseFromImage("animal", id);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
+		}		
 	}
-
 }

@@ -9,6 +9,7 @@ import { ContactComponent } from './contact/contact.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UserformComponent } from './userform/userform.component';
 import { ShelterformComponent } from './shelterform/shelterform.component';
+import { AnimalviewComponent } from './animalview/animalview.component';
 
 
 const routes: Routes = [
@@ -43,6 +44,10 @@ const routes: Routes = [
   },
   {
     path:'shelterform', component:  ShelterformComponent
+  
+  },
+  {
+    path:'animal/:name/:type/:age/:description/:size/:photo', component:  AnimalviewComponent 
   
   }
   

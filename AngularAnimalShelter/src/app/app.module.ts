@@ -19,6 +19,7 @@ import { ContactComponent } from './contact/contact.component';
 import { UserformComponent } from './userform/userform.component';
 import { ShelterformComponent } from './shelterform/shelterform.component';
 import { ShelterFormService } from './shelterform/shelter-form.service';
+import { AnimalviewComponent } from './animalview/animalview.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ShelterFormService } from './shelterform/shelter-form.service';
     ProfileComponent,
     ContactComponent,
     UserformComponent,
-    ShelterformComponent
+    ShelterformComponent,
+    AnimalviewComponent
   ],
   imports: [
     BrowserModule,
