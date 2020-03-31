@@ -28,7 +28,7 @@ public class UserShelterComponent {
 	}
 	
 	public String getRole() {
-		return role;
+		return this.role;
 	}
 
 	public void setLoggedUser(WebUser user) {
