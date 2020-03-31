@@ -95,7 +95,7 @@ public class APIanimalController {
 
 	@PutMapping("/{id}")
 	public ResponseEntity<Animal> updateAnimal(@PathVariable long id, @RequestBody Animal updatedAnimal) {
-
+      
 		Animal animal = animalService.findByAnimalId(id);
 
 		if (animal != null) {
@@ -121,24 +121,37 @@ public class APIanimalController {
 		}
 	}
 	@GetMapping("/animalType/{animalType}")
-	public ResponseEntity<Object> findByType(@PathVariable String animalType) throws MalformedURLException {
+	public ResponseEntity<Object> findByType(@PathVariable String animalType,@RequestParam(defaultValue="0") int page) {
+	
+		List<Animal> result = new ArrayList<>();
 		List<Animal> animal;
 	
 		if (animalType.equals("all") ) {
+			int count = page;
+			System.out.print("hola"+page);
+			int counts = count * 3 + 3;
 			 animal = animalService.findAll();
+			 for (int i = count*3; i < animal.size() && i < counts; i++) {
+					result.add(animal.get(i));
+			 }
 		}
 		else {
 			animal = animalService.findByAnimalType(animalType);
-		}
-	
-		if(animal != null) {
-			return new ResponseEntity<>(animal, HttpStatus.OK);
+			int count = page;
+			System.out.print("hola"+page);
+			int counts = count * 3 + 3;
+			 for (int i = count*3; i < animal.size() && i < counts; i++) {
+					result.add(animal.get(i));
+			 }			
+		}	
+		if(result != null) {
+			return new ResponseEntity<>(result, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 	@GetMapping("/animalName/{animalName}")
-	public ResponseEntity<Object> findByName(@PathVariable String animalName) throws MalformedURLException {
+	public ResponseEntity<Object> findByName(@PathVariable String animalName){
 		Animal animal = animalService.findByAnimalName(animalName);
 		
 		if(animal != null) {

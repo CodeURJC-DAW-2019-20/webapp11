@@ -14,22 +14,44 @@ export class AnimalsComponent implements OnInit {
   animalType: string;
   animalName: string;
     animal: any[];
+    page:number=0;
+  loading:boolean;
 
   animals:any=[];
 
   constructor(private dataService: ServiceService) { 
 
-    
+    this.animal = Array();
+    this.loading = false;
+  }
+  saverange(){
+    this.page=0;
+    this.animal = [];
+  }
+  increment(){
+
+     this.page=this.page+1;
+     console.log(this.page);
+     this.searchCustomers();
   }
 
   ngOnInit(): void {
    this.animalType=null;
    this.animalName=null;
+
  
   }
   private searchCustomers() {
-    this.dataService.getAnimalsByType(this.animalType)
-      .subscribe(animal => this.animal = animal);
+    this.loading= true;
+    this.dataService.getAnimalsByType(this.animalType,this.page)
+      .subscribe(animal => {
+        this.loading=false;
+        for(let ani of animal) {
+          this.animal.push(ani);
+        } 
+
+      }
+       );
   }
  
   onSubmit() {

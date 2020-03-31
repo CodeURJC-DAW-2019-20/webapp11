@@ -12,8 +12,8 @@ export class ServiceService {
   private BASE_URL = environment.apiBase + '/animals';
 
   constructor(private http: HttpClient) { }
-  getAnimalsByType(animalType: string): Observable<any> {
-    return this.http.get(`${this.BASE_URL}/animalType/${animalType}`);
+  getAnimalsByType(animalType: string,page: number): Observable<any> {
+    return this.http.get(`${this.BASE_URL}/animalType/${animalType}?page=${page}`);
     
   }
   getAnimalsByName(animalName: string): Observable<any> {

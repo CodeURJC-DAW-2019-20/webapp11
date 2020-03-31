@@ -14,7 +14,7 @@
 <form (ngSubmit)="onSubmit()" class="intro" >
 	<div class="form-group">
 		<div class="row">
-			<select id="animalType" required [(ngModel)]="animalType" name="animalType" class=" col-lg-8 col-md-3">
+			<select id="animalType" required [(ngModel)]="animalType"  name="animalType" class=" col-lg-8 col-md-3">
 				<option value="all">All</option>
 				<option value="bird">Bird</option>
 				<option value="cat">Cat</option>
@@ -23,7 +23,7 @@
 				<option value="others">Others</option>
 			</select>
 			<div class="btn-group">
-				<button type="submit" class="genric-btn primary circle"
+				<button type="submit" (click)="saverange()" class="genric-btn primary circle"
 				style="float: left; width: 125px; margin-left: 5%;">Apply Filter</button>
 			</div>
 		</div>
@@ -56,8 +56,9 @@
     </div>
 </div>
 
+<img *ngIf="loading" src="assets/spinner2.gif " style="float: center; width: 5%; margin-left: 47%; position:sticky"/>
 
-<button id='add-button' onclick= "showSpinner()" class="genric-btn primary circle" style="float: center; width: 125px; margin-left: 45%;" >Load More</button>
+<button id='add-button' (click)= "increment()" class="genric-btn primary circle" style="float: center; width: 125px; margin-left: 45%;" >Load More</button>
 
 
 	
