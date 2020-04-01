@@ -22,6 +22,7 @@ public class Shelter {
 	private int numVotes;
 	private String shelterDescription;
 	private String shelterAdress;
+	private String role;
 	@JsonIgnore
 	private String shelterPassword;
 
@@ -41,6 +42,7 @@ public class Shelter {
 		this.shelterAdress = shelterAdress;
 		this.shelterAverageRating = 0;
 		this.numVotes = 0;
+		this.role = "SHELTER";
 	}
 
 	// FUNCTIONS
@@ -96,5 +98,9 @@ public class Shelter {
 
 	public void setPassword(String password) {
 		this.shelterPassword = new BCryptPasswordEncoder().encode(password);
+	}
+
+	public String getRole() {
+		return role;
 	}
 }

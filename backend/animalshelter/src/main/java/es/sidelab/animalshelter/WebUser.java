@@ -31,6 +31,7 @@ public class WebUser {
 	private int userNumPeopleInHouse;
 	private String userEmail;
 	private int userCapacity;
+	private String role;
 	@JsonIgnore
 	private String userPassword;
 
@@ -53,6 +54,7 @@ public class WebUser {
 		this.userEmail = userEmail;
 		this.userPassword = new BCryptPasswordEncoder().encode(userPassword);
 		this.userCapacity = this.calcUserCapacity();
+		this.role = "USER";
 	}
 
 	// FUNCTIONS
@@ -161,5 +163,9 @@ public class WebUser {
 	
 	public void setPasword(String password) {
 		this.userPassword = new BCryptPasswordEncoder().encode(password);
+	}
+
+	public String getRole() {
+		return role;
 	}
 }

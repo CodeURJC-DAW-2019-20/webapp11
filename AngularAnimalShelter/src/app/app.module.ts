@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms'; 
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -20,6 +20,11 @@ import { UserformComponent } from './userform/userform.component';
 import { ShelterformComponent } from './shelterform/shelterform.component';
 import { ShelterFormService } from './shelterform/shelter-form.service';
 import { AnimalviewComponent } from './animalview/animalview.component';
+import { UserformService } from './userform/userform.service';
+import { LoginService } from './auth/login.service';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { BasicAuthInterceptor } from './auth/auth.interceptor';
+import { ErrorInterceptor } from './auth/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -46,7 +51,12 @@ import { AnimalviewComponent } from './animalview/animalview.component';
     HttpClientModule
   ],
   providers: [
-    ShelterFormService
+    ShelterFormService,
+    UserformService,
+    LoginService,
+    { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]
 })

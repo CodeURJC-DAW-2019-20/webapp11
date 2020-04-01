@@ -8,23 +8,23 @@
                 <ul class="nav-menu">
                     <li class="menu-has-children"><a routerLink="/animals">ANIMALS</a></li>
                     <li class="menu-has-children"><a routerLink="/statistics">STATISTICS</a></li>
-                    <li class="menu-has-children"><a routerLink="/request">REQUESTS</a></li>
-                    <li class="menu-has-children"><a routerLink="/animalform">ADD ANIMAL</a></li>
-                    <li class="menu-has-children"><a routerLink="/profile">PROFILE</a></li>
+                    <li *ngIf="loginService.role == 'SHELTER'" class="menu-has-children"><a routerLink="/request">REQUESTS</a></li>
+                    <li *ngIf="loginService.role == 'SHELTER'" class="menu-has-children"><a routerLink="/animalform">ADD ANIMAL</a></li>
+                    <li *ngIf="loginService.role == 'USER'" class="menu-has-children"><a routerLink="/profile">PROFILE</a></li>
                     <li class="menu-has-children"><a routerLink="/contact">CONTACT US</a></li>
-                    <li class="menu-has-children"><a routerLink="/logout">LOG OUT</a></li>
-                    <li><a routerLink="#" onclick=" $('#divTopImg').toggleClass('desplegado')">LOG IN</a></li>
-                    <div id="divTopImg">
+                    <li *ngIf="loginService.isLogged" class="menu-has-children"><a (click)='logOut()' style="cursor:pointer">LOG OUT</a></li>
+                    <li *ngIf="!loginService.isLogged"><a routerLink="#" onclick=" $('#divTopImg').toggleClass('desplegado')">LOG IN</a></li>
+                    <div *ngIf="!loginService.isLogged" id="divTopImg">
                         <div class="login-form clearfix">
                             <div class="login-header">
                                 <form action="/login" method="post">
                                     <div class="form-group">
-                                        <label>User</label> <input type="text" name="username">
+                                        <label>User</label> <input #email type="text" name="email" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>Password</label> <input type="password" name="password">
+                                        <label>Password</label> <input #pass type="password" name="pass" required>
                                     </div>
-                                    <input type="submit" value="Entrar">
+                                    <input (click)="logIn($event, email.value, pass.value); $event.stopPropagation()" type="submit" value="Entrar">
                                 </form>
                                 <a class="genric-btn primary circle" routerLink="/userform" 
                                     onclick=" $('#divTopImg').toggleClass('desplegado')">NEW USER</a><br> <a
