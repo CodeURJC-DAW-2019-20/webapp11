@@ -47,12 +47,6 @@ export class LoginService {
   
   logOut() {
     this.removeCurrentUser();
-    return this.http.get(URL + '/logOut').pipe(
-        map(response => {
-            
-            return response;
-        }),
-    );
   }
 
   private setCurrentUser(user: WebUser | Shelter) {

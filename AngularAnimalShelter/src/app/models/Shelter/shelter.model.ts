@@ -8,4 +8,6 @@ export interface Shelter{
 	shelterDescription:string;
 	shelterAdress:string;
 	shelterPassword:string;
+	role: string;
+	authdata?: string;
 }

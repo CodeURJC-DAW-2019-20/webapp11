@@ -20,21 +20,44 @@ export class ShelterformComponent {
       shelterEmail: '',
       shelterDescription: '',
       shelterAdress: '',
-      shelterPassword: ''
+      shelterPassword: '',
+      role: 'SHELTER'
     };
   }
 
   createShelter(){
-    const formData = new FormData();
-    formData.append('jsondata',JSON.stringify(this.shelter));
-    formData.append('password',this.shelter.shelterPassword);
+    if(this.shelter.shelterName.length == 0 || this.shelter.shelterNif.length == 0
+      || this.shelter.shelterEmail.length == 0 || this.shelter.shelterDescription.length == 0
+      || this.shelter.shelterAdress.length == 0 || this.shelter.shelterPassword.length == 0){
+      
+      alert('Fill all the blanks');
 
-    this.shelterFormService.createShelter(formData).subscribe(
-      shelter => this.router.navigate(['/']),
-      error => this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
-        this.router.navigate(['/shelterform']);
-      })
-    );
+    } else {
+      const formData = new FormData();
+      formData.append('jsondata',JSON.stringify(this.shelter));
+      formData.append('password',this.shelter.shelterPassword);
+
+      this.shelterFormService.createShelter(formData).subscribe(
+        shelter => {
+          if(shelter){
+            this.router.navigate(['/']); 
+          } else {
+            this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+              this.router.navigate(['/shelterform']);
+            });
+            alert('User already registered');
+          }
+          console.log(shelter)
+        },
+        error => {
+          alert('Something went wrong, try again');
+          this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+            this.router.navigate(['/shelterform']);
+          });
+        }
+      );
+    }
+    
 
   }
 

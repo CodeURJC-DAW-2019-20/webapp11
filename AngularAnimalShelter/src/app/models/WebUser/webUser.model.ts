@@ -12,4 +12,6 @@ export interface WebUser{
 	userEmail:string;
 	userCapacity?:number;
 	userPassword:string;
+	role: string;
+	authdata?: string;
 }

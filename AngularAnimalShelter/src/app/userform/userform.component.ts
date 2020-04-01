@@ -25,7 +25,8 @@ export class UserformComponent {
       userNumChildren:0,
       userNumPeopleInHouse:0,
       userEmail:'',
-      userPassword:''
+      userPassword:'',
+      role: 'USER'
     }
   }
 

@@ -17,10 +17,13 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
   
-  logIn(event:any, email: string, pass: string) {
+  logIn(email: string, pass: string) {
 
-    event.stopPropagation();
-    event.preventDefault();
+    if(email.length == 0 || pass.length == 0){
+      alert('Invalid user or password');
+      return
+    }
+    
     this.loginService.logIn(email, pass).subscribe(
       user => {
         console.log(user);
@@ -32,12 +35,8 @@ export class HeaderComponent implements OnInit {
   }
 
   logOut() {
-    this.loginService.logOut().subscribe(
-        (response) => {
-            this.router.navigate(['/']);
-        },
-        (error) => console.log('Error when trying to log out: ' + error),
-    );
+    this.loginService.logOut();
+    this.router.navigate(['/']);
 }
 
 }
