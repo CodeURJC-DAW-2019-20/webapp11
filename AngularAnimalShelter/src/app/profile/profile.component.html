@@ -5,8 +5,8 @@
 			<div class="about-content col-lg-12">
 				<h1 class="text-white">Profile</h1>
 				<p class="text-white link-nav">
-					<a href="/">Home </a> <span class="lnr lnr-arrow-right"></span> <a
-					 routerLink="/profile"> Profile</a>
+					<a href="/">Home </a> <span class="lnr lnr-arrow-right"></span> <a routerLink="/profile">
+						Profile</a>
 				</p>
 			</div>
 		</div>
@@ -19,8 +19,8 @@
 	<div class="container">
 		<div class="row">
 			<div class="column-profile left">
-				<img src="https://localhost:8443/images/user/{{user.userphoto}}" width="600px"
-					height="600px" class="img-fluid">
+				<img src="https://localhost:8443/images/user/{{user.userphoto}}" width="600px" height="600px"
+					class="img-fluid">
 			</div>
 			<div class="column-profile rigth">
 				<h2></h2>
@@ -43,26 +43,40 @@
 		<div class="profile-pictures">
 			<h2>Gallery</h2>
 			<br>
-			<form action="/addImage" method="post" class="col-lg-9" enctype="multipart/form-data">
+			<form (ngSubmit)="createGallery()">
 				<div class="form-group">
-					<input type="file" name="galleryPhoto" accept=".jpg, .jpeg"
-						required>
-					<button type="submit" class="genric-btn primary circle"
-						style="width: 125px">Add Image</button>
+					<input type="file" [(ngModel)]="userGallery" name='userGallery' accept=".jpg, .jpeg"
+						(change)="loadGalleryImage($event)" required>
+					<button type="submit" class="genric-btn primary circle" style="width: 125px">Add Image</button>
+					<p> </p>
+
 				</div>
+
 			</form>
-			
+			<button (click)="searchgallery()" class="genric-btn primary circle" style="width: 130px">Show
+				Gallery</button>
+
+
 			<div class="container">
-	         <div class="row">
-	         <div id="imbox"></div>
-            </div>
-            </div>
-          </div>  
-			
+				<div class="row">
+					<div id="imbox"></div>
+				</div>
+			</div>
+		</div>
+
 	</div>
-	<div id="spinner"></div> 
-	<button id='add-loadbutton' onclick= "showSpinner()" class="genric-btn primary circle" style="float: center; width: 125px; margin-left: 45%;" >Load More</button>
-	
+	<div id="spinner"></div>
+	<div class="container">
+		<div class="row">
+			<div id="imagebox" *ngFor="let ani of animal">
+				<img class="allimages" src="https://localhost:8443{{ani}}" alt="" height="100px" wight="100px">
+
+			</div>
+		</div>
+	</div>
+
+
+
 </section>
 
 <!-- End Data Area -->

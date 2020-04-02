@@ -47,6 +47,8 @@ public class MainController extends ModelAttributeController {
 				"correo.usuario@outlook.com", "123");
 		WebUser user2 = new WebUser("Mary", "no", 22, "C/Lambrusco,10", "s", "no", 1, 3,
 				"iho.ladamadeltiempo@gmail.com", "123");
+                user1.setUserphoto("image-1.jpg");
+		user2.setUserphoto("image-2.jpg");
 		userRepository.save(user1);
 		userRepository.save(user2);
 
