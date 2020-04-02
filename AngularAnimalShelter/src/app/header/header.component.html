@@ -24,7 +24,7 @@
                                     <div class="form-group">
                                         <label>Password</label> <input #pass type="password" name="pass">
                                     </div>
-                                    <input (click)="logIn($event, email.value, pass.value); $event.stopPropagation()" type="submit" value="Entrar">
+                                    <input (click)="logIn(email.value, pass.value); $event.stopPropagation()" type="submit" value="Entrar">
                                 </form>
                                 <a class="genric-btn primary circle" routerLink="/userform" 
                                     onclick=" $('#divTopImg').toggleClass('desplegado')">NEW USER</a><br> <a
