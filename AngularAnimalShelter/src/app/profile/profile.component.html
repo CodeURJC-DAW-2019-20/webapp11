@@ -19,24 +19,24 @@
 	<div class="container">
 		<div class="row">
 			<div class="column-profile left">
-				<img src="" width="600px"
+				<img src="https://localhost:8443/images/user/{{user.userphoto}}" width="600px"
 					height="600px" class="img-fluid">
 			</div>
 			<div class="column-profile rigth">
 				<h2></h2>
 				<br>
-				<h3>Data:</h3>
+				<h3>Data:{{user.userName}}</h3>
 				<p>
-					<b>House size: </b>
+					<b>House size:{{user.userHouseSize}} </b>
 				</p>
 				<p>
-					<b>Garden: </b>
+					<b>Garden:{{user.userGarden}} </b>
 				</p>
 				<p>
-					<b>Kids: </b>
+					<b>Kids:{{user.userNumChildren}} </b>
 				</p>
 				<p>
-					<b>People in house: </b>
+					<b>People in house:{{user.userNumPeopleInHouse}} </b>
 				</p>
 			</div>
 		</div>
