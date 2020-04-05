@@ -4,5 +4,13 @@
       "secure": false,
       "logLevel": "debug",
       "changeOrigin": true
+    },
+    "/images/*": {
+      "target": "https://localhost:8443/",
+      "secure": false,
+      "logLevel": "debug",
+      "changeOrigin": true
     }
+
+
   }

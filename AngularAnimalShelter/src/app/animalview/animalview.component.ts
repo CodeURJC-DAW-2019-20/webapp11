@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-animalview',
@@ -12,7 +14,9 @@ export class AnimalviewComponent implements OnInit {
 	animalAge:number;
 	animalType:string;
 	animalSize:string;
-	animalDescription:string;
+  animalDescription:string;
+  src=environment.apiBase2+ "/animal"
+
 
   constructor(private ruta : ActivatedRoute) { }
 

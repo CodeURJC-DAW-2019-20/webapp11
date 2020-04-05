@@ -2,6 +2,9 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ServiceService } from './service.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { environment } from 'src/environments/environment';
+
+
 
 @Component({
   selector: 'app-profile',
@@ -15,6 +18,7 @@ export class ProfileComponent {
   animal: any[];
   file: any[];
   userGallery: string;
+  src=environment.apiBase2 + '/user';
 
   constructor(private service: ServiceService, private router: Router) {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
