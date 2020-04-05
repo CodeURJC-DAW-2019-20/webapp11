@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   apiBase: "/api",
   apiBase2:"/images",
+  apiBase3:"/"
 };
 
 /*

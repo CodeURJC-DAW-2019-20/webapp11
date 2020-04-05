@@ -19,6 +19,8 @@ export class ProfileComponent {
   file: any[];
   userGallery: string;
   src=environment.apiBase2 + '/user';
+  src2=environment.apiBase3;
+
 
   constructor(private service: ServiceService, private router: Router) {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
