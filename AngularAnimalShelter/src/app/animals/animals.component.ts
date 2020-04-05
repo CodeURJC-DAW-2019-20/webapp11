@@ -3,9 +3,6 @@ import { Animal } from '../models/Animal/animal.model';
 import { ServiceService } from './service.service';
 import { environment } from 'src/environments/environment';
 
-
-
-
 @Component({
   selector: 'app-animals',
   templateUrl: './animals.component.html',
@@ -35,7 +32,7 @@ export class AnimalsComponent implements OnInit {
 
     this.page = this.page + 1;
     console.log(this.page);
-    this.searchCustomers();
+    this.searchByType();
   }
 
   ngOnInit(): void {
@@ -44,7 +41,7 @@ export class AnimalsComponent implements OnInit {
 
 
   }
-  private searchCustomers() {
+  private searchByType() {
     this.loading = true;
     this.dataService.getAnimalsByType(this.animalType, this.page)
       .subscribe(animal => {
@@ -58,8 +55,9 @@ export class AnimalsComponent implements OnInit {
   }
 
   onSubmit() {
-    this.searchCustomers();
+    this.searchByType();
   }
+
   private searchByName() {
     this.dataService.getAnimalsByName(this.animalName)
       .subscribe(
@@ -67,9 +65,25 @@ export class AnimalsComponent implements OnInit {
         this.animal = animal; this.animal = Array.of(this.animal);
         });
   }
-
+  
 
   onSubmitName() {
     this.searchByName();
   }
+
+  private searchSuitedAnimal() {
+    this.loading = true;
+    this.dataService.getSuitedAnimal()
+      .subscribe(animal => {
+        this.loading=false;
+        this.animal = animal;
+       
+      }
+      );
+  }
+
+  onSubmitSuited() {
+    this.searchSuitedAnimal();
+  }
+
 }

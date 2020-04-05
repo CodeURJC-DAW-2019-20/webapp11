@@ -26,6 +26,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import es.sidelab.animalshelter.Animal;
 import es.sidelab.animalshelter.AnimalRepository;
 import es.sidelab.animalshelter.UserShelterComponent;
+import es.sidelab.animalshelter.WebUser;
 import es.sidelab.animalshelter.controllers.ImageService;
 import es.sidelab.animalshelter.services.AnimalService;
 
@@ -65,20 +66,7 @@ public class APIanimalController {
 			return new ResponseEntity<>(result, HttpStatus.OK);
 		}
 	}
-	@GetMapping("/allimages/{animalType}") // this method will show all animals by paging
-	public ResponseEntity<List<Object>> findallimages(@PathVariable String animalType) throws MalformedURLException {
 
-	    List<Object> result = new ArrayList<Object>();
-		List<Animal> animal = animalRepository.findByAnimalType(animalType);
-       for (int i =0;i<animal.size();i++) {
-    	   result.add(this.imageService.createResponseFromImage("animal", animal.get(i).getIdAnimal()));
-       }
-		if(result != null) {
-			return new ResponseEntity<>(result, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
-	}
 
 	@PostMapping("/")
 	@ResponseStatus(HttpStatus.CREATED)
@@ -120,7 +108,7 @@ public class APIanimalController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-	@GetMapping("/animalType/{animalType}")
+	@GetMapping("/animalType/{animalType}")//get animal by type
 	public ResponseEntity<Object> findByType(@PathVariable String animalType,@RequestParam(defaultValue="0") int page) {
 	
 		List<Animal> result = new ArrayList<>();
@@ -150,7 +138,7 @@ public class APIanimalController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
-	@GetMapping("/animalName/{animalName}")
+	@GetMapping("/animalName/{animalName}") //get animal by  name
 	public ResponseEntity<Object> findByName(@PathVariable String animalName){
 		Animal animal = animalService.findByAnimalName(animalName);
 		
@@ -159,6 +147,29 @@ public class APIanimalController {
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
+	}
+	@GetMapping("/suitedAnimal")//get suited Animal for user
+	public ResponseEntity<Object> suitAnimal() {
+		
+		List<Animal> animalSuit = (List<Animal>) animalService.findAll();
+		List<Animal> suited = new ArrayList<Animal>();
+		if(loggeduser.getRole() == "USER") {
+			WebUser userActive = loggeduser.getUser();
+			for (Animal mem : animalSuit) {
+	
+				if (mem.getAnimalDimensions() <= userActive.getUserCapacity()) {
+					suited.add(mem);
+				}
+			}
+			
+			
+		}
+		if(suited != null) {
+			return new ResponseEntity<>(suited, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		
 	}
 
 
@@ -173,6 +184,7 @@ public class APIanimalController {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
+
 
 	@GetMapping("/{id}/images")
 	public ResponseEntity<Object> getAnimalimage(@PathVariable long id) throws MalformedURLException {
