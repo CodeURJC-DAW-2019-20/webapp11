@@ -21,8 +21,8 @@ export class ServiceService {
       catchError(error => this.handleError(error))
     );
   }
-  getGallery(): Observable<any> {
-    return this.http.get(BASE_URL + 'galleries');
+  getGallery( page: number): Observable<any> {
+    return this.http.get(BASE_URL + 'galleries?page='+page);
   }
 
   private handleError(error: any) {

@@ -116,7 +116,6 @@ public class APIanimalController {
 	
 		if (animalType.equals("all") ) {
 			int count = page;
-			System.out.print("hola"+page);
 			int counts = count * 3 + 3;
 			 animal = animalService.findAll();
 			 for (int i = count*3; i < animal.size() && i < counts; i++) {

@@ -12,7 +12,7 @@
 	</div>
 </section>
 <!-- Start animal-list Area -->
-<form (ngSubmit)="onSubmit()" class="intro">
+<form (ngSubmit)="searchByType()" class="intro">
 	<div class="form-group">
 		<div class="row">
 			<select id="animalType" required [(ngModel)]="animalType" name="animalType" class=" col-lg-8 col-md-3">
@@ -30,7 +30,7 @@
 		</div>
 	</div>
 </form>
-<form (ngSubmit)="onSubmitName()" class="intro2">
+<form (ngSubmit)="searchByName()" class="intro2">
 	<div class="form-group">
 		<div class="row">
 			<input type="text" id="animalName" required [(ngModel)]="animalName" name="animalName"
@@ -40,10 +40,10 @@
 		</div>
 	</div>
 </form>
-<form (ngSubmit)="onSubmitSuited()" class="intro2">
+<form (ngSubmit)="searchSuitedAnimal()" class="intro2">
 	<div class="form-group">
 		<div class="row">
-			<button type="submit" id='buttonSuit' class="genric-btn primary circle"
+			<button *ngIf="suitedbuttonVisible" type="submit"  id='buttonSuit' class="genric-btn primary circle"
 				style="float: center; width: 575px; margin-left: 0%;">Suit You</button>
 		</div>
 	</div>
@@ -52,8 +52,7 @@
 <div class="container">
 	<div class="row">
 		<div id="imagebox" *ngFor="let ani of animal">
-			<a
-				[routerLink]="['/animal',ani.animalName,ani.animalType, ani.animalAge,ani.animalDescription,ani.size,ani.animalPhoto]"><img
+			<a [routerLink]="['/animal',ani.animalName,ani.animalType, ani.animalAge,ani.animalDescription,ani.size,ani.animalPhoto]"><img
 					class="allimages" src="{{src}}/{{ani.animalPhoto}}" alt="" height="100px" wight="100px"> </a>
 
 		</div>
@@ -62,5 +61,5 @@
 
 <img *ngIf="loading" src="assets/spinner2.gif " style="float: center; width: 5%; margin-left: 47%; position:sticky" />
 
-<button id='add-button' (click)="increment()" class="genric-btn primary circle"
+<button *ngIf="isbuttonvisible" id='add-button' (click)="increment()" class="genric-btn primary circle"
 	style="float: center; width: 125px; margin-left: 45%;">Load More</button>

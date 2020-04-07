@@ -47,15 +47,14 @@
 				<div class="form-group">
 					<input type="file" [(ngModel)]="userGallery" name='userGallery' accept=".jpg, .jpeg"
 						(change)="loadGalleryImage($event)" required>
-					<button type="submit" class="genric-btn primary circle" style="width: 125px">Add Image</button>
+					<button type="submit"   class="genric-btn primary circle" style="width: 125px">Add Image</button>
 					<p> </p>
-
 				</div>
-
 			</form>
-			<button (click)="searchgallery()" class="genric-btn primary circle" style="width: 130px">Show
+			<form (ngSubmit)="onShowGallery()" >
+			<button type="submit" (click)="saverange()" class="genric-btn primary circle" style="width: 130px">Show
 				Gallery</button>
-
+			</form>
 
 			<div class="container">
 				<div class="row">
@@ -65,15 +64,19 @@
 		</div>
 
 	</div>
+	
 	<div id="spinner"></div>
 	<div class="container">
 		<div class="row">
-			<div id="imagebox" *ngFor="let ani of animal">
-				<img class="allimages" src="{{src2}}{{ani}}" alt="" height="100px" wight="100px">
+			<div id="imagebox" *ngFor="let gallery of gallery">
+				<img class="allimages" src="{{src2}}{{gallery}}" alt="" height="100px" wight="100px">
 
 			</div>
 		</div>
 	</div>
+	<img *ngIf="loading" src="assets/spinner2.gif " style="float: center; width: 5%; margin-left: 47%; position:sticky" />
+	<button *ngIf="isbuttonvisible" id='add-button' (click)="increment()" class="genric-btn primary circle"
+	style="float: center; width: 125px; margin-left: 45%;">Load More</button>
 
 
 

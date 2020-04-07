@@ -160,23 +160,27 @@ public class APIWebUserController {
 		ugpr.save(gp);
 		List<String> gallery = new ArrayList<>();
 		gallery = ur.getUserGalleryPhotos(webuser);
-
-		
 		return gallery;
 	}
 	
 	
 	@GetMapping("/galleries")
-	public ResponseEntity<List<String>> getuserGallery() {
+	public ResponseEntity<List<String>> getuserGallery(@RequestParam(defaultValue="0") int page) {
 
 		WebUser webuser= (WebUser) loggeduser.getLoggedUser();
 		service.save(webuser);
 
 		List<String> gallery = new ArrayList<>();
+		List<String> result = new ArrayList<>();
 		gallery = ur.getUserGalleryPhotos(webuser);
+		int count = page;
+		int counts = count * 3 + 3;
+		 for (int i = count*3; i < gallery.size() && i < counts; i++) {
+				result.add(gallery.get(i));
+		 }
 		
 		if (webuser != null) {
-			return new ResponseEntity<>(gallery, HttpStatus.OK);
+			return new ResponseEntity<>(result, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}

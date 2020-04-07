@@ -59,7 +59,7 @@ public class MainController extends ModelAttributeController {
 		shelterRepository.save(shelter1);
 		shelterRepository.save(shelter2);
 
-		String photo = "/images/user/a.jpg";
+		String photo = "images/user/a.jpg";
 		UserGalleryPhoto galleryPhoto = new UserGalleryPhoto(photo);
 		galleryPhoto.setGalleryOwner(user2);
 		userGalleryPhotoRepository.save(galleryPhoto);

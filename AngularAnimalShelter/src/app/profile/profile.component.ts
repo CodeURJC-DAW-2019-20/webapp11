@@ -15,18 +15,32 @@ export class ProfileComponent {
 
   data: FormData;
   user: any
-  animal: any[];
+  gallery: any[];
   file: any[];
   userGallery: string;
+  page: number = 0;
+  loading: boolean;
   src=environment.apiBase2 + '/user';
   src2=environment.apiBase3;
+  isbuttonvisible:boolean;
 
 
   constructor(private service: ServiceService, private router: Router) {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
     this.data = new FormData;
+    this.gallery = Array();
+    this.loading = false;
+    this.isbuttonvisible= false;
 
+  }
+  saverange() {
+    this.page = 0;
+    this.gallery = [];
+  }
+  increment() {
 
+    this.page = this.page + 1;
+    this.searchgallery();
   }
   loadGalleryImage(event) {
 
@@ -36,22 +50,32 @@ export class ProfileComponent {
   }
 
   createGallery() {
-    console.log("hola");
     console.log(this.data.get('userGallery'))
     this.service.createGallery(this.data).subscribe();
 
   }
 
   searchgallery() {
-
-    this.service.getGallery()
-      .subscribe(
-        animal => {
-          this.animal = animal;
-
+    this.loading = true;
+    this.service.getGallery(this.page)
+      .subscribe(gallery => {
+        if(gallery.length >= 3){
+          this.isbuttonvisible=true;
         }
+        if(gallery.length == 0){
+          this.isbuttonvisible= false;
+        }
+        this.loading = false;
+        for (let ani of gallery) {
+          this.gallery.push(ani); 
+        }
+
+      }
       );
 
+  }
+  onShowGallery() {
+    this.searchgallery();
   }
 
 
