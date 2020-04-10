@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { StadisticsService } from './stadistics.service';
+import { StatisticsService } from './statistics.service';
+import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
+
+import { Label } from 'ng2-charts';
 
 
 @Component({
@@ -9,41 +12,39 @@ import { StadisticsService } from './stadistics.service';
   styleUrls: ['./statistics.component.css']
 })
 export class StatisticsComponent {
-  actualMonth: any = new Date().getMonth();
-  mesesLetra: Array<String> = ["Enero","Febrero","Marzo","Abril","Mayo", "Junio","Julio","Agosto", "Septiembre","Octubre","Noviembre","Diciembre"];
-  meses :Array<number> =[1,2,3,4,5,6,7,8,9,10,11,12];
-  adoptions: any = [];
-  constructor (private statistics: StadisticsService){}
-  ngOnInit(){
-    
-    this.meses.forEach(element => {
-      this.statistics.adoptionsMonth(element)
-                .subscribe(res=>{
-
-                  res.toString();
-                  
-                  this.adoptions.push(res);
-                });
-                
-    });
-    let i =0;
+  actualMonth: any = new Date().getMonth()+1;
+   meses = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+   adoptions: any=[];
+  constructor (private statistics: StatisticsService){}
+  ngOnInit(): void {
     let itera= this.actualMonth;
-    let visibles =[];
-    while(i < 6){
-      if(itera<0){
-        itera=6;
-        visibles.push(this.adoptions[itera]);
-      }else{
-        visibles.push(this.adoptions[itera]);
+    let salida=0;
+    while(salida<=6){
+      if (itera>0) {
+          this.statistics.adoptionsMonth(itera).subscribe( quantity => {
+            this.adoptions.push(quantity);
+           });
+          itera--;
+      } else {
+        itera=11;
       }
-        i++;
-
+      this.barChartLabels.push(this.meses[itera]);
+      
+      salida++;
     }
-    
-
-    }
-             
+  }
+  
+  public barChartLabels:String []=[];
+  public barChartOptions: ChartOptions = {
+    responsive: true,  
+  }
+  public barChartType: ChartType = 'bar';
+ 
 }
+     
+             
+
+  
 
 
   

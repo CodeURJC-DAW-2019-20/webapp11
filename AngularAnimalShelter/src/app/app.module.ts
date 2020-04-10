@@ -25,7 +25,7 @@ import { LoginService } from './auth/login.service';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { BasicAuthInterceptor } from './auth/auth.interceptor';
 import { ErrorInterceptor } from './auth/error.interceptor';
-
+import { ChartsModule } from 'ng2-charts';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +48,8 @@ import { ErrorInterceptor } from './auth/error.interceptor';
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartsModule
   ],
   providers: [
     ShelterFormService,

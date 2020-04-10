@@ -5,12 +5,12 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class StadisticsService {
+export class StatisticsService {
   private BASE_URL = environment.apiBase + '/statistics';
 
   constructor(private _http: HttpClient) {}
   adoptionsMonth(month: any){
-    return this._http.get(`${this.BASE_URL}/statistics/${month}`)
+    return this._http.get(`${this.BASE_URL}/${month}`);
   
   }
   private handleError(error: any) {
