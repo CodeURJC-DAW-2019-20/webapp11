@@ -80,6 +80,9 @@
 						<!-- +8 -->
 					</select>
 				</div>
+				<div *ngIf="alert" class="alert alert-danger">
+					All fields must be Completed
+				 </div>
 				<button type="submit" (click)="createAnimal()" class="genric-btn primary circle float-right">Add Animal</button>
 			</form>
 		</div>

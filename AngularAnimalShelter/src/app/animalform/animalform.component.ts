@@ -12,29 +12,38 @@ import { Router } from '@angular/router';
 export class AnimalformComponent  {
   data: FormData;
   animal: Animal;
+  alert:boolean;
+  file:any;
 
   constructor(private router: Router, private animalFormService: AnimalformService) { 
     this.data = new FormData;
     this.animal={
       animalName:'',
-      animalAge:0,
+      animalAge:null,
       animalType:'',
       animalSize:'',
       animalDescription:''
     }
+    this.alert=false;
   }
   loadAnimalImage(event){
-    const file = event.target.files;
-    this.data.append('animalPhoto', file[0]);
+     this.file = event.target.files;
+     this.data.append('animalPhoto', this.file[0]);
+
   }
 
   createAnimal(){
-    this.data.append('jsondata',JSON.stringify(this.animal));
-    this.animalFormService.createAnimal(this.data).subscribe(
-      error => this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
-        this.router.navigate(['/animalform']);
-      })
-    );
+    if((this.animal.animalName=='') || (this.animal.animalAge == null)  || (this.animal.animalType =='') || (this.animal.animalSize =='') || (this.animal.animalDescription =='')){
+      this.alert=true;
+    }else {
+      this.alert=false;
+      this.data.append('jsondata',JSON.stringify(this.animal));
+      this.animalFormService.createAnimal(this.data).subscribe();
+    }
+    
+   
+
+   
   }
 
 }
