@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { AnimalsComponent } from './animals/animals.component';
-import { StatisticsComponent } from './statistics/statistics.component';
-import { RequestsComponent } from './requests/requests.component';
-import { AnimalformComponent } from './animalform/animalform.component';
-import { ContactComponent } from './contact/contact.component';
-import { ProfileComponent } from './profile/profile.component';
-import { UserformComponent } from './userform/userform.component';
-import { ShelterformComponent } from './shelterform/shelterform.component';
-import { AnimalviewComponent } from './animalview/animalview.component';
+import { HomeComponent } from './components/home/home.component';
+import { AnimalsComponent } from './components/animals/animals.component';
+import { StatisticsComponent } from './components/statistics/statistics.component';
+import { RequestsComponent } from './components/requests/requests.component';
+import { AnimalformComponent } from './components/animalform/animalform.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { UserformComponent } from './components/userform/userform.component';
+import { ShelterformComponent } from './components/shelterform/shelterform.component';
+import { AnimalviewComponent } from './components/animalview/animalview.component';
 
 
 const routes: Routes = [
