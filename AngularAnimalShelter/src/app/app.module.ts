@@ -1,3 +1,5 @@
+// Main
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -5,7 +7,12 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms'; 
 import { ReactiveFormsModule } from '@angular/forms';
 
+// Routing
+
 import { AppRoutingModule } from './app-routing.module';
+
+// Components
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -20,10 +27,13 @@ import { UserformComponent } from './components/userform/userform.component';
 import { ShelterformComponent } from './components/shelterform/shelterform.component';
 import { AnimalviewComponent } from './components/animalview/animalview.component';
 
+// Auth and misc.
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { BasicAuthInterceptor } from './auth/auth.interceptor';
 import { ErrorInterceptor } from './auth/error.interceptor';
 import { ChartsModule } from 'ng2-charts';
+
+// Services
 
 import { LoginService } from './auth/login.service';
 import { UserformService } from './services/userform/userform.service';

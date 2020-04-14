@@ -2,20 +2,23 @@
     <div class="container main-menu">
         <div class="row align-items-center justify-content-between d-flex">
             <div id="logo">
-                <a routerLink="/"><img src="assets/img/logo3.png" width="100" height="40" alt="" title="" /></a>
+                <a [routerLink]="['home']"><img src="assets/img/logo3.png" width="100" height="40" alt="" title="" /></a>
             </div>
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
-                    <li class="menu-has-children"><a routerLink="/animals">ANIMALS</a></li>
-                    <li class="menu-has-children"><a routerLink="/statistics">STATISTICS</a></li>
-                    <li *ngIf="loginService.role == 'SHELTER'" class="menu-has-children"><a routerLink="/request">REQUESTS</a></li>
-                    <li *ngIf="loginService.role == 'SHELTER'" class="menu-has-children"><a routerLink="/animalform">ADD ANIMAL</a></li>
-                    <li *ngIf="loginService.role == 'USER'" class="menu-has-children"><a routerLink="/profile">PROFILE</a></li>
-                    <li class="menu-has-children"><a routerLink="/contact">CONTACT US</a></li>
-                    <li *ngIf="loginService.isLogged" class="menu-has-children"><a (click)='logOut()' style="cursor:pointer">LOG OUT</a></li>
-                    <li *ngIf="!loginService.isLogged"><a routerLink="#" onclick=" $('#divTopImg').toggleClass('desplegado')">LOG IN</a></li>
+                    <li class="menu-has-children"><a [routerLink]="['animals']">ANIMALS</a></li>
+                    <li class="menu-has-children"><a [routerLink]="['statistics']">STATISTICS</a></li>
+                    
+                    
+                    <li *ngIf="loginService.role == 'SHELTER'" class="menu-has-children"><a [routerLink]="['requests']">REQUESTS</a></li>
+                    <li *ngIf="loginService.role == 'SHELTER'" class="menu-has-children"><a [routerLink]="['animalform']">ADD ANIMAL</a></li>
+                    <li *ngIf="loginService.role == 'USER'" class="menu-has-children"><a [routerLink]="['profile']">PROFILE</a></li>
+
+                    <li class="menu-has-children"><a [routerLink]="['contact']">CONTACT US</a></li>
+                    <li *ngIf="loginService.isLogged" class="menu-has-children"><a [routerLink]="['aux']" (click)='logOut()' style="cursor:pointer">LOG OUT</a></li>
+                    <li *ngIf="!loginService.isLogged" class="menu-has-children"><a [routerLink]="['aux']" onclick=" $('#divTopImg').toggleClass('desplegado')">LOG IN</a></li>
                     <div *ngIf="!loginService.isLogged" id="divTopImg">
-                        <div class="login-form clearfix">
+                        <div class="login-form clearfix ">
                             <div class="login-header">
                                 <form action="/login" method="post">
                                     <div class="form-group">
@@ -26,13 +29,12 @@
                                     </div>
                                     <input (click)="logIn(email.value, pass.value); $event.stopPropagation()" type="submit" value="Entrar">
                                 </form>
-                                <a class="genric-btn primary circle" routerLink="/userform" 
+                                <a class="genric-btn primary circle " [routerLink]="['userform']" 
                                     onclick=" $('#divTopImg').toggleClass('desplegado')">NEW USER</a><br> <a
-                                    class="genric-btn primary circle" routerLink="/shelterform"
+                                    class="genric-btn primary circle" [routerLink]="['shelterform']"
                                     onclick=" $('#divTopImg').toggleClass('desplegado')">NEW
                                     SHELTER</a> <input type="hidden" id="social_connect_login_form_uri"
-                                    value="Complete" /> <a routerLink="#"
-                                    onclick=" $('#divTopImg').toggleClass('desplegado')">CLOSE</a>
+                                    value="Complete" /> <a [routerLink]="['aux']" onclick=" $('#divTopImg').toggleClass('desplegado')">CLOSE</a>
                             </div>
                         </div>
                     </div>

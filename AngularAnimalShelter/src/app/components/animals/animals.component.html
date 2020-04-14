@@ -4,8 +4,8 @@
 		<div class="row d-flex align-items-center justify-content-center">
 			<div class="about-content col-lg-12">
 				<h1 class="text-white">Animals</h1>
-				<p class="text-white link-nav"><a routerLink="/home">Home </a> <span class="lnr lnr-arrow-right"></span>
-					<a routerLink="/animals">Animals</a>
+				<p class="text-white link-nav"><a [routerLink]="['home']">Home </a> <span class="lnr lnr-arrow-right"></span>
+					<a [routerLink]="['animals']">Animals</a>
 				</p>
 			</div>
 		</div>
@@ -52,7 +52,7 @@
 <div class="container">
 	<div class="row">
 		<div id="imagebox" *ngFor="let ani of animal">
-			<a [routerLink]="['/animal',ani.animalName,ani.animalType, ani.animalAge,ani.animalDescription,ani.size,ani.animalPhoto]"><img
+			<a [routerLink]="['animal',ani.animalName,ani.animalType, ani.animalAge,ani.animalDescription,ani.size,ani.animalPhoto]"><img
 					class="allimages" src="{{src}}/{{ani.animalPhoto}}" alt="" height="100px" wight="100px"> </a>
 
 		</div>
