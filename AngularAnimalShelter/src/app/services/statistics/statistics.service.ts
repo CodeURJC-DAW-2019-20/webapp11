@@ -10,7 +10,7 @@ export class StatisticsService {
 
   constructor(private _http: HttpClient) {}
   adoptionsMonth(month: any){
-    return this._http.get(`${this.BASE_URL}/${month}`);
+    return this._http.get<number>(`${this.BASE_URL}/${month}`);
   
   }
   private handleError(error: any) {
