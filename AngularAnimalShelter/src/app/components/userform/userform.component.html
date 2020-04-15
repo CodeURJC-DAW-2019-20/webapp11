@@ -27,34 +27,55 @@
 			</div>
 		</div>
 		<div class="row justify-content-center">
-			<form action="createUser" method="post" enctype="multipart/form-data"
+			<form autocomplete="on" (ngSubmit)="createWebUser( formulary )" #formulary="ngForm" enctype="multipart/form-data"
 				class="col-lg-9">
+
 				<div class="form-group">
 					<label for="image">Photo:</label><br> <input type="file"
-						name="userPhoto" accept=".jpg, .jpeg" (change)="loadImage($event)" required>
+						name="userPhoto" [ngModel]="user.userPhoto" accept=".jpg, .jpeg" (change)="loadImage($event)" required>
 				</div>
+
 				<div class="form-group">
-					<label for="name">Name:</label> <input [(ngModel)]="user.userName" type="text" name="userName"
-						class="form-control" placeholder="Name" required>
+					<label [class.text-danger]="userName.invalid && userName.touched" for="name">Name:</label> 
+					<input type="text" name="userName" [class.is-invalid]="userName.invalid && userName.touched" 
+					[class.is-valid]="userName.valid && userName.touched" #userName="ngModel"
+					class="form-control" [ngModel]="user.userName" pattern="[A-Za-z ]+" placeholder="Name" required>
+					<small *ngIf="userName.invalid && userName.touched" class="form-text text-danger">You can only enter a name with alphabetic symbols.</small>
 				</div>
+
 				<div class="form-group">
-					<label for="name">DNI:</label> <input [(ngModel)]="user.userDni" type="text" placeholder="nif"
-						class="form-control" name="userDni" pattern="[0-9]{8}[A-Za-z]{1}"
+					<label [class.text-danger]="userDni.invalid && userDni.touched" for="name">DNI:</label> <input type="text" placeholder="DNI/NIF"
+						[class.is-invalid]="userDni.invalid && userDni.touched"
+						[class.is-valid]="userDni.valid && userDni.touched"
+						#userDni="ngModel"
+						class="form-control" [ngModel]="user.userDni" name="userDni" pattern="[0-9]{8}[A-Za-z]{1}"
 						required>
+						<small *ngIf="userDni.invalid && userDni.touched" class="form-text text-danger">Enter 8 digits followed by a capital or small letter.</small>
 				</div>
+
 				<div class="form-group">
-					<label for="name">Age:</label> <input [(ngModel)]="user.userAge" type="number"
-						class="form-control" name="userAge" min="1" placeholder="20"
+					<label [class.text-danger]="userAge.invalid && userAge.touched" for="name">Age:</label> <input type="text"
+						[class.is-invalid]="userAge.invalid && userAge.touched"
+						[class.is-valid]="userAge.valid && userAge.touched"
+						#userAge="ngModel"
+						class="form-control" [ngModel]="user.userAge" name="userAge" pattern="[1-9][0-9]?[0-9]?" placeholder="Your Age"
 						required>
+						<small *ngIf="userAge.invalid && userAge.touched" class="form-text text-danger">Enter your age, minimum is 1 and it can't be negative.</small>
 				</div>
+
 				<div class="form-group">
-					<label for="name">Address:</label> <input [(ngModel)]="user.userAdress" type="text"
-						class="form-control" placeholder="Address" name="userAdress"
-						required>
+					<label [class.text-danger]="userAdress.invalid && userAdress.touched" for="name">Address:</label> <input type="text"
+						[class.is-invalid]="userAdress.invalid && userAdress.touched"
+						[class.is-valid]="userAdress.valid && userAdress.touched"
+						#userAdress="ngModel"
+						class="form-control" [ngModel]="user.userAdress" placeholder="Address" name="userAdress"
+						pattern="[A-Za-zñ ,0-9/ºª]+" required>
+						<small *ngIf="userAdress.invalid && userAdress.touched" class="form-text text-danger">Enter your adress.</small>
 				</div>
+
 				<div class="form-group">
-					<label for="name">House size (without the garden):</label> <select
-						name="userHouseSize" [(ngModel)]="user.userHouseSize">
+					<label for="name">House size (without the garden):</label> <select												
+						name="userHouseSize" [ngModel]="user.userHouseSize">
 						<!-- values for the special-filter algorith -->
 						<option value="xs" selected>Apartment</option>
 						<!-- 0 -->
@@ -68,10 +89,11 @@
 						<!-- 6 -->
 					</select>
 				</div>
+
 				<div class="form-group">
-					<label for="name">Garden:</label> <select name="userGarden" [(ngModel)]="user.userGarden">
+					<label for="name">Garden:</label> <select name="userGarden" [ngModel]="user.userGarden">
 						<!-- values for the special-filter algorith -->
-						<option value="no" selected>No</option>
+						<option value="no" [selected]>No</option>
 						<!-- 0 -->
 						<option value="s">Small garden</option>
 						<!-- 2 -->
@@ -83,33 +105,56 @@
 						<!-- 6 -->
 					</select>
 				</div>
+
 				<div class="form-group">
-					<label for="children">Number of children in your home:</label> <input
-					[(ngModel)]="user.userNumChildren" type="number" class="form-control" name="userNumChildren" min="0"
+					<label [class.text-danger]="userNumChildren.invalid && userNumChildren.touched" for="children">Number of children in your home:</label> <input
+						[class.is-invalid]="userNumChildren.invalid && userNumChildren.touched"
+						[class.is-valid]="userNumChildren.valid && userNumChildren.touched"
+						#userNumChildren="ngModel"
+						[ngModel]="user.userNumChildren" type="text" class="form-control" name="userNumChildren" pattern="[0-9][0-9]?"
 						placeholder="Age lower than 14" required>
+						<small *ngIf="userNumChildren.invalid && userNumChildren.touched" class="form-text text-danger">Enter the number of children in your home, there can be 0.</small>
 				</div>
+
 				<div class="form-group">
-					<label for="people">Number of people in your home:</label> <input
-					[(ngModel)]="user.userNumPeopleInHouse" type="number" class="form-control" name="userNumPeopleInHouse"
-						min="1" placeholder="Including you" min=1 required>
+					<label [class.text-danger]="userNumPeopleInHouse.invalid && userNumPeopleInHouse.touched" for="people">Number of people in your home:</label> <input
+						[class.is-invalid]="userNumPeopleInHouse.invalid && userNumPeopleInHouse.touched"
+						[class.is-valid]="userNumPeopleInHouse.valid && userNumPeopleInHouse.touched"
+						#userNumPeopleInHouse="ngModel"
+						[ngModel]="user.userNumPeopleInHouse" type="text" class="form-control" name="userNumPeopleInHouse"
+						pattern="[1-9][0-9]?" placeholder="Including yourself" required>
+						<small *ngIf="userNumPeopleInHouse.invalid && userNumPeopleInHouse.touched" class="form-text text-danger">Enter the number of people in your home, including yourself.</small>
 				</div>
+
 				<div class="form-group">
-					<label for="email">E-mail (it will be your user):</label> <input
-					[(ngModel)]="user.userEmail" type="email" class="form-control" placeholder="User e-mail"
+					<label [class.text-danger]="userEmail.invalid && userEmail.touched" for="email">E-mail (it will be your user):</label> <input
+						[class.is-invalid]="userEmail.invalid && userEmail.touched"
+						[class.is-valid]="userEmail.valid && userEmail.touched"
+						#userEmail="ngModel"
+						[ngModel]="user.userEmail" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9._]+\.[a-z]{2,3}$" class="form-control" placeholder="User e-mail"
 						name="userEmail" required>
+						<small *ngIf="userEmail.invalid && userEmail.touched" class="form-text text-danger">Enter your email.</small>
 				</div>
+
 				<div class="form-group">
-					<label for="password">Password:</label> <input [(ngModel)]="user.userPassword" type="password"
+					<label [class.text-danger]="userPassword.invalid && userPassword.touched" for="password">Password:</label> <input [ngModel]="user.userPassword" type="password"
+						[class.is-invalid]="userPassword.invalid && userPassword.touched"
+						[class.is-valid]="userPassword.valid && userPassword.touched"
+						#userPassword="ngModel"
 						class="form-control" placeholder="Password" name="userPassword"
 						required>
+						<small *ngIf="userPassword.invalid && userPassword.touched" class="form-text text-danger">Enter your password, assure it is secure before.</small>
 				</div>
+
 				<div *ngIf="alert" class="alert alert-danger">
 					{{alertText}}
 				</div>
 				<div *ngIf="correct" class="alert alert-success">
 					{{alertText}}
 				</div>
-				<button (click)="createWebUser()" type="submit" class="genric-btn primary circle">Create
+
+
+				<button type="submit" class="genric-btn primary circle">Create
 					User</button>
 			</form>
 		</div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WebUser } from '../../models/WebUser/webUser.model';
 import { UserformService } from '../../services/userform/userform.service';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-userform',
@@ -21,6 +22,7 @@ export class UserformComponent {
     this.data = new FormData;
     
     this.user = {
+      userPhoto:null,
       userName:'',
       userDni:'',
       userAge:null,
@@ -40,12 +42,19 @@ export class UserformComponent {
     this.data.append('userPhoto', file[0]);
   }
 
-  createWebUser(){
-    if((this.user.userName=='') || (this.user.userDni == null)  || (this.user.userAge == null) || (this.user.userAdress =='') || (this.user.userHouseSize =='')|| (this.user.userGarden =='') || (this.user.userGarden =='') || (this.user.userNumChildren == null) || (this.user.userNumPeopleInHouse ==null) || (this.user.userEmail =='') || (this.user.userPassword =='')){
+  createWebUser( formulary: NgForm ) {
+    
+    if (formulary.invalid) {
       this.alertText='All fields must be Completed';
       this.correct=false;
       this.alert=true;
-    }else{
+
+      Object.values(formulary.controls).forEach( control => {
+        control.markAsTouched();
+      })
+    }
+    
+    else{
       this.alert=false;
       
       this.data.append('jsondata',JSON.stringify(this.user));
@@ -54,7 +63,7 @@ export class UserformComponent {
         user => {
           this.alertText='Your user is been created successfull.';
           this.correct=true;
-          setTimeout(() => { this.router.navigate(['/']); },5000);
+          setTimeout(() => { this.router.navigate(['home']); },5000);
           console.log(this.data)
           /*this.router.navigate(['/']);*/
         },
@@ -63,7 +72,7 @@ export class UserformComponent {
           this.correct=false;
           this.alert=true;
             this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
-            this.router.navigate(['/userform']);
+            this.router.navigate(['userform']);
           })
         }
       ); 
