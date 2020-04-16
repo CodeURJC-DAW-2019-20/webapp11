@@ -1,6 +1,6 @@
 export interface WebUser{
     idUser?:number;
-    userPhoto?:string;
+    userPhoto?:File;
 	userName:string;
 	userDni:string;
 	userAge:number;

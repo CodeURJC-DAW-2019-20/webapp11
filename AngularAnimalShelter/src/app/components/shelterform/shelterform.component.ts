@@ -3,6 +3,7 @@ import { Shelter } from '../../models/Shelter/shelter.model';
 import { ShelterformService } from '../../services/shelterform/shelterform.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-shelterform',
@@ -11,13 +12,13 @@ import { Router } from '@angular/router';
 })
 export class ShelterformComponent {
 
-  data: FormData;
+  data: FormData = new FormData();
   shelter: Shelter;
   alert:boolean;
   alertText:string;
 
   constructor(private router: Router, private shelterformService: ShelterformService) { 
-    this.data = new FormData;
+    this.data = new FormData();
     
     this.shelter = { 
       shelterName: '',
@@ -31,60 +32,34 @@ export class ShelterformComponent {
     this.alert=false;
   }
 
-  createShelter(){
-    if(this.shelter.shelterName.length == 0 || this.shelter.shelterNif.length == 0
-      || this.shelter.shelterEmail.length == 0 || this.shelter.shelterDescription.length == 0
-      || this.shelter.shelterAdress.length == 0 || this.shelter.shelterPassword.length == 0){
-      
+  createShelter( formulary: NgForm ) {
+    if( formulary.invalid ) {
       this.alertText='All fields must be Completed';
       this.alert=true;
 
-    } else {
+      Object.values(formulary.controls).forEach( control => {
+        control.markAsTouched();
+      })
+    } 
+    
+    else {
       this.alert=false;
-      this.alertText='';
-      const formData = new FormData();
-      formData.append('jsondata',JSON.stringify(this.shelter));
-      formData.append('password',this.shelter.shelterPassword);
+
+      this.data.append('jsondata',JSON.stringify(this.shelter));
+      this.data.append('password',this.shelter.shelterPassword);
 
       this.shelterformService.createShelter(this.data).subscribe(
-        shelter => {
-          if(shelter){
-            this.router.navigate(['/']); 
-          } else {
-            /*this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-              this.router.navigate(['/shelterform']);
-            });*/
-            this.shelter.shelterName='';
-            this.shelter.shelterEmail='';
-            this.shelter.shelterNif='';
-            this.shelter.shelterPassword='';
-            this.shelter.shelterDescription='';
-            this.shelter.shelterAdress='';
-            this.shelter.shelterPassword='';
-            this.alertText='Profile already registered. Please, send a mail to Tecnical Service for recovering your data';
-            this.alert=true;
-          }
-          console.log(shelter)
-        },
+        response => {
+          this.router.navigate(['home']); 
+          },
         error => {
-          /*
-          this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-            this.router.navigate(['/shelterform']);
-          });*/
-          this.shelter.shelterName='';
-          this.shelter.shelterEmail='';
-          this.shelter.shelterNif='';
-          this.shelter.shelterPassword='';
-          this.shelter.shelterDescription='';
-          this.shelter.shelterAdress='';
-          this.shelter.shelterPassword='';
-          this.alertText='Your profile hasn\'t been created. Please, try again. If the problem persist, contact with the Tecnical Service.';
+          this.alertText='Your new shelter hasn\'t been created. Please, try again. If the problem persist, contact with the Tecnical Service.';
           this.alert=true;
+          this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+            this.router.navigate(['/shelterform']);
+          });
         }
       );
     }
-    
-
   }
-
 }

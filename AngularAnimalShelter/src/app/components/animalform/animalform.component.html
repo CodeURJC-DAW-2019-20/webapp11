@@ -27,18 +27,25 @@
 			</div>
 		</div>
 		<div class="row justify-content-center">
-			<form action="/createAnimal" method="post"
-				enctype="multipart/form-data" class="col-lg-9">
+			<form autocomplete="on" (ngSubmit)="createAnimal( formulary )" #formulary="ngForm" enctype="multipart/form-data"
+				class="col-lg-9">
+
 				<div class="form-group">
-					<label for="image">Photo:</label><br> 
-					<input type="file" name='animalPhoto' accept=".jpg, .jpeg"  (change)="loadAnimalImage($event)" required>
+					<label for="image">Photo:</label><br> <input type="file" name="animalPhoto" 
+						[(ngModel)]="animal.animalPhoto" accept=".jpg, .jpeg" (change)="loadAnimalImage($event)" required>
 				</div>
+
 				<div class="form-group">
-					<label for="name">Name:</label> <input type="text"  [(ngModel)]="animal.animalName" name="animalName" class="form-control" placeholder="Name" required>
+					<label [class.text-danger]="animalName.invalid && animalName.touched" for="animalName">Name:</label> 
+					<input type="text" name="animalName" [class.is-invalid]="animalName.invalid && animalName.touched" 
+					[class.is-valid]="animalName.valid && animalName.touched" #animalName="ngModel" id="animalName"
+					class="form-control" [(ngModel)]="animal.animalName" pattern="[A-Za-z ]+" placeholder="Name" required>
+					<small *ngIf="animalName.invalid && animalName.touched" class="form-text text-danger">You can only enter a name with alphabetic symbols.</small>
 				</div>
+
 				<div class="form-group">
-					<label for="type-animal">Type animal:</label> <select name="animalType" [(ngModel)]="animal.animalType"
-						 required>
+					<label for="animalType">Type animal:</label>
+					<select name="animalType" id="animalType" [(ngModel)]="animal.animalType" required>
 						<!-- values for the special-filter algorith -->
 						<option value="bird">Bird</option>
 						<!-- -2 -->
@@ -52,19 +59,26 @@
 						<!-- +2 -->
 					</select>
 				</div>
+
 				<div class="form-group">
-					<label for=age>Age:</label> <input type="number" name="animalAge" [(ngModel)]="animal.animalAge"
-						class="form-control" min="0" placeholder="Months" 
+					<label [class.text-danger]="animalAge.invalid && animalAge.touched" for="animalAge">Age (months):</label> <input type="text"
+						[class.is-invalid]="animalAge.invalid && animalAge.touched"
+						[class.is-valid]="animalAge.valid && animalAge.touched"
+						#animalAge="ngModel"
+						class="form-control" [(ngModel)]="animal.animalAge" name="userAge" id="animalAge" pattern="[1-9][0-9]?[0-9]?" placeholder="Your Age"
 						required>
+						<small *ngIf="animalAge.invalid && animalAge.touched" class="form-text text-danger">Enter your age, minimum is 1 and it can't be negative.</small>
 				</div>
+
 				<div class="form-group">
-					<label for="description">Description</label>
+					<label for="animalDescription">Description</label>
 					<textarea class="form-control" id="exampleTextarea" rows="5"
-						placeholder="Write a description"  name="animalDescription" [(ngModel)]="animal.animalDescription"></textarea>
+						placeholder="Write a description"  name="animalDescription" id="animalDescription" [(ngModel)]="animal.animalDescription"></textarea>
 				</div>
+
 				<div class="form-group">
-					<label for="size-animal">Size:</label> <select  name="animalSize" [(ngModel)]="animal.animalSize"
-						required>
+					<label for="animalSize">Size:</label>
+					<select  name="animalSize" id="animalSize" [(ngModel)]="animal.animalSize" required>
 						<!-- values for the special-filter algorith -->
 						<option value="no">Irrelevant</option>
 						<!-- -3 -->
@@ -80,10 +94,13 @@
 						<!-- +8 -->
 					</select>
 				</div>
+
 				<div *ngIf="alert" class="alert alert-danger">
 					All fields must be Completed
 				 </div>
-				<button type="submit" (click)="createAnimal()" class="genric-btn primary circle float-right">Add Animal</button>
+
+				 <button type="submit" class="genric-btn primary circle">Create
+					Animal</button>
 			</form>
 		</div>
 	</div>

@@ -10,15 +10,17 @@ const BASE_URL = environment.apiBase + '/animals/';
   providedIn: 'root'
 })
 export class AnimalformService {
+  
   constructor(private http: HttpClient) { }
-  createAnimal(animalData: FormData){
+  
+  createAnimal( animalData: FormData ) {
     return this.http.post(BASE_URL, animalData).pipe(
       catchError(error => this.handleError(error))
     );
   }
 
   private handleError(error: any) {
-		console.error(error);
 		return Observable.throw("Server error (" + error.status + "): " + error.text())
-	}
+  }
+  
 }

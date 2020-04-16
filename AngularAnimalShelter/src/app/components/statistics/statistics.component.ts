@@ -33,7 +33,7 @@ export class StatisticsComponent {
       this.barChartLabels.push(this.meses[itera]);
       salida++;
     }
-    console.log(this.adoptions);
+    //console.log(this.adoptions);
 
   }
   

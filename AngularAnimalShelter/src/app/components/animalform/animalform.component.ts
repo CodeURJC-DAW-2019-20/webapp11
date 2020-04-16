@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Animal } from '../../models/Animal/animal.model';
 import { AnimalformService} from '../../services/animalform/animalform.service';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -10,19 +11,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./animalform.component.css']
 })
 export class AnimalformComponent  {
-  data: FormData;
+
+  data: FormData = new FormData();
   animal: Animal;
   file:any;
   alert:boolean;
   alertText:string;
 
   constructor(private router: Router, private animalFormService: AnimalformService) { 
-    this.data = new FormData;
+    this.data = new FormData();
     this.animal = {
       animalName:'',
       animalAge:null,
-      animalType:'',
-      animalSize:'',
+      animalType:'dog',
+      animalSize:'no',
       animalDescription:''
     }
     this.alert=false;
@@ -30,22 +32,36 @@ export class AnimalformComponent  {
   loadAnimalImage(event){
      this.file = event.target.files;
      this.data.append('animalPhoto', this.file[0]);
-
   }
 
-  createAnimal(){
-    if((this.animal.animalName=='') || (this.animal.animalAge == null)  || (this.animal.animalType =='') || (this.animal.animalSize =='') || (this.animal.animalDescription =='')){
+  createAnimal( formulary: NgForm ) {
+
+    if( formulary.invalid ) { 
       this.alertText='All fields must be Completed';
       this.alert=true;
-    }else {
-      this.alert=false;
-      this.data.append('jsondata',JSON.stringify(this.animal));
-      this.animalFormService.createAnimal(this.data).subscribe();
+
+      Object.values(formulary.controls).forEach( control => {
+        control.markAsTouched();
+      })
     }
-    
-   
 
-   
+    else {
+      this.alert=false;
+
+      this.data.append('jsondata',JSON.stringify(this.animal));
+
+      this.animalFormService.createAnimal(this.data).subscribe(
+        response => {
+          this.router.navigate(['home']);
+        },
+        error => {
+          this.alertText=`The animal hasn\'t been created. \nPlease, try again. If the problem persist, contact with the Tecnical Service.`;
+          this.alert=true;
+          this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+            this.router.navigate(['animalform']);
+          });
+        }
+      );
+    }
   }
-
 }
