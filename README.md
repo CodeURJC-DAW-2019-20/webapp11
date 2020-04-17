@@ -256,7 +256,7 @@ I have participated in the completion of the rest controllers, created services 
 # PHASE 4
 ## PARTICIPATION PHASE 4
 ### Arshia Ambar Saleem
-I have worked on creating animals and show their information, along with i have also done filter search where a user can search animals by their names or by their type .I have done the task of creating gallery for user and show user's detail with gallery.Moreover, i have done the part of paging on both animals and user's gallery page.
+I have worked on creating animals and show their information, along with i have also done filter search where a user can search animals by their names or by their type .I have done the task of creating gallery for user and show user's detail with gallery.Moreover, i have created paging on both animal's and user's gallery page.
 
 #### Commits:
 
