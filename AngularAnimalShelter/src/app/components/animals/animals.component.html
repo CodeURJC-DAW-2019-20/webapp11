@@ -52,7 +52,7 @@
 <div class="container">
 	<div class="row">
 		<div id="imagebox" *ngFor="let ani of animal">
-			<a [routerLink]="['animal',ani.animalName,ani.animalType, ani.animalAge,ani.animalDescription,ani.size,ani.animalPhoto]"><img
+			<a [routerLink]="['/animal',ani.animalName,ani.animalType, ani.animalAge,ani.animalDescription,ani.size,ani.animalPhoto]"><img
 					class="allimages" src="{{src}}/{{ani.animalPhoto}}" alt="" height="100px" wight="100px"> </a>
 
 		</div>
