@@ -253,3 +253,34 @@ I have participated in the completion of the rest controllers, created services 
 <img src= "ReadmeImgs/Diagram v.3.png" width="600">
 
 ###### This diagram shows the differents templates, controller and services used in the web server
+# PHASE 4
+## PARTICIPATION PHASE 4
+#### Commits:
+### Arshia Ambar Saleem
+I have worked on creating animals and show their information, along with i have also done filter search where a user can search animals by their names or by their type .I have done the task of creating gallery for user and show user's detail with gallery.Moreover, i have done the part of paging on both animals and user's gallery page.
+
+- [animalform component and html created](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/9fb6f0114d1c4d6cddfc78395fb081c22779f5df)
+
+- [Done part of show animal details ,Search animal by Type and Search by Name](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/a838f2d2e873ff2ed2d7fcec6299a474644d79c6)
+
+- [Pagination done in animal page](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/303a58b8ff995162a1d8d2ad9c38030b4d813e47)
+
+- [user's gallery created and done showing gallery in user's profile](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/83fff6a20fce635e12101f5f0ea963e8c3a7950b)
+
+- [Pagination done in users's Gallery](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/2363660d7faf8a60fdc234cacee0f7a860cd7ea5)
+
+#### Files:
+- [animalform](https://github.com/CodeURJC-DAW-2019-20/webapp11/tree/master/AngularAnimalShelter/src/app/components/animalform)
+
+- [animals](https://github.com/CodeURJC-DAW-2019-20/webapp11/tree/master/AngularAnimalShelter/src/app/components/animals)
+
+- [profile](https://github.com/CodeURJC-DAW-2019-20/webapp11/tree/master/AngularAnimalShelter/src/app/components/profile)
+
+- [animalview](https://github.com/CodeURJC-DAW-2019-20/webapp11/tree/master/AngularAnimalShelter/src/app/components/animalview)
+
+### Borja Castro Cruces
+### Marina Fernandez
+### Rodrigo Cadena
+
+
+
