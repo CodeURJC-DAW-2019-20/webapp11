@@ -254,6 +254,7 @@ I have participated in the completion of the rest controllers, created services 
 
 ###### This diagram shows the differents templates, controller and services used in the web server
 # PHASE 4
+Implementation of Web Application with Angular.
 ## PARTICIPATION PHASE 4
 ### Arshia Ambar Saleem
 I have worked on creating animals and show their information, along with i have also done filter search where a user can search animals by their names or by their type .I have done the task of creating gallery for user and show user's detail with gallery.Moreover, i have created paging on both animal's and user's gallery page.
@@ -271,13 +272,16 @@ I have worked on creating animals and show their information, along with i have 
 - [Pagination done in users's Gallery](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/2363660d7faf8a60fdc234cacee0f7a860cd7ea5)
 
 #### Files:
-- [animalform](https://github.com/CodeURJC-DAW-2019-20/webapp11/tree/master/AngularAnimalShelter/src/app/components/animalform)
+- [animals.component.html](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/AngularAnimalShelter/src/app/components/animals/animals.component.html)
 
-- [animals](https://github.com/CodeURJC-DAW-2019-20/webapp11/tree/master/AngularAnimalShelter/src/app/components/animals)
+- [animals.component.ts](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/AngularAnimalShelter/src/app/components/animals/animals.component.ts)
 
-- [profile](https://github.com/CodeURJC-DAW-2019-20/webapp11/tree/master/AngularAnimalShelter/src/app/components/profile)
+- [animals.service.ts](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/AngularAnimalShelter/src/app/services/animals/animals.service.ts)
 
-- [animalview](https://github.com/CodeURJC-DAW-2019-20/webapp11/tree/master/AngularAnimalShelter/src/app/components/animalview)
+- [profile.service.ts](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/AngularAnimalShelter/src/app/services/profile/profile.service.ts)
+
+- [profile.component.ts](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/AngularAnimalShelter/src/app/components/profile/profile.component.ts)
+
 
 ### Borja Castro Cruces
 ### Marina Fernandez
