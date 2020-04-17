@@ -1,4 +1,3 @@
-import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { AnimalsComponent } from './components/animals/animals.component';
@@ -12,9 +11,10 @@ import { ShelterformComponent } from './components/shelterform/shelterform.compo
 import { AnimalviewComponent } from './components/animalview/animalview.component';
 
 
-const routes: Routes = [
+const APP_ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'animals', component: AnimalsComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'statistics', component: StatisticsComponent },
   { path: 'animalform', component: AnimalformComponent },
   { path: 'request', component: RequestsComponent },
@@ -25,8 +25,4 @@ const routes: Routes = [
   { path: 'animal/:name/:type/:age/:description/:size/:photo', component: AnimalviewComponent },
 ];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
+export const APP_ROUTING = RouterModule.forRoot(APP_ROUTES);

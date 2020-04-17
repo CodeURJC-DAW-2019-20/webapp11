@@ -9,7 +9,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 // Routing
 
-import { AppRoutingModule } from './app-routing.module';
+import { APP_ROUTING } from './app-routing.module';
 
 // Components
 
@@ -61,7 +61,7 @@ import { StatisticsService } from './services/statistics/statistics.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    APP_ROUTING,
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
