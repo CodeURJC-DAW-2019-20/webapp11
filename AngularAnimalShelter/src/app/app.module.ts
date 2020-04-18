@@ -42,6 +42,7 @@ import { ShelterformService } from './services/shelterform/shelterform.service';
 import { AnimalsService } from './services/animals/animals.service';
 import { ProfileService } from './services/profile/profile.service';
 import { StatisticsService } from './services/statistics/statistics.service';
+import { RequestsService } from './services/requests/requests.service';
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { StatisticsService } from './services/statistics/statistics.service';
     AnimalsService,
     ProfileService,
     StatisticsService,
+    RequestsService,
     { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: LocationStrategy, useClass: HashLocationStrategy }

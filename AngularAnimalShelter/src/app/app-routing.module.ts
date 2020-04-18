@@ -17,7 +17,7 @@ const APP_ROUTES: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'statistics', component: StatisticsComponent },
   { path: 'animalform', component: AnimalformComponent },
-  { path: 'request', component: RequestsComponent },
+  { path: 'requests', component: RequestsComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'userform', component: UserformComponent },

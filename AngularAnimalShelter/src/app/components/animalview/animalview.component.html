@@ -19,26 +19,26 @@
 	<div class="container">
 		<div class="row">
 			<div class="column-profile left">
-				<img src="{{src}}/{{animalPhoto}}" class="allimages">
+				<img src="{{src}}/{{animal.animalPhoto}}" class="allimages">
 			</div>
 			<div class="column-profile rigth">
 				<br>
-				<h3>Data:{{animalName}}</h3>
+				<h3>Data:{{animal.animalName}}</h3>
 				<p>
-					<b>Animal Type:{{animalType}} </b>
+					<b>Animal Type:{{animal.animalType}} </b>
 				</p>
 				<p>
-					<b>Description:{{animalDescription}} </b>
+					<b>Description:{{animal.animalDescription}} </b>
 				</p>
 				<p>
-					<b>Age:{{animalAge}} </b>
+					<b>Age:{{animal.animalAge}} </b>
 				</p>
 				<p>
-					<b>Size: {{animalAge}}</b>
+					<b>Size: {{animal.animalAge}}</b>
 				</p>
 
 
-				<form action="/send/adopt" method="post" class="col-lg-9">
+				<form (ngSubmit)="createAdoption()" method="post" class="col-lg-9">
 					<input type="hidden" name="animalName" value="" />
 					<table>
 						<tr>

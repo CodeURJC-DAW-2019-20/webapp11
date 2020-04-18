@@ -255,7 +255,7 @@ I have participated in the completion of the rest controllers, created services 
 ###### This diagram shows the differents templates, controller and services used in the web server
 # PHASE 4
 Implementation of Web Application with Angular.
-## PARTICIPATION PHASE 4
+## PARTICIPATION PHASE 4:
 ### Arshia Ambar Saleem
 I have worked on creating animals and show their information, along with i have also done filter search where a user can search animals by their names or by their type .I have done the task of creating gallery for user and show user's detail with gallery.Moreover, i have created paging on both animal's and user's gallery page.
 
@@ -283,9 +283,31 @@ I have worked on creating animals and show their information, along with i have 
 - [profile.component.ts](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/AngularAnimalShelter/src/app/components/profile/profile.component.ts)
 
 
-### Borja Castro Cruces
-### Marina Fernandez
-### Rodrigo Cadena
+### Borja Castro Cruces:
+
+
+### Marina Fernandez Suárez:
+
+#### Description:
+[Coming soon].
+
+#### Files:
+- [animalform.component.html](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/b99db0218fb5a35dbbe018b4fee1e4ef20e70956/AngularAnimalShelter/src/app/components/animalform/animalform.component.html).
+- [shelterform.component.ts](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/b99db0218fb5a35dbbe018b4fee1e4ef20e70956/AngularAnimalShelter/src/app/components/shelterform/shelterform.component.ts).
+- [userform.service.ts](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/b99db0218fb5a35dbbe018b4fee1e4ef20e70956/AngularAnimalShelter/src/app/services/userform/userform.service.ts).
+- [animalview.component.ts](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/acaa8e4a9d4c8676a656a61b6b7d1c19119543ef/AngularAnimalShelter/src/app/components/animalview/animalview.component.ts).
+- []().
+
+#### Commits:
+- [Reorganization and fixing syntax to fit Angular Standard](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/16ce71e5f0fdfd8f3a35af3b4a0f244cc61201d7).
+- [Forms validation done](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/b99db0218fb5a35dbbe018b4fee1e4ef20e70956).
+- [Fixed carousel and routing bug](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/cabf6515ef12eafc5bcba03b8b97f782d096640d).
+- [Request and adoptions Services implemented ](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/acaa8e4a9d4c8676a656a61b6b7d1c19119543ef).
+- []().
+
+
+
+### Rodrigo Cadena:
 
 
 

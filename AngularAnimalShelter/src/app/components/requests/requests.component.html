@@ -7,7 +7,7 @@
 				<h1 class="text-white">Requests</h1>
 				<p class="text-white link-nav">
 					<a [routerLink]="['home']">Home </a> <span class="lnr lnr-arrow-right"></span> <a
-					[routerLink]="['request']"> Requests</a>
+					[routerLink]="['requests']"> Requests</a>
 				</p>
 			</div>
 		</div>
@@ -20,7 +20,7 @@
 
 <section class="cat-list-area section-gap">
 	<div class="container">
-		<div  class="row">
+		<div *ngFor="let req in requests" class="row">
 		
 			<div class="col-lg-3 col-md-4">
 				<div class="single-cat-list">
@@ -29,19 +29,19 @@
 			</div>
 			<div class="col-lg-3 col-md-4">
 				<p>
-					<b>Name: </b>
+					<b>Name: </b>{{req.animal.animalName}}
 				</p>
 				<p>
-					<b>Age: </b>
+					<b>Age: </b>{{req.animal.animalAge}}
 				</p>
-				<form action="/evaluateAdoption/accept" class="col-lg-6">
+				<form (ngSubmit)="valueRequest( req.animal.animalId )" class="col-lg-6">
 					<div class="form-group">
 						<input type="hidden" name="animalName" value=""/>
 						<button type="submit" name="accept" class="genric-btn primary circle "
 							style="width: 125px">Accept</button>
 					</div>
 				</form>
-				<form action="/evaluateAdoption/deny" class="col-lg-6">
+				<form (ngSubmit)="valueRequest( req.animal.animalId )" class="col-lg-6">
 					<div class="form-group">
 						<input type="hidden" name="animalName" value=""/>
 						<button type="submit" name="deny" class="genric-btn primary circle"

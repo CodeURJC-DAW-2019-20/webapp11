@@ -29,7 +29,7 @@ export class AnimalsComponent implements OnInit {
   }
   
   ngOnInit(): void {
-    this.animalType = null;
+    this.animalType = "all";
     this.animalName = null;
     if(JSON.parse(localStorage.getItem('currentUser'))!=null){
       this.suitedbuttonVisible=true;
