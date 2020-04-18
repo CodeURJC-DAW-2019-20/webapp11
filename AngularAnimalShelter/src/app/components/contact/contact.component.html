@@ -62,17 +62,33 @@
 
             </div>
             <div class="col-lg-8">
-                <form class="form-area" action="sendMail" method="post">
+                <form autocomplete="on" (ngSubmit)="sendEmail(formulary)" #formulary ="ngForm" enctype= "multipart/form-data" class="form-area">
                     <div class="row">
                         <div class="col-lg-6 form-group">
-                            <input type="text" name="name" placeholder="Enter your name"
-                                class="common-input mb-20 form-control" required> <input type="email" name="email"
-                                placeholder="Enter your mail" class="common-input mb-20 form-control" required> <input
-                                type="text" name="subject" placeholder="Enter your subject"
+
+                            <input type="text" name="name" 
+                                placeholder="Enter your name" 
+                                [class.is-invalid] = "name.invalid && name.touched" 
+                                [class.is-valid]="name.valid && name.touched"
+                                class="common-input mb-20 form-control" 
+                                pattern="[A-Za-z ]+"   
+                                [(ngModel)]= "emailData.name" 
+                                #name ="ngModel" id= "name" required> 
+                    
+                                <input type="email" name="email"
+                                placeholder="Enter your mail" 
+                                [class.is-invalid]= "email.invalid && email.touched"  [class.is-valid]="email.valid && email.touched"
+                                class="common-input mb-20 form-control"  [(ngModel)]= "emailData.email" #email="ngModel" id ="email" required> 
+                                
+                                <input
+                                type="text" name="subject" placeholder="Enter your subject"[class.is-invalid] = "subject.invalid && subject.touched" 
+                                [class.is-valid]="subject.valid && subject.touched" pattern="[A-Za-z ]+" 
+                                [(ngModel)]= "emailData.subject" #subject ="ngModel" id= "subject"
                                 class="common-input mb-20 form-control" required>
+                                
                         </div>
                         <div class="col-lg-6 form-group">
-                            <textarea class="common-textarea form-control" name="message" required></textarea>
+                            <textarea class="common-textarea form-control" id ="message" [(ngModel)]="emailData.message" name="message" required></textarea>
                         </div>
                         <div class="col-lg-12 d-flex justify-content-between">
                             <div class="alert-msg" style="text-align: left;"></div>
