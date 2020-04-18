@@ -12,6 +12,8 @@ import es.sidelab.animalshelter.AnimalRepository;
 import es.sidelab.animalshelter.SmtpMailSender;
 import es.sidelab.animalshelter.UserShelterComponent;
 import es.sidelab.animalshelter.WebUser;
+import es.sidelab.animalshelter.services.AdoptionService;
+import es.sidelab.animalshelter.services.AnimalService;
 
 @Controller
 public class AdoptionMailController {
@@ -23,10 +25,10 @@ public class AdoptionMailController {
 	UserShelterComponent u;
 
 	@Autowired
-	AnimalRepository animalRepository;
+	AnimalService animalRepository;
 
 	@Autowired
-	AdoptionRepository adoptionRepository;
+	AdoptionService adoptionRepository;
 
 	@RequestMapping("/send/adopt")
 	public String sendMail(String animalName) throws MessagingException {
@@ -40,7 +42,6 @@ public class AdoptionMailController {
 		adoption.setAnimal(animal);
 		adoption.setUser(w);
 		adoptionRepository.save(adoption);
-		
 		animal.setAnimalAdopted(true);
 		animalRepository.save(animal);
 

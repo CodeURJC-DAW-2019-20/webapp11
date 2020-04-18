@@ -10,6 +10,8 @@ import es.sidelab.animalshelter.AdoptionRepository;
 import es.sidelab.animalshelter.Animal;
 import es.sidelab.animalshelter.AnimalRepository;
 import es.sidelab.animalshelter.SmtpMailSender;
+import es.sidelab.animalshelter.services.AdoptionService;
+import es.sidelab.animalshelter.services.AnimalService;
 
 @Controller
 public class EvaluateAdoptionController extends ModelAttributeController {
@@ -18,10 +20,10 @@ public class EvaluateAdoptionController extends ModelAttributeController {
 	SmtpMailSender smtpMailSender;
 
 	@Autowired
-	private AnimalRepository ar;
+	private AnimalService ar;
 
 	@Autowired
-	private AdoptionRepository ap;
+	private AdoptionService ap;
 
 	@RequestMapping("/evaluateAdoption/accept")
 	public String accept(String animalName, HttpServletRequest request) throws MessagingException {

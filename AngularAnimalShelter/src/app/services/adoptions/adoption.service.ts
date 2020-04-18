@@ -13,15 +13,12 @@ export class AdoptionService {
 
   constructor(private http: HttpClient) { }
 
-  createRequest(requestData : FormData){
-    return this.http.post(BASE_URL, requestData).pipe(			
-			catchError(error => this.handleError(error))
-    );
+  createRequest(Adoption:Object): Observable<Object>{
+  
+    console.log("hola");
+    return this.http.post(BASE_URL,Adoption);
   }
 
-  private handleError(error: any) {
-		console.error(error);
-		return Observable.throw("Server error (" + error.status + "): " + error.text())
-	}
+
 
 }

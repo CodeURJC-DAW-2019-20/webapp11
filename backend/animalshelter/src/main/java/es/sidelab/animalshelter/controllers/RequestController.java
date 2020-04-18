@@ -13,25 +13,27 @@ import es.sidelab.animalshelter.AdoptionRepository;
 import es.sidelab.animalshelter.Animal;
 import es.sidelab.animalshelter.AnimalRepository;
 import es.sidelab.animalshelter.UserShelterComponent;
+import es.sidelab.animalshelter.services.AdoptionService;
+import es.sidelab.animalshelter.services.AnimalService;
 
 @Controller
 public class RequestController {
 
 	@Autowired
-	private AnimalRepository animalRepository;
+	private AnimalService animalService;
 	
 	@Autowired
 	private UserShelterComponent userShelterComponent;
 	
 	@Autowired
-	private AdoptionRepository adoptionRepository;
+	private AdoptionService adoptionService;
 
 	@RequestMapping("/request")
 	public String requestView(Model model, HttpServletRequest request) {
 
-		List<Animal> adoptedanimals = animalRepository.getAllAnimalAdopted(true);
+		List<Animal> adoptedanimals = animalService.findAll();
 		List<Animal> shelterCorrespondingAnimals = new ArrayList<>();
-		List<Adoption> adoptions = adoptionRepository.findAll();
+		List<Adoption> adoptions = adoptionService.findAll();
 		
 		for (Animal a : adoptedanimals) {
 			if (a.getShelterOwner().getShelterEmail().equals(userShelterComponent.getShelter().getShelterEmail())) {

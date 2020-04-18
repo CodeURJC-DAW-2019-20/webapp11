@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
-const BASE_URL = environment.apiBase + '/petitions/';
+const BASE_URL = environment.apiBase + '/shelters/petitions/';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +12,15 @@ const BASE_URL = environment.apiBase + '/petitions/';
 export class RequestsService {
 
   constructor(private http: HttpClient) { }
+  private url;
 
-  evaluateRequest(idAdoption : number) {
-    return this.http.post(BASE_URL, idAdoption).pipe(			
+  evaluateRequest(idAdoption : number,response: String) {
+    console.log("hola");
+    this.url = environment.apiBase +  '/shelters/petitions/' +idAdoption+ '?response=' +response;
+
+
+    console.log("request")
+    return this.http.post(this.url,"hey").pipe(			
 			catchError(error => this.handleError(error))
     );
   }
@@ -22,6 +28,7 @@ export class RequestsService {
   getRequests() {
     return this.http.get(BASE_URL).pipe(
       catchError(error => this.handleError(error))
+
     );
   }
 

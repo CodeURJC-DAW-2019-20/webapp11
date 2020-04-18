@@ -31,6 +31,8 @@ import es.sidelab.animalshelter.AnimalRepository;
 import es.sidelab.animalshelter.Shelter;
 import es.sidelab.animalshelter.SmtpMailSender;
 import es.sidelab.animalshelter.UserShelterComponent;
+import es.sidelab.animalshelter.services.AdoptionService;
+import es.sidelab.animalshelter.services.AnimalService;
 import es.sidelab.animalshelter.services.ShelterService;
 
 @RestController
@@ -49,10 +51,10 @@ public class APIshelterController {
 	private UserShelterComponent loggeduser;
 	
 	@Autowired
-	private AnimalRepository animalRepository;
+	private AnimalService animalRepository;
 	
 	@Autowired
-	private AdoptionRepository adoptionRepository;
+	private AdoptionService adoptionRepository;
 
 	@GetMapping("/")
 	public Collection<Shelter> shelter() {
@@ -115,24 +117,32 @@ public class APIshelterController {
 	
 	
 	@GetMapping("/petitions")
-	public List<Adoption> requestView() {
-		List<Adoption> shelterCorrespondingPetitions = new ArrayList<>();
+	public List<Animal> requestView() {
+		Shelter shelter = (Shelter) loggeduser.getLoggedUser();
+		System.out.print("petitions");
+
+		List<Animal> adoptedanimals = animalRepository.findAll();
+		List<Animal> shelterCorrespondingAnimals = new ArrayList<>();
 		List<Adoption> adoptions = adoptionRepository.findAll();
 		
-		for (Adoption adopt : adoptions) {
-			if(adopt.isInCourse() && adopt.getAnimal().getShelterOwner().getShelterEmail().equals(loggeduser.getShelter().getShelterEmail())){
-				shelterCorrespondingPetitions.add(adopt);
+		for (Animal a : adoptedanimals) {
+			if (a.getShelterOwner().getShelterEmail().equals(shelter.getShelterEmail())) {
+				for (Adoption adopt : adoptions) {
+					if (adopt.isInCourse() && adopt.getAnimal().getAnimalName().equals(a.getAnimalName()))
+						shelterCorrespondingAnimals.add(a);
+				}
 			}
 		}
 				
-		return shelterCorrespondingPetitions;
+		return  shelterCorrespondingAnimals;
+
 	}
 	
 	@GetMapping("/petitions/{id}")
 	public ResponseEntity<Adoption> getSpecificAdoption(@PathVariable long id) {
-		Optional<Adoption> adoption = adoptionRepository.findById(id);
-		if(adoption.isPresent()) {
-			return new ResponseEntity<>(adoption.get(), HttpStatus.OK);
+		Adoption adoption = adoptionRepository.findByAdoptionId(id);
+		if(adoption!=null) {
+			return new ResponseEntity<>(adoption, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
@@ -140,12 +150,13 @@ public class APIshelterController {
 	
 	@PostMapping("/petitions/{id}")
 	public ResponseEntity<Adoption> respondRequest(@PathVariable long id, 
-			@RequestParam(value = "response", required = true) String response) throws MessagingException {
+			@RequestParam String response) throws MessagingException {
+		Animal animal=animalRepository.findByAnimalId(id);
 		Adoption adoption;
-		Optional<Adoption> adoptionOptional = adoptionRepository.findById(id);
+		Adoption adoptionOptional = adoptionRepository.findByAnimal(animal);
 		
-		if(adoptionOptional.isPresent() && adoptionOptional.get().isInCourse()) {
-			adoption = adoptionOptional.get();
+		if(adoptionOptional!=null && adoptionOptional.isInCourse()) {
+			adoption = adoptionOptional;
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
@@ -158,7 +169,7 @@ public class APIshelterController {
 			Animal a = adoption.getAnimal();
 			a.setAnimalAdopted(false);
 			animalRepository.save(a);
-			adoptionRepository.delete(adoption);
+			adoptionRepository.delete(adoptionOptional.getIdAdoption());
 			smtpMailSender.sendDeny("Adoption rejected", adoption.getUser().getUserEmail());
 		} else {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

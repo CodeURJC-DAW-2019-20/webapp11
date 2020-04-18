@@ -12,24 +12,36 @@ import { environment } from 'src/environments/environment';
 export class RequestsComponent implements OnInit {
 
   requests: any;
+  
+  src=environment.apiBase2+ "/animal"
 
-  constructor(private router: Router, private requestService: RequestsService, private ruta : ActivatedRoute) { }
+
+  constructor(private router: Router, private requestService: RequestsService, private ruta : ActivatedRoute) {
+   }
 
   ngOnInit(): void {
-    this.requests = this.requestService.getRequests();
+   this.getRequest();
   }
 
 
-  valueRequest( animalid ) {
-    this.requestService.evaluateRequest(animalid).subscribe(
+  valueRequest( animalid ,response) {
+    this.requestService.evaluateRequest(animalid,response).subscribe(
       response => {
         this.router.navigate(['requests']);
+      
       },
       error => {
           this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
           this.router.navigate(['requests']);
         });
       });
+  }
+  getRequest(){
+    this.requestService.getRequests().subscribe(data=>{
+      console.log(data);
+      this.requests=data;
+    });
+
   }
 
 }

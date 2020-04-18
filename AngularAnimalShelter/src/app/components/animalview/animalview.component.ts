@@ -14,14 +14,28 @@ import { environment } from 'src/environments/environment';
 export class AnimalviewComponent implements OnInit {
   data = new FormData();
   animal: Animal;
-  adoption: Adoption;
+  adoption: Adoption ;
   today = new Date();
+  user:any;
   src=environment.apiBase2+ "/animal";
 
-
-
   constructor(private router: Router, private ruta : ActivatedRoute, private adoptionService: AdoptionService) {
+    this.user=JSON.parse(localStorage.getItem('currentUser'));
     this.data = new FormData();
+    this.adoption={
+      inCourse:false,
+      adoptionDate:this.today,
+
+    }
+    
+      this.animal = {
+        animalName:'',
+        animalAge:null,
+        animalType:'dog',
+        animalSize:'no',
+        animalDescription:''
+      }
+    
    }
 
   ngOnInit(): void {
@@ -39,11 +53,11 @@ export class AnimalviewComponent implements OnInit {
     this.adoption.adoptionDate;  // Fix
     this.adoption.animal = this.animal;
     this.adoption.inCourse = true;
-    this.adoption.user;  // Fix
+    this.adoption.user = this.user;  // Fix
+    console.log("hiadoption",this.adoption);
 
-    this.data.append('jsondata',JSON.stringify(this.adoption));
 
-    this.adoptionService.createRequest(this.data).subscribe(
+    this.adoptionService.createRequest(this.adoption).subscribe(
       response => {
         this.router.navigate(['animals']);
       },

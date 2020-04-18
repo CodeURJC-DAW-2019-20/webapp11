@@ -20,34 +20,35 @@
 
 <section class="cat-list-area section-gap">
 	<div class="container">
-		<div *ngFor="let req in requests" class="row">
+		<div  *ngFor="let req of requests"class="row">
 		
 			<div class="col-lg-3 col-md-4">
 				<div class="single-cat-list">
-                    <img src='/assets/img/c1.jpg'  class="allimages">
+                    <img src="{{src}}/{{req.animalPhoto}}"  class="allimages">
 				</div>
 			</div>
-			<div class="col-lg-3 col-md-4">
+			<div   class="col-lg-3 col-md-4">
 				<p>
-					<b>Name: </b>{{req.animal.animalName}}
+					<b>Name: </b>{{req.animalName}}
 				</p>
 				<p>
-					<b>Age: </b>{{req.animal.animalAge}}
+					<b>Age: </b>{{req.animalAge}}
 				</p>
-				<form (ngSubmit)="valueRequest( req.animal.animalId )" class="col-lg-6">
+				<form  class="col-lg-6">
 					<div class="form-group">
-						<input type="hidden" name="animalName" value=""/>
-						<button type="submit" name="accept" class="genric-btn primary circle "
+						<input  #new_field type="hidden" name="accept" value="accept"/>
+						<button type="submit"  (click)="valueRequest(req.idAnimal, new_field.value)" class="genric-btn primary circle "
 							style="width: 125px">Accept</button>
 					</div>
 				</form>
-				<form (ngSubmit)="valueRequest( req.animal.animalId )" class="col-lg-6">
+				<form  class="col-lg-6">
 					<div class="form-group">
-						<input type="hidden" name="animalName" value=""/>
-						<button type="submit" name="deny" class="genric-btn primary circle"
+						<input  #new type="hidden" name="deny" value="deny"/>
+						<button type="submit" (click)="valueRequest(req.idAnimal, new.value)"  class="genric-btn primary circle"
 							style="width: 125px">Deny</button>
 					</div>
 				</form>
+				
 				<p>
 					
 					<b>Animal actually in adoption... </b>
