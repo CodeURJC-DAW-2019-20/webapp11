@@ -44,7 +44,7 @@ public class MainController extends ModelAttributeController {
 	public void init() {
 
 		WebUser user1 = new WebUser("Peter", "48755465Q", 22, "C/Manuela Malasaña,15", "l", "m", 2, 5,
-				"saralorensana@gmail.com", "123");
+				"correo.usuario@outlook.com", "123");
 		WebUser user2 = new WebUser("Mary", "no", 22, "C/Lambrusco,10", "s", "no", 1, 3,
 				"iho.ladamadeltiempo@gmail.com", "123");
                 user1.setUserphoto("image-1.jpg");
@@ -52,9 +52,9 @@ public class MainController extends ModelAttributeController {
 		userRepository.save(user1);
 		userRepository.save(user2);
 
-		Shelter shelter1 = new Shelter("Build Animal Future", "1123123123", "arshiasaleem98@gmail.com", "123", "NO",
+		Shelter shelter1 = new Shelter("Build Animal Future", "1123123123", "marinafs.13@hotmail.com", "123", "NO",
 				"C/Montana,1");
-		Shelter shelter2 = new Shelter("Animal Rescue", "4325151451", "mavra.1bachillerato@gmail.com", "123", "NO",
+		Shelter shelter2 = new Shelter("Animal Rescue", "4325151451", "iho-ladamadeltiempo@live.com", "123", "NO",
 				"C/Signium,7");
 		shelterRepository.save(shelter1);
 		shelterRepository.save(shelter2);
