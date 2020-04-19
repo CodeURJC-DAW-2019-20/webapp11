@@ -2,7 +2,7 @@ cd ..
 
 cd ./AngularAnimalShelter
 
-docker run --rm --name angular-animalshelter-container -v "%cd%":/angular -w /angular node:12.16.1 /bin/bash -c "npm install; npm run-script build"
+docker run --rm --name angular-animalshelter -v "%cd%":/angular -w /angular node:12.16.1 /bin/bash -c "npm install; npm run-script build"
 
 xcopy /E "%cd%"\dist\AngularAnimalShelter ..\backend\animalshelter\src\main\resources\static\new
 
