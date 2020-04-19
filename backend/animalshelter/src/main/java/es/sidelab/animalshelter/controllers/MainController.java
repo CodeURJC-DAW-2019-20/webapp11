@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
 import es.sidelab.animalshelter.Animal;
 import es.sidelab.animalshelter.AnimalRepository;
 import es.sidelab.animalshelter.Graph;
@@ -47,7 +49,7 @@ public class MainController extends ModelAttributeController {
 				"correo.usuario@outlook.com", "123");
 		WebUser user2 = new WebUser("Mary", "no", 22, "C/Lambrusco,10", "s", "no", 1, 3,
 				"iho.ladamadeltiempo@gmail.com", "123");
-                user1.setUserphoto("image-1.jpg");
+		user1.setUserphoto("image-1.jpg");
 		user2.setUserphoto("image-2.jpg");
 		userRepository.save(user1);
 		userRepository.save(user2);
@@ -97,14 +99,10 @@ public class MainController extends ModelAttributeController {
 		animalRepository.save(animal5);
 		animalRepository.save(animal5);
 	}
-	
-	//Connect to Angular
+
+	// Connect to Angular
 	@RequestMapping("/new")
 	public String AngularConnection() {
-		return "new/index.html";
-	}
-	@RequestMapping("/new/")
-	public String AngularConnection2() {
 		return "new/index.html";
 	}
 
@@ -145,7 +143,6 @@ public class MainController extends ModelAttributeController {
 		map.put(date3.getMonth().toString(), 0);
 		map.put(date4.getMonth().toString(), 0);
 		map.put(date5.getMonth().toString(), 0);
-		
 
 		for (Adoption adoption : adoptionList) {
 			String curr_month = adoption.getAdoptionDate().toLocalDate().getMonth().toString();

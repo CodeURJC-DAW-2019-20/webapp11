@@ -302,8 +302,7 @@ I have worked on creating animals and show their information, along with i have 
 - He adaptado los formularios para que funcionen correctamente en angular, además de generar las validaciones correcpondientes para cada campo.
 - He implementado la solicitud de adopciones y la aceptación y denegación de las mismas (salvando algunos bugs).
 - He realizado la publicación y la incorporación del algunar al docker.
-//traduceme esto en plan redactado en un security
-// y espero volver enseguida ♥
+
  
 
 #### Files:
@@ -311,14 +310,14 @@ I have worked on creating animals and show their information, along with i have 
 - [shelterform.component.ts](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/b99db0218fb5a35dbbe018b4fee1e4ef20e70956/AngularAnimalShelter/src/app/components/shelterform/shelterform.component.ts).
 - [userform.component.html](https://github.com/CodeURJC-DAW-2019-20/webapp11/blame/b99db0218fb5a35dbbe018b4fee1e4ef20e70956/AngularAnimalShelter/src/app/components/userform/userform.component.html).
 - [adoption.service.ts](https://github.com/CodeURJC-DAW-2019-20/webapp11/blame/7c0da0f5927cfae9e3df04f87c45667ee60f10e7/AngularAnimalShelter/src/app/services/adoptions/adoption.service.ts).
-- []().
+- [create_image.bat](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/621058ccaf507c818437638c019b9bdc36c9f408/docker/create_image.bat).
 
 #### Commits:
 - [Reorganization and fixing syntax to fit Angular Standard](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/16ce71e5f0fdfd8f3a35af3b4a0f244cc61201d7).
 - [Forms validation done](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/b99db0218fb5a35dbbe018b4fee1e4ef20e70956).
 - [Fixed carousel and routing bug](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/cabf6515ef12eafc5bcba03b8b97f782d096640d).
 - [Routing fixed to Angular Standar ](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/77cae5bc2d74b0d3bf8b678b8391e366f91cd717).
-- []().
+- [Fixed spring-Angular connection](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/20da296a969aebc484b1f791bbe5ec77de4f228d).
 
 
 
