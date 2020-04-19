@@ -293,6 +293,24 @@ I have worked on creating animals and show their information, along with i have 
 
 
 ### Borja Castro Cruces:
+#### Description:
+I have create the contact component for sending email for different issues found and I have created a live bar graph for the las 6 month adoptions. 
+I have done the SPA diagram with the connections within componets, services , templates and models.
+ 
+
+#### Files:
+- [contact.component.ts](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/998a823bf2ab83a430a5fa55e243843607e5272a/AngularAnimalShelter/src/app/components/contact/contact.component.ts).
+- [contact.service.ts ](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/998a823bf2ab83a430a5fa55e243843607e5272a/AngularAnimalShelter/src/app/services/contact/contact.service.ts).
+- [statistics.component.html](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/4e298673da145c80b9a98d9f6965157412766f63/AngularAnimalShelter/src/app/statistics/statistics.component.html).
+- [stadistics.service.ts](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/ef74b48e14cc7595d8f9e67b0d4708f07d8fa4c8/AngularAnimalShelter/src/app/statistics/stadistics.service.ts).
+- [statistics.component.ts](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/ef74b48e14cc7595d8f9e67b0d4708f07d8fa4c8/AngularAnimalShelter/src/app/statistics/statistics.component.ts).
+
+#### Commits:
+- [SPA diagram](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/f5101a497d9bc309d9f16b1dcc671692c3af95ca).
+- [Contact Form](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/998a823bf2ab83a430a5fa55e243843607e5272a).
+- [Statistics bug fixed](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/cf27a27a6a2088ccfec136548010d09e3425a955).
+- [Live Graph from API](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/4e298673da145c80b9a98d9f6965157412766f63).
+- [Statistics](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/ef74b48e14cc7595d8f9e67b0d4708f07d8fa4c8).
 
 
 ### Marina Fernandez Suárez:
