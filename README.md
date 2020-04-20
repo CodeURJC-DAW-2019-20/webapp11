@@ -266,6 +266,8 @@ Implementation of Web Application with Angular.
 
 ## PARTICIPATION PHASE 4:
 ### Arshia Ambar Saleem
+
+#### Description:
 I have worked on creating animals and show their information, along with i have also done filter search where a user can search animals by their names or by their type .I have done the task of creating gallery for user and show user's detail with gallery.Moreover, i have created paging on both animal's and user's gallery page.
 
 #### Commits:
@@ -316,12 +318,7 @@ I have done the SPA diagram with the connections within componets, services , te
 ### Marina Fernandez Suárez:
 
 #### Description:
-- He reorganizado la estructura del proyecto y adaptado las redirecciones al estandar de angular.
-- He adaptado los formularios para que funcionen correctamente en angular, además de generar las validaciones correcpondientes para cada campo.
-- He implementado la solicitud de adopciones y la aceptación y denegación de las mismas (salvando algunos bugs).
-- He realizado la publicación y la incorporación del algunar al docker.
-
- 
+I have reorganized the project structure and adopted the angular routing to the structure style.I was in charge of formulary adaptation to angular and to make validations for each field. I have implemented the adoptions and requests systems to make shelters able to acceept and deny them.Finally i was in charge of publication and updating docker with angular assets.
 
 #### Files:
 - [animalform.component.html](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/b99db0218fb5a35dbbe018b4fee1e4ef20e70956/AngularAnimalShelter/src/app/components/animalform/animalform.component.html).
@@ -340,6 +337,35 @@ I have done the SPA diagram with the connections within componets, services , te
 
 
 ### Rodrigo Cadena:
+
+#### Description:
+I have participated in the project initialization, creation of models, creation of web users, shelters and animals,  configured the authorization's component and service.
+
+#### Commits:
+- [Models from java objects](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/e993007a0a16827e9555dc1867002172ee08448e).
+
+- [Angular Shelter creation](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/c1567411b91f185cd4908236b686291e660fc960).
+
+- [Userform component and html for user creation](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/c7883c30a2e30f52b607bdab4adfd405080b8bf4).
+
+- [Angular authorization configuration](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/efa5b3fb3e670ae5e0483ffa8ea34df1291a961c)
+
+- [Angular app initial configuration](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/54a452b79da6fd8abfcb48f0abb3c5dd25c5d2bb).
+
+#### Files:
+- [Shelter Form component](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/f666ce232bc4457ada7c2d26ca155db89acd34ec).
+
+- [Userform component and html for user creation](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/c7883c30a2e30f52b607bdab4adfd405080b8bf4).
+
+- [userform.service.spec.ts](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/AngularAnimalShelter/src/app/services/userform/userform.service.spec.ts).
+
+- [Angular authorization configuration](https://github.com/CodeURJC-DAW-2019-20/webapp11/commit/efa5b3fb3e670ae5e0483ffa8ea34df1291a961c).
+
+- [login.service.ts](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/AngularAnimalShelter/src/app/auth/login.service.ts).
+
+
+
+
 
 
 
