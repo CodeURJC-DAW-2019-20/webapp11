@@ -366,8 +366,7 @@ I have participated in the project initialization, creation of models, creation 
 - [login.service.ts](https://github.com/CodeURJC-DAW-2019-20/webapp11/blob/master/AngularAnimalShelter/src/app/auth/login.service.ts).
 
 
-
-
-
+## SPA DIAGRAM
+<img src= "ReadmeImgs/SPA Diagram.png" width="600">
 
 
